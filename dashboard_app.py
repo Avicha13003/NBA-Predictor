@@ -564,5 +564,5 @@ for tab, market in zip(tabs, markets):
             st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
         st.divider()
 
->>>>>>> a970c21 (Daily dashboard update)
+a970c21 (Daily dashboard update)
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Mobile-friendly • Free on Streamlit Cloud")
