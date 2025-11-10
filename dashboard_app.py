@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # dashboard_app.py — NBA Player Props Dashboard (final patched version)
 import streamlit as st
 import pandas as pd
