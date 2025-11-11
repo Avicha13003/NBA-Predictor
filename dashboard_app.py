@@ -1,10 +1,16 @@
-# dashboard_app.py — NBA Player Props Dashboard (safe cache TTL fix)
+# dashboard_app.py — NBA Player Props Dashboard (with cache button, locked GitHub link, and team logo fix)
 import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
 
-st.set_page_config(page_title="NBA Player Props Dashboard", layout="wide")
+# Hide GitHub repo link in the “hamburger” menu
+st.set_page_config(
+    page_title="NBA Player Props Dashboard",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    menu_items=None
+)
 
 # ---------- Helpers ----------
 ALT_TEAM_MAP = {"GS": "GSW", "NO": "NOP", "SA": "SAS", "NY": "NYK", "PHO": "PHX"}
@@ -47,7 +53,7 @@ def load_team_logos():
     logos = load_csv("team_logos.csv")
     if logos.empty:
         return pd.DataFrame(columns=["TEAM","TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"])
-    logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper()
+    logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper().map(norm_team)
     return logos
 
 @st.cache_data(ttl=60)
@@ -69,7 +75,6 @@ def load_game_log():
 def load_team_context():
     return load_csv("team_context.csv")
 
-# ---------- Player Context ----------
 def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_abbr: str, line_val):
     stat_map = {"PTS":"PTS","3PM":"FG3M","REB":"REB","AST":"AST","STL":"STL"}
     out = {"last5_mean":np.nan,"last5_std":np.nan,"last_game":None,
@@ -152,6 +157,7 @@ else:
     preds["PHOTO_URL"] = ""
 
 if not logos.empty:
+    preds["TEAM"] = preds["TEAM"].map(norm_team)
     preds = preds.merge(logos, on="TEAM", how="left")
 else:
     preds[["TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"]] = ["","","",""]
@@ -163,6 +169,13 @@ preds["SECONDARY_COLOR"] = preds["SECONDARY_COLOR"].fillna("#777777")
 
 # ---------- Sidebar Filters ----------
 st.sidebar.title("🔎 Filters")
+
+# Clear cache button
+if st.sidebar.button("🧹 Clear Streamlit Cache"):
+    st.cache_data.clear()
+    st.toast("✅ Cache cleared successfully!")
+    st.experimental_rerun()
+
 teams = ["All Teams"] + sorted([t for t in preds["TEAM"].dropna().unique().tolist() if t])
 team_pick = st.sidebar.selectbox("Select Team", teams)
 
@@ -202,7 +215,7 @@ for tab, market in zip(tabs, markets):
 
         ctx_rows = []
         for _, r in sub.iterrows():
-            ctxp = compute_player_context(gl, r["PLAYER"], market, r.get("TEAM",""), r.get("LINE", np.nan))
+            ctxp = compute_player_context(gl, r["PLAYER"], market, r.get("TEAM",""), r.get("LINE"))
             ctx_rows.append({
                 "PLAYER": r["PLAYER"],
                 "last5_mean": ctxp["last5_mean"],
@@ -216,15 +229,6 @@ for tab, market in zip(tabs, markets):
         sub = sub.merge(ctx_df, on="PLAYER", how="left")
         sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") - pd.to_numeric(sub.get("LINE",0), errors="coerce"))
 
-        if sort_by == "Prob Over (desc)":
-            sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
-        elif sort_by == "Line Edge (SEASON_VAL - LINE)":
-            sub = sub.sort_values("line_edge", ascending=False)
-        elif sort_by == "Recent Hit Rate":
-            sub = sub.sort_values("hit_rate_recent", ascending=False)
-        elif sort_by == "Volatility (std, asc)":
-            sub = sub.sort_values(sub["last5_std"].fillna(9e9), ascending=True)
-
         st.subheader(f"{market} · Top Overs")
         st.divider()
 
@@ -234,13 +238,11 @@ for tab, market in zip(tabs, markets):
 
             with st.container(border=True):
                 st.markdown(f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>", unsafe_allow_html=True)
-                c1, c2, c3, c4 = st.columns([1.0, 3.0, 2.2, 1.4])
+                c1, c2, c3, c4 = st.columns([1.0,3.0,2.2,1.4])
 
                 with c1:
                     if isinstance(row.get("PHOTO_URL",""), str) and row["PHOTO_URL"].startswith("http"):
                         st.image(row["PHOTO_URL"], width=86)
-                    else:
-                        st.image("https://cdn.nba.com/manage/2021/10/NBA_Silhouette.png", width=86)
                     if isinstance(row.get("LOGO_URL",""), str) and row["LOGO_URL"].startswith("http"):
                         st.image(row["LOGO_URL"], width=42)
 
@@ -266,8 +268,6 @@ for tab, market in zip(tabs, markets):
                     chart = sparkline(row.get("series_list"), color=color_for(row.get("hit_rate_recent"), hi_good=True))
                     if chart is not None:
                         st.altair_chart(chart, use_container_width=True)
-                    else:
-                        st.caption("No recent series")
 
             st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
         st.divider()
