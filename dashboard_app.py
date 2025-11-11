@@ -1,4 +1,4 @@
-# dashboard_app.py — NBA Player Props Dashboard (accurate hit rate + visuals)
+# dashboard_app.py — NBA Player Props Dashboard (safe cache TTL fix)
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -14,7 +14,7 @@ def norm_team(x: str) -> str:
     x = x.strip().upper()
     return ALT_TEAM_MAP.get(x, x)
 
-def pct(x): 
+def pct(x):
     return f"{x*100:.1f}%" if pd.notna(x) else "—"
 
 def color_for(val, hi_good=True):
@@ -24,7 +24,7 @@ def color_for(val, hi_good=True):
     else:
         return "#e74c3c" if val >= 0.6 else ("#f39c12" if val >= 0.4 else "#2ecc71")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_csv(path, **kwargs):
     try:
         df = pd.read_csv(path, **kwargs)
@@ -34,7 +34,7 @@ def load_csv(path, **kwargs):
         st.warning(f"⚠️ Could not load {path}")
         return pd.DataFrame()
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_predictions():
     df = load_csv("nba_prop_predictions_today.csv")
     if df.empty: return df
@@ -42,15 +42,15 @@ def load_predictions():
     df["TEAM"] = df["TEAM"].astype(str).map(norm_team)
     return df
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_team_logos():
     logos = load_csv("team_logos.csv")
-    if logos.empty: 
+    if logos.empty:
         return pd.DataFrame(columns=["TEAM","TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"])
     logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper()
     return logos
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_headshots():
     heads = load_csv("player_headshots.csv")
     if heads.empty:
@@ -61,48 +61,41 @@ def load_headshots():
     heads["PLAYER_NORM"] = heads["PLAYER"].astype(str).str.lower().str.strip()
     return heads[["PLAYER","PLAYER_NORM","PHOTO_URL"]]
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_game_log():
     return load_csv("player_game_log.csv")
 
-@st.cache_data
+@st.cache_data(ttl=60)
 def load_team_context():
     return load_csv("team_context.csv")
 
 # ---------- Player Context ----------
 def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_abbr: str, line_val):
-    """Compute averages, volatility, and hit rate using direct stat vs line comparisons."""
     stat_map = {"PTS":"PTS","3PM":"FG3M","REB":"REB","AST":"AST","STL":"STL"}
     out = {"last5_mean":np.nan,"last5_std":np.nan,"last_game":None,
            "series_list":[],"hit_rate_recent":np.nan,"n_recent":0}
-
-    if gl_all.empty or market not in stat_map:
-        return out
+    if gl_all.empty or market not in stat_map: return out
 
     stat_col = stat_map[market]
     g = gl_all.copy()
     g["PLAYER"] = g["PLAYER"].astype(str).str.strip()
     g = g[g["PLAYER"] == player].copy()
-    if g.empty or stat_col not in g.columns:
-        return out
+    if g.empty or stat_col not in g.columns: return out
 
     g["GAME_DATE"] = pd.to_datetime(g["GAME_DATE"], errors="coerce", infer_datetime_format=True)
     g = g.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
     g[stat_col] = pd.to_numeric(g[stat_col], errors="coerce")
 
-    # Line normalization
     try:
         line_f = float(str(line_val).replace("+","").strip())
     except Exception:
         line_f = np.nan
 
-    # last-5 averages
     last5 = g.tail(5)
     if len(last5):
         out["last5_mean"] = float(last5[stat_col].mean())
         out["last5_std"]  = float(last5[stat_col].std(ddof=0))
 
-    # last game info
     if not g.tail(1).empty:
         lg = g.tail(1)
         out["last_game"] = {
@@ -111,7 +104,6 @@ def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_
             "val":  float(lg[stat_col].iloc[0]),
         }
 
-    # hit rate: last 8 games vs today's line
     if len(g) and pd.notna(line_f):
         recent = g.tail(8).copy()
         hits = (recent[stat_col] >= line_f).astype(int)
@@ -122,8 +114,7 @@ def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_
     return out
 
 def opponent_context(ctx_df: pd.DataFrame, team_abbr: str):
-    if ctx_df.empty: 
-        return None
+    if ctx_df.empty: return None
     c = ctx_df.copy()
     c["TEAM_ABBREVIATION"] = c["TEAM_ABBREVIATION"].astype(str).map(norm_team)
     for cand in ["OPP_DEF_RATING_RANK","DEF_RATING_RANK","OPP_DEF_RANK"]:
