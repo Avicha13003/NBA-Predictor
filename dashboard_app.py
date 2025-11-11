@@ -1,10 +1,9 @@
-# dashboard_app.py — NBA Player Props Dashboard (finalized with cache fix, GitHub lock, and logo fix)
+# dashboard_app.py — NBA Player Props Dashboard (no cache, GitHub hidden, logos fixed)
 import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
 
-# ----- Hide GitHub button & extra menu items -----
 st.set_page_config(
     page_title="NBA Player Props Dashboard",
     layout="wide",
@@ -16,12 +15,11 @@ st.set_page_config(
 ALT_TEAM_MAP = {"GS": "GSW", "NO": "NOP", "SA": "SAS", "NY": "NYK", "PHO": "PHX"}
 
 def norm_team(x: str) -> str:
-    if not isinstance(x, str):
-        return ""
+    if not isinstance(x, str): return ""
     x = x.strip().upper()
     return ALT_TEAM_MAP.get(x, x)
 
-def pct(x):
+def pct(x): 
     return f"{x*100:.1f}%" if pd.notna(x) else "—"
 
 def color_for(val, hi_good=True):
@@ -31,142 +29,51 @@ def color_for(val, hi_good=True):
     else:
         return "#e74c3c" if val >= 0.6 else ("#f39c12" if val >= 0.4 else "#2ecc71")
 
-@st.cache_data(ttl=60)
-def load_csv(path, **kwargs):
+# ---------- Data Loaders (no caching) ----------
+def load_csv(path):
     try:
-        df = pd.read_csv(path, **kwargs)
+        df = pd.read_csv(path)
         st.toast(f"Loaded {path} ({len(df)} rows)", icon="✅")
         return df
-    except Exception:
-        st.warning(f"⚠️ Could not load {path}")
+    except Exception as e:
+        st.warning(f"⚠️ Could not load {path}: {e}")
         return pd.DataFrame()
 
-@st.cache_data(ttl=60)
-def load_predictions():
-    df = load_csv("nba_prop_predictions_today.csv")
-    if df.empty: return df
-    df["PLAYER"] = df["PLAYER"].astype(str).str.strip()
-    df["TEAM"] = df["TEAM"].astype(str).map(norm_team)
-    return df
-
-@st.cache_data(ttl=60)
-def load_team_logos():
+def load_all_data():
+    preds = load_csv("nba_prop_predictions_today.csv")
     logos = load_csv("team_logos.csv")
-    if logos.empty:
-        return pd.DataFrame(columns=["TEAM","TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"])
-    logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper().map(norm_team)
-    return logos
-
-@st.cache_data(ttl=60)
-def load_headshots():
     heads = load_csv("player_headshots.csv")
-    if heads.empty:
-        return pd.DataFrame(columns=["PLAYER","PHOTO_URL"])
+    gl = load_csv("player_game_log.csv")
+    ctx = load_csv("team_context.csv")
+    return preds, logos, heads, gl, ctx
+
+# Initial load
+preds, logos, heads, gl, ctx = load_all_data()
+
+# Reload button
+if st.sidebar.button("🔄 Reload Data"):
+    preds, logos, heads, gl, ctx = load_all_data()
+    st.toast("✅ Data reloaded successfully!")
+
+# ---------- Normalize + Merge ----------
+if not preds.empty:
+    preds["PLAYER"] = preds["PLAYER"].astype(str).str.strip()
+    preds["TEAM"] = preds["TEAM"].astype(str).map(norm_team)
+    preds["PLAYER_NORM"] = preds["PLAYER"].str.lower().str.strip()
+
+if not heads.empty:
     col_player = "PLAYER" if "PLAYER" in heads.columns else "player"
     col_url = "PHOTO_URL" if "PHOTO_URL" in heads.columns else "image_url"
     heads = heads.rename(columns={col_player: "PLAYER", col_url: "PHOTO_URL"})
     heads["PLAYER_NORM"] = heads["PLAYER"].astype(str).str.lower().str.strip()
-    return heads[["PLAYER","PLAYER_NORM","PHOTO_URL"]]
-
-@st.cache_data(ttl=60)
-def load_game_log():
-    return load_csv("player_game_log.csv")
-
-@st.cache_data(ttl=60)
-def load_team_context():
-    return load_csv("team_context.csv")
-
-def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_abbr: str, line_val):
-    stat_map = {"PTS":"PTS","3PM":"FG3M","REB":"REB","AST":"AST","STL":"STL"}
-    out = {"last5_mean":np.nan,"last5_std":np.nan,"last_game":None,
-           "series_list":[],"hit_rate_recent":np.nan,"n_recent":0}
-    if gl_all.empty or market not in stat_map:
-        return out
-
-    stat_col = stat_map[market]
-    g = gl_all.copy()
-    g["PLAYER"] = g["PLAYER"].astype(str).str.strip()
-    g = g[g["PLAYER"] == player].copy()
-    if g.empty or stat_col not in g.columns:
-        return out
-
-    g["GAME_DATE"] = pd.to_datetime(g["GAME_DATE"], errors="coerce", infer_datetime_format=True)
-    g = g.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
-    g[stat_col] = pd.to_numeric(g[stat_col], errors="coerce")
-
-    try:
-        line_f = float(str(line_val).replace("+","").strip())
-    except Exception:
-        line_f = np.nan
-
-    last5 = g.tail(5)
-    if len(last5):
-        out["last5_mean"] = float(last5[stat_col].mean())
-        out["last5_std"]  = float(last5[stat_col].std(ddof=0))
-
-    if not g.tail(1).empty:
-        lg = g.tail(1)
-        out["last_game"] = {
-            "date": lg["GAME_DATE"].iloc[0].date().isoformat(),
-            "team": str(lg["TEAM"].iloc[0]),
-            "val":  float(lg[stat_col].iloc[0]),
-        }
-
-    if len(g) and pd.notna(line_f):
-        recent = g.tail(8).copy()
-        hits = (recent[stat_col] >= line_f).astype(int)
-        out["series_list"] = hits.tolist()
-        out["n_recent"] = len(hits)
-        out["hit_rate_recent"] = float(hits.mean()) if len(hits) else np.nan
-
-    return out
-
-def opponent_context(ctx_df: pd.DataFrame, team_abbr: str):
-    if ctx_df.empty: return None
-    c = ctx_df.copy()
-    c["TEAM_ABBREVIATION"] = c["TEAM_ABBREVIATION"].astype(str).map(norm_team)
-    for cand in ["OPP_DEF_RATING_RANK","DEF_RATING_RANK","OPP_DEF_RANK"]:
-        if cand in c.columns:
-            row = c[c["TEAM_ABBREVIATION"] == team_abbr].tail(1)
-            if not row.empty:
-                return int(pd.to_numeric(row[cand], errors="coerce").fillna(0).iloc[0])
-    return None
-
-def sparkline(series_list, color="#2ecc71"):
-    if not series_list or len(series_list)==0:
-        return None
-    data = pd.DataFrame({"idx": range(1, len(series_list)+1), "val": series_list})
-    chart = alt.Chart(data).mark_line(point=True).encode(
-        x=alt.X("idx:Q", axis=None),
-        y=alt.Y("val:Q", axis=None, scale=alt.Scale(domain=[0,1])),
-        color=alt.value(color)
-    ).properties(height=30)
-    return chart
-
-# ---------- Load Data ----------
-preds = load_predictions()
-logos = load_team_logos()
-heads = load_headshots()
-gl = load_game_log()
-ctx = load_team_context()
-
-if preds.empty:
-    st.stop()
-
-preds["PLAYER_NORM"] = preds["PLAYER"].str.lower().str.strip()
-if not heads.empty:
     preds = preds.merge(heads[["PLAYER_NORM","PHOTO_URL"]], on="PLAYER_NORM", how="left")
 else:
     preds["PHOTO_URL"] = ""
 
-# --- Fixed team logos merge ---
 if not logos.empty:
-    preds["TEAM"] = preds["TEAM"].map(norm_team)
-    logos["TEAM"] = logos["TEAM"].map(norm_team)
+    logos["TEAM"] = logos["TEAM"].astype(str).map(norm_team)
+    preds["TEAM"] = preds["TEAM"].astype(str).map(norm_team)
     preds = preds.merge(logos, on="TEAM", how="left")
-    preds["LOGO_URL"] = preds["LOGO_URL"].fillna(
-        preds["TEAM"].map(dict(zip(logos["TEAM"], logos["LOGO_URL"])))
-    )
 else:
     preds[["TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"]] = ["","","",""]
 
@@ -177,35 +84,16 @@ preds["SECONDARY_COLOR"] = preds["SECONDARY_COLOR"].fillna("#777777")
 
 # ---------- Sidebar Filters ----------
 st.sidebar.title("🔎 Filters")
-
-# --- Safe Cache Clear Button ---
-def clear_app_cache():
-    st.cache_data.clear()
-    st.toast("✅ Cache cleared successfully!")
-    st.session_state["_force_rerun"] = True
-
-if st.sidebar.button("🧹 Clear Streamlit Cache"):
-    clear_app_cache()
-
-if st.session_state.get("_force_rerun"):
-    st.session_state["_force_rerun"] = False
-    st.experimental_rerun()
-
-teams = ["All Teams"] + sorted([t for t in preds["TEAM"].dropna().unique().tolist() if t])
+teams = ["All Teams"] + sorted(preds["TEAM"].dropna().unique().tolist())
 team_pick = st.sidebar.selectbox("Select Team", teams)
-
 if team_pick != "All Teams":
     player_opts = ["All Players"] + sorted(preds.loc[preds["TEAM"]==team_pick,"PLAYER"].unique().tolist())
 else:
     player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
-
 player_pick = st.sidebar.selectbox("Select Player", player_opts)
-sort_by = st.sidebar.selectbox(
-    "Sort by",
-    ["Prob Over (desc)","Line Edge (SEASON_VAL - LINE)","Recent Hit Rate","Volatility (std, asc)"]
-)
+sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)","Recent Hit Rate","Line Edge"])
 
-# ---------- Filtering ----------
+# ---------- Filter ----------
 view = preds.copy()
 if team_pick != "All Teams":
     view = view[view["TEAM"] == team_pick]
@@ -216,37 +104,29 @@ if player_pick != "All Players":
 st.markdown("### 🏀 NBA Player Props Dashboard")
 st.caption("Daily NBA Trends & Predictions — updated at least 2 hours before first tip.")
 
-markets = view["MARKET"].dropna().unique().tolist()
-if not markets:
-    st.info("No props found.")
+if view.empty:
+    st.info("No player props found.")
     st.stop()
 
+markets = view["MARKET"].dropna().unique().tolist()
 tabs = st.tabs([m for m in markets])
 
-# ---------- Per Market ----------
+# ---------- Main Display ----------
+def sparkline(series, color="#2ecc71"):
+    if not series or len(series)==0: return None
+    data = pd.DataFrame({"x": range(1, len(series)+1), "y": series})
+    return alt.Chart(data).mark_line(point=True).encode(
+        x=alt.X("x:Q", axis=None),
+        y=alt.Y("y:Q", axis=None, scale=alt.Scale(domain=[0,1])),
+        color=alt.value(color)
+    ).properties(height=30)
+
 for tab, market in zip(tabs, markets):
     with tab:
         sub = view[view["MARKET"]==market].copy()
         if sub.empty:
             st.info("No data for this market.")
             continue
-
-        ctx_rows = []
-        for _, r in sub.iterrows():
-            ctxp = compute_player_context(gl, r["PLAYER"], market, r.get("TEAM",""), r.get("LINE"))
-            ctx_rows.append({
-                "PLAYER": r["PLAYER"],
-                "last5_mean": ctxp["last5_mean"],
-                "last5_std": ctxp["last5_std"],
-                "hit_rate_recent": ctxp["hit_rate_recent"],
-                "n_recent": ctxp["n_recent"],
-                "last_game": ctxp["last_game"],
-                "series_list": ctxp["series_list"],
-            })
-        ctx_df = pd.DataFrame(ctx_rows)
-        sub = sub.merge(ctx_df, on="PLAYER", how="left")
-        sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") -
-                            pd.to_numeric(sub.get("LINE",0), errors="coerce"))
 
         st.subheader(f"{market} · Top Overs")
         st.divider()
@@ -257,38 +137,23 @@ for tab, market in zip(tabs, markets):
 
             with st.container(border=True):
                 st.markdown(f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>", unsafe_allow_html=True)
-                c1, c2, c3, c4 = st.columns([1.0,3.0,2.2,1.4])
+                c1, c2, c3 = st.columns([1.0,3.0,2.0])
 
                 with c1:
                     if isinstance(row.get("PHOTO_URL",""), str) and row["PHOTO_URL"].startswith("http"):
-                        st.image(row["PHOTO_URL"], width=86)
+                        st.image(row["PHOTO_URL"], width=80)
                     if isinstance(row.get("LOGO_URL",""), str) and row["LOGO_URL"].startswith("http"):
-                        st.image(row["LOGO_URL"], width=42)
+                        st.image(row["LOGO_URL"], width=40)
 
                 with c2:
                     st.markdown(f"#### {row['PLAYER']}")
                     st.markdown(f"**{row['PROP_NAME']} o{row['LINE']}**")
-                    opp_rank = opponent_context(ctx, row.get("TEAM",""))
-                    team_badge = f"<span style='background:{prim};color:white;padding:2px 6px;border-radius:6px;font-size:0.8rem'>{row.get('TEAM','')}</span>"
-                    inj = row.get("INJ_Status","Active")
-                    st.markdown(f"Team: {team_badge} &nbsp;|&nbsp; Injury: **{inj}**", unsafe_allow_html=True)
-                    if row.get("last_game"):
-                        lg = row["last_game"]
-                        st.caption(f"Last game ({lg['date']}): {lg['val']} {market} — Team: {lg['team']}{' | Opp Def Rank: ' + str(opp_rank) if opp_rank else ''}")
+                    st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
 
                 with c3:
                     st.metric("Prob. Over", row.get("FINAL_OVER_PROB_PCT","—"))
-                    hr = row.get("hit_rate_recent", np.nan)
-                    n  = int(row.get("n_recent", 0) or 0)
-                    st.markdown(f"<div style='color:{color_for(hr)}'>Recent Hit Rate: {pct(hr)} ({n}g)</div>", unsafe_allow_html=True)
-                    st.caption(f"Line edge: {row['line_edge']:+.2f}")
 
-                with c4:
-                    chart = sparkline(row.get("series_list"), color=color_for(row.get("hit_rate_recent"), hi_good=True))
-                    if chart is not None:
-                        st.altair_chart(chart, use_container_width=True)
-
-            st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
+            st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
         st.divider()
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Mobile-friendly • Free on Streamlit Cloud")
