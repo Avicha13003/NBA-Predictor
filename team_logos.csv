@@ -1,31 +1,31 @@
 ﻿TEAM,TEAM_FULL,LOGO_URL,PRIMARY_COLOR,SECONDARY_COLOR
-ATL,Atlanta Hawks,https://cdn.ssref.net/req/202106291/images/teams/atl_logo.svg,#E03A3E,#C1D32F
-BOS,Boston Celtics,https://cdn.ssref.net/req/202106291/images/teams/bos_logo.svg,#007A33,#BA9653
-BKN,Brooklyn Nets,https://cdn.ssref.net/req/202106291/images/teams/brk_logo.svg,#000000,#FFFFFF
-CHA,Charlotte Hornets,https://cdn.ssref.net/req/202106291/images/teams/cho_logo.svg,#1D1160,#00788C
-CHI,Chicago Bulls,https://cdn.ssref.net/req/202106291/images/teams/chi_logo.svg,#CE1141,#000000
-CLE,Cleveland Cavaliers,https://cdn.ssref.net/req/202106291/images/teams/cle_logo.svg,#860038,#041E42
-DAL,Dallas Mavericks,https://cdn.ssref.net/req/202106291/images/teams/dal_logo.svg,#00538C,#B8C4CA
-DEN,Denver Nuggets,https://cdn.ssref.net/req/202106291/images/teams/den_logo.svg,#0E2240,#FEC524
-DET,Detroit Pistons,https://cdn.ssref.net/req/202106291/images/teams/det_logo.svg,#C8102E,#006BB6
-GSW,Golden State Warriors,https://cdn.ssref.net/req/202106291/images/teams/gsw_logo.svg,#1D428A,#FFC72C
-HOU,Houston Rockets,https://cdn.ssref.net/req/202106291/images/teams/hou_logo.svg,#CE1141,#000000
-IND,Indiana Pacers,https://cdn.ssref.net/req/202106291/images/teams/ind_logo.svg,#041E42,#FDBB30
-LAC,LA Clippers,https://cdn.ssref.net/req/202106291/images/teams/lac_logo.svg,#C8102E,#1D428A
-LAL,Los Angeles Lakers,https://cdn.ssref.net/req/202106291/images/teams/lal_logo.svg,#552583,#FDB927
-MEM,Memphis Grizzlies,https://cdn.ssref.net/req/202106291/images/teams/mem_logo.svg,#5D76A9,#12173F
-MIA,Miami Heat,https://cdn.ssref.net/req/202106291/images/teams/mia_logo.svg,#98002E,#F9A01B
-MIL,Milwaukee Bucks,https://cdn.ssref.net/req/202106291/images/teams/mil_logo.svg,#00471B,#EEE1C6
-MIN,Minnesota Timberwolves,https://cdn.ssref.net/req/202106291/images/teams/min_logo.svg,#0C2340,#236192
-NOP,New Orleans Pelicans,https://cdn.ssref.net/req/202106291/images/teams/nop_logo.svg,#0C2340,#C8102E
-NYK,New York Knicks,https://cdn.ssref.net/req/202106291/images/teams/nyk_logo.svg,#006BB6,#F58426
-OKC,Oklahoma City Thunder,https://cdn.ssref.net/req/202106291/images/teams/okc_logo.svg,#007AC1,#EF3B24
-ORL,Orlando Magic,https://cdn.ssref.net/req/202106291/images/teams/orl_logo.svg,#0077C0,#C4CED4
-PHI,Philadelphia 76ers,https://cdn.ssref.net/req/202106291/images/teams/phi_logo.svg,#006BB6,#ED174C
-PHX,Phoenix Suns,https://cdn.ssref.net/req/202106291/images/teams/phx_logo.svg,#1D1160,#E56020
-POR,Portland Trail Blazers,https://cdn.ssref.net/req/202106291/images/teams/por_logo.svg,#E03A3E,#000000
-SAC,Sacramento Kings,https://cdn.ssref.net/req/202106291/images/teams/sac_logo.svg,#5A2D81,#63727A
-SAS,San Antonio Spurs,https://cdn.ssref.net/req/202106291/images/teams/sas_logo.svg,#C4CED4,#000000
-TOR,Toronto Raptors,https://cdn.ssref.net/req/202106291/images/teams/tor_logo.svg,#CE1141,#B4975A
-UTA,Utah Jazz,https://cdn.ssref.net/req/202106291/images/teams/uta_logo.svg,#002B5C,#00471B
-WAS,Washington Wizards,https://cdn.ssref.net/req/202106291/images/teams/was_logo.svg,#002B5C,#E31837
+ATL,Atlanta Hawks,https://a.espncdn.com/i/teamlogos/nba/500/atl.png,#E03A3E,#C1D32F
+BOS,Boston Celtics,https://a.espncdn.com/i/teamlogos/nba/500/bos.png,#007A33,#BA9653
+BKN,Brooklyn Nets,https://a.espncdn.com/i/teamlogos/nba/500/bkn.png,#000000,#FFFFFF
+CHA,Charlotte Hornets,https://a.espncdn.com/i/teamlogos/nba/500/cha.png,#1D1160,#00788C
+CHI,Chicago Bulls,https://a.espncdn.com/i/teamlogos/nba/500/chi.png,#CE1141,#000000
+CLE,Cleveland Cavaliers,https://a.espncdn.com/i/teamlogos/nba/500/cle.png,#860038,#041E42
+DAL,Dallas Mavericks,https://a.espncdn.com/i/teamlogos/nba/500/dal.png,#00538C,#B8C4CA
+DEN,Denver Nuggets,https://a.espncdn.com/i/teamlogos/nba/500/den.png,#0E2240,#FEC524
+DET,Detroit Pistons,https://a.espncdn.com/i/teamlogos/nba/500/det.png,#C8102E,#006BB6
+GSW,Golden State Warriors,https://a.espncdn.com/i/teamlogos/nba/500/gsw.png,#1D428A,#FFC72C
+HOU,Houston Rockets,https://a.espncdn.com/i/teamlogos/nba/500/hou.png,#CE1141,#C4CED4
+IND,Indiana Pacers,https://a.espncdn.com/i/teamlogos/nba/500/ind.png,#002D62,#FDBB30
+LAC,LA Clippers,https://a.espncdn.com/i/teamlogos/nba/500/lac.png,#C8102E,#1D428A
+LAL,Los Angeles Lakers,https://a.espncdn.com/i/teamlogos/nba/500/lal.png,#552583,#FDB927
+MEM,Memphis Grizzlies,https://a.espncdn.com/i/teamlogos/nba/500/mem.png,#5D76A9,#12173F
+MIA,Miami Heat,https://a.espncdn.com/i/teamlogos/nba/500/mia.png,#98002E,#F9A01B
+MIL,Milwaukee Bucks,https://a.espncdn.com/i/teamlogos/nba/500/mil.png,#00471B,#EEE1C6
+MIN,Minnesota Timberwolves,https://a.espncdn.com/i/teamlogos/nba/500/min.png,#0C2340,#78BE20
+NOP,New Orleans Pelicans,https://a.espncdn.com/i/teamlogos/nba/500/nop.png,#0C2340,#85714D
+NYK,New York Knicks,https://a.espncdn.com/i/teamlogos/nba/500/nyk.png,#006BB6,#F58426
+OKC,Oklahoma City Thunder,https://a.espncdn.com/i/teamlogos/nba/500/okc.png,#007AC1,#EF3B24
+ORL,Orlando Magic,https://a.espncdn.com/i/teamlogos/nba/500/orl.png,#0077C0,#C4CED4
+PHI,Philadelphia 76ers,https://a.espncdn.com/i/teamlogos/nba/500/phi.png,#006BB6,#ED174C
+PHX,Phoenix Suns,https://a.espncdn.com/i/teamlogos/nba/500/phx.png,#1D1160,#E56020
+POR,Portland Trail Blazers,https://a.espncdn.com/i/teamlogos/nba/500/por.png,#E03A3E,#000000
+SAC,Sacramento Kings,https://a.espncdn.com/i/teamlogos/nba/500/sac.png,#5A2D81,#63727A
+SAS,San Antonio Spurs,https://a.espncdn.com/i/teamlogos/nba/500/sas.png,#C4CED4,#000000
+TOR,Toronto Raptors,https://a.espncdn.com/i/teamlogos/nba/500/tor.png,#CE1141,#000000
+UTA,Utah Jazz,https://a.espncdn.com/i/teamlogos/nba/500/uta.png,#002B5C,#F9A01B
+WAS,Washington Wizards,https://a.espncdn.com/i/teamlogos/nba/500/was.png,#002B5C,#E31837
