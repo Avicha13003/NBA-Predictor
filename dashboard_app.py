@@ -1,4 +1,4 @@
-# dashboard_app.py — NBA Player Props Dashboard (no cache, GitHub hidden, logos fixed)
+# dashboard_app.py — NBA Player Props Dashboard (no cache, logos fixed, GitHub hidden)
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -29,11 +29,11 @@ def color_for(val, hi_good=True):
     else:
         return "#e74c3c" if val >= 0.6 else ("#f39c12" if val >= 0.4 else "#2ecc71")
 
-# ---------- Data Loaders (no caching) ----------
+# ---------- Data Loaders ----------
 def load_csv(path):
     try:
         df = pd.read_csv(path)
-        st.toast(f"Loaded {path} ({len(df)} rows)", icon="✅")
+        st.toast(f"✅ Loaded {path} ({len(df)} rows)")
         return df
     except Exception as e:
         st.warning(f"⚠️ Could not load {path}: {e}")
@@ -47,10 +47,10 @@ def load_all_data():
     ctx = load_csv("team_context.csv")
     return preds, logos, heads, gl, ctx
 
-# Initial load
+# ---------- Initial Load ----------
 preds, logos, heads, gl, ctx = load_all_data()
 
-# Reload button
+# ---------- Manual Reload Button ----------
 if st.sidebar.button("🔄 Reload Data"):
     preds, logos, heads, gl, ctx = load_all_data()
     st.toast("✅ Data reloaded successfully!")
@@ -61,6 +61,7 @@ if not preds.empty:
     preds["TEAM"] = preds["TEAM"].astype(str).map(norm_team)
     preds["PLAYER_NORM"] = preds["PLAYER"].str.lower().str.strip()
 
+# --- Merge Headshots ---
 if not heads.empty:
     col_player = "PLAYER" if "PLAYER" in heads.columns else "player"
     col_url = "PHOTO_URL" if "PHOTO_URL" in heads.columns else "image_url"
@@ -70,10 +71,24 @@ if not heads.empty:
 else:
     preds["PHOTO_URL"] = ""
 
+# --- Merge Logos (Fixed) ---
 if not logos.empty:
-    logos["TEAM"] = logos["TEAM"].astype(str).map(norm_team)
-    preds["TEAM"] = preds["TEAM"].astype(str).map(norm_team)
-    preds = preds.merge(logos, on="TEAM", how="left")
+    logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper().map(norm_team)
+    preds["TEAM"] = preds["TEAM"].astype(str).str.strip().str.upper().map(norm_team)
+
+    preds = preds.merge(
+        logos[["TEAM","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"]],
+        on="TEAM", how="left"
+    )
+
+    # Fallback fill
+    logo_map = dict(zip(logos["TEAM"], logos["LOGO_URL"]))
+    preds["LOGO_URL"] = preds["LOGO_URL"].fillna(preds["TEAM"].map(logo_map))
+
+    # Debug toast
+    sample_logo = preds["LOGO_URL"].dropna().head(1).values
+    if len(sample_logo):
+        st.sidebar.info(f"🖼️ Logo sample loaded: {sample_logo[0]}")
 else:
     preds[["TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"]] = ["","","",""]
 
@@ -111,7 +126,7 @@ if view.empty:
 markets = view["MARKET"].dropna().unique().tolist()
 tabs = st.tabs([m for m in markets])
 
-# ---------- Main Display ----------
+# ---------- Sparkline ----------
 def sparkline(series, color="#2ecc71"):
     if not series or len(series)==0: return None
     data = pd.DataFrame({"x": range(1, len(series)+1), "y": series})
@@ -121,6 +136,7 @@ def sparkline(series, color="#2ecc71"):
         color=alt.value(color)
     ).properties(height=30)
 
+# ---------- Main Display ----------
 for tab, market in zip(tabs, markets):
     with tab:
         sub = view[view["MARKET"]==market].copy()
