@@ -1,11 +1,14 @@
 [theme]
-base="dark"
+base = "dark"
+
+[client]
+showErrorDetails = false
+toolbarMode = "viewer"  # hides GitHub icon, deploy info, etc.
 
 [server]
 headless = true
+enableXsrfProtection = true
+enableCORS = false
 
 [browser]
 gatherUsageStats = false
-
-[client]
-toolbarMode = "minimal"
