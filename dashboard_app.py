@@ -1,9 +1,8 @@
-# dashboard_app.py — NBA Player Props Dashboard (stable + fixed cache replay)
+# dashboard_app.py — NBA Player Props Dashboard (accurate hit rate + visuals)
 import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-import os
 
 st.set_page_config(page_title="NBA Player Props Dashboard", layout="wide")
 
@@ -15,7 +14,7 @@ def norm_team(x: str) -> str:
     x = x.strip().upper()
     return ALT_TEAM_MAP.get(x, x)
 
-def pct(x):
+def pct(x): 
     return f"{x*100:.1f}%" if pd.notna(x) else "—"
 
 def color_for(val, hi_good=True):
@@ -25,98 +24,100 @@ def color_for(val, hi_good=True):
     else:
         return "#e74c3c" if val >= 0.6 else ("#f39c12" if val >= 0.4 else "#2ecc71")
 
-# ---------- Safe Cached Loader ----------
 @st.cache_data
-def _read_csv_cached(path):
-    """Pure cached CSV read (no Streamlit UI)."""
-    if not os.path.exists(path):
-        return pd.DataFrame()
+def load_csv(path, **kwargs):
     try:
-        return pd.read_csv(path)
+        df = pd.read_csv(path, **kwargs)
+        st.toast(f"Loaded {path} ({len(df)} rows)", icon="✅")
+        return df
     except Exception:
+        st.warning(f"⚠️ Could not load {path}")
         return pd.DataFrame()
 
-def load_csv(path):
-    """Non-cached wrapper that adds UI feedback."""
-    df = _read_csv_cached(path)
-    if df.empty:
-        st.warning(f"⚠️ Could not load {path}")
-    else:
-        st.toast(f"✅ Loaded {path} ({len(df)} rows)")
-    return df
-
-# ---------- Data Loaders ----------
+@st.cache_data
 def load_predictions():
     df = load_csv("nba_prop_predictions_today.csv")
-    if not df.empty:
-        df["PLAYER"] = df["PLAYER"].astype(str).str.strip()
-        df["TEAM"] = df["TEAM"].astype(str).map(norm_team)
+    if df.empty: return df
+    df["PLAYER"] = df["PLAYER"].astype(str).str.strip()
+    df["TEAM"] = df["TEAM"].astype(str).map(norm_team)
     return df
 
+@st.cache_data
 def load_team_logos():
-    df = load_csv("team_logos.csv")
-    if df.empty:
+    logos = load_csv("team_logos.csv")
+    if logos.empty: 
         return pd.DataFrame(columns=["TEAM","TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"])
-    df["TEAM"] = df["TEAM"].astype(str).str.strip().str.upper()
-    return df
+    logos["TEAM"] = logos["TEAM"].astype(str).str.strip().str.upper()
+    return logos
 
+@st.cache_data
 def load_headshots():
-    df = load_csv("player_headshots.csv")
-    if df.empty:
+    heads = load_csv("player_headshots.csv")
+    if heads.empty:
         return pd.DataFrame(columns=["PLAYER","PHOTO_URL"])
-    col_player = "PLAYER" if "PLAYER" in df.columns else "player"
-    col_url = "PHOTO_URL" if "PHOTO_URL" in df.columns else "image_url"
-    df = df.rename(columns={col_player: "PLAYER", col_url: "PHOTO_URL"})
-    df["PLAYER_NORM"] = df["PLAYER"].astype(str).str.lower().str.strip()
-    return df[["PLAYER","PLAYER_NORM","PHOTO_URL"]]
+    col_player = "PLAYER" if "PLAYER" in heads.columns else "player"
+    col_url = "PHOTO_URL" if "PHOTO_URL" in heads.columns else "image_url"
+    heads = heads.rename(columns={col_player: "PLAYER", col_url: "PHOTO_URL"})
+    heads["PLAYER_NORM"] = heads["PLAYER"].astype(str).str.lower().str.strip()
+    return heads[["PLAYER","PLAYER_NORM","PHOTO_URL"]]
 
+@st.cache_data
 def load_game_log():
     return load_csv("player_game_log.csv")
 
+@st.cache_data
 def load_team_context():
     return load_csv("team_context.csv")
 
-# ---------- Context / Stat Computation ----------
-def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_abbr: str):
-    """Compute averages, volatility, last game, and hit-rate."""
+# ---------- Player Context ----------
+def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_abbr: str, line_val):
+    """Compute averages, volatility, and hit rate using direct stat vs line comparisons."""
     stat_map = {"PTS":"PTS","3PM":"FG3M","REB":"REB","AST":"AST","STL":"STL"}
-    hit_col_map = {
-        "PTS":"didHitOver_PTS","3PM":"didHitOver_FG3M","REB":"didHitOver_REB",
-        "AST":"didHitOver_AST","STL":"didHitOver_STL",
-    }
     out = {"last5_mean":np.nan,"last5_std":np.nan,"last_game":None,
            "series_list":[],"hit_rate_recent":np.nan,"n_recent":0}
-    if gl_all.empty or stat_map[market] not in gl_all.columns:
+
+    if gl_all.empty or market not in stat_map:
         return out
 
+    stat_col = stat_map[market]
     g = gl_all.copy()
     g["PLAYER"] = g["PLAYER"].astype(str).str.strip()
     g = g[g["PLAYER"] == player].copy()
-    if g.empty: return out
+    if g.empty or stat_col not in g.columns:
+        return out
 
-    g["GAME_DATE"] = pd.to_datetime(g["GAME_DATE"], errors="coerce")
+    g["GAME_DATE"] = pd.to_datetime(g["GAME_DATE"], errors="coerce", infer_datetime_format=True)
     g = g.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
-    stat_col = stat_map[market]
     g[stat_col] = pd.to_numeric(g[stat_col], errors="coerce")
 
-    last5 = g.tail(5)
-    out["last5_mean"] = float(last5[stat_col].mean()) if len(last5) else np.nan
-    out["last5_std"] = float(last5[stat_col].std(ddof=0)) if len(last5) else np.nan
+    # Line normalization
+    try:
+        line_f = float(str(line_val).replace("+","").strip())
+    except Exception:
+        line_f = np.nan
 
-    lg = g.tail(1)
-    if not lg.empty:
+    # last-5 averages
+    last5 = g.tail(5)
+    if len(last5):
+        out["last5_mean"] = float(last5[stat_col].mean())
+        out["last5_std"]  = float(last5[stat_col].std(ddof=0))
+
+    # last game info
+    if not g.tail(1).empty:
+        lg = g.tail(1)
         out["last_game"] = {
             "date": lg["GAME_DATE"].iloc[0].date().isoformat(),
             "team": str(lg["TEAM"].iloc[0]),
-            "val": float(lg[stat_col].iloc[0]),
+            "val":  float(lg[stat_col].iloc[0]),
         }
 
-    hit_col = hit_col_map.get(market)
-    if hit_col and hit_col in g.columns:
-        s = pd.to_numeric(g[hit_col], errors="coerce").fillna(0).tail(8)
-        out["series_list"] = s.tolist()
-        out["n_recent"] = int(len(s))
-        out["hit_rate_recent"] = float(s.mean()) if len(s) else np.nan
+    # hit rate: last 8 games vs today's line
+    if len(g) and pd.notna(line_f):
+        recent = g.tail(8).copy()
+        hits = (recent[stat_col] >= line_f).astype(int)
+        out["series_list"] = hits.tolist()
+        out["n_recent"] = len(hits)
+        out["hit_rate_recent"] = float(hits.mean()) if len(hits) else np.nan
 
     return out
 
@@ -136,7 +137,7 @@ def sparkline(series_list, color="#2ecc71"):
     if not series_list or len(series_list)==0:
         return None
     data = pd.DataFrame({"idx": range(1, len(series_list)+1), "val": series_list})
-    chart = alt.Chart(data).mark_line(point=False).encode(
+    chart = alt.Chart(data).mark_line(point=True).encode(
         x=alt.X("idx:Q", axis=None),
         y=alt.Y("val:Q", axis=None, scale=alt.Scale(domain=[0,1])),
         color=alt.value(color)
@@ -153,7 +154,6 @@ ctx = load_team_context()
 if preds.empty:
     st.stop()
 
-# ---------- Merge Assets ----------
 preds["PLAYER_NORM"] = preds["PLAYER"].str.lower().str.strip()
 if not heads.empty:
     preds = preds.merge(heads[["PLAYER_NORM","PHOTO_URL"]], on="PLAYER_NORM", how="left")
@@ -181,11 +181,7 @@ else:
     player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
 
 player_pick = st.sidebar.selectbox("Select Player", player_opts)
-
-sort_by = st.sidebar.selectbox(
-    "Sort by",
-    ["Prob Over (desc)","Line Edge (SEASON_VAL - LINE)","Recent Hit Rate","Volatility (std, asc)"]
-)
+sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)","Line Edge (SEASON_VAL - LINE)","Recent Hit Rate","Volatility (std, asc)"])
 
 # ---------- Filtering ----------
 view = preds.copy()
@@ -215,7 +211,7 @@ for tab, market in zip(tabs, markets):
 
         ctx_rows = []
         for _, r in sub.iterrows():
-            ctxp = compute_player_context(gl, r["PLAYER"], market, r.get("TEAM",""))
+            ctxp = compute_player_context(gl, r["PLAYER"], market, r.get("TEAM",""), r.get("LINE", np.nan))
             ctx_rows.append({
                 "PLAYER": r["PLAYER"],
                 "last5_mean": ctxp["last5_mean"],
@@ -227,9 +223,7 @@ for tab, market in zip(tabs, markets):
             })
         ctx_df = pd.DataFrame(ctx_rows)
         sub = sub.merge(ctx_df, on="PLAYER", how="left")
-
-        sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") - 
-                            pd.to_numeric(sub.get("LINE",0), errors="coerce"))
+        sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") - pd.to_numeric(sub.get("LINE",0), errors="coerce"))
 
         if sort_by == "Prob Over (desc)":
             sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
@@ -274,10 +268,7 @@ for tab, market in zip(tabs, markets):
                     st.metric("Prob. Over", row.get("FINAL_OVER_PROB_PCT","—"))
                     hr = row.get("hit_rate_recent", np.nan)
                     n  = int(row.get("n_recent", 0) or 0)
-                    st.markdown(
-                        f"<div style='color:{color_for(hr)}'>Recent Hit Rate: {pct(hr)} ({n}g)</div>",
-                        unsafe_allow_html=True
-                    )
+                    st.markdown(f"<div style='color:{color_for(hr)}'>Recent Hit Rate: {pct(hr)} ({n}g)</div>", unsafe_allow_html=True)
                     st.caption(f"Line edge: {row['line_edge']:+.2f}")
 
                 with c4:
