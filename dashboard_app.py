@@ -1,22 +1,23 @@
-# dashboard_app.py — NBA Player Props Dashboard (with cache button, locked GitHub link, and team logo fix)
+# dashboard_app.py — NBA Player Props Dashboard (finalized with cache fix, GitHub lock, and logo fix)
 import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
 
-# Hide GitHub repo link in the “hamburger” menu
+# ----- Hide GitHub button & extra menu items -----
 st.set_page_config(
     page_title="NBA Player Props Dashboard",
     layout="wide",
     initial_sidebar_state="expanded",
-    menu_items=None
+    menu_items={"Get Help": None, "Report a bug": None, "About": None}
 )
 
 # ---------- Helpers ----------
 ALT_TEAM_MAP = {"GS": "GSW", "NO": "NOP", "SA": "SAS", "NY": "NYK", "PHO": "PHX"}
 
 def norm_team(x: str) -> str:
-    if not isinstance(x, str): return ""
+    if not isinstance(x, str):
+        return ""
     x = x.strip().upper()
     return ALT_TEAM_MAP.get(x, x)
 
@@ -79,13 +80,15 @@ def compute_player_context(gl_all: pd.DataFrame, player: str, market: str, team_
     stat_map = {"PTS":"PTS","3PM":"FG3M","REB":"REB","AST":"AST","STL":"STL"}
     out = {"last5_mean":np.nan,"last5_std":np.nan,"last_game":None,
            "series_list":[],"hit_rate_recent":np.nan,"n_recent":0}
-    if gl_all.empty or market not in stat_map: return out
+    if gl_all.empty or market not in stat_map:
+        return out
 
     stat_col = stat_map[market]
     g = gl_all.copy()
     g["PLAYER"] = g["PLAYER"].astype(str).str.strip()
     g = g[g["PLAYER"] == player].copy()
-    if g.empty or stat_col not in g.columns: return out
+    if g.empty or stat_col not in g.columns:
+        return out
 
     g["GAME_DATE"] = pd.to_datetime(g["GAME_DATE"], errors="coerce", infer_datetime_format=True)
     g = g.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
@@ -156,9 +159,14 @@ if not heads.empty:
 else:
     preds["PHOTO_URL"] = ""
 
+# --- Fixed team logos merge ---
 if not logos.empty:
     preds["TEAM"] = preds["TEAM"].map(norm_team)
+    logos["TEAM"] = logos["TEAM"].map(norm_team)
     preds = preds.merge(logos, on="TEAM", how="left")
+    preds["LOGO_URL"] = preds["LOGO_URL"].fillna(
+        preds["TEAM"].map(dict(zip(logos["TEAM"], logos["LOGO_URL"])))
+    )
 else:
     preds[["TEAM_FULL","LOGO_URL","PRIMARY_COLOR","SECONDARY_COLOR"]] = ["","","",""]
 
@@ -170,10 +178,17 @@ preds["SECONDARY_COLOR"] = preds["SECONDARY_COLOR"].fillna("#777777")
 # ---------- Sidebar Filters ----------
 st.sidebar.title("🔎 Filters")
 
-# Clear cache button
-if st.sidebar.button("🧹 Clear Streamlit Cache"):
+# --- Safe Cache Clear Button ---
+def clear_app_cache():
     st.cache_data.clear()
     st.toast("✅ Cache cleared successfully!")
+    st.session_state["_force_rerun"] = True
+
+if st.sidebar.button("🧹 Clear Streamlit Cache"):
+    clear_app_cache()
+
+if st.session_state.get("_force_rerun"):
+    st.session_state["_force_rerun"] = False
     st.experimental_rerun()
 
 teams = ["All Teams"] + sorted([t for t in preds["TEAM"].dropna().unique().tolist() if t])
@@ -185,7 +200,10 @@ else:
     player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
 
 player_pick = st.sidebar.selectbox("Select Player", player_opts)
-sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)","Line Edge (SEASON_VAL - LINE)","Recent Hit Rate","Volatility (std, asc)"])
+sort_by = st.sidebar.selectbox(
+    "Sort by",
+    ["Prob Over (desc)","Line Edge (SEASON_VAL - LINE)","Recent Hit Rate","Volatility (std, asc)"]
+)
 
 # ---------- Filtering ----------
 view = preds.copy()
@@ -227,7 +245,8 @@ for tab, market in zip(tabs, markets):
             })
         ctx_df = pd.DataFrame(ctx_rows)
         sub = sub.merge(ctx_df, on="PLAYER", how="left")
-        sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") - pd.to_numeric(sub.get("LINE",0), errors="coerce"))
+        sub["line_edge"] = (pd.to_numeric(sub.get("SEASON_VAL",0), errors="coerce") -
+                            pd.to_numeric(sub.get("LINE",0), errors="coerce"))
 
         st.subheader(f"{market} · Top Overs")
         st.divider()
