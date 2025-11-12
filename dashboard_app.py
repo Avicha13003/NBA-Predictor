@@ -1,4 +1,4 @@
-# dashboard_app.py — NBA Player Props Dashboard (context + safe merge + matchup color)
+# dashboard_app.py — NBA Player Props Dashboard (context + safe merge + matchup color + fatigue chips)
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -30,11 +30,57 @@ def color_for(val, hi_good=True):
         return "#e74c3c" if val >= 0.6 else ("#f39c12" if val >= 0.4 else "#2ecc71")
 
 def matchup_color(rank):
-    """Green = easy matchup (high rank number = worse defense)."""
+    """Green = easier matchup (higher rank number = worse defense)."""
     if pd.isna(rank): return "#999999"
     if rank >= 20: return "#2ecc71"   # easier opponent
     elif rank >= 10: return "#f39c12" # medium
     else: return "#e74c3c"            # tough defense
+
+def chip_html(label: str, value: str, bg: str, fg: str = "white"):
+    return (
+        f"<span style='display:inline-block;margin:2px 6px 0 0;"
+        f"padding:2px 8px;border-radius:999px;font-size:0.78rem;"
+        f"background:{bg};color:{fg};white-space:nowrap;'>"
+        f"{label}: <b>{value}</b></span>"
+    )
+
+def rest_color(days):
+    try:
+        d = float(days)
+    except Exception:
+        return "#777777"
+    if d >= 3: return "#2ecc71"
+    if d >= 2: return "#f39c12"
+    return "#e74c3c"
+
+def b2b_color(flag):
+    s = str(flag).strip().lower()
+    if s in ("yes", "y", "true", "1"): return "#e74c3c"
+    return "#2ecc71"
+
+def travel_color(miles):
+    try:
+        m = float(miles)
+    except Exception:
+        return "#777777"
+    if m >= 800: return "#e74c3c"
+    if m >= 300: return "#f39c12"
+    return "#2ecc71"
+
+def fatigue_color(x):
+    try:
+        f = float(x)
+    except Exception:
+        return "#777777"
+    if f >= 0.8: return "#e74c3c"
+    if f >= 0.4: return "#f39c12"
+    return "#2ecc71"
+
+def fmt_num(x, digits=1):
+    try:
+        return f"{float(x):.{digits}f}"
+    except Exception:
+        return "—"
 
 def load_csv(path):
     try:
@@ -131,43 +177,64 @@ preds["LOGO_URL"] = preds["LOGO_URL"].fillna("")
 preds["PRIMARY_COLOR"] = preds["PRIMARY_COLOR"].fillna("#333333")
 preds["SECONDARY_COLOR"] = preds["SECONDARY_COLOR"].fillna("#777777")
 
-# ---------- Merge Contextual Data ----------
+# ---------- Merge Contextual Data (matchup + fatigue, Option B safe) ----------
 if not ctx.empty:
+    ctx = ctx.copy()
     ctx["TEAM_ABBREVIATION"] = ctx["TEAM_ABBREVIATION"].astype(str).map(norm_team)
-    ctx["OPP_TEAM_FULL"] = ctx["OPP_TEAM_FULL"].astype(str)
-    ctx["DEF_RATING_RANK"] = ctx["DEF_RATING"].rank(ascending=True)
+
+    # Ensure DEF_RATING_RANK if not provided explicitly (compute from DEF_RATING lower is better)
+    if "DEF_RATING_RANK" not in ctx.columns and "DEF_RATING" in ctx.columns:
+        ctx["DEF_RATING_RANK"] = ctx["DEF_RATING"].rank(ascending=True)
+
+    # Columns we *might* have in team_context.csv
+    maybe_cols = [
+        "TEAM_ABBREVIATION", "OPP_TEAM_FULL",
+        "DEF_RATING", "DEF_RATING_RANK",
+        "DAYS_REST", "IS_B2B", "TRAVEL_MILES", "TRAVEL_FATIGUE"
+    ]
+    use_cols = [c for c in maybe_cols if c in ctx.columns]
+
     preds = preds.merge(
-        ctx[["TEAM_ABBREVIATION", "OPP_TEAM_FULL", "DEF_RATING", "DEF_RATING_RANK"]],
-        left_on="TEAM", right_on="TEAM_ABBREVIATION", how="left"
+        ctx[use_cols],
+        left_on="TEAM",
+        right_on="TEAM_ABBREVIATION",
+        how="left"
     )
 else:
     preds["OPP_TEAM_FULL"] = ""
     preds["DEF_RATING"] = np.nan
     preds["DEF_RATING_RANK"] = np.nan
+    preds["DAYS_REST"] = np.nan
+    preds["IS_B2B"] = ""
+    preds["TRAVEL_MILES"] = np.nan
+    preds["TRAVEL_FATIGUE"] = np.nan
 
-# Safely merge nba_today_stats.csv
+# Safely merge nba_today_stats.csv (team side + season avgs for the stat)
 if not stats.empty:
+    stats = stats.copy()
     stats["PLAYER"] = stats["PLAYER"].astype(str).str.strip()
     stats["TEAM"] = stats["TEAM"].astype(str).map(norm_team)
 
-    # Only include existing columns
     cols = ["PLAYER", "TEAM_SIDE", "PTS", "REB", "AST", "STL", "FG3M"]
-    existing_cols = [c for c in cols if c in stats.columns]
+    have = [c for c in cols if c in stats.columns]
 
-    preds = preds.merge(stats[existing_cols + ["TEAM"]], on=["PLAYER", "TEAM"], how="left")
+    preds = preds.merge(stats[have + ["TEAM"]], on=["PLAYER", "TEAM"], how="left")
 else:
     preds["TEAM_SIDE"] = ""
     for col in ["PTS", "REB", "AST", "STL", "FG3M"]:
-        preds[col] = np.nan
+        if col not in preds.columns:
+            preds[col] = np.nan
 
 # ---------- Sidebar ----------
 st.sidebar.title("🔎 Filters")
 teams = ["All Teams"] + sorted(preds["TEAM"].dropna().unique().tolist())
 team_pick = st.sidebar.selectbox("Select Team", teams)
+
 if team_pick != "All Teams":
     player_opts = ["All Players"] + sorted(preds.loc[preds["TEAM"] == team_pick, "PLAYER"].unique().tolist())
 else:
     player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
+
 player_pick = st.sidebar.selectbox("Select Player", player_opts)
 sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"])
 lookback = st.sidebar.slider("Lookback (games)", 3, 10, 5)
@@ -212,14 +279,20 @@ for tab, market in zip(tabs, markets):
         for _, r in sub.iterrows():
             if not stat_col or gl_local.empty or pd.isna(r.get("LINE")):
                 hit_rates.append(np.nan); hit_ns.append(0); hit_series.append([]); continue
-            hr, n_used, series = recent_hits_vs_line(gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback)
+            hr, n_used, series = recent_hits_vs_line(
+                gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback
+            )
             hit_rates.append(hr); hit_ns.append(n_used); hit_series.append(series)
+
         sub["recent_hit_rate_line"], sub["recent_hit_n"], sub["recent_hit_series"] = hit_rates, hit_ns, hit_series
         sub["line_edge"] = pd.to_numeric(sub.get("SEASON_VAL", 0), errors="coerce") - pd.to_numeric(sub.get("LINE", 0), errors="coerce")
 
-        if sort_by == "Prob Over (desc)": sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
-        elif sort_by == "Recent Hit Rate (desc)": sub = sub.sort_values(sub["recent_hit_rate_line"].fillna(-1), ascending=False)
-        elif sort_by == "Line Edge (SEASON_VAL - LINE)": sub = sub.sort_values("line_edge", ascending=False)
+        if sort_by == "Prob Over (desc)":
+            sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
+        elif sort_by == "Recent Hit Rate (desc)":
+            sub = sub.sort_values(sub["recent_hit_rate_line"].fillna(-1), ascending=False)
+        elif sort_by == "Line Edge (SEASON_VAL - LINE)":
+            sub = sub.sort_values("line_edge", ascending=False)
 
         st.subheader(f"{market} · Top Overs")
         st.divider()
@@ -227,43 +300,74 @@ for tab, market in zip(tabs, markets):
         for _, row in sub.head(10).iterrows():
             prim, sec = row.get("PRIMARY_COLOR", "#333333"), row.get("SECONDARY_COLOR", "#777777")
             with st.container(border=True):
-                st.markdown(f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>", unsafe_allow_html=True)
-                c1, c2, c3 = st.columns([1.0, 3.0, 2.2])
+                st.markdown(
+                    f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>",
+                    unsafe_allow_html=True,
+                )
+                c1, c2, c3 = st.columns([1.0, 3.0, 2.4])
 
                 with c1:
-                    if isinstance(row.get("PHOTO_URL",""),str) and row["PHOTO_URL"].startswith("http"):
+                    if isinstance(row.get("PHOTO_URL",""),str) and str(row["PHOTO_URL"]).startswith("http"):
                         st.image(row["PHOTO_URL"], width=80)
-                    if isinstance(row.get("LOGO_URL",""),str) and row["LOGO_URL"].startswith("http"):
+                    if isinstance(row.get("LOGO_URL",""),str) and str(row["LOGO_URL"]).startswith("http"):
                         st.image(row["LOGO_URL"], width=40)
 
                 with c2:
                     st.markdown(f"#### {row['PLAYER']}")
                     st.markdown(f"**{row['PROP_NAME']} o{row['LINE']}**")
+
+                    # Matchup / defense rank line
                     opp = row.get("OPP_TEAM_FULL","?")
                     side = row.get("TEAM_SIDE","")
                     avg_val = row.get(stat_col, np.nan)
                     opp_def = row.get("DEF_RATING", np.nan)
                     opp_rank = row.get("DEF_RATING_RANK", np.nan)
-                    color = matchup_color(opp_rank)
+                    m_color = matchup_color(opp_rank)
                     avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
                     def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
                     rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
+
                     st.markdown(
-                        f"<div style='color:{color};font-size:0.9em;'>vs {opp} ({side}) | "
+                        f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
                         f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
                         unsafe_allow_html=True,
                     )
+
+                    # Fatigue / travel chips (shown only when available)
+                    days_rest = row.get("DAYS_REST", np.nan)
+                    is_b2b = row.get("IS_B2B", "")
+                    miles = row.get("TRAVEL_MILES", np.nan)
+                    fatigue = row.get("TRAVEL_FATIGUE", np.nan)
+
+                    chips = []
+                    if pd.notna(days_rest):
+                        chips.append(chip_html("Rest", f"{fmt_num(days_rest,0)}d", rest_color(days_rest)))
+                    if str(is_b2b) != "":
+                        chips.append(chip_html("B2B", str(is_b2b), b2b_color(is_b2b)))
+                    if pd.notna(miles):
+                        chips.append(chip_html("Travel", f"{fmt_num(miles,0)} mi", travel_color(miles)))
+                    if pd.notna(fatigue):
+                        chips.append(chip_html("Fatigue", fmt_num(fatigue,3), fatigue_color(fatigue)))
+
+                    if chips:
+                        st.markdown("".join(chips), unsafe_allow_html=True)
+
                     st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
 
                 with c3:
                     st.metric("Prob. Over (Model)", row.get("FINAL_OVER_PROB_PCT","—"))
                     hr = row.get("recent_hit_rate_line", np.nan)
                     n = int(row.get("recent_hit_n", 0) or 0)
-                    st.markdown(f"<div style='color:{color_for(hr)}'>Last {lookback} vs line: {pct(hr)} ({n}g)</div>", unsafe_allow_html=True)
+                    st.markdown(
+                        f"<div style='color:{color_for(hr)}'>Last {lookback} vs line: {pct(hr)} ({n}g)</div>",
+                        unsafe_allow_html=True,
+                    )
                     chart = sparkline(row.get("recent_hit_series", []), color=color_for(hr))
-                    if chart is not None: st.altair_chart(chart, use_container_width=True)
+                    if chart is not None:
+                        st.altair_chart(chart, use_container_width=True)
+
             st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
 
         st.divider()
 
-st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context-aware matchup insights • Free on Streamlit Cloud")
+st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context-aware matchup & fatigue insights • Free on Streamlit Cloud")
