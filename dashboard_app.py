@@ -63,7 +63,7 @@ def rest_color(days):
     except Exception:
         return "#777777"
     if d >= 3: return "#2ecc71"
-    if d >= 2: return #f39c12
+    if d >= 2: return "#f39c12"
     return "#e74c3c"
 
 def b2b_color(flag):
@@ -132,6 +132,29 @@ STAT_COL_BY_MARKET = {
     "STL": "STL",
     "3PM": "FG3M",
 }
+
+# --- Opponent Allowed Chip helper ---
+def opp_allowed_chip(row, market: str):
+    """
+    Show opponent allowed averages for this market (e.g., 'Opp PTS 112.4 (#25)').
+    Uses columns provided by team_context.csv merge (e.g., PTS_ALLOWED, PTS_ALLOWED_RANK).
+    """
+    stat_key = STAT_COL_BY_MARKET.get(market, "")
+    if not stat_key:
+        return ""
+    allow_col = f"{stat_key}_ALLOWED"
+    rank_col  = f"{stat_key}_ALLOWED_RANK"
+
+    val  = row.get(allow_col, np.nan)
+    rank = row.get(rank_col, np.nan)
+
+    if pd.isna(val) and pd.isna(rank):
+        return ""
+
+    val_txt  = f"{float(val):.1f}" if pd.notna(val) else "—"
+    rank_txt = f"#{int(rank)}" if pd.notna(rank) else "—"
+    color = matchup_color(rank)
+    return chip_html(f"Opp {stat_key}", f"{val_txt} ({rank_txt})", color)
 
 def sparkline(binary_list, color="#2ecc71"):
     if not binary_list:
@@ -226,11 +249,22 @@ if not ctx.empty:
     if "DEF_RATING_RANK" not in ctx.columns and "DEF_RATING" in ctx.columns:
         ctx["DEF_RATING_RANK"] = ctx["DEF_RATING"].rank(ascending=True)
 
+    # baseline context cols
     maybe_cols = [
         "TEAM_ABBREVIATION", "OPP_TEAM_FULL",
         "DEF_RATING", "DEF_RATING_RANK",
         "DAYS_REST", "IS_B2B", "TRAVEL_MILES", "TRAVEL_FATIGUE"
     ]
+
+    # add opponent-allowed averages if present in team_context.csv
+    # these come from team_allowed_averages.csv being merged upstream
+    allowed_bases = ["PTS", "REB", "AST", "STL", "FG3M"]
+    for base in allowed_bases:
+        for suffix in ["ALLOWED", "ALLOWED_RANK"]:
+            col = f"{base}_{suffix}"
+            if col in ctx.columns:
+                maybe_cols.append(col)
+
     use_cols = [c for c in maybe_cols if c in ctx.columns]
 
     preds = preds.merge(
@@ -247,6 +281,11 @@ else:
     preds["IS_B2B"] = ""
     preds["TRAVEL_MILES"] = np.nan
     preds["TRAVEL_FATIGUE"] = np.nan
+    # optional: initialize allowed columns so UI doesn't error if missing
+    for c in ["PTS_ALLOWED","PTS_ALLOWED_RANK","REB_ALLOWED","REB_ALLOWED_RANK",
+              "AST_ALLOWED","AST_ALLOWED_RANK","STL_ALLOWED","STL_ALLOWED_RANK",
+              "FG3M_ALLOWED","FG3M_ALLOWED_RANK"]:
+        preds[c] = np.nan
 
 # Safely merge nba_today_stats.csv (team side + season avgs + venue if present)
 if not stats.empty:
@@ -306,50 +345,55 @@ def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: f
       - Model prob (35%)
       - Recent hit vs line (25%)
       - Line edge (15%, logistic)
-      - Opponent ease by DEF_RATING_RANK (15%)
+      - Opponent ease (prefers MARKET_ALLOWED_RANK; falls back to DEF_RATING_RANK) (15%)
       - Context (home/rest/travel/b2b/fatigue) (10%)
     """
-    p_model = clamp01(row.get("FINAL_OVER_PROB", np.nan))
+    # model & recent
+    p_model  = clamp01(row.get("FINAL_OVER_PROB", np.nan))
     p_recent = clamp01(recent_hit_rate)
 
-    # Edge -> logistic 0..1 (centered near 0)
+    # line edge -> logistic
     try:
         edge = float(line_edge)
-        edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))  # steeper than default
+        edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))
     except Exception:
         edge_s = 0.5
 
-    # Opponent ease from rank (1..30) -> 0..1 (1=tough -> 0, 30=easiest -> 1)
+    # opponent ease: prefer market-specific *_ALLOWED_RANK if present
+    # infer current market from stat_col via STAT_COL_BY_MARKET reverse map
+    rev = {v: k for k, v in STAT_COL_BY_MARKET.items()}
+    market = rev.get(stat_col, "")
+    rank_col = f"{stat_col}_ALLOWED_RANK" if market else None
+    if not rank_col or rank_col not in row.index:
+        # fall back gracefully
+        rank_col = "DEF_RATING_RANK"
+
     try:
-        rank = float(row.get("DEF_RATING_RANK", np.nan))
+        rank = float(row.get(rank_col, np.nan))
         opp_ease = (rank - 1.0) / 29.0 if pd.notna(rank) else 0.5
         opp_ease = max(0.0, min(1.0, opp_ease))
     except Exception:
         opp_ease = 0.5
 
-    # Context: home, rest, travel, b2b, fatigue
+    # context
     side = str(row.get("TEAM_SIDE", "")).strip().lower()
     home_bonus = 1.0 if side == "home" else (0.85 if side in ("away", "road") else 0.9)
-
     try:
         rest = float(row.get("DAYS_REST", np.nan))
         rest_scale = 1.0 if rest >= 3 else (0.9 if rest >= 2 else (0.75 if rest >= 1 else 0.6))
     except Exception:
         rest_scale = 0.9
-
     b2b = str(row.get("IS_B2B", "")).strip().lower()
     b2b_scale = 0.65 if b2b in ("yes", "y", "true", "1") else 1.0
-
     try:
         fatigue = float(row.get("TRAVEL_FATIGUE", 0.0))
-        fatigue_scale = 1.0 - max(0.0, min(1.0, fatigue))  # more fatigue -> lower scale
+        fatigue_scale = 1.0 - max(0.0, min(1.0, fatigue))
     except Exception:
         fatigue_scale = 0.9
 
     context_scale = np.nanmean([home_bonus, rest_scale, b2b_scale, fatigue_scale])
-    context_scale = max(0.0, min(1.2, float(context_scale))) / 1.2  # normalize ~0..1
+    context_scale = max(0.0, min(1.2, float(context_scale))) / 1.2
 
-    # Weighted score
     score01 = (
         0.35 * (p_model if pd.notna(p_model) else 0.5) +
         0.25 * (p_recent if pd.notna(p_recent) else 0.5) +
@@ -474,6 +518,10 @@ for tab, market in zip(tabs, markets):
                     home_chip = chip_html("Home", "Yes" if str(side).lower()=="home" else "No", "#3498db", "white")
 
                     chips.extend([opp_chip, edge_chip, home_chip])
+                    
+                    allowed_chip = opp_allowed_chip(row, market)
+                    if allowed_chip:
+                        chips.append(allowed_chip)
 
                     if chips:
                         st.markdown("".join(chips), unsafe_allow_html=True)
