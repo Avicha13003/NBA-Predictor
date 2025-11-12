@@ -1,4 +1,4 @@
-# dashboard_app.py — NBA Player Props Dashboard (context + color-coded matchup difficulty)
+# dashboard_app.py — NBA Player Props Dashboard (context + safe merge + matchup color)
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -54,7 +54,6 @@ def load_all_data():
     stats = load_csv("nba_today_stats.csv")
     return preds, logos, heads, gl, ctx, stats
 
-# Map dashboard markets → game log stat columns
 STAT_COL_BY_MARKET = {
     "PTS": "PTS",
     "REB": "REB",
@@ -152,7 +151,7 @@ if not stats.empty:
     stats["TEAM"] = stats["TEAM"].astype(str).map(norm_team)
 
     # Only include existing columns
-    cols = ["PLAYER", "TEAM_SIDE", "PTS", "REB", "AST", "FG3M"]
+    cols = ["PLAYER", "TEAM_SIDE", "PTS", "REB", "AST", "STL", "FG3M"]
     existing_cols = [c for c in cols if c in stats.columns]
 
     preds = preds.merge(stats[existing_cols + ["TEAM"]], on=["PLAYER", "TEAM"], how="left")
@@ -246,13 +245,12 @@ for tab, market in zip(tabs, markets):
                     opp_def = row.get("DEF_RATING", np.nan)
                     opp_rank = row.get("DEF_RATING_RANK", np.nan)
                     color = matchup_color(opp_rank)
-                    if pd.notna(avg_val):
-                        avg_txt = f"{avg_val:.1f}"
-                    else:
-                        avg_txt = "—"
+                    avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
+                    def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
+                    rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
                     st.markdown(
                         f"<div style='color:{color};font-size:0.9em;'>vs {opp} ({side}) | "
-                        f"Avg: {avg_txt} {market} | Opp D-Rtg: {opp_def:.1f if pd.notna(opp_def) else '—'} (#{int(opp_rank) if pd.notna(opp_rank) else '—'})</div>",
+                        f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
                         unsafe_allow_html=True,
                     )
                     st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
