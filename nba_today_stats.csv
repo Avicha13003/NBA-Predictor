@@ -1,182 +1,361 @@
 PLAYER,TEAM,TEAM_FULL,TEAM_SIDE,PTS,REB,AST,FG3M,MIN,ARENA,CITY,STATE,GAME_DATE
-Ben Saraf,BKN,Brooklyn Nets,Home,3.5,2.0,2.7,0.5,15.7,Barclays Center,Brooklyn,NY,2025-11-11
-Cam Thomas,BKN,Brooklyn Nets,Home,21.4,1.4,2.6,2.0,28.3,Barclays Center,Brooklyn,NY,2025-11-11
-Danny Wolf,BKN,Brooklyn Nets,Home,0.0,1.0,2.0,0.0,3.6,Barclays Center,Brooklyn,NY,2025-11-11
-Day'Ron Sharpe,BKN,Brooklyn Nets,Home,6.7,5.3,1.7,0.3,15.9,Barclays Center,Brooklyn,NY,2025-11-11
-Drake Powell,BKN,Brooklyn Nets,Home,6.3,2.0,1.5,0.8,15.3,Barclays Center,Brooklyn,NY,2025-11-11
-E.J. Liddell,BKN,Brooklyn Nets,Home,3.0,1.8,0.0,0.5,5.6,Barclays Center,Brooklyn,NY,2025-11-11
-Egor Dëmin,BKN,Brooklyn Nets,Home,6.1,3.1,3.1,1.6,20.1,Barclays Center,Brooklyn,NY,2025-11-11
-Jalen Wilson,BKN,Brooklyn Nets,Home,6.2,1.1,0.8,1.3,17.3,Barclays Center,Brooklyn,NY,2025-11-11
-Michael Porter Jr.,BKN,Brooklyn Nets,Home,23.3,7.6,2.6,3.3,31.6,Barclays Center,Brooklyn,NY,2025-11-11
-Nic Claxton,BKN,Brooklyn Nets,Home,14.6,7.0,3.7,0.0,28.2,Barclays Center,Brooklyn,NY,2025-11-11
-Noah Clowney,BKN,Brooklyn Nets,Home,8.1,3.5,1.6,1.4,23.4,Barclays Center,Brooklyn,NY,2025-11-11
-Nolan Traore,BKN,Brooklyn Nets,Home,2.3,0.3,1.3,0.7,11.0,Barclays Center,Brooklyn,NY,2025-11-11
-Terance Mann,BKN,Brooklyn Nets,Home,9.8,3.0,3.4,1.0,26.3,Barclays Center,Brooklyn,NY,2025-11-11
-Tyrese Martin,BKN,Brooklyn Nets,Home,7.1,3.6,2.5,1.4,21.1,Barclays Center,Brooklyn,NY,2025-11-11
-Tyson Etienne,BKN,Brooklyn Nets,Home,0.0,0.0,0.0,0.0,7.0,Barclays Center,Brooklyn,NY,2025-11-11
-Ziaire Williams,BKN,Brooklyn Nets,Home,10.0,2.6,0.6,2.0,21.0,Barclays Center,Brooklyn,NY,2025-11-11
-Brandon Ingram,TOR,Toronto Raptors,Away,21.0,6.3,4.0,1.3,33.3,Barclays Center,Brooklyn,NY,2025-11-11
-Collin Murray-Boyles,TOR,Toronto Raptors,Away,8.8,3.9,1.3,1.0,20.9,Barclays Center,Brooklyn,NY,2025-11-11
-Gradey Dick,TOR,Toronto Raptors,Away,7.8,2.1,0.2,1.3,15.5,Barclays Center,Brooklyn,NY,2025-11-11
-Immanuel Quickley,TOR,Toronto Raptors,Away,14.4,4.4,6.3,2.0,31.4,Barclays Center,Brooklyn,NY,2025-11-11
-Ja'Kobe Walter,TOR,Toronto Raptors,Away,2.7,1.3,0.6,0.6,11.0,Barclays Center,Brooklyn,NY,2025-11-11
-Jakob Poeltl,TOR,Toronto Raptors,Away,7.7,6.7,1.7,0.0,22.9,Barclays Center,Brooklyn,NY,2025-11-11
-Jamal Shead,TOR,Toronto Raptors,Away,6.4,1.9,5.0,1.2,17.4,Barclays Center,Brooklyn,NY,2025-11-11
-Jamison Battle,TOR,Toronto Raptors,Away,4.5,0.9,0.1,1.3,6.8,Barclays Center,Brooklyn,NY,2025-11-11
-Jonathan Mogbo,TOR,Toronto Raptors,Away,1.0,1.5,0.7,0.0,5.6,Barclays Center,Brooklyn,NY,2025-11-11
-Ochai Agbaji,TOR,Toronto Raptors,Away,2.7,2.1,0.7,0.1,13.9,Barclays Center,Brooklyn,NY,2025-11-11
-RJ Barrett,TOR,Toronto Raptors,Away,20.7,4.7,3.8,2.1,32.6,Barclays Center,Brooklyn,NY,2025-11-11
-Sandro Mamukelashvili,TOR,Toronto Raptors,Away,9.0,3.4,1.9,1.0,17.8,Barclays Center,Brooklyn,NY,2025-11-11
-Scottie Barnes,TOR,Toronto Raptors,Away,19.9,7.0,4.9,2.0,32.5,Barclays Center,Brooklyn,NY,2025-11-11
-Ariel Hukporti,NYK,New York Knicks,Home,1.3,2.8,0.8,0.0,9.0,Madison Square Garden,New York,NY,2025-11-11
-Guerschon Yabusele,NYK,New York Knicks,Home,2.4,2.6,0.1,0.5,9.9,Madison Square Garden,New York,NY,2025-11-11
-Jalen Brunson,NYK,New York Knicks,Home,27.2,3.4,6.2,2.7,33.4,Madison Square Garden,New York,NY,2025-11-11
-Jordan Clarkson,NYK,New York Knicks,Home,9.1,1.3,1.4,1.3,16.3,Madison Square Garden,New York,NY,2025-11-11
-Josh Hart,NYK,New York Knicks,Home,8.3,6.9,3.4,1.1,23.8,Madison Square Garden,New York,NY,2025-11-11
-Karl-Anthony Towns,NYK,New York Knicks,Home,20.7,12.7,3.1,1.6,32.6,Madison Square Garden,New York,NY,2025-11-11
-Landry Shamet,NYK,New York Knicks,Home,7.0,2.0,0.8,1.8,18.1,Madison Square Garden,New York,NY,2025-11-11
-Mikal Bridges,NYK,New York Knicks,Home,16.0,4.4,5.2,2.7,34.3,Madison Square Garden,New York,NY,2025-11-11
-Miles McBride,NYK,New York Knicks,Home,8.3,2.9,2.9,1.9,23.1,Madison Square Garden,New York,NY,2025-11-11
-Mitchell Robinson,NYK,New York Knicks,Home,5.0,8.5,1.0,0.0,16.4,Madison Square Garden,New York,NY,2025-11-11
-Mohamed Diawara,NYK,New York Knicks,Home,1.4,0.2,0.2,0.2,2.6,Madison Square Garden,New York,NY,2025-11-11
-OG Anunoby,NYK,New York Knicks,Home,18.2,6.2,2.4,3.1,33.2,Madison Square Garden,New York,NY,2025-11-11
-Pacôme Dadiet,NYK,New York Knicks,Home,0.5,0.8,0.3,0.0,3.1,Madison Square Garden,New York,NY,2025-11-11
-Trey Jemison III,NYK,New York Knicks,Home,0.0,2.0,0.0,0.0,7.7,Madison Square Garden,New York,NY,2025-11-11
-Tyler Kolek,NYK,New York Knicks,Home,2.3,0.6,1.4,0.3,7.2,Madison Square Garden,New York,NY,2025-11-11
-Cam Spencer,MEM,Memphis Grizzlies,Away,9.4,2.1,2.9,2.2,17.6,Madison Square Garden,New York,NY,2025-11-11
-Cedric Coward,MEM,Memphis Grizzlies,Away,14.8,6.2,2.9,1.8,26.7,Madison Square Garden,New York,NY,2025-11-11
-Charles Bassey,MEM,Memphis Grizzlies,Away,3.5,7.5,1.0,0.0,15.3,Madison Square Garden,New York,NY,2025-11-11
-GG Jackson,MEM,Memphis Grizzlies,Away,1.2,0.6,0.0,0.0,4.3,Madison Square Garden,New York,NY,2025-11-11
-Ja Morant,MEM,Memphis Grizzlies,Away,19.2,3.8,7.9,0.8,30.6,Madison Square Garden,New York,NY,2025-11-11
-Jaren Jackson Jr.,MEM,Memphis Grizzlies,Away,17.0,5.5,1.3,1.6,28.7,Madison Square Garden,New York,NY,2025-11-11
-Javon Small,MEM,Memphis Grizzlies,Away,4.3,1.0,2.8,0.8,12.4,Madison Square Garden,New York,NY,2025-11-11
-Jaylen Wells,MEM,Memphis Grizzlies,Away,9.3,3.7,1.5,1.4,25.1,Madison Square Garden,New York,NY,2025-11-11
-Jock Landale,MEM,Memphis Grizzlies,Away,10.9,5.2,1.6,1.4,24.8,Madison Square Garden,New York,NY,2025-11-11
-John Konchar,MEM,Memphis Grizzlies,Away,3.2,2.7,1.1,0.7,12.7,Madison Square Garden,New York,NY,2025-11-11
-Kentavious Caldwell-Pope,MEM,Memphis Grizzlies,Away,9.2,2.8,3.4,1.3,24.6,Madison Square Garden,New York,NY,2025-11-11
-Olivier-Maxence Prosper,MEM,Memphis Grizzlies,Away,3.5,1.8,0.1,0.0,6.3,Madison Square Garden,New York,NY,2025-11-11
-PJ Hall,MEM,Memphis Grizzlies,Away,1.5,1.0,0.2,0.2,3.3,Madison Square Garden,New York,NY,2025-11-11
-Santi Aldama,MEM,Memphis Grizzlies,Away,12.0,6.5,2.4,1.4,25.4,Madison Square Garden,New York,NY,2025-11-11
-Vince Williams Jr.,MEM,Memphis Grizzlies,Away,6.3,3.3,1.8,1.0,16.3,Madison Square Garden,New York,NY,2025-11-11
-Adem Bona,PHI,Philadelphia 76ers,Home,2.2,3.2,0.3,0.0,15.3,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Andre Drummond,PHI,Philadelphia 76ers,Home,6.9,8.1,0.8,0.4,18.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Dominick Barlow,PHI,Philadelphia 76ers,Home,7.5,6.0,2.5,0.0,25.1,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Eric Gordon,PHI,Philadelphia 76ers,Home,2.7,0.0,0.3,0.7,7.1,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Hunter Sallis,PHI,Philadelphia 76ers,Home,0.7,0.3,0.3,0.0,2.2,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Jabari Walker,PHI,Philadelphia 76ers,Home,3.6,3.3,0.2,0.2,13.4,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Jared McCain,PHI,Philadelphia 76ers,Home,0.0,0.5,1.5,0.0,12.0,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Joel Embiid,PHI,Philadelphia 76ers,Home,19.7,5.5,3.3,1.5,23.3,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Johni Broome,PHI,Philadelphia 76ers,Home,2.0,1.0,0.5,0.0,2.9,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Justin Edwards,PHI,Philadelphia 76ers,Home,4.0,1.4,0.6,1.0,11.5,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Kelly Oubre Jr.,PHI,Philadelphia 76ers,Home,18.6,5.3,1.5,2.3,37.2,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Kyle Lowry,PHI,Philadelphia 76ers,Home,3.0,0.0,1.0,1.0,3.2,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Quentin Grimes,PHI,Philadelphia 76ers,Home,17.2,4.1,4.4,2.5,31.0,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Trendon Watford,PHI,Philadelphia 76ers,Home,9.9,5.7,4.4,0.6,22.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Tyrese Maxey,PHI,Philadelphia 76ers,Home,33.2,4.9,8.2,4.1,41.1,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-VJ Edgecombe,PHI,Philadelphia 76ers,Home,16.3,5.8,4.4,1.9,37.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Amari Williams,BOS,Boston Celtics,Away,1.0,1.0,0.5,0.0,3.4,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Anfernee Simons,BOS,Boston Celtics,Away,15.0,1.9,1.7,3.0,25.7,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Baylor Scheierman,BOS,Boston Celtics,Away,2.5,2.3,0.3,0.6,8.7,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Chris Boucher,BOS,Boston Celtics,Away,2.5,1.7,0.3,0.2,10.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Derrick White,BOS,Boston Celtics,Away,14.9,3.5,5.1,2.4,32.8,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Hugo González,BOS,Boston Celtics,Away,3.1,2.1,0.8,0.4,13.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Jaylen Brown,BOS,Boston Celtics,Away,28.0,4.9,3.9,2.1,31.9,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Jordan Walsh,BOS,Boston Celtics,Away,3.6,3.3,0.9,0.7,13.2,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Josh Minott,BOS,Boston Celtics,Away,8.5,6.2,1.4,1.1,22.1,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Luka Garza,BOS,Boston Celtics,Away,5.9,3.5,1.0,0.4,13.4,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Neemias Queta,BOS,Boston Celtics,Away,8.6,7.9,1.5,0.0,23.8,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Payton Pritchard,BOS,Boston Celtics,Away,15.5,3.9,5.1,1.9,32.0,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Ron Harper Jr.,BOS,Boston Celtics,Away,1.0,1.5,1.5,0.0,5.6,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Sam Hauser,BOS,Boston Celtics,Away,7.5,3.1,1.5,2.4,22.7,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Xavier Tillman,BOS,Boston Celtics,Away,2.9,2.4,0.6,0.3,8.7,Xfinity Mobile Arena,Philadelphia,PA,2025-11-11
-Aaron Wiggins,OKC,Oklahoma City Thunder,Home,14.8,3.7,2.2,2.8,27.6,Paycom Center,Oklahoma City,OK,2025-11-11
-Ajay Mitchell,OKC,Oklahoma City Thunder,Home,17.2,4.0,4.1,1.3,28.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Alex Caruso,OKC,Oklahoma City Thunder,Home,5.7,2.1,2.6,1.3,21.3,Paycom Center,Oklahoma City,OK,2025-11-11
-Branden Carlson,OKC,Oklahoma City Thunder,Home,2.6,1.4,0.3,0.3,6.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Brooks Barnhizer,OKC,Oklahoma City Thunder,Home,0.9,1.7,0.2,0.0,6.7,Paycom Center,Oklahoma City,OK,2025-11-11
-Cason Wallace,OKC,Oklahoma City Thunder,Home,9.2,3.8,2.9,1.8,30.3,Paycom Center,Oklahoma City,OK,2025-11-11
-Chet Holmgren,OKC,Oklahoma City Thunder,Home,19.1,8.6,1.9,1.6,31.2,Paycom Center,Oklahoma City,OK,2025-11-11
-Chris Youngblood,OKC,Oklahoma City Thunder,Home,1.5,0.5,0.1,0.3,4.9,Paycom Center,Oklahoma City,OK,2025-11-11
-Isaiah Hartenstein,OKC,Oklahoma City Thunder,Home,13.4,11.8,3.3,0.0,30.1,Paycom Center,Oklahoma City,OK,2025-11-11
-Isaiah Joe,OKC,Oklahoma City Thunder,Home,15.2,3.7,0.8,3.7,24.6,Paycom Center,Oklahoma City,OK,2025-11-11
-Jaylin Williams,OKC,Oklahoma City Thunder,Home,4.7,4.5,2.0,1.2,18.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Luguentz Dort,OKC,Oklahoma City Thunder,Home,7.1,5.0,1.6,1.0,31.8,Paycom Center,Oklahoma City,OK,2025-11-11
-Ousmane Dieng,OKC,Oklahoma City Thunder,Home,1.5,2.0,0.5,0.3,10.1,Paycom Center,Oklahoma City,OK,2025-11-11
-Shai Gilgeous-Alexander,OKC,Oklahoma City Thunder,Home,33.2,5.2,6.0,2.1,34.8,Paycom Center,Oklahoma City,OK,2025-11-11
-Al Horford,GSW,Golden State Warriors,Away,5.6,4.4,1.3,1.3,21.4,Paycom Center,Oklahoma City,OK,2025-11-11
-Brandin Podziemski,GSW,Golden State Warriors,Away,12.2,4.7,3.3,1.6,29.1,Paycom Center,Oklahoma City,OK,2025-11-11
-Buddy Hield,GSW,Golden State Warriors,Away,7.7,1.5,1.5,1.4,17.4,Paycom Center,Oklahoma City,OK,2025-11-11
-Draymond Green,GSW,Golden State Warriors,Away,8.4,5.6,5.8,1.8,28.7,Paycom Center,Oklahoma City,OK,2025-11-11
-Gary Payton II,GSW,Golden State Warriors,Away,2.1,1.9,0.8,0.1,8.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Gui Santos,GSW,Golden State Warriors,Away,1.7,1.3,0.2,0.4,6.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Jimmy Butler III,GSW,Golden State Warriors,Away,18.9,5.5,4.6,0.9,30.9,Paycom Center,Oklahoma City,OK,2025-11-11
-Jonathan Kuminga,GSW,Golden State Warriors,Away,15.1,7.2,3.0,1.1,29.5,Paycom Center,Oklahoma City,OK,2025-11-11
-Moses Moody,GSW,Golden State Warriors,Away,11.8,2.9,1.7,2.7,22.9,Paycom Center,Oklahoma City,OK,2025-11-11
-Pat Spencer,GSW,Golden State Warriors,Away,4.1,1.7,1.9,0.3,11.8,Paycom Center,Oklahoma City,OK,2025-11-11
-Quinten Post,GSW,Golden State Warriors,Away,6.4,4.2,1.0,1.3,16.0,Paycom Center,Oklahoma City,OK,2025-11-11
-Stephen Curry,GSW,Golden State Warriors,Away,26.8,3.6,4.3,4.4,31.1,Paycom Center,Oklahoma City,OK,2025-11-11
-Trayce Jackson-Davis,GSW,Golden State Warriors,Away,4.3,2.0,1.3,0.0,10.6,Paycom Center,Oklahoma City,OK,2025-11-11
-Will Richard,GSW,Golden State Warriors,Away,10.1,2.6,1.6,1.2,17.3,Paycom Center,Oklahoma City,OK,2025-11-11
-Ace Bailey,UTA,Utah Jazz,Home,6.3,3.7,1.6,0.4,19.3,Delta Center,Salt Lake City,UT,2025-11-11
-Brice Sensabaugh,UTA,Utah Jazz,Home,7.6,2.2,1.0,1.1,13.1,Delta Center,Salt Lake City,UT,2025-11-11
-Cody Williams,UTA,Utah Jazz,Home,3.4,1.0,0.4,0.4,9.6,Delta Center,Salt Lake City,UT,2025-11-11
-Elijah Harkless,UTA,Utah Jazz,Home,2.6,1.2,0.8,0.4,12.4,Delta Center,Salt Lake City,UT,2025-11-11
-Isaiah Collier,UTA,Utah Jazz,Home,7.5,1.5,5.0,0.5,21.0,Delta Center,Salt Lake City,UT,2025-11-11
-Jusuf Nurkić,UTA,Utah Jazz,Home,6.8,8.9,3.0,0.3,21.7,Delta Center,Salt Lake City,UT,2025-11-11
-Kevin Love,UTA,Utah Jazz,Home,4.2,3.8,2.4,0.6,13.0,Delta Center,Salt Lake City,UT,2025-11-11
-Keyonte George,UTA,Utah Jazz,Home,22.6,3.8,7.1,1.7,33.9,Delta Center,Salt Lake City,UT,2025-11-11
-Kyle Anderson,UTA,Utah Jazz,Home,7.0,2.3,3.0,0.0,16.3,Delta Center,Salt Lake City,UT,2025-11-11
-Kyle Filipowski,UTA,Utah Jazz,Home,6.9,4.8,2.3,0.9,19.9,Delta Center,Salt Lake City,UT,2025-11-11
-Lauri Markkanen,UTA,Utah Jazz,Home,27.6,6.3,2.1,3.2,35.3,Delta Center,Salt Lake City,UT,2025-11-11
-Svi Mykhailiuk,UTA,Utah Jazz,Home,9.3,2.8,1.7,2.1,27.2,Delta Center,Salt Lake City,UT,2025-11-11
-Taylor Hendricks,UTA,Utah Jazz,Home,4.4,4.2,0.4,0.4,16.5,Delta Center,Salt Lake City,UT,2025-11-11
-Walker Kessler,UTA,Utah Jazz,Home,14.4,10.8,3.0,1.2,30.8,Delta Center,Salt Lake City,UT,2025-11-11
-Walter Clayton Jr.,UTA,Utah Jazz,Home,6.0,2.6,3.2,0.9,16.5,Delta Center,Salt Lake City,UT,2025-11-11
-Aaron Nesmith,IND,Indiana Pacers,Away,15.9,4.7,1.0,2.9,31.4,Delta Center,Salt Lake City,UT,2025-11-11
-Andrew Nembhard,IND,Indiana Pacers,Away,13.3,1.0,6.3,1.3,26.5,Delta Center,Salt Lake City,UT,2025-11-11
-Ben Sheppard,IND,Indiana Pacers,Away,7.2,4.8,1.9,1.0,26.7,Delta Center,Salt Lake City,UT,2025-11-11
-Bennedict Mathurin,IND,Indiana Pacers,Away,31.0,7.0,2.5,2.5,36.4,Delta Center,Salt Lake City,UT,2025-11-11
-Cody Martin,IND,Indiana Pacers,Away,2.0,4.3,0.7,0.0,16.6,Delta Center,Salt Lake City,UT,2025-11-11
-Isaiah Jackson,IND,Indiana Pacers,Away,7.9,5.9,0.9,0.0,18.4,Delta Center,Salt Lake City,UT,2025-11-11
-James Wiseman,IND,Indiana Pacers,Away,4.0,4.0,0.0,0.0,19.9,Delta Center,Salt Lake City,UT,2025-11-11
-Jarace Walker,IND,Indiana Pacers,Away,11.1,5.7,3.7,1.8,30.1,Delta Center,Salt Lake City,UT,2025-11-11
-Jay Huff,IND,Indiana Pacers,Away,5.7,3.4,0.9,0.9,15.2,Delta Center,Salt Lake City,UT,2025-11-11
-Jeremiah Robinson-Earl,IND,Indiana Pacers,Away,5.2,6.8,0.8,0.4,17.4,Delta Center,Salt Lake City,UT,2025-11-11
-Johnny Furphy,IND,Indiana Pacers,Away,2.7,2.0,0.0,0.7,12.2,Delta Center,Salt Lake City,UT,2025-11-11
-Mac McClung,IND,Indiana Pacers,Away,6.3,1.3,0.3,0.7,11.3,Delta Center,Salt Lake City,UT,2025-11-11
-Monté Morris,IND,Indiana Pacers,Away,5.5,2.0,2.0,1.0,17.6,Delta Center,Salt Lake City,UT,2025-11-11
-Obi Toppin,IND,Indiana Pacers,Away,14.0,6.7,1.7,1.0,27.4,Delta Center,Salt Lake City,UT,2025-11-11
-Pascal Siakam,IND,Indiana Pacers,Away,24.3,7.9,5.8,1.7,35.4,Delta Center,Salt Lake City,UT,2025-11-11
-Quenton Jackson,IND,Indiana Pacers,Away,11.8,3.4,3.6,1.2,20.1,Delta Center,Salt Lake City,UT,2025-11-11
-RayJ Dennis,IND,Indiana Pacers,Away,6.0,2.0,2.7,1.1,17.0,Delta Center,Salt Lake City,UT,2025-11-11
-Taelon Peter,IND,Indiana Pacers,Away,1.7,1.0,1.0,0.4,9.3,Delta Center,Salt Lake City,UT,2025-11-11
-Tony Bradley,IND,Indiana Pacers,Away,5.2,3.8,0.7,0.0,13.1,Delta Center,Salt Lake City,UT,2025-11-11
-Dario Šarić,SAC,Sacramento Kings,Home,1.7,1.7,0.7,0.3,9.2,Golden 1 Center,Sacramento,CA,2025-11-11
-DeMar DeRozan,SAC,Sacramento Kings,Home,20.8,3.8,3.6,1.0,35.2,Golden 1 Center,Sacramento,CA,2025-11-11
-Dennis Schröder,SAC,Sacramento Kings,Home,12.7,3.6,6.5,1.3,31.6,Golden 1 Center,Sacramento,CA,2025-11-11
-Devin Carter,SAC,Sacramento Kings,Home,0.9,0.9,0.9,0.0,6.1,Golden 1 Center,Sacramento,CA,2025-11-11
-Domantas Sabonis,SAC,Sacramento Kings,Home,15.3,14.0,3.9,0.3,33.9,Golden 1 Center,Sacramento,CA,2025-11-11
-Drew Eubanks,SAC,Sacramento Kings,Home,6.3,2.6,0.3,0.0,15.8,Golden 1 Center,Sacramento,CA,2025-11-11
-Dylan Cardwell,SAC,Sacramento Kings,Home,1.7,1.7,0.0,0.0,10.8,Golden 1 Center,Sacramento,CA,2025-11-11
-Keon Ellis,SAC,Sacramento Kings,Home,6.5,1.9,0.8,1.4,18.0,Golden 1 Center,Sacramento,CA,2025-11-11
-Malik Monk,SAC,Sacramento Kings,Home,14.5,1.6,2.5,2.3,24.4,Golden 1 Center,Sacramento,CA,2025-11-11
-Maxime Raynaud,SAC,Sacramento Kings,Home,3.8,3.6,0.6,0.0,11.8,Golden 1 Center,Sacramento,CA,2025-11-11
-Nique Clifford,SAC,Sacramento Kings,Home,5.3,3.8,2.5,0.7,21.7,Golden 1 Center,Sacramento,CA,2025-11-11
-Precious Achiuwa,SAC,Sacramento Kings,Home,6.7,5.7,0.0,0.0,18.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Russell Westbrook,SAC,Sacramento Kings,Home,15.0,6.4,5.5,2.3,28.0,Golden 1 Center,Sacramento,CA,2025-11-11
-Zach LaVine,SAC,Sacramento Kings,Home,25.2,3.3,2.0,3.4,35.2,Golden 1 Center,Sacramento,CA,2025-11-11
-Aaron Gordon,DEN,Denver Nuggets,Away,20.1,5.4,1.6,2.4,29.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Bruce Brown,DEN,Denver Nuggets,Away,6.3,4.1,1.6,0.7,20.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Cameron Johnson,DEN,Denver Nuggets,Away,8.0,2.7,2.0,0.9,26.6,Golden 1 Center,Sacramento,CA,2025-11-11
-Christian Braun,DEN,Denver Nuggets,Away,11.9,4.8,3.1,0.4,31.1,Golden 1 Center,Sacramento,CA,2025-11-11
-DaRon Holmes II,DEN,Denver Nuggets,Away,1.5,0.0,0.0,0.5,2.2,Golden 1 Center,Sacramento,CA,2025-11-11
-Hunter Tyson,DEN,Denver Nuggets,Away,0.0,2.3,0.0,0.0,3.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Jalen Pickett,DEN,Denver Nuggets,Away,2.4,1.0,1.2,0.2,7.7,Golden 1 Center,Sacramento,CA,2025-11-11
-Jamal Murray,DEN,Denver Nuggets,Away,22.8,5.3,5.6,2.4,33.2,Golden 1 Center,Sacramento,CA,2025-11-11
-Jonas Valančiūnas,DEN,Denver Nuggets,Away,8.9,4.8,1.2,0.2,12.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Julian Strawther,DEN,Denver Nuggets,Away,4.8,1.8,0.7,0.3,8.4,Golden 1 Center,Sacramento,CA,2025-11-11
-Nikola Jokić,DEN,Denver Nuggets,Away,25.2,13.0,11.9,1.6,34.0,Golden 1 Center,Sacramento,CA,2025-11-11
-Peyton Watson,DEN,Denver Nuggets,Away,7.1,4.0,1.7,0.4,21.2,Golden 1 Center,Sacramento,CA,2025-11-11
-Spencer Jones,DEN,Denver Nuggets,Away,1.7,0.3,0.3,0.2,6.5,Golden 1 Center,Sacramento,CA,2025-11-11
-Tim Hardaway Jr.,DEN,Denver Nuggets,Away,11.4,1.9,1.6,2.6,22.9,Golden 1 Center,Sacramento,CA,2025-11-11
-Zeke Nnaji,DEN,Denver Nuggets,Away,2.2,0.4,0.2,0.2,3.6,Golden 1 Center,Sacramento,CA,2025-11-11
+Brandon Miller,CHA,Charlotte Hornets,Home,14.5,0.0,4.0,1.0,19.9,Spectrum Center,Charlotte,NC,2025-11-12
+Collin Sexton,CHA,Charlotte Hornets,Home,15.8,2.0,5.0,1.4,26.3,Spectrum Center,Charlotte,NC,2025-11-12
+KJ Simpson,CHA,Charlotte Hornets,Home,5.8,2.8,2.8,1.0,15.7,Spectrum Center,Charlotte,NC,2025-11-12
+Kon Knueppel,CHA,Charlotte Hornets,Home,16.7,6.4,3.0,3.2,32.2,Spectrum Center,Charlotte,NC,2025-11-12
+LaMelo Ball,CHA,Charlotte Hornets,Home,23.3,7.8,9.8,3.3,33.3,Spectrum Center,Charlotte,NC,2025-11-12
+Liam McNeeley,CHA,Charlotte Hornets,Home,4.0,1.8,1.1,0.6,12.6,Spectrum Center,Charlotte,NC,2025-11-12
+Mason Plumlee,CHA,Charlotte Hornets,Home,0.7,1.0,0.3,0.0,3.8,Spectrum Center,Charlotte,NC,2025-11-12
+Miles Bridges,CHA,Charlotte Hornets,Home,22.0,7.3,4.0,3.2,35.0,Spectrum Center,Charlotte,NC,2025-11-12
+Moussa Diabaté,CHA,Charlotte Hornets,Home,10.1,6.9,0.6,0.0,20.9,Spectrum Center,Charlotte,NC,2025-11-12
+Pat Connaughton,CHA,Charlotte Hornets,Home,3.2,2.0,0.3,0.5,7.9,Spectrum Center,Charlotte,NC,2025-11-12
+Ryan Kalkbrenner,CHA,Charlotte Hornets,Home,9.2,6.6,0.5,0.0,26.6,Spectrum Center,Charlotte,NC,2025-11-12
+Sion James,CHA,Charlotte Hornets,Home,8.7,2.8,1.4,1.7,25.2,Spectrum Center,Charlotte,NC,2025-11-12
+Tidjane Salaün,CHA,Charlotte Hornets,Home,3.1,3.6,0.7,0.6,11.9,Spectrum Center,Charlotte,NC,2025-11-12
+Tre Mann,CHA,Charlotte Hornets,Home,10.6,3.3,3.2,1.6,22.0,Spectrum Center,Charlotte,NC,2025-11-12
+AJ Green,MIL,Milwaukee Bucks,Away,10.9,2.5,1.8,3.1,27.7,Spectrum Center,Charlotte,NC,2025-11-12
+Amir Coffey,MIL,Milwaukee Bucks,Away,1.5,1.2,0.6,0.1,10.3,Spectrum Center,Charlotte,NC,2025-11-12
+Andre Jackson Jr.,MIL,Milwaukee Bucks,Away,0.0,0.3,0.7,0.0,4.2,Spectrum Center,Charlotte,NC,2025-11-12
+Bobby Portis,MIL,Milwaukee Bucks,Away,9.2,5.4,1.4,1.4,20.5,Spectrum Center,Charlotte,NC,2025-11-12
+Cole Anthony,MIL,Milwaukee Bucks,Away,10.5,3.5,5.0,1.0,20.1,Spectrum Center,Charlotte,NC,2025-11-12
+Gary Harris,MIL,Milwaukee Bucks,Away,0.5,0.5,0.5,0.0,3.9,Spectrum Center,Charlotte,NC,2025-11-12
+Gary Trent Jr.,MIL,Milwaukee Bucks,Away,10.7,2.0,2.2,2.5,28.1,Spectrum Center,Charlotte,NC,2025-11-12
+Giannis Antetokounmpo,MIL,Milwaukee Bucks,Away,33.4,11.9,6.2,0.8,32.9,Spectrum Center,Charlotte,NC,2025-11-12
+Jericho Sims,MIL,Milwaukee Bucks,Away,0.8,0.7,0.0,0.0,4.2,Spectrum Center,Charlotte,NC,2025-11-12
+Kevin Porter Jr.,MIL,Milwaukee Bucks,Away,10.0,0.0,2.0,2.0,9.4,Spectrum Center,Charlotte,NC,2025-11-12
+Kyle Kuzma,MIL,Milwaukee Bucks,Away,13.8,4.3,1.3,1.0,25.0,Spectrum Center,Charlotte,NC,2025-11-12
+Mark Sears,MIL,Milwaukee Bucks,Away,4.0,0.0,0.0,0.5,6.0,Spectrum Center,Charlotte,NC,2025-11-12
+Myles Turner,MIL,Milwaukee Bucks,Away,11.6,6.6,2.0,2.0,29.1,Spectrum Center,Charlotte,NC,2025-11-12
+Ryan Rollins,MIL,Milwaukee Bucks,Away,16.5,3.5,5.6,2.2,31.1,Spectrum Center,Charlotte,NC,2025-11-12
+Taurean Prince,MIL,Milwaukee Bucks,Away,6.1,1.6,1.0,1.5,21.1,Spectrum Center,Charlotte,NC,2025-11-12
+Thanasis Antetokounmpo,MIL,Milwaukee Bucks,Away,0.0,0.0,0.0,0.0,1.7,Spectrum Center,Charlotte,NC,2025-11-12
+Ausar Thompson,DET,Detroit Pistons,Home,13.9,6.6,3.4,0.4,29.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Bobi Klintman,DET,Detroit Pistons,Home,2.3,2.5,0.8,0.3,8.6,Little Caesars Arena,Detroit,MI,2025-11-12
+Cade Cunningham,DET,Detroit Pistons,Home,27.5,5.4,9.9,1.9,37.0,Little Caesars Arena,Detroit,MI,2025-11-12
+Caris LeVert,DET,Detroit Pistons,Home,7.9,1.3,2.3,1.3,19.4,Little Caesars Arena,Detroit,MI,2025-11-12
+Chaz Lanier,DET,Detroit Pistons,Home,2.7,0.7,0.6,0.7,8.8,Little Caesars Arena,Detroit,MI,2025-11-12
+Colby Jones,DET,Detroit Pistons,Home,2.0,4.0,2.0,0.0,6.8,Little Caesars Arena,Detroit,MI,2025-11-12
+Daniss Jenkins,DET,Detroit Pistons,Home,6.8,1.5,1.5,1.0,13.4,Little Caesars Arena,Detroit,MI,2025-11-12
+Duncan Robinson,DET,Detroit Pistons,Home,11.4,2.6,1.7,2.6,32.5,Little Caesars Arena,Detroit,MI,2025-11-12
+Isaac Jones,DET,Detroit Pistons,Home,1.0,0.7,0.3,0.0,5.6,Little Caesars Arena,Detroit,MI,2025-11-12
+Isaiah Stewart,DET,Detroit Pistons,Home,10.7,6.7,1.6,1.2,23.0,Little Caesars Arena,Detroit,MI,2025-11-12
+Jalen Duren,DET,Detroit Pistons,Home,19.4,12.0,1.6,0.0,29.0,Little Caesars Arena,Detroit,MI,2025-11-12
+Javonte Green,DET,Detroit Pistons,Home,5.7,3.4,1.3,0.9,20.4,Little Caesars Arena,Detroit,MI,2025-11-12
+Paul Reed,DET,Detroit Pistons,Home,4.4,3.6,0.4,0.2,9.5,Little Caesars Arena,Detroit,MI,2025-11-12
+Ronald Holland II,DET,Detroit Pistons,Home,9.3,3.5,1.9,1.1,23.3,Little Caesars Arena,Detroit,MI,2025-11-12
+Tobias Harris,DET,Detroit Pistons,Home,13.5,6.0,2.8,1.3,32.2,Little Caesars Arena,Detroit,MI,2025-11-12
+Tolu Smith,DET,Detroit Pistons,Home,11.0,4.0,0.0,0.0,6.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Ayo Dosunmu,CHI,Chicago Bulls,Away,15.3,2.5,3.1,1.9,25.8,Little Caesars Arena,Detroit,MI,2025-11-12
+Dalen Terry,CHI,Chicago Bulls,Away,1.8,0.3,0.5,0.2,5.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Isaac Okoro,CHI,Chicago Bulls,Away,7.9,2.6,1.8,1.1,23.8,Little Caesars Arena,Detroit,MI,2025-11-12
+Jalen Smith,CHI,Chicago Bulls,Away,10.0,6.2,1.3,1.4,16.0,Little Caesars Arena,Detroit,MI,2025-11-12
+Jevon Carter,CHI,Chicago Bulls,Away,3.0,0.5,1.5,1.0,10.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Josh Giddey,CHI,Chicago Bulls,Away,21.4,9.6,9.3,1.7,34.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Julian Phillips,CHI,Chicago Bulls,Away,1.0,0.7,0.1,0.1,6.2,Little Caesars Arena,Detroit,MI,2025-11-12
+Kevin Huerter,CHI,Chicago Bulls,Away,14.1,4.1,3.1,1.7,26.0,Little Caesars Arena,Detroit,MI,2025-11-12
+Matas Buzelis,CHI,Chicago Bulls,Away,14.3,4.9,1.1,1.8,28.1,Little Caesars Arena,Detroit,MI,2025-11-12
+Nikola Vučević,CHI,Chicago Bulls,Away,17.1,10.3,3.7,2.0,31.3,Little Caesars Arena,Detroit,MI,2025-11-12
+Patrick Williams,CHI,Chicago Bulls,Away,8.2,2.9,1.6,1.7,22.9,Little Caesars Arena,Detroit,MI,2025-11-12
+Tre Jones,CHI,Chicago Bulls,Away,13.5,4.2,5.5,0.6,29.8,Little Caesars Arena,Detroit,MI,2025-11-12
+Ariel Hukporti,NYK,New York Knicks,Home,1.3,2.8,0.8,0.0,9.0,Madison Square Garden,New York,NY,2025-11-12
+Guerschon Yabusele,NYK,New York Knicks,Home,2.3,3.0,0.2,0.4,10.5,Madison Square Garden,New York,NY,2025-11-12
+Jalen Brunson,NYK,New York Knicks,Home,27.7,3.6,6.6,3.0,33.7,Madison Square Garden,New York,NY,2025-11-12
+Jordan Clarkson,NYK,New York Knicks,Home,9.5,1.5,1.5,1.5,16.3,Madison Square Garden,New York,NY,2025-11-12
+Josh Hart,NYK,New York Knicks,Home,8.2,6.6,3.9,1.1,24.5,Madison Square Garden,New York,NY,2025-11-12
+Karl-Anthony Towns,NYK,New York Knicks,Home,20.7,12.7,3.2,1.7,32.5,Madison Square Garden,New York,NY,2025-11-12
+Landry Shamet,NYK,New York Knicks,Home,7.3,1.9,0.7,1.8,18.4,Madison Square Garden,New York,NY,2025-11-12
+Mikal Bridges,NYK,New York Knicks,Home,16.6,4.7,5.2,2.7,34.7,Madison Square Garden,New York,NY,2025-11-12
+Miles McBride,NYK,New York Knicks,Home,8.4,2.6,2.8,2.0,22.2,Madison Square Garden,New York,NY,2025-11-12
+Mitchell Robinson,NYK,New York Knicks,Home,5.0,8.5,1.0,0.0,16.4,Madison Square Garden,New York,NY,2025-11-12
+Mohamed Diawara,NYK,New York Knicks,Home,1.4,0.2,0.2,0.2,2.6,Madison Square Garden,New York,NY,2025-11-12
+OG Anunoby,NYK,New York Knicks,Home,18.0,6.0,2.5,2.9,33.4,Madison Square Garden,New York,NY,2025-11-12
+Pacôme Dadiet,NYK,New York Knicks,Home,0.5,0.8,0.3,0.0,3.1,Madison Square Garden,New York,NY,2025-11-12
+Trey Jemison III,NYK,New York Knicks,Home,0.0,2.0,0.0,0.0,7.7,Madison Square Garden,New York,NY,2025-11-12
+Tyler Kolek,NYK,New York Knicks,Home,2.3,0.6,1.4,0.3,7.2,Madison Square Garden,New York,NY,2025-11-12
+Anthony Black,ORL,Orlando Magic,Away,10.7,3.3,2.3,1.0,26.7,Madison Square Garden,New York,NY,2025-11-12
+Desmond Bane,ORL,Orlando Magic,Away,14.9,4.1,4.4,1.2,30.6,Madison Square Garden,New York,NY,2025-11-12
+Franz Wagner,ORL,Orlando Magic,Away,22.0,6.2,3.7,1.5,35.0,Madison Square Garden,New York,NY,2025-11-12
+Goga Bitadze,ORL,Orlando Magic,Away,5.7,5.1,1.4,0.2,17.0,Madison Square Garden,New York,NY,2025-11-12
+Jalen Suggs,ORL,Orlando Magic,Away,12.1,3.8,4.4,1.9,20.7,Madison Square Garden,New York,NY,2025-11-12
+Jase Richardson,ORL,Orlando Magic,Away,0.5,0.2,0.8,0.0,4.6,Madison Square Garden,New York,NY,2025-11-12
+Jett Howard,ORL,Orlando Magic,Away,1.7,0.6,0.7,0.6,7.1,Madison Square Garden,New York,NY,2025-11-12
+Jonathan Isaac,ORL,Orlando Magic,Away,2.4,2.1,0.1,0.3,8.2,Madison Square Garden,New York,NY,2025-11-12
+Noah Penda,ORL,Orlando Magic,Away,2.8,1.7,0.8,0.3,7.5,Madison Square Garden,New York,NY,2025-11-12
+Orlando Robinson,ORL,Orlando Magic,Away,0.0,0.0,0.0,0.0,1.9,Madison Square Garden,New York,NY,2025-11-12
+Paolo Banchero,ORL,Orlando Magic,Away,23.3,9.1,4.3,1.0,34.7,Madison Square Garden,New York,NY,2025-11-12
+Tristan da Silva,ORL,Orlando Magic,Away,10.9,3.1,0.8,1.8,20.9,Madison Square Garden,New York,NY,2025-11-12
+Tyus Jones,ORL,Orlando Magic,Away,1.8,0.8,1.2,0.2,12.4,Madison Square Garden,New York,NY,2025-11-12
+Wendell Carter Jr.,ORL,Orlando Magic,Away,12.6,7.6,1.6,1.4,28.9,Madison Square Garden,New York,NY,2025-11-12
+Amari Williams,BOS,Boston Celtics,Home,1.0,1.0,0.5,0.0,3.4,TD Garden,Boston,MA,2025-11-12
+Anfernee Simons,BOS,Boston Celtics,Home,15.2,2.1,2.0,3.0,25.7,TD Garden,Boston,MA,2025-11-12
+Baylor Scheierman,BOS,Boston Celtics,Home,2.5,2.3,0.3,0.6,8.7,TD Garden,Boston,MA,2025-11-12
+Chris Boucher,BOS,Boston Celtics,Home,2.5,1.7,0.3,0.2,10.6,TD Garden,Boston,MA,2025-11-12
+Derrick White,BOS,Boston Celtics,Home,15.2,3.6,5.3,2.5,33.0,TD Garden,Boston,MA,2025-11-12
+Hugo González,BOS,Boston Celtics,Home,3.3,2.1,0.7,0.5,12.8,TD Garden,Boston,MA,2025-11-12
+Jaylen Brown,BOS,Boston Celtics,Home,27.7,5.0,4.0,2.0,32.1,TD Garden,Boston,MA,2025-11-12
+Jordan Walsh,BOS,Boston Celtics,Home,4.1,3.8,0.9,0.8,15.2,TD Garden,Boston,MA,2025-11-12
+Josh Minott,BOS,Boston Celtics,Home,8.0,5.7,1.3,1.1,20.8,TD Garden,Boston,MA,2025-11-12
+Luka Garza,BOS,Boston Celtics,Home,6.2,3.9,0.9,0.4,13.9,TD Garden,Boston,MA,2025-11-12
+Neemias Queta,BOS,Boston Celtics,Home,8.6,8.1,1.6,0.0,24.2,TD Garden,Boston,MA,2025-11-12
+Payton Pritchard,BOS,Boston Celtics,Home,14.6,3.8,4.9,1.8,32.0,TD Garden,Boston,MA,2025-11-12
+Ron Harper Jr.,BOS,Boston Celtics,Home,1.0,1.5,1.5,0.0,5.6,TD Garden,Boston,MA,2025-11-12
+Sam Hauser,BOS,Boston Celtics,Home,7.2,3.4,1.3,2.3,22.6,TD Garden,Boston,MA,2025-11-12
+Xavier Tillman,BOS,Boston Celtics,Home,2.9,2.4,0.6,0.3,8.7,TD Garden,Boston,MA,2025-11-12
+Cam Spencer,MEM,Memphis Grizzlies,Away,9.5,2.1,3.0,2.2,17.7,TD Garden,Boston,MA,2025-11-12
+Cedric Coward,MEM,Memphis Grizzlies,Away,14.5,5.9,3.1,1.7,27.0,TD Garden,Boston,MA,2025-11-12
+Charles Bassey,MEM,Memphis Grizzlies,Away,3.5,7.5,1.0,0.0,15.3,TD Garden,Boston,MA,2025-11-12
+GG Jackson,MEM,Memphis Grizzlies,Away,1.2,0.6,0.0,0.0,4.3,TD Garden,Boston,MA,2025-11-12
+Ja Morant,MEM,Memphis Grizzlies,Away,18.9,3.7,8.1,0.9,30.8,TD Garden,Boston,MA,2025-11-12
+Jaren Jackson Jr.,MEM,Memphis Grizzlies,Away,17.2,5.5,1.4,1.7,28.8,TD Garden,Boston,MA,2025-11-12
+Javon Small,MEM,Memphis Grizzlies,Away,4.3,1.0,2.8,0.8,12.4,TD Garden,Boston,MA,2025-11-12
+Jaylen Wells,MEM,Memphis Grizzlies,Away,10.0,3.7,1.8,1.6,25.4,TD Garden,Boston,MA,2025-11-12
+Jock Landale,MEM,Memphis Grizzlies,Away,10.7,5.4,1.6,1.3,24.8,TD Garden,Boston,MA,2025-11-12
+John Konchar,MEM,Memphis Grizzlies,Away,2.9,2.5,1.0,0.6,11.8,TD Garden,Boston,MA,2025-11-12
+Kentavious Caldwell-Pope,MEM,Memphis Grizzlies,Away,8.8,2.8,3.1,1.2,23.8,TD Garden,Boston,MA,2025-11-12
+Olivier-Maxence Prosper,MEM,Memphis Grizzlies,Away,3.5,1.8,0.1,0.0,6.3,TD Garden,Boston,MA,2025-11-12
+PJ Hall,MEM,Memphis Grizzlies,Away,1.5,1.0,0.2,0.2,3.3,TD Garden,Boston,MA,2025-11-12
+Santi Aldama,MEM,Memphis Grizzlies,Away,12.6,6.6,2.4,1.3,25.8,TD Garden,Boston,MA,2025-11-12
+Vince Williams Jr.,MEM,Memphis Grizzlies,Away,7.4,4.1,2.4,1.3,17.5,TD Garden,Boston,MA,2025-11-12
+Andrew Wiggins,MIA,Miami Heat,Home,17.8,4.4,2.5,2.0,32.7,Kaseya Center,Miami,FL,2025-11-12
+Bam Adebayo,MIA,Miami Heat,Home,19.9,8.1,2.9,2.0,30.4,Kaseya Center,Miami,FL,2025-11-12
+Davion Mitchell,MIA,Miami Heat,Home,9.4,2.7,7.6,1.0,30.1,Kaseya Center,Miami,FL,2025-11-12
+Dru Smith,MIA,Miami Heat,Home,6.1,1.5,3.5,0.8,17.1,Kaseya Center,Miami,FL,2025-11-12
+Jahmir Young,MIA,Miami Heat,Home,1.0,0.5,1.0,0.0,4.8,Kaseya Center,Miami,FL,2025-11-12
+Jaime Jaquez Jr.,MIA,Miami Heat,Home,17.5,7.5,5.2,0.4,29.8,Kaseya Center,Miami,FL,2025-11-12
+Kel'el Ware,MIA,Miami Heat,Home,10.1,8.8,0.6,1.0,22.6,Kaseya Center,Miami,FL,2025-11-12
+Keshad Johnson,MIA,Miami Heat,Home,2.3,1.7,0.0,0.3,6.6,Kaseya Center,Miami,FL,2025-11-12
+Myron Gardner,MIA,Miami Heat,Home,3.0,1.0,1.0,1.0,2.7,Kaseya Center,Miami,FL,2025-11-12
+Nikola Jović,MIA,Miami Heat,Home,10.3,4.7,3.1,1.3,22.6,Kaseya Center,Miami,FL,2025-11-12
+Norman Powell,MIA,Miami Heat,Home,24.5,4.3,2.4,2.8,31.0,Kaseya Center,Miami,FL,2025-11-12
+Pelle Larsson,MIA,Miami Heat,Home,9.6,2.6,2.6,0.9,20.7,Kaseya Center,Miami,FL,2025-11-12
+Simone Fontecchio,MIA,Miami Heat,Home,11.4,2.5,1.2,2.5,19.3,Kaseya Center,Miami,FL,2025-11-12
+Craig Porter Jr.,CLE,Cleveland Cavaliers,Away,4.1,3.0,2.0,0.5,15.4,Kaseya Center,Miami,FL,2025-11-12
+Darius Garland,CLE,Cleveland Cavaliers,Away,13.0,3.0,5.0,2.3,24.5,Kaseya Center,Miami,FL,2025-11-12
+De'Andre Hunter,CLE,Cleveland Cavaliers,Away,19.0,5.1,2.9,2.3,29.0,Kaseya Center,Miami,FL,2025-11-12
+Dean Wade,CLE,Cleveland Cavaliers,Away,5.8,3.4,1.2,1.3,21.3,Kaseya Center,Miami,FL,2025-11-12
+Donovan Mitchell,CLE,Cleveland Cavaliers,Away,30.4,4.4,5.4,4.2,33.8,Kaseya Center,Miami,FL,2025-11-12
+Evan Mobley,CLE,Cleveland Cavaliers,Away,20.1,8.6,4.3,1.7,33.9,Kaseya Center,Miami,FL,2025-11-12
+Jarrett Allen,CLE,Cleveland Cavaliers,Away,15.0,7.7,1.9,0.0,26.2,Kaseya Center,Miami,FL,2025-11-12
+Jaylon Tyson,CLE,Cleveland Cavaliers,Away,11.1,4.0,1.8,2.2,25.8,Kaseya Center,Miami,FL,2025-11-12
+Larry Nance Jr.,CLE,Cleveland Cavaliers,Away,4.6,3.7,1.4,0.7,16.6,Kaseya Center,Miami,FL,2025-11-12
+Lonzo Ball,CLE,Cleveland Cavaliers,Away,5.1,3.9,5.1,1.2,23.4,Kaseya Center,Miami,FL,2025-11-12
+Luke Travers,CLE,Cleveland Cavaliers,Away,1.5,1.8,1.0,0.0,8.2,Kaseya Center,Miami,FL,2025-11-12
+Nae'Qwan Tomlin,CLE,Cleveland Cavaliers,Away,3.0,1.0,0.0,0.0,3.5,Kaseya Center,Miami,FL,2025-11-12
+Sam Merrill,CLE,Cleveland Cavaliers,Away,14.6,1.8,2.5,4.0,26.0,Kaseya Center,Miami,FL,2025-11-12
+Thomas Bryant,CLE,Cleveland Cavaliers,Away,2.0,1.3,0.2,0.0,5.7,Kaseya Center,Miami,FL,2025-11-12
+Tyrese Proctor,CLE,Cleveland Cavaliers,Away,4.6,1.1,1.2,1.0,11.6,Kaseya Center,Miami,FL,2025-11-12
+Aaron Holiday,HOU,Houston Rockets,Home,3.3,0.8,1.0,0.5,6.6,Toyota Center,Houston,TX,2025-11-12
+Alperen Sengun,HOU,Houston Rockets,Home,22.8,9.9,7.3,1.2,37.0,Toyota Center,Houston,TX,2025-11-12
+Amen Thompson,HOU,Houston Rockets,Home,17.6,6.7,5.3,0.6,35.6,Toyota Center,Houston,TX,2025-11-12
+Clint Capela,HOU,Houston Rockets,Home,4.0,4.8,0.4,0.0,9.9,Toyota Center,Houston,TX,2025-11-12
+JD Davison,HOU,Houston Rockets,Home,2.7,0.0,0.7,0.7,5.6,Toyota Center,Houston,TX,2025-11-12
+Jabari Smith Jr.,HOU,Houston Rockets,Home,14.0,5.9,1.5,2.0,32.9,Toyota Center,Houston,TX,2025-11-12
+Jae'Sean Tate,HOU,Houston Rockets,Home,1.2,0.8,0.0,0.0,5.3,Toyota Center,Houston,TX,2025-11-12
+Jeff Green,HOU,Houston Rockets,Home,3.0,0.3,0.0,1.0,4.5,Toyota Center,Houston,TX,2025-11-12
+Josh Okogie,HOU,Houston Rockets,Home,8.6,1.9,1.3,1.6,22.5,Toyota Center,Houston,TX,2025-11-12
+Kevin Durant,HOU,Houston Rockets,Home,24.8,4.6,3.1,1.7,35.7,Toyota Center,Houston,TX,2025-11-12
+Reed Sheppard,HOU,Houston Rockets,Home,11.2,2.1,3.2,2.6,21.8,Toyota Center,Houston,TX,2025-11-12
+Steven Adams,HOU,Houston Rockets,Home,6.8,8.9,1.5,0.0,22.2,Toyota Center,Houston,TX,2025-11-12
+Tari Eason,HOU,Houston Rockets,Home,11.4,5.1,1.8,2.4,24.9,Toyota Center,Houston,TX,2025-11-12
+AJ Johnson,WAS,Washington Wizards,Away,1.0,0.6,0.6,0.0,5.0,Toyota Center,Houston,TX,2025-11-12
+Alex Sarr,WAS,Washington Wizards,Away,18.5,8.4,3.8,1.0,29.2,Toyota Center,Houston,TX,2025-11-12
+Anthony Gill,WAS,Washington Wizards,Away,1.8,0.8,0.0,0.2,2.7,Toyota Center,Houston,TX,2025-11-12
+Bilal Coulibaly,WAS,Washington Wizards,Away,10.5,4.8,3.3,1.3,23.8,Toyota Center,Houston,TX,2025-11-12
+Bub Carrington,WAS,Washington Wizards,Away,6.5,4.3,4.7,1.4,28.1,Toyota Center,Houston,TX,2025-11-12
+CJ McCollum,WAS,Washington Wizards,Away,16.8,3.5,3.4,2.6,29.3,Toyota Center,Houston,TX,2025-11-12
+Cam Whitmore,WAS,Washington Wizards,Away,9.0,2.3,0.5,0.9,16.6,Toyota Center,Houston,TX,2025-11-12
+Corey Kispert,WAS,Washington Wizards,Away,8.4,2.4,1.9,1.5,19.4,Toyota Center,Houston,TX,2025-11-12
+Jamir Watkins,WAS,Washington Wizards,Away,2.0,2.0,0.0,0.0,7.0,Toyota Center,Houston,TX,2025-11-12
+Justin Champagnie,WAS,Washington Wizards,Away,2.8,3.3,0.4,0.2,9.1,Toyota Center,Houston,TX,2025-11-12
+Khris Middleton,WAS,Washington Wizards,Away,9.8,4.0,2.4,0.9,24.7,Toyota Center,Houston,TX,2025-11-12
+Kyshawn George,WAS,Washington Wizards,Away,15.8,6.0,4.1,2.4,30.4,Toyota Center,Houston,TX,2025-11-12
+Malaki Branham,WAS,Washington Wizards,Away,4.3,2.0,0.5,0.3,7.8,Toyota Center,Houston,TX,2025-11-12
+Marvin Bagley III,WAS,Washington Wizards,Away,7.4,4.3,1.3,0.3,14.6,Toyota Center,Houston,TX,2025-11-12
+Sharife Cooper,WAS,Washington Wizards,Away,0.0,0.0,0.0,0.0,2.0,Toyota Center,Houston,TX,2025-11-12
+Tre Johnson,WAS,Washington Wizards,Away,11.9,3.7,1.5,1.9,25.7,Toyota Center,Houston,TX,2025-11-12
+Tristan Vukcevic,WAS,Washington Wizards,Away,3.0,0.8,0.5,0.3,5.6,Toyota Center,Houston,TX,2025-11-12
+Will Riley,WAS,Washington Wizards,Away,2.3,1.6,0.9,0.1,7.6,Toyota Center,Houston,TX,2025-11-12
+Bryce McGowens,NOP,New Orleans Pelicans,Home,1.5,0.0,0.8,0.0,4.4,Smoothie King Center,New Orleans,LA,2025-11-12
+DeAndre Jordan,NOP,New Orleans Pelicans,Home,4.5,5.0,0.0,0.0,11.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Derik Queen,NOP,New Orleans Pelicans,Home,9.2,5.5,1.9,0.1,19.8,Smoothie King Center,New Orleans,LA,2025-11-12
+Herbert Jones,NOP,New Orleans Pelicans,Home,10.1,3.9,2.4,1.9,30.0,Smoothie King Center,New Orleans,LA,2025-11-12
+Hunter Dickinson,NOP,New Orleans Pelicans,Home,2.0,0.0,0.0,0.0,4.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Jeremiah Fears,NOP,New Orleans Pelicans,Home,13.9,2.8,3.0,1.2,26.4,Smoothie King Center,New Orleans,LA,2025-11-12
+Jordan Hawkins,NOP,New Orleans Pelicans,Home,3.8,1.6,0.6,0.6,15.1,Smoothie King Center,New Orleans,LA,2025-11-12
+Jordan Poole,NOP,New Orleans Pelicans,Home,17.3,1.7,3.4,2.9,30.3,Smoothie King Center,New Orleans,LA,2025-11-12
+Jose Alvarado,NOP,New Orleans Pelicans,Home,6.9,2.8,2.6,1.6,18.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Karlo Matković,NOP,New Orleans Pelicans,Home,4.5,2.4,0.5,0.1,8.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Kevon Looney,NOP,New Orleans Pelicans,Home,3.6,5.0,1.6,0.2,15.9,Smoothie King Center,New Orleans,LA,2025-11-12
+Micah Peavy,NOP,New Orleans Pelicans,Home,2.0,2.2,0.5,0.2,11.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Saddiq Bey,NOP,New Orleans Pelicans,Home,11.4,4.2,1.3,2.0,25.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Trey Murphy III,NOP,New Orleans Pelicans,Home,18.1,7.0,3.6,2.8,35.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Yves Missi,NOP,New Orleans Pelicans,Home,7.8,6.6,1.4,0.0,23.2,Smoothie King Center,New Orleans,LA,2025-11-12
+Zion Williamson,NOP,New Orleans Pelicans,Home,22.8,6.8,4.6,0.0,31.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Blake Wesley,POR,Portland Trail Blazers,Away,6.0,2.3,3.2,0.3,16.3,Smoothie King Center,New Orleans,LA,2025-11-12
+Caleb Love,POR,Portland Trail Blazers,Away,3.3,2.7,2.0,0.7,8.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Deni Avdija,POR,Portland Trail Blazers,Away,25.5,6.8,4.9,2.5,33.9,Smoothie King Center,New Orleans,LA,2025-11-12
+Donovan Clingan,POR,Portland Trail Blazers,Away,8.1,8.8,1.3,0.6,24.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Duop Reath,POR,Portland Trail Blazers,Away,4.3,0.6,0.6,1.4,8.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Jerami Grant,POR,Portland Trail Blazers,Away,19.7,3.0,2.4,2.2,28.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Jrue Holiday,POR,Portland Trail Blazers,Away,17.0,5.5,8.1,2.5,33.5,Smoothie King Center,New Orleans,LA,2025-11-12
+Kris Murray,POR,Portland Trail Blazers,Away,5.2,2.6,1.0,0.3,21.8,Smoothie King Center,New Orleans,LA,2025-11-12
+Matisse Thybulle,POR,Portland Trail Blazers,Away,5.0,1.0,0.8,1.0,12.2,Smoothie King Center,New Orleans,LA,2025-11-12
+Rayan Rupert,POR,Portland Trail Blazers,Away,1.3,1.3,0.5,0.3,6.3,Smoothie King Center,New Orleans,LA,2025-11-12
+Robert Williams III,POR,Portland Trail Blazers,Away,3.4,3.4,0.8,0.2,10.3,Smoothie King Center,New Orleans,LA,2025-11-12
+Shaedon Sharpe,POR,Portland Trail Blazers,Away,19.7,5.1,1.4,1.9,27.1,Smoothie King Center,New Orleans,LA,2025-11-12
+Sidy Cissoko,POR,Portland Trail Blazers,Away,2.4,1.8,0.6,0.2,10.0,Smoothie King Center,New Orleans,LA,2025-11-12
+Toumani Camara,POR,Portland Trail Blazers,Away,12.0,5.2,3.0,2.0,33.7,Smoothie King Center,New Orleans,LA,2025-11-12
+Yang Hansen,POR,Portland Trail Blazers,Away,1.8,0.8,0.0,0.0,5.8,Smoothie King Center,New Orleans,LA,2025-11-12
+Bismack Biyombo,SAS,San Antonio Spurs,Home,0.4,1.0,0.4,0.0,8.8,Frost Bank Center,San Antonio,TX,2025-11-12
+Carter Bryant,SAS,San Antonio Spurs,Home,2.4,0.9,0.0,0.3,6.8,Frost Bank Center,San Antonio,TX,2025-11-12
+David Jones Garcia,SAS,San Antonio Spurs,Home,3.0,1.0,1.3,0.0,3.6,Frost Bank Center,San Antonio,TX,2025-11-12
+De'Aaron Fox,SAS,San Antonio Spurs,Home,22.5,3.5,4.0,1.5,33.7,Frost Bank Center,San Antonio,TX,2025-11-12
+Devin Vassell,SAS,San Antonio Spurs,Home,13.8,3.8,2.1,2.7,33.0,Frost Bank Center,San Antonio,TX,2025-11-12
+Dylan Harper,SAS,San Antonio Spurs,Home,14.0,4.0,3.8,0.8,23.4,Frost Bank Center,San Antonio,TX,2025-11-12
+Harrison Barnes,SAS,San Antonio Spurs,Home,11.9,2.8,2.3,2.5,30.2,Frost Bank Center,San Antonio,TX,2025-11-12
+Harrison Ingram,SAS,San Antonio Spurs,Home,1.7,1.0,0.0,0.3,3.6,Frost Bank Center,San Antonio,TX,2025-11-12
+Jeremy Sochan,SAS,San Antonio Spurs,Home,6.8,2.0,1.5,0.3,17.0,Frost Bank Center,San Antonio,TX,2025-11-12
+Jordan McLaughlin,SAS,San Antonio Spurs,Home,3.5,0.8,1.3,0.6,9.2,Frost Bank Center,San Antonio,TX,2025-11-12
+Julian Champagnie,SAS,San Antonio Spurs,Home,9.5,5.3,1.5,1.8,28.8,Frost Bank Center,San Antonio,TX,2025-11-12
+Keldon Johnson,SAS,San Antonio Spurs,Home,12.0,5.4,1.7,0.7,23.5,Frost Bank Center,San Antonio,TX,2025-11-12
+Kelly Olynyk,SAS,San Antonio Spurs,Home,2.0,1.7,1.7,0.0,6.3,Frost Bank Center,San Antonio,TX,2025-11-12
+Lindy Waters III,SAS,San Antonio Spurs,Home,3.8,1.0,0.8,1.3,9.3,Frost Bank Center,San Antonio,TX,2025-11-12
+Luke Kornet,SAS,San Antonio Spurs,Home,10.7,7.7,3.0,0.0,23.5,Frost Bank Center,San Antonio,TX,2025-11-12
+Riley Minix,SAS,San Antonio Spurs,Home,3.0,0.7,0.3,0.3,2.8,Frost Bank Center,San Antonio,TX,2025-11-12
+Stephon Castle,SAS,San Antonio Spurs,Home,18.5,5.7,7.7,1.1,33.3,Frost Bank Center,San Antonio,TX,2025-11-12
+Victor Wembanyama,SAS,San Antonio Spurs,Home,25.7,12.8,3.4,1.4,34.1,Frost Bank Center,San Antonio,TX,2025-11-12
+Al Horford,GSW,Golden State Warriors,Away,5.6,4.4,1.3,1.3,21.4,Frost Bank Center,San Antonio,TX,2025-11-12
+Brandin Podziemski,GSW,Golden State Warriors,Away,12.0,4.7,3.1,1.7,28.4,Frost Bank Center,San Antonio,TX,2025-11-12
+Buddy Hield,GSW,Golden State Warriors,Away,7.4,1.4,1.8,1.3,16.9,Frost Bank Center,San Antonio,TX,2025-11-12
+Draymond Green,GSW,Golden State Warriors,Away,7.9,5.3,5.6,1.7,28.1,Frost Bank Center,San Antonio,TX,2025-11-12
+Gary Payton II,GSW,Golden State Warriors,Away,2.1,2.3,1.0,0.1,8.7,Frost Bank Center,San Antonio,TX,2025-11-12
+Gui Santos,GSW,Golden State Warriors,Away,1.9,1.5,0.2,0.4,6.6,Frost Bank Center,San Antonio,TX,2025-11-12
+Jimmy Butler III,GSW,Golden State Warriors,Away,18.3,5.3,4.4,0.8,30.1,Frost Bank Center,San Antonio,TX,2025-11-12
+Jonathan Kuminga,GSW,Golden State Warriors,Away,14.9,6.8,3.1,1.0,29.0,Frost Bank Center,San Antonio,TX,2025-11-12
+Moses Moody,GSW,Golden State Warriors,Away,11.6,2.6,1.5,2.6,22.6,Frost Bank Center,San Antonio,TX,2025-11-12
+Pat Spencer,GSW,Golden State Warriors,Away,5.1,1.6,1.8,0.5,11.8,Frost Bank Center,San Antonio,TX,2025-11-12
+Quinten Post,GSW,Golden State Warriors,Away,6.3,4.1,1.1,1.3,16.0,Frost Bank Center,San Antonio,TX,2025-11-12
+Stephen Curry,GSW,Golden State Warriors,Away,25.0,3.3,3.8,4.0,29.9,Frost Bank Center,San Antonio,TX,2025-11-12
+Trayce Jackson-Davis,GSW,Golden State Warriors,Away,4.5,2.5,1.3,0.0,12.1,Frost Bank Center,San Antonio,TX,2025-11-12
+Will Richard,GSW,Golden State Warriors,Away,10.0,2.3,1.5,1.4,17.7,Frost Bank Center,San Antonio,TX,2025-11-12
+Anthony Davis,DAL,Dallas Mavericks,Home,20.8,10.2,2.2,0.6,29.9,American Airlines Center,Dallas,TX,2025-11-12
+Brandon Williams,DAL,Dallas Mavericks,Home,9.8,2.1,2.2,0.4,18.4,American Airlines Center,Dallas,TX,2025-11-12
+Caleb Martin,DAL,Dallas Mavericks,Home,1.6,1.4,0.7,0.1,9.1,American Airlines Center,Dallas,TX,2025-11-12
+Cooper Flagg,DAL,Dallas Mavericks,Home,15.0,6.8,3.1,1.0,32.7,American Airlines Center,Dallas,TX,2025-11-12
+D'Angelo Russell,DAL,Dallas Mavericks,Home,11.5,2.9,4.9,1.4,21.1,American Airlines Center,Dallas,TX,2025-11-12
+Daniel Gafford,DAL,Dallas Mavericks,Home,8.5,5.0,1.2,0.0,20.2,American Airlines Center,Dallas,TX,2025-11-12
+Dereck Lively II,DAL,Dallas Mavericks,Home,5.3,5.0,3.0,0.0,16.9,American Airlines Center,Dallas,TX,2025-11-12
+Dwight Powell,DAL,Dallas Mavericks,Home,2.7,2.0,0.7,0.0,9.6,American Airlines Center,Dallas,TX,2025-11-12
+Jaden Hardy,DAL,Dallas Mavericks,Home,4.6,1.2,0.4,0.9,10.5,American Airlines Center,Dallas,TX,2025-11-12
+Klay Thompson,DAL,Dallas Mavericks,Home,7.4,2.8,2.0,1.6,19.7,American Airlines Center,Dallas,TX,2025-11-12
+Max Christie,DAL,Dallas Mavericks,Home,13.1,3.0,2.5,2.6,29.9,American Airlines Center,Dallas,TX,2025-11-12
+Miles Kelly,DAL,Dallas Mavericks,Home,0.0,0.0,0.0,0.0,2.2,American Airlines Center,Dallas,TX,2025-11-12
+Moussa Cisse,DAL,Dallas Mavericks,Home,3.7,3.3,0.1,0.0,10.7,American Airlines Center,Dallas,TX,2025-11-12
+Naji Marshall,DAL,Dallas Mavericks,Home,10.2,4.4,2.4,0.5,24.6,American Airlines Center,Dallas,TX,2025-11-12
+P.J. Washington,DAL,Dallas Mavericks,Home,15.5,8.3,2.5,1.1,32.8,American Airlines Center,Dallas,TX,2025-11-12
+Ryan Nembhard,DAL,Dallas Mavericks,Home,3.2,0.2,1.8,0.0,9.0,American Airlines Center,Dallas,TX,2025-11-12
+Collin Gillespie,PHX,Phoenix Suns,Away,10.0,3.6,5.3,2.5,23.9,American Airlines Center,Dallas,TX,2025-11-12
+Devin Booker,PHX,Phoenix Suns,Away,28.4,4.3,6.8,2.3,36.0,American Airlines Center,Dallas,TX,2025-11-12
+Dillon Brooks,PHX,Phoenix Suns,Away,18.4,3.4,2.0,2.4,29.0,American Airlines Center,Dallas,TX,2025-11-12
+Grayson Allen,PHX,Phoenix Suns,Away,18.6,3.1,4.6,4.2,33.8,American Airlines Center,Dallas,TX,2025-11-12
+Isaiah Livers,PHX,Phoenix Suns,Away,2.2,0.7,0.7,0.5,9.2,American Airlines Center,Dallas,TX,2025-11-12
+Jalen Green,PHX,Phoenix Suns,Away,15.5,2.0,2.0,3.0,14.9,American Airlines Center,Dallas,TX,2025-11-12
+Jordan Goodwin,PHX,Phoenix Suns,Away,4.5,2.4,1.6,0.9,14.9,American Airlines Center,Dallas,TX,2025-11-12
+Khaman Maluach,PHX,Phoenix Suns,Away,1.8,0.7,0.2,0.0,4.7,American Airlines Center,Dallas,TX,2025-11-12
+Koby Brea,PHX,Phoenix Suns,Away,4.0,0.0,1.0,0.0,4.1,American Airlines Center,Dallas,TX,2025-11-12
+Mark Williams,PHX,Phoenix Suns,Away,11.9,9.2,0.8,0.0,25.1,American Airlines Center,Dallas,TX,2025-11-12
+Nick Richards,PHX,Phoenix Suns,Away,4.1,3.3,0.4,0.0,9.7,American Airlines Center,Dallas,TX,2025-11-12
+Nigel Hayes-Davis,PHX,Phoenix Suns,Away,1.9,1.2,0.4,0.1,8.5,American Airlines Center,Dallas,TX,2025-11-12
+Oso Ighodaro,PHX,Phoenix Suns,Away,3.6,3.2,1.5,0.0,16.1,American Airlines Center,Dallas,TX,2025-11-12
+Rasheer Fleming,PHX,Phoenix Suns,Away,1.7,0.8,0.3,0.3,4.7,American Airlines Center,Dallas,TX,2025-11-12
+Royce O'Neale,PHX,Phoenix Suns,Away,12.7,5.6,3.2,3.6,30.7,American Airlines Center,Dallas,TX,2025-11-12
+Ryan Dunn,PHX,Phoenix Suns,Away,8.9,5.5,1.8,1.0,24.4,American Airlines Center,Dallas,TX,2025-11-12
+Aaron Wiggins,OKC,Oklahoma City Thunder,Home,14.8,3.7,2.2,2.8,27.6,Paycom Center,Oklahoma City,OK,2025-11-12
+Ajay Mitchell,OKC,Oklahoma City Thunder,Home,17.2,3.9,3.9,1.3,28.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Alex Caruso,OKC,Oklahoma City Thunder,Home,6.0,2.1,2.6,1.4,20.6,Paycom Center,Oklahoma City,OK,2025-11-12
+Branden Carlson,OKC,Oklahoma City Thunder,Home,2.6,1.4,0.3,0.3,6.0,Paycom Center,Oklahoma City,OK,2025-11-12
+Brooks Barnhizer,OKC,Oklahoma City Thunder,Home,1.2,1.8,0.2,0.0,7.6,Paycom Center,Oklahoma City,OK,2025-11-12
+Cason Wallace,OKC,Oklahoma City Thunder,Home,8.6,3.5,2.8,1.7,29.4,Paycom Center,Oklahoma City,OK,2025-11-12
+Chet Holmgren,OKC,Oklahoma City Thunder,Home,19.6,8.9,1.9,1.6,30.4,Paycom Center,Oklahoma City,OK,2025-11-12
+Chris Youngblood,OKC,Oklahoma City Thunder,Home,1.4,0.5,0.2,0.3,5.0,Paycom Center,Oklahoma City,OK,2025-11-12
+Isaiah Hartenstein,OKC,Oklahoma City Thunder,Home,12.9,11.4,3.2,0.0,29.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Isaiah Joe,OKC,Oklahoma City Thunder,Home,15.6,3.3,0.9,3.6,25.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Jaylin Williams,OKC,Oklahoma City Thunder,Home,5.3,4.6,2.3,1.3,19.0,Paycom Center,Oklahoma City,OK,2025-11-12
+Luguentz Dort,OKC,Oklahoma City Thunder,Home,7.1,5.0,1.6,1.0,31.8,Paycom Center,Oklahoma City,OK,2025-11-12
+Ousmane Dieng,OKC,Oklahoma City Thunder,Home,1.9,1.9,0.4,0.3,11.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Shai Gilgeous-Alexander,OKC,Oklahoma City Thunder,Home,32.8,5.2,6.4,2.2,34.3,Paycom Center,Oklahoma City,OK,2025-11-12
+Austin Reaves,LAL,Los Angeles Lakers,Away,30.3,5.1,9.0,2.9,36.8,Paycom Center,Oklahoma City,OK,2025-11-12
+Bronny James,LAL,Los Angeles Lakers,Away,2.6,1.0,1.9,0.3,12.7,Paycom Center,Oklahoma City,OK,2025-11-12
+Chris Mañon,LAL,Los Angeles Lakers,Away,0.0,1.0,0.0,0.0,3.5,Paycom Center,Oklahoma City,OK,2025-11-12
+Christian Koloko,LAL,Los Angeles Lakers,Away,0.0,0.5,0.0,0.0,3.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Dalton Knecht,LAL,Los Angeles Lakers,Away,6.9,2.2,0.6,0.9,18.2,Paycom Center,Oklahoma City,OK,2025-11-12
+Deandre Ayton,LAL,Los Angeles Lakers,Away,16.5,7.8,0.9,0.0,30.5,Paycom Center,Oklahoma City,OK,2025-11-12
+Gabe Vincent,LAL,Los Angeles Lakers,Away,3.7,1.0,2.3,0.7,23.9,Paycom Center,Oklahoma City,OK,2025-11-12
+Jake LaRavia,LAL,Los Angeles Lakers,Away,11.6,4.8,2.7,1.3,29.3,Paycom Center,Oklahoma City,OK,2025-11-12
+Jarred Vanderbilt,LAL,Los Angeles Lakers,Away,5.0,6.0,1.5,0.2,19.9,Paycom Center,Oklahoma City,OK,2025-11-12
+Jaxson Hayes,LAL,Los Angeles Lakers,Away,5.3,4.4,1.4,0.1,17.8,Paycom Center,Oklahoma City,OK,2025-11-12
+Luka Dončić,LAL,Los Angeles Lakers,Away,37.1,9.4,9.1,3.9,37.1,Paycom Center,Oklahoma City,OK,2025-11-12
+Marcus Smart,LAL,Los Angeles Lakers,Away,10.0,2.2,3.6,1.1,28.7,Paycom Center,Oklahoma City,OK,2025-11-12
+Maxi Kleber,LAL,Los Angeles Lakers,Away,1.0,2.0,1.0,0.0,14.5,Paycom Center,Oklahoma City,OK,2025-11-12
+Nick Smith Jr.,LAL,Los Angeles Lakers,Away,7.8,1.2,2.4,1.4,17.4,Paycom Center,Oklahoma City,OK,2025-11-12
+Rui Hachimura,LAL,Los Angeles Lakers,Away,16.3,3.6,1.4,2.0,34.7,Paycom Center,Oklahoma City,OK,2025-11-12
+Dario Šarić,SAC,Sacramento Kings,Home,1.7,1.7,0.7,0.3,9.2,Golden 1 Center,Sacramento,CA,2025-11-12
+DeMar DeRozan,SAC,Sacramento Kings,Home,20.5,3.5,3.5,1.1,34.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Dennis Schröder,SAC,Sacramento Kings,Home,11.5,3.3,6.2,1.2,30.6,Golden 1 Center,Sacramento,CA,2025-11-12
+Devin Carter,SAC,Sacramento Kings,Home,0.9,0.9,0.9,0.0,6.1,Golden 1 Center,Sacramento,CA,2025-11-12
+Domantas Sabonis,SAC,Sacramento Kings,Home,15.8,13.3,3.9,0.4,32.9,Golden 1 Center,Sacramento,CA,2025-11-12
+Drew Eubanks,SAC,Sacramento Kings,Home,7.5,3.0,0.4,0.0,16.4,Golden 1 Center,Sacramento,CA,2025-11-12
+Dylan Cardwell,SAC,Sacramento Kings,Home,1.7,1.7,0.0,0.0,10.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Keon Ellis,SAC,Sacramento Kings,Home,6.2,1.7,0.7,1.4,17.7,Golden 1 Center,Sacramento,CA,2025-11-12
+Malik Monk,SAC,Sacramento Kings,Home,14.2,1.6,2.4,2.2,24.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Maxime Raynaud,SAC,Sacramento Kings,Home,3.8,3.6,0.6,0.0,11.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Nique Clifford,SAC,Sacramento Kings,Home,5.3,3.7,2.4,0.7,20.6,Golden 1 Center,Sacramento,CA,2025-11-12
+Precious Achiuwa,SAC,Sacramento Kings,Home,6.5,5.0,0.8,0.0,18.3,Golden 1 Center,Sacramento,CA,2025-11-12
+Russell Westbrook,SAC,Sacramento Kings,Home,14.9,6.5,6.0,2.2,28.3,Golden 1 Center,Sacramento,CA,2025-11-12
+Zach LaVine,SAC,Sacramento Kings,Home,23.9,3.4,2.1,3.3,35.2,Golden 1 Center,Sacramento,CA,2025-11-12
+Asa Newell,ATL,Atlanta Hawks,Away,6.8,3.0,0.2,1.2,11.6,Golden 1 Center,Sacramento,CA,2025-11-12
+Caleb Houstan,ATL,Atlanta Hawks,Away,2.0,0.5,0.3,0.3,5.9,Golden 1 Center,Sacramento,CA,2025-11-12
+Dyson Daniels,ATL,Atlanta Hawks,Away,9.5,5.9,5.4,0.3,33.6,Golden 1 Center,Sacramento,CA,2025-11-12
+Jacob Toppin,ATL,Atlanta Hawks,Away,2.0,0.3,0.0,0.0,3.1,Golden 1 Center,Sacramento,CA,2025-11-12
+Jalen Johnson,ATL,Atlanta Hawks,Away,20.1,8.6,5.2,0.6,32.3,Golden 1 Center,Sacramento,CA,2025-11-12
+Keaton Wallace,ATL,Atlanta Hawks,Away,5.2,2.0,2.9,1.2,15.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Kristaps Porziņģis,ATL,Atlanta Hawks,Away,17.9,5.9,3.4,1.5,26.1,Golden 1 Center,Sacramento,CA,2025-11-12
+Luke Kennard,ATL,Atlanta Hawks,Away,8.3,2.3,2.0,1.2,24.6,Golden 1 Center,Sacramento,CA,2025-11-12
+Mouhamed Gueye,ATL,Atlanta Hawks,Away,7.0,4.3,1.5,0.9,16.9,Golden 1 Center,Sacramento,CA,2025-11-12
+N'Faly Dante,ATL,Atlanta Hawks,Away,0.8,1.8,0.0,0.0,3.9,Golden 1 Center,Sacramento,CA,2025-11-12
+Nickeil Alexander-Walker,ATL,Atlanta Hawks,Away,17.6,2.6,3.2,2.0,30.9,Golden 1 Center,Sacramento,CA,2025-11-12
+Onyeka Okongwu,ATL,Atlanta Hawks,Away,12.7,8.4,2.4,1.0,28.9,Golden 1 Center,Sacramento,CA,2025-11-12
+Trae Young,ATL,Atlanta Hawks,Away,17.8,2.0,7.8,1.0,27.8,Golden 1 Center,Sacramento,CA,2025-11-12
+Vít Krejčí,ATL,Atlanta Hawks,Away,10.4,2.4,1.3,2.3,19.4,Golden 1 Center,Sacramento,CA,2025-11-12
+Zaccharie Risacher,ATL,Atlanta Hawks,Away,12.7,2.6,1.2,1.7,25.5,Golden 1 Center,Sacramento,CA,2025-11-12
+Bogdan Bogdanović,LAC,Los Angeles Clippers,Home,6.3,4.0,2.5,1.0,22.7,Intuit Dome,Los Angeles,CA,2025-11-12
+Bradley Beal,LAC,Los Angeles Clippers,Home,8.2,0.8,1.7,1.2,20.2,Intuit Dome,Los Angeles,CA,2025-11-12
+Brook Lopez,LAC,Los Angeles Clippers,Home,7.2,2.4,0.4,1.5,15.9,Intuit Dome,Los Angeles,CA,2025-11-12
+Cam Christie,LAC,Los Angeles Clippers,Home,6.0,2.0,1.0,1.0,12.3,Intuit Dome,Los Angeles,CA,2025-11-12
+Chris Paul,LAC,Los Angeles Clippers,Home,2.3,1.8,3.6,0.6,12.9,Intuit Dome,Los Angeles,CA,2025-11-12
+Derrick Jones Jr.,LAC,Los Angeles Clippers,Home,10.8,2.2,1.0,1.5,25.3,Intuit Dome,Los Angeles,CA,2025-11-12
+Ivica Zubac,LAC,Los Angeles Clippers,Home,14.9,10.6,2.4,0.0,29.6,Intuit Dome,Los Angeles,CA,2025-11-12
+Jahmyl Telfort,LAC,Los Angeles Clippers,Home,0.3,0.7,0.3,0.0,5.3,Intuit Dome,Los Angeles,CA,2025-11-12
+James Harden,LAC,Los Angeles Clippers,Home,23.4,5.2,9.3,3.7,34.9,Intuit Dome,Los Angeles,CA,2025-11-12
+John Collins,LAC,Los Angeles Clippers,Home,12.9,5.1,0.9,1.1,25.3,Intuit Dome,Los Angeles,CA,2025-11-12
+Kawhi Leonard,LAC,Los Angeles Clippers,Home,24.3,5.7,3.5,2.3,33.5,Intuit Dome,Los Angeles,CA,2025-11-12
+Kobe Brown,LAC,Los Angeles Clippers,Home,2.2,2.2,1.0,0.2,8.7,Intuit Dome,Los Angeles,CA,2025-11-12
+Kobe Sanders,LAC,Los Angeles Clippers,Home,1.0,0.5,0.5,0.0,4.3,Intuit Dome,Los Angeles,CA,2025-11-12
+Kris Dunn,LAC,Los Angeles Clippers,Home,7.6,2.7,1.9,0.9,26.0,Intuit Dome,Los Angeles,CA,2025-11-12
+Nicolas Batum,LAC,Los Angeles Clippers,Home,2.9,2.7,0.7,0.9,16.2,Intuit Dome,Los Angeles,CA,2025-11-12
+Yanic Konan Niederhäuser,LAC,Los Angeles Clippers,Home,3.8,1.2,0.4,0.0,4.5,Intuit Dome,Los Angeles,CA,2025-11-12
+Aaron Gordon,DEN,Denver Nuggets,Away,19.8,5.6,1.8,2.3,29.6,Intuit Dome,Los Angeles,CA,2025-11-12
+Bruce Brown,DEN,Denver Nuggets,Away,7.1,4.4,1.5,0.8,21.2,Intuit Dome,Los Angeles,CA,2025-11-12
+Cameron Johnson,DEN,Denver Nuggets,Away,7.7,2.6,2.0,0.8,26.1,Intuit Dome,Los Angeles,CA,2025-11-12
+Christian Braun,DEN,Denver Nuggets,Away,11.9,4.4,2.9,0.6,30.9,Intuit Dome,Los Angeles,CA,2025-11-12
+DaRon Holmes II,DEN,Denver Nuggets,Away,1.5,0.0,0.0,0.5,2.2,Intuit Dome,Los Angeles,CA,2025-11-12
+Hunter Tyson,DEN,Denver Nuggets,Away,0.0,2.3,0.0,0.0,3.5,Intuit Dome,Los Angeles,CA,2025-11-12
+Jalen Pickett,DEN,Denver Nuggets,Away,2.4,1.0,1.2,0.2,7.7,Intuit Dome,Los Angeles,CA,2025-11-12
+Jamal Murray,DEN,Denver Nuggets,Away,22.8,5.0,5.9,2.6,33.6,Intuit Dome,Los Angeles,CA,2025-11-12
+Jonas Valančiūnas,DEN,Denver Nuggets,Away,9.0,5.0,1.2,0.2,12.8,Intuit Dome,Los Angeles,CA,2025-11-12
+Julian Strawther,DEN,Denver Nuggets,Away,4.1,1.7,0.6,0.3,7.7,Intuit Dome,Los Angeles,CA,2025-11-12
+Nikola Jokić,DEN,Denver Nuggets,Away,26.2,13.2,11.4,1.5,33.9,Intuit Dome,Los Angeles,CA,2025-11-12
+Peyton Watson,DEN,Denver Nuggets,Away,6.4,3.9,1.5,0.4,20.9,Intuit Dome,Los Angeles,CA,2025-11-12
+Spencer Jones,DEN,Denver Nuggets,Away,1.7,0.3,0.3,0.2,6.5,Intuit Dome,Los Angeles,CA,2025-11-12
+Tim Hardaway Jr.,DEN,Denver Nuggets,Away,10.9,1.9,1.5,2.5,23.0,Intuit Dome,Los Angeles,CA,2025-11-12
+Zeke Nnaji,DEN,Denver Nuggets,Away,2.2,0.4,0.2,0.2,3.6,Intuit Dome,Los Angeles,CA,2025-11-12

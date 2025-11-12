@@ -334,3 +334,338 @@ GAME_DATE,PLAYER,TEAM,MARKET,LINE,PROP_NAME
 2025-11-10,Kelly Oubre Jr,,STL,1.5,Steals
 2025-11-10,Jimmy Butler,,STL,1.5,Steals
 2025-11-10,Stephen Curry,GSW,STL,0.5,Steals
+2025-11-11,Mikal Bridges,NYK,3PM,1.5,3-Pointers Made
+2025-11-11,Isaiah Joe,OKC,3PM,2.5,3-Pointers Made
+2025-11-11,Jock Landale,MEM,3PM,0.5,3-Pointers Made
+2025-11-11,Russell Westbrook,SAC,3PM,1.5,3-Pointers Made
+2025-11-11,Moses Moody,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Shai Gilgeous-Alexander,OKC,3PM,1.5,3-Pointers Made
+2025-11-11,Anfernee Simons,BOS,3PM,2.5,3-Pointers Made
+2025-11-11,OG Anunoby,NYK,3PM,2.5,3-Pointers Made
+2025-11-11,Scottie Barnes,TOR,3PM,1.5,3-Pointers Made
+2025-11-11,Zach LaVine,SAC,3PM,2.5,3-Pointers Made
+2025-11-11,Terance Mann,BKN,3PM,0.5,3-Pointers Made
+2025-11-11,Cason Wallace,OKC,3PM,1.5,3-Pointers Made
+2025-11-11,Tyrese Maxey,PHI,3PM,3.5,3-Pointers Made
+2025-11-11,Miles McBride,NYK,3PM,1.5,3-Pointers Made
+2025-11-11,Jalen Brunson,NYK,3PM,2.5,3-Pointers Made
+2025-11-11,VJ Edgecombe,PHI,3PM,1.5,3-Pointers Made
+2025-11-11,Jarace Walker,IND,3PM,1.5,3-Pointers Made
+2025-11-11,Svi Mykhailiuk,UTA,3PM,1.5,3-Pointers Made
+2025-11-11,Cedric Coward,MEM,3PM,1.5,3-Pointers Made
+2025-11-11,Malik Monk,SAC,3PM,1.5,3-Pointers Made
+2025-11-11,Sam Hauser,BOS,3PM,1.5,3-Pointers Made
+2025-11-11,Aaron Nesmith,IND,3PM,2.5,3-Pointers Made
+2025-11-11,Ziaire Williams,BKN,3PM,1.5,3-Pointers Made
+2025-11-11,Aaron Gordon,DEN,3PM,1.5,3-Pointers Made
+2025-11-11,Quinten Post,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Noah Clowney,BKN,3PM,1.5,3-Pointers Made
+2025-11-11,Andre Drummond,PHI,3PM,0.5,3-Pointers Made
+2025-11-11,Draymond Green,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Ajay Mitchell,OKC,3PM,1.5,3-Pointers Made
+2025-11-11,Tyrese Martin,BKN,3PM,1.5,3-Pointers Made
+2025-11-11,Jordan Clarkson,NYK,3PM,1.5,3-Pointers Made
+2025-11-11,Quentin Grimes,PHI,3PM,2.5,3-Pointers Made
+2025-11-11,Santi Aldama,MEM,3PM,1.5,3-Pointers Made
+2025-11-11,Alex Caruso,OKC,3PM,1.5,3-Pointers Made
+2025-11-11,Pascal Siakam,IND,3PM,1.5,3-Pointers Made
+2025-11-11,Buddy Hield,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Karl-Anthony Towns,NYK,3PM,1.5,3-Pointers Made
+2025-11-11,Kentavious Caldwell-Pope,MEM,3PM,1.5,3-Pointers Made
+2025-11-11,Immanuel Quickley,TOR,3PM,2.5,3-Pointers Made
+2025-11-11,Brandin Podziemski,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Nikola Jokic,,3PM,1.5,3-Pointers Made
+2025-11-11,Andrew Nembhard,IND,3PM,1.5,3-Pointers Made
+2025-11-11,Brandon Ingram,TOR,3PM,1.5,3-Pointers Made
+2025-11-11,Jaylen Wells,MEM,3PM,1.5,3-Pointers Made
+2025-11-11,Jamal Murray,DEN,3PM,2.5,3-Pointers Made
+2025-11-11,Stephen Curry,GSW,3PM,4.5,3-Pointers Made
+2025-11-11,Lauri Markkanen,UTA,3PM,3.5,3-Pointers Made
+2025-11-11,Jaylen Brown,BOS,3PM,2.5,3-Pointers Made
+2025-11-11,Jonathan Kuminga,GSW,3PM,1.5,3-Pointers Made
+2025-11-11,Cameron Johnson,DEN,3PM,1.5,3-Pointers Made
+2025-11-11,Payton Pritchard,BOS,3PM,2.5,3-Pointers Made
+2025-11-11,Ja Morant,MEM,3PM,1.5,3-Pointers Made
+2025-11-11,Chet Holmgren,OKC,3PM,1.5,3-Pointers Made
+2025-11-11,Ben Sheppard,IND,3PM,1.5,3-Pointers Made
+2025-11-11,Egor Demin,,3PM,1.5,3-Pointers Made
+2025-11-11,Dennis Schroder,,3PM,1.5,3-Pointers Made
+2025-11-11,Keyonte George,UTA,3PM,2.5,3-Pointers Made
+2025-11-11,Derrick White,BOS,3PM,3.5,3-Pointers Made
+2025-11-11,Michael Porter Jr,,3PM,3.5,3-Pointers Made
+2025-11-11,R.J. Barrett,,3PM,1.5,3-Pointers Made
+2025-11-11,Jaren Jackson Jr,,3PM,1.5,3-Pointers Made
+2025-11-11,Kelly Oubre Jr,,3PM,1.5,3-Pointers Made
+2025-11-11,Jimmy Butler,,3PM,0.5,3-Pointers Made
+2025-11-11,Tim Hardaway Jr,,3PM,1.5,3-Pointers Made
+2025-11-11,Brandon Ingram,TOR,AST,3.5,Assists
+2025-11-11,Isaiah Hartenstein,OKC,AST,2.5,Assists
+2025-11-11,Brandin Podziemski,GSW,AST,2.5,Assists
+2025-11-11,Mikal Bridges,NYK,AST,4.5,Assists
+2025-11-11,VJ Edgecombe,PHI,AST,3.5,Assists
+2025-11-11,Miles McBride,NYK,AST,2.5,Assists
+2025-11-11,Terance Mann,BKN,AST,3.5,Assists
+2025-11-11,Lauri Markkanen,UTA,AST,1.5,Assists
+2025-11-11,Karl-Anthony Towns,NYK,AST,2.5,Assists
+2025-11-11,Christian Braun,DEN,AST,2.5,Assists
+2025-11-11,Cedric Coward,MEM,AST,2.5,Assists
+2025-11-11,Russell Westbrook,SAC,AST,4.5,Assists
+2025-11-11,Ja Morant,MEM,AST,7.5,Assists
+2025-11-11,Chet Holmgren,OKC,AST,1.5,Assists
+2025-11-11,Payton Pritchard,BOS,AST,4.5,Assists
+2025-11-11,Shai Gilgeous-Alexander,OKC,AST,5.5,Assists
+2025-11-11,OG Anunoby,NYK,AST,2.5,Assists
+2025-11-11,Quentin Grimes,PHI,AST,3.5,Assists
+2025-11-11,Trendon Watford,PHI,AST,3.5,Assists
+2025-11-11,Jordan Clarkson,NYK,AST,1.5,Assists
+2025-11-11,Cameron Johnson,DEN,AST,1.5,Assists
+2025-11-11,Kentavious Caldwell-Pope,MEM,AST,2.5,Assists
+2025-11-11,Jarace Walker,IND,AST,3.5,Assists
+2025-11-11,Jock Landale,MEM,AST,1.5,Assists
+2025-11-11,Tyrese Maxey,PHI,AST,7.5,Assists
+2025-11-11,Jamal Shead,TOR,AST,4.5,Assists
+2025-11-11,Jalen Brunson,NYK,AST,6.5,Assists
+2025-11-11,Ajay Mitchell,OKC,AST,3.5,Assists
+2025-11-11,Keyonte George,UTA,AST,6.5,Assists
+2025-11-11,Jonathan Kuminga,GSW,AST,2.5,Assists
+2025-11-11,Alex Caruso,OKC,AST,2.5,Assists
+2025-11-11,Noah Clowney,BKN,AST,1.5,Assists
+2025-11-11,Domantas Sabonis,SAC,AST,4.5,Assists
+2025-11-11,Josh Hart,NYK,AST,3.5,Assists
+2025-11-11,Jamal Murray,DEN,AST,5.5,Assists
+2025-11-11,Isaiah Collier,UTA,AST,4.5,Assists
+2025-11-11,Santi Aldama,MEM,AST,2.5,Assists
+2025-11-11,Zach LaVine,SAC,AST,2.5,Assists
+2025-11-11,Pascal Siakam,IND,AST,5.5,Assists
+2025-11-11,Derrick White,BOS,AST,5.5,Assists
+2025-11-11,Draymond Green,GSW,AST,5.5,Assists
+2025-11-11,Dennis Schroder,,AST,5.5,Assists
+2025-11-11,Jakob Poeltl,TOR,AST,1.5,Assists
+2025-11-11,Jaylen Brown,BOS,AST,4.5,Assists
+2025-11-11,Immanuel Quickley,TOR,AST,6.5,Assists
+2025-11-11,Stephen Curry,GSW,AST,4.5,Assists
+2025-11-11,Scottie Barnes,TOR,AST,5.5,Assists
+2025-11-11,Malik Monk,SAC,AST,3.5,Assists
+2025-11-11,Jusuf Nurkic,,AST,3.5,Assists
+2025-11-11,Nikola Jokic,,AST,10.5,Assists
+2025-11-11,DeMar DeRozan,SAC,AST,3.5,Assists
+2025-11-11,Andrew Nembhard,IND,AST,7.5,Assists
+2025-11-11,Cason Wallace,OKC,AST,3.5,Assists
+2025-11-11,Anfernee Simons,BOS,AST,2.5,Assists
+2025-11-11,Egor Demin,,AST,3.5,Assists
+2025-11-11,Aaron Gordon,DEN,AST,2.5,Assists
+2025-11-11,R.J. Barrett,,AST,3.5,Assists
+2025-11-11,Nicolas Claxton,,AST,3.5,Assists
+2025-11-11,Michael Porter Jr,,AST,2.5,Assists
+2025-11-11,Jaren Jackson Jr,,AST,1.5,Assists
+2025-11-11,Kelly Oubre Jr,,AST,1.5,Assists
+2025-11-11,Jimmy Butler,,AST,4.5,Assists
+2025-11-11,T.J. McConnell,,AST,4.5,Assists
+2025-11-11,Isaiah Joe,OKC,PTS,11.5,Points
+2025-11-11,Jock Landale,MEM,PTS,8.5,Points
+2025-11-11,Brandon Ingram,TOR,PTS,19.5,Points
+2025-11-11,Zach LaVine,SAC,PTS,21.5,Points
+2025-11-11,Brandin Podziemski,GSW,PTS,9.5,Points
+2025-11-11,Cedric Coward,MEM,PTS,12.5,Points
+2025-11-11,Moses Moody,GSW,PTS,8.5,Points
+2025-11-11,Ajay Mitchell,OKC,PTS,15.5,Points
+2025-11-11,OG Anunoby,NYK,PTS,16.5,Points
+2025-11-11,Quentin Grimes,PHI,PTS,14.5,Points
+2025-11-11,Russell Westbrook,SAC,PTS,12.5,Points
+2025-11-11,Buddy Hield,GSW,PTS,6.5,Points
+2025-11-11,Tyrese Maxey,PHI,PTS,30.5,Points
+2025-11-11,Keyonte George,UTA,PTS,20.5,Points
+2025-11-11,Jaylen Brown,BOS,PTS,27.5,Points
+2025-11-11,Santi Aldama,MEM,PTS,11.5,Points
+2025-11-11,Isaiah Hartenstein,OKC,PTS,11.5,Points
+2025-11-11,Kentavious Caldwell-Pope,MEM,PTS,8.5,Points
+2025-11-11,Malik Monk,SAC,PTS,12.5,Points
+2025-11-11,Aaron Gordon,DEN,PTS,16.5,Points
+2025-11-11,Stephen Curry,GSW,PTS,24.5,Points
+2025-11-11,Sandro Mamukelashvili,TOR,PTS,8.5,Points
+2025-11-11,Cason Wallace,OKC,PTS,8.5,Points
+2025-11-11,Quinten Post,GSW,PTS,7.5,Points
+2025-11-11,Mikal Bridges,NYK,PTS,14.5,Points
+2025-11-11,Miles McBride,NYK,PTS,7.5,Points
+2025-11-11,Scottie Barnes,TOR,PTS,18.5,Points
+2025-11-11,Collin Murray-Boyles,TOR,PTS,7.5,Points
+2025-11-11,Anfernee Simons,BOS,PTS,14.5,Points
+2025-11-11,Lauri Markkanen,UTA,PTS,25.5,Points
+2025-11-11,Neemias Queta,BOS,PTS,8.5,Points
+2025-11-11,Josh Hart,NYK,PTS,9.5,Points
+2025-11-11,Josh Minott,BOS,PTS,8.5,Points
+2025-11-11,Ziaire Williams,BKN,PTS,10.5,Points
+2025-11-11,Jalen Brunson,NYK,PTS,26.5,Points
+2025-11-11,Terance Mann,BKN,PTS,9.5,Points
+2025-11-11,Domantas Sabonis,SAC,PTS,16.5,Points
+2025-11-11,Jamal Shead,TOR,PTS,6.5,Points
+2025-11-11,DeMar DeRozan,SAC,PTS,20.5,Points
+2025-11-11,Jonathan Kuminga,GSW,PTS,14.5,Points
+2025-11-11,Shai Gilgeous-Alexander,OKC,PTS,31.5,Points
+2025-11-11,Karl-Anthony Towns,NYK,PTS,21.5,Points
+2025-11-11,Isaiah Collier,UTA,PTS,6.5,Points
+2025-11-11,Alex Caruso,OKC,PTS,6.5,Points
+2025-11-11,Chet Holmgren,OKC,PTS,17.5,Points
+2025-11-11,Draymond Green,GSW,PTS,7.5,Points
+2025-11-11,Jordan Clarkson,NYK,PTS,10.5,Points
+2025-11-11,Trendon Watford,PHI,PTS,10.5,Points
+2025-11-11,Pascal Siakam,IND,PTS,25.5,Points
+2025-11-11,Jay Huff,IND,PTS,6.5,Points
+2025-11-11,Payton Pritchard,BOS,PTS,16.5,Points
+2025-11-11,Jarace Walker,IND,PTS,12.5,Points
+2025-11-11,Isaiah Jackson,IND,PTS,9.5,Points
+2025-11-11,VJ Edgecombe,PHI,PTS,15.5,Points
+2025-11-11,Jonas Valanciunas,,PTS,7.5,Points
+2025-11-11,Tyrese Martin,BKN,PTS,9.5,Points
+2025-11-11,Jaylen Wells,MEM,PTS,9.5,Points
+2025-11-11,Svi Mykhailiuk,UTA,PTS,9.5,Points
+2025-11-11,Drake Powell,BKN,PTS,7.5,Points
+2025-11-11,Immanuel Quickley,TOR,PTS,15.5,Points
+2025-11-11,Aaron Nesmith,IND,PTS,17.5,Points
+2025-11-11,Noah Clowney,BKN,PTS,11.5,Points
+2025-11-11,Ben Sheppard,IND,PTS,6.5,Points
+2025-11-11,Christian Braun,DEN,PTS,13.5,Points
+2025-11-11,Jakob Poeltl,TOR,PTS,9.5,Points
+2025-11-11,Bruce Brown,DEN,PTS,6.5,Points
+2025-11-11,Nikola Jokic,,PTS,26.5,Points
+2025-11-11,Sam Hauser,BOS,PTS,7.5,Points
+2025-11-11,Andre Drummond,PHI,PTS,9.5,Points
+2025-11-11,Andrew Nembhard,IND,PTS,16.5,Points
+2025-11-11,Jamal Murray,DEN,PTS,22.5,Points
+2025-11-11,Derrick White,BOS,PTS,17.5,Points
+2025-11-11,Dennis Schroder,,PTS,12.5,Points
+2025-11-11,Ja Morant,MEM,PTS,21.5,Points
+2025-11-11,Kyle Filipowski,UTA,PTS,9.5,Points
+2025-11-11,Cameron Johnson,DEN,PTS,11.5,Points
+2025-11-11,Jusuf Nurkic,,PTS,10.5,Points
+2025-11-11,Egor Demin,,PTS,8.5,Points
+2025-11-11,Ace Bailey,UTA,PTS,11.5,Points
+2025-11-11,Michael Porter Jr,,PTS,22.5,Points
+2025-11-11,R.J. Barrett,,PTS,19.5,Points
+2025-11-11,Nicolas Claxton,,PTS,14.5,Points
+2025-11-11,Jaren Jackson Jr,,PTS,16.5,Points
+2025-11-11,Kelly Oubre Jr,,PTS,15.5,Points
+2025-11-11,Jimmy Butler,,PTS,17.5,Points
+2025-11-11,T.J. McConnell,,PTS,8.5,Points
+2025-11-11,Tim Hardaway Jr,,PTS,9.5,Points
+2025-11-11,Miles McBride,NYK,REB,1.5,Rebounds
+2025-11-11,Bruce Brown,DEN,REB,2.5,Rebounds
+2025-11-11,Tyrese Maxey,PHI,REB,3.5,Rebounds
+2025-11-11,Domantas Sabonis,SAC,REB,12.5,Rebounds
+2025-11-11,Russell Westbrook,SAC,REB,4.5,Rebounds
+2025-11-11,Brandon Ingram,TOR,REB,5.5,Rebounds
+2025-11-11,Isaiah Hartenstein,OKC,REB,10.5,Rebounds
+2025-11-11,Moses Moody,GSW,REB,2.5,Rebounds
+2025-11-11,Jamal Murray,DEN,REB,3.5,Rebounds
+2025-11-11,Cedric Coward,MEM,REB,5.5,Rebounds
+2025-11-11,Josh Minott,BOS,REB,5.5,Rebounds
+2025-11-11,Immanuel Quickley,TOR,REB,3.5,Rebounds
+2025-11-11,Ben Sheppard,IND,REB,3.5,Rebounds
+2025-11-11,Ajay Mitchell,OKC,REB,3.5,Rebounds
+2025-11-11,OG Anunoby,NYK,REB,5.5,Rebounds
+2025-11-11,Aaron Gordon,DEN,REB,4.5,Rebounds
+2025-11-11,Christian Braun,DEN,REB,4.5,Rebounds
+2025-11-11,Jonathan Kuminga,GSW,REB,6.5,Rebounds
+2025-11-11,Draymond Green,GSW,REB,5.5,Rebounds
+2025-11-11,Santi Aldama,MEM,REB,5.5,Rebounds
+2025-11-11,Keyonte George,UTA,REB,3.5,Rebounds
+2025-11-11,VJ Edgecombe,PHI,REB,5.5,Rebounds
+2025-11-11,Jaylen Wells,MEM,REB,3.5,Rebounds
+2025-11-11,Kentavious Caldwell-Pope,MEM,REB,2.5,Rebounds
+2025-11-11,Zach LaVine,SAC,REB,3.5,Rebounds
+2025-11-11,Brandin Podziemski,GSW,REB,4.5,Rebounds
+2025-11-11,Jarace Walker,IND,REB,5.5,Rebounds
+2025-11-11,Shai Gilgeous-Alexander,OKC,REB,4.5,Rebounds
+2025-11-11,Quentin Grimes,PHI,REB,3.5,Rebounds
+2025-11-11,Josh Hart,NYK,REB,6.5,Rebounds
+2025-11-11,Isaiah Joe,OKC,REB,3.5,Rebounds
+2025-11-11,Aaron Nesmith,IND,REB,4.5,Rebounds
+2025-11-11,Ja Morant,MEM,REB,4.5,Rebounds
+2025-11-11,Svi Mykhailiuk,UTA,REB,2.5,Rebounds
+2025-11-11,Stephen Curry,GSW,REB,3.5,Rebounds
+2025-11-11,DeMar DeRozan,SAC,REB,3.5,Rebounds
+2025-11-11,Cason Wallace,OKC,REB,3.5,Rebounds
+2025-11-11,Isaiah Jackson,IND,REB,6.5,Rebounds
+2025-11-11,Jalen Brunson,NYK,REB,3.5,Rebounds
+2025-11-11,Jay Huff,IND,REB,3.5,Rebounds
+2025-11-11,Derrick White,BOS,REB,3.5,Rebounds
+2025-11-11,Scottie Barnes,TOR,REB,7.5,Rebounds
+2025-11-11,Quinten Post,GSW,REB,4.5,Rebounds
+2025-11-11,Terance Mann,BKN,REB,3.5,Rebounds
+2025-11-11,Dennis Schroder,,REB,2.5,Rebounds
+2025-11-11,Anfernee Simons,BOS,REB,1.5,Rebounds
+2025-11-11,Karl-Anthony Towns,NYK,REB,12.5,Rebounds
+2025-11-11,Lauri Markkanen,UTA,REB,6.5,Rebounds
+2025-11-11,Trendon Watford,PHI,REB,5.5,Rebounds
+2025-11-11,Mikal Bridges,NYK,REB,4.5,Rebounds
+2025-11-11,Jonas Valanciunas,,REB,4.5,Rebounds
+2025-11-11,Pascal Siakam,IND,REB,7.5,Rebounds
+2025-11-11,Jakob Poeltl,TOR,REB,7.5,Rebounds
+2025-11-11,Jock Landale,MEM,REB,5.5,Rebounds
+2025-11-11,Malik Monk,SAC,REB,2.5,Rebounds
+2025-11-11,Sam Hauser,BOS,REB,3.5,Rebounds
+2025-11-11,Chet Holmgren,OKC,REB,7.5,Rebounds
+2025-11-11,Sandro Mamukelashvili,TOR,REB,4.5,Rebounds
+2025-11-11,Neemias Queta,BOS,REB,8.5,Rebounds
+2025-11-11,Payton Pritchard,BOS,REB,4.5,Rebounds
+2025-11-11,Jordan Clarkson,NYK,REB,1.5,Rebounds
+2025-11-11,Noah Clowney,BKN,REB,4.5,Rebounds
+2025-11-11,Alex Caruso,OKC,REB,2.5,Rebounds
+2025-11-11,Nikola Jokic,,REB,12.5,Rebounds
+2025-11-11,Ace Bailey,UTA,REB,5.5,Rebounds
+2025-11-11,Jaylen Brown,BOS,REB,5.5,Rebounds
+2025-11-11,Cameron Johnson,DEN,REB,3.5,Rebounds
+2025-11-11,Andrew Nembhard,IND,REB,2.5,Rebounds
+2025-11-11,Kyle Filipowski,UTA,REB,6.5,Rebounds
+2025-11-11,Andre Drummond,PHI,REB,10.5,Rebounds
+2025-11-11,Jusuf Nurkic,,REB,10.5,Rebounds
+2025-11-11,Egor Demin,,REB,3.5,Rebounds
+2025-11-11,Nicolas Claxton,,REB,8.5,Rebounds
+2025-11-11,Michael Porter Jr,,REB,6.5,Rebounds
+2025-11-11,R.J. Barrett,,REB,5.5,Rebounds
+2025-11-11,Jaren Jackson Jr,,REB,5.5,Rebounds
+2025-11-11,Kelly Oubre Jr,,REB,5.5,Rebounds
+2025-11-11,Jimmy Butler,,REB,5.5,Rebounds
+2025-11-11,T.J. McConnell,,REB,2.5,Rebounds
+2025-11-11,Christian Braun,DEN,STL,0.5,Steals
+2025-11-11,Jakob Poeltl,TOR,STL,0.5,Steals
+2025-11-11,Lauri Markkanen,UTA,STL,0.5,Steals
+2025-11-11,Chet Holmgren,OKC,STL,0.5,Steals
+2025-11-11,Jaylen Brown,BOS,STL,0.5,Steals
+2025-11-11,Isaiah Collier,UTA,STL,0.5,Steals
+2025-11-11,Domantas Sabonis,SAC,STL,0.5,Steals
+2025-11-11,Immanuel Quickley,TOR,STL,0.5,Steals
+2025-11-11,Karl-Anthony Towns,NYK,STL,0.5,Steals
+2025-11-11,Aaron Nesmith,IND,STL,0.5,Steals
+2025-11-11,Josh Hart,NYK,STL,0.5,Steals
+2025-11-11,Malik Monk,SAC,STL,0.5,Steals
+2025-11-11,Jamal Murray,DEN,STL,0.5,Steals
+2025-11-11,Brandon Ingram,TOR,STL,0.5,Steals
+2025-11-11,Draymond Green,GSW,STL,0.5,Steals
+2025-11-11,Aaron Gordon,DEN,STL,0.5,Steals
+2025-11-11,Payton Pritchard,BOS,STL,0.5,Steals
+2025-11-11,Keyonte George,UTA,STL,0.5,Steals
+2025-11-11,Dennis Schroder,,STL,0.5,Steals
+2025-11-11,DeMar DeRozan,SAC,STL,0.5,Steals
+2025-11-11,Derrick White,BOS,STL,1.5,Steals
+2025-11-11,Shai Gilgeous-Alexander,OKC,STL,1.5,Steals
+2025-11-11,Andrew Nembhard,IND,STL,1.5,Steals
+2025-11-11,Ja Morant,MEM,STL,1.5,Steals
+2025-11-11,VJ Edgecombe,PHI,STL,1.5,Steals
+2025-11-11,Scottie Barnes,TOR,STL,1.5,Steals
+2025-11-11,Terance Mann,BKN,STL,0.5,Steals
+2025-11-11,Jalen Brunson,NYK,STL,0.5,Steals
+2025-11-11,Tyrese Maxey,PHI,STL,1.5,Steals
+2025-11-11,Cason Wallace,OKC,STL,1.5,Steals
+2025-11-11,OG Anunoby,NYK,STL,1.5,Steals
+2025-11-11,Alex Caruso,OKC,STL,1.5,Steals
+2025-11-11,Mikal Bridges,NYK,STL,1.5,Steals
+2025-11-11,Pascal Siakam,IND,STL,1.5,Steals
+2025-11-11,Nikola Jokic,,STL,1.5,Steals
+2025-11-11,Nicolas Claxton,,STL,0.5,Steals
+2025-11-11,R.J. Barrett,,STL,0.5,Steals
+2025-11-11,Michael Porter Jr,,STL,0.5,Steals
+2025-11-11,Jaren Jackson Jr,,STL,0.5,Steals
+2025-11-11,Kelly Oubre Jr,,STL,1.5,Steals
+2025-11-11,Jimmy Butler,,STL,1.5,Steals
+2025-11-11,Stephen Curry,GSW,STL,0.5,Steals
