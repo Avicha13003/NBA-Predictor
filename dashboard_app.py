@@ -125,6 +125,12 @@ def load_all_data():
     stats = load_csv("nba_today_stats.csv")
     return preds, logos, heads, gl, ctx, stats
 
+def load_results_history():
+    df = load_csv("results_history.csv")
+    if not df.empty:
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
+    return df
+
 STAT_COL_BY_MARKET = {
     "PTS": "PTS",
     "REB": "REB",
@@ -200,6 +206,7 @@ def recent_window_stats(gl_df: pd.DataFrame, player: str, stat_col: str, lookbac
 
 # ---------- Load Data ----------
 preds, logos, heads, gl, ctx, stats = load_all_data()
+results = load_results_history()
 
 # ---------- Manual Reload ----------
 if st.sidebar.button("🔄 Reload Data"):
@@ -306,273 +313,352 @@ else:
     for col in ["ARENA", "CITY", "STATE"]:
         preds[col] = ""
 
-# ---------- Sidebar ----------
-st.sidebar.title("🔎 Filters")
-teams = ["All Teams"] + sorted(preds["TEAM"].dropna().unique().tolist())
-team_pick = st.sidebar.selectbox("Select Team", teams)
+# ---------- Mode Toggle ----------
+view_mode = st.sidebar.radio("View Mode", ["📊 Predictions", "🕓 Yesterday's Results"], index=0)
 
-if team_pick != "All Teams":
-    player_opts = ["All Players"] + sorted(preds.loc[preds["TEAM"] == team_pick, "PLAYER"].unique().tolist())
-else:
-    player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
+# ---------- Sidebar (Predictions) ----------
+if view_mode == "📊 Predictions":
+    st.sidebar.title("🔎 Filters")
 
-player_pick = st.sidebar.selectbox("Select Player", player_opts)
-sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"])
-lookback = st.sidebar.slider("Lookback (games)", 3, 10, 5)
+    teams = ["All Teams"] + sorted(preds["TEAM"].dropna().unique().tolist())
+    team_pick = st.sidebar.selectbox("Select Team", teams)
+
+    if team_pick != "All Teams":
+        player_opts = ["All Players"] + sorted(preds.loc[preds["TEAM"] == team_pick, "PLAYER"].unique().tolist())
+    else:
+        player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
+
+    player_pick = st.sidebar.selectbox("Select Player", player_opts)
+    sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"])
+    lookback = st.sidebar.slider("Lookback (games)", 3, 10, 5)
 
 # ---------- Filter ----------
-view = preds.copy()
-if team_pick != "All Teams":
-    view = view[view["TEAM"] == team_pick]
-if player_pick != "All Players":
-    view = view[view["PLAYER"] == player_pick]
+    view = preds.copy()
+    if team_pick != "All Teams":
+        view = view[view["TEAM"] == team_pick]
+    if player_pick != "All Players":
+        view = view[view["PLAYER"] == player_pick]
 
-st.markdown("### 🏀 NBA Player Props Dashboard")
-st.caption("Daily NBA Trends & Predictions — updated at least 2 hours before first tip.")
+    st.markdown("### 🏀 NBA Player Props Dashboard")
+    st.caption("Daily NBA Trends & Predictions — updated at least 2 hours before first tip.")
 
-if view.empty:
-    st.info("No matching player props.")
-    st.stop()
+    if view.empty:
+        st.info("No matching player props.")
+        st.stop()
 
-markets = view["MARKET"].dropna().unique().tolist()
-tabs = st.tabs([m for m in markets])
+    markets = view["MARKET"].dropna().unique().tolist()
+    tabs = st.tabs([m for m in markets])
 
 # ---------- Confidence Index ----------
-def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float) -> tuple[float, str]:
-    """
-    Returns (score_0_100, tooltip_text).
-    Weights:
-      - Model prob (35%)
-      - Recent hit vs line (25%)
-      - Line edge (15%, logistic)
-      - Opponent ease (prefers MARKET_ALLOWED_RANK; falls back to DEF_RATING_RANK) (15%)
-      - Context (home/rest/travel/b2b/fatigue) (10%)
-    """
-    # model & recent
-    p_model  = clamp01(row.get("FINAL_OVER_PROB", np.nan))
-    p_recent = clamp01(recent_hit_rate)
+    def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float) -> tuple    [float, str]:
+        """
+        Returns (score_0_100, tooltip_text).
+        Weights:
+          - Model prob (35%)
+          - Recent hit vs line (25%)
+          - Line edge (15%, logistic)
+          - Opponent ease (prefers MARKET_ALLOWED_RANK; falls back to DEF_RATING_RANK) (15%)
+          - Context (home/rest/travel/b2b/fatigue) (10%)
+        """
+        # model & recent
+        p_model  = clamp01(row.get("FINAL_OVER_PROB", np.nan))
+        p_recent = clamp01(recent_hit_rate)
 
-    # line edge -> logistic
-    try:
-        edge = float(line_edge)
-        edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))
-    except Exception:
-        edge_s = 0.5
+        # line edge -> logistic
+         try:
+            edge = float(line_edge)
+            edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))
+        except Exception:
+            edge_s = 0.5
 
-    # opponent ease: prefer market-specific *_ALLOWED_RANK if present
-    # infer current market from stat_col via STAT_COL_BY_MARKET reverse map
-    rev = {v: k for k, v in STAT_COL_BY_MARKET.items()}
-    market = rev.get(stat_col, "")
-    rank_col = f"{stat_col}_ALLOWED_RANK" if market else None
-    if not rank_col or rank_col not in row.index:
-        # fall back gracefully
-        rank_col = "DEF_RATING_RANK"
+        # opponent ease: prefer market-specific *_ALLOWED_RANK if present
+        # infer current market from stat_col via STAT_COL_BY_MARKET reverse map
+        rev = {v: k for k, v in STAT_COL_BY_MARKET.items()}
+        market = rev.get(stat_col, "")
+        rank_col = f"{stat_col}_ALLOWED_RANK" if market else None
+        if not rank_col or rank_col not in row.index:
+            # fall back gracefully
+            rank_col = "DEF_RATING_RANK"
 
-    try:
-        rank = float(row.get(rank_col, np.nan))
-        opp_ease = (rank - 1.0) / 29.0 if pd.notna(rank) else 0.5
-        opp_ease = max(0.0, min(1.0, opp_ease))
-    except Exception:
-        opp_ease = 0.5
+        try:
+            rank = float(row.get(rank_col, np.nan))
+            opp_ease = (rank - 1.0) / 29.0 if pd.notna(rank) else 0.5
+            opp_ease = max(0.0, min(1.0, opp_ease))
+        except Exception:
+            opp_ease = 0.5
 
-    # context
-    side = str(row.get("TEAM_SIDE", "")).strip().lower()
-    home_bonus = 1.0 if side == "home" else (0.85 if side in ("away", "road") else 0.9)
-    try:
-        rest = float(row.get("DAYS_REST", np.nan))
-        rest_scale = 1.0 if rest >= 3 else (0.9 if rest >= 2 else (0.75 if rest >= 1 else 0.6))
-    except Exception:
-        rest_scale = 0.9
-    b2b = str(row.get("IS_B2B", "")).strip().lower()
-    b2b_scale = 0.65 if b2b in ("yes", "y", "true", "1") else 1.0
-    try:
-        fatigue = float(row.get("TRAVEL_FATIGUE", 0.0))
-        fatigue_scale = 1.0 - max(0.0, min(1.0, fatigue))
-    except Exception:
-        fatigue_scale = 0.9
+        # context
+        side = str(row.get("TEAM_SIDE", "")).strip().lower()
+        home_bonus = 1.0 if side == "home" else (0.85 if side in ("away", "road") else 0.9)
+        try:
+            rest = float(row.get("DAYS_REST", np.nan))
+            rest_scale = 1.0 if rest >= 3 else (0.9 if rest >= 2 else (0.75 if rest >= 1 else 0.6))
+        except Exception:
+            rest_scale = 0.9
+        b2b = str(row.get("IS_B2B", "")).strip().lower()
+        b2b_scale = 0.65 if b2b in ("yes", "y", "true", "1") else 1.0
+        try:
+            fatigue = float(row.get("TRAVEL_FATIGUE", 0.0))
+            fatigue_scale = 1.0 - max(0.0, min(1.0, fatigue))
+        except Exception:
+            fatigue_scale = 0.9
 
-    context_scale = np.nanmean([home_bonus, rest_scale, b2b_scale, fatigue_scale])
-    context_scale = max(0.0, min(1.2, float(context_scale))) / 1.2
+        context_scale = np.nanmean([home_bonus, rest_scale, b2b_scale, fatigue_scale])
+        context_scale = max(0.0, min(1.2, float(context_scale))) / 1.2
 
-    score01 = (
-        0.35 * (p_model if pd.notna(p_model) else 0.5) +
-        0.25 * (p_recent if pd.notna(p_recent) else 0.5) +
-        0.15 * edge_s +
-        0.15 * opp_ease +
-        0.10 * context_scale
-    )
-    score = float(max(0.0, min(1.0, score01)) * 100.0)
+        score01 = (
+            0.35 * (p_model if pd.notna(p_model) else 0.5) +
+            0.25 * (p_recent if pd.notna(p_recent) else 0.5) +
+            0.15 * edge_s +
+            0.15 * opp_ease +
+            0.10 * context_scale
+        )
+        score = float(max(0.0, min(1.0, score01)) * 100.0)
 
-    tooltip = (
-        f"Model: {pct(p_model)} | Recent: {pct(p_recent)} | "
-        f"Edge: {edge_s*100:.0f}% | OppEase: {opp_ease*100:.0f}% | Ctxt: {context_scale*100:.0f}%"
-    )
-    return score, tooltip
+        tooltip = (
+            f"Model: {pct(p_model)} | Recent: {pct(p_recent)} | "
+            f"Edge: {edge_s*100:.0f}% | OppEase: {opp_ease*100:.0f}% | Ctxt: {context_scale*100:.0f}%"
+        )
+        return score, tooltip
 
-# ---------- Display ----------
-for tab, market in zip(tabs, markets):
-    with tab:
-        sub = view[view["MARKET"] == market].copy()
-        if sub.empty:
-            st.info("No data for this market.")
-            continue
+    # ---------- Display ----------
+    for tab, market in zip(tabs, markets):
+        with tab:
+            sub = view[view["MARKET"] == market].copy()
+            if sub.empty:
+                st.info("No data for this market.")
+                continue
 
-        stat_col = STAT_COL_BY_MARKET.get(market, None)
-        if stat_col and not gl.empty:
-            gl_local = gl.copy()
-            gl_local["PLAYER"] = gl_local["PLAYER"].astype(str).str.strip()
-            if stat_col in gl_local.columns:
-                gl_local[stat_col] = pd.to_numeric(gl_local[stat_col], errors="coerce")
-            gl_local["GAME_DATE"] = pd.to_datetime(gl_local["GAME_DATE"], errors="coerce")
-            gl_local = gl_local.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
-        else:
-            gl_local = pd.DataFrame()
+            stat_col = STAT_COL_BY_MARKET.get(market, None)
+            if stat_col and not gl.empty:
+                gl_local = gl.copy()
+                gl_local["PLAYER"] = gl_local["PLAYER"].astype(str).str.strip()
+                if stat_col in gl_local.columns:
+                    gl_local[stat_col] = pd.to_numeric(gl_local[stat_col], errors="coerce")
+                gl_local["GAME_DATE"] = pd.to_datetime(gl_local["GAME_DATE"], errors="coerce")
+                gl_local = gl_local.dropna(subset=["GAME_DATE"]).sort_values("GAME_DATE")
+            else:
+                gl_local = pd.DataFrame()
 
-        # Per-row calculations
-        hit_rates, hit_ns, hit_series = [], [], []
-        last_avgs, last_stds = [], []
-        for _, r in sub.iterrows():
-            if not stat_col or gl_local.empty or pd.isna(r.get("LINE")):
-                hit_rates.append(np.nan); hit_ns.append(0); hit_series.append([]); last_avgs.append(np.nan); last_stds.append(np.nan); continue
-            hr, n_used, series = recent_hits_vs_line(gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback)
-            avg_n, std_n = recent_window_stats(gl_local, r["PLAYER"], stat_col, lookback=lookback)
-            hit_rates.append(hr); hit_ns.append(n_used); hit_series.append(series); last_avgs.append(avg_n); last_stds.append(std_n)
+            # Per-row calculations
+            hit_rates, hit_ns, hit_series = [], [], []
+            last_avgs, last_stds = [], []
+            for _, r in sub.iterrows():
+                if not stat_col or gl_local.empty or pd.isna(r.get("LINE")):
+                    hit_rates.append(np.nan); hit_ns.append(0); hit_series.append([]); last_avgs.append(np.nan); last_stds.append(np.nan); continue
+                hr, n_used, series = recent_hits_vs_line(gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback)
+                avg_n, std_n = recent_window_stats(gl_local, r["PLAYER"], stat_col, lookback=lookback)
+                hit_rates.append(hr); hit_ns.append(n_used); hit_series.append(series); last_avgs.append(avg_n); last_stds.append(std_n)
 
-        sub["recent_hit_rate_line"], sub["recent_hit_n"], sub["recent_hit_series"] = hit_rates, hit_ns, hit_series
-        sub["recent_avg"], sub["recent_std"] = last_avgs, last_stds
-        sub["line_edge"] = pd.to_numeric(sub.get("SEASON_VAL", 0), errors="coerce") - pd.to_numeric(sub.get("LINE", 0), errors="coerce")
+            sub["recent_hit_rate_line"], sub["recent_hit_n"], sub["recent_hit_series"] = hit_rates, hit_ns, hit_series
+            sub["recent_avg"], sub["recent_std"] = last_avgs, last_stds
+            sub["line_edge"] = pd.to_numeric(sub.get("SEASON_VAL", 0), errors="coerce") - pd.to_numeric(sub.get("LINE", 0), errors="coerce")
 
-        # Sorting
-        if sort_by == "Prob Over (desc)":
-            sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
-        elif sort_by == "Recent Hit Rate (desc)":
-            sub = sub.sort_values(sub["recent_hit_rate_line"].fillna(-1), ascending=False)
-        elif sort_by == "Line Edge (SEASON_VAL - LINE)":
-            sub = sub.sort_values("line_edge", ascending=False)
+            # Sorting
+            if sort_by == "Prob Over (desc)":
+                sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
+            elif sort_by == "Recent Hit Rate (desc)":
+                sub = sub.sort_values(sub["recent_hit_rate_line"].fillna(-1), ascending=False)
+            elif sort_by == "Line Edge (SEASON_VAL - LINE)":
+                sub = sub.sort_values("line_edge", ascending=False)
 
-        st.subheader(f"{market} · Top Overs")
-        st.divider()
+            st.subheader(f"{market} · Top Overs")
+            st.divider()
 
-        for _, row in sub.head(10).iterrows():
-            prim, sec = row.get("PRIMARY_COLOR", "#333333"), row.get("SECONDARY_COLOR", "#777777")
-            with st.container(border=True):
-                st.markdown(
-                    f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>",
-                    unsafe_allow_html=True,
-                )
-                c1, c2, c3 = st.columns([1.0, 3.2, 2.6])
-
-                with c1:
-                    if isinstance(row.get("PHOTO_URL",""),str) and str(row["PHOTO_URL"]).startswith("http"):
-                        st.image(row["PHOTO_URL"], width=80)
-                    if isinstance(row.get("LOGO_URL",""),str) and str(row["LOGO_URL"]).startswith("http"):
-                        st.image(row["LOGO_URL"], width=44)
-
-                with c2:
-                    st.markdown(f"#### {row['PLAYER']}")
-                    st.markdown(f"**{row['PROP_NAME']} o{row['LINE']}**")
-
-                    # Matchup / defense rank line
-                    opp = row.get("OPP_TEAM_FULL","?")
-                    side = row.get("TEAM_SIDE","")
-                    avg_val = row.get(stat_col, np.nan)  # season avg for stat_col (from nba_today_stats.csv)
-                    opp_def = row.get("DEF_RATING", np.nan)
-                    opp_rank = row.get("DEF_RATING_RANK", np.nan)
-                    m_color = matchup_color(opp_rank)
-                    avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
-                    def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
-                    rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
+            for _, row in sub.head(10).iterrows():
+                prim, sec = row.get("PRIMARY_COLOR", "#333333"), row.get("SECONDARY_COLOR", "#777777")
+                with st.container(border=True):
                     st.markdown(
-                        f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
-                        f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
+                        f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>",
                         unsafe_allow_html=True,
                     )
+                    c1, c2, c3 = st.columns([1.0, 3.2, 2.6])
 
-                    # Venue (if available)
-                    venue_bits = [str(row.get("ARENA","")).strip(), str(row.get("CITY","")).strip(), str(row.get("STATE","")).strip()]
-                    venue_bits = [b for b in venue_bits if b]
-                    if venue_bits:
-                        st.caption("Venue: " + " · ".join(venue_bits))
+                    with c1:
+                        if isinstance(row.get("PHOTO_URL",""),str) and str(row["PHOTO_URL"]).startswith("http"):
+                            st.image(row["PHOTO_URL"], width=80)
+                        if isinstance(row.get("LOGO_URL",""),str) and str(row["LOGO_URL"]).startswith("http"):
+                            st.image(row["LOGO_URL"], width=44)
 
-                    # Fatigue / travel chips
-                    days_rest = row.get("DAYS_REST", np.nan)
-                    is_b2b = row.get("IS_B2B", "")
-                    miles = row.get("TRAVEL_MILES", np.nan)
-                    fatigue = row.get("TRAVEL_FATIGUE", np.nan)
+                    with c2:
+                        st.markdown(f"#### {row['PLAYER']}")
+                        st.markdown(f"**{row['PROP_NAME']} o{row['LINE']}**")
 
-                    chips = []
-                    if pd.notna(days_rest):
-                        chips.append(chip_html("Rest", f"{fmt_num(days_rest,0)}d", rest_color(days_rest)))
-                    if str(is_b2b) != "":
-                        chips.append(chip_html("B2B", str(is_b2b), b2b_color(is_b2b)))
-                    if pd.notna(miles):
-                        chips.append(chip_html("Travel", f"{fmt_num(miles,0)} mi", travel_color(miles)))
-                    if pd.notna(fatigue):
-                        chips.append(chip_html("Fatigue", fmt_num(fatigue,3), fatigue_color(fatigue)))
+                        # Matchup / defense rank line
+                        opp = row.get("OPP_TEAM_FULL","?")
+                        side = row.get("TEAM_SIDE","")
+                        avg_val = row.get(stat_col, np.nan)  # season avg for stat_col (from nba_today_stats.csv)
+                        opp_def = row.get("DEF_RATING", np.nan)
+                        opp_rank = row.get("DEF_RATING_RANK", np.nan)
+                        m_color = matchup_color(opp_rank)
+                        avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
+                        def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
+                        rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
+                        st.markdown(
+                            f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
+                            f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
+                            unsafe_allow_html=True,
+                         )
 
-                    # Contextual boost chips
-                    opp_chip = chip_html("Opp Ease", rank_txt, matchup_color(opp_rank))
-                    edge_val = row.get("line_edge", np.nan)
-                    edge_col = color_for( clamp01( 1.0/(1.0+math.exp(-1.6*float(edge_val))) ) ) if pd.notna(edge_val) else "#777777"
-                    edge_chip = chip_html("Edge", fmt_num(edge_val,2), edge_col)
-                    home_chip = chip_html("Home", "Yes" if str(side).lower()=="home" else "No", "#3498db", "white")
+                         # Venue (if available)
+                        venue_bits = [str(row.get("ARENA","")).strip(), str(row.get("CITY","")).strip(), str(row.get("STATE","")).strip()]
+                        venue_bits = [b for b in venue_bits if b]
+                        if venue_bits:
+                            st.caption("Venue: " + " · ".join(venue_bits))
 
-                    chips.extend([opp_chip, edge_chip, home_chip])
+                        # Fatigue / travel chips
+                        days_rest = row.get("DAYS_REST", np.nan)
+                        is_b2b = row.get("IS_B2B", "")
+                        miles = row.get("TRAVEL_MILES", np.nan)
+                        fatigue = row.get("TRAVEL_FATIGUE", np.nan)
+
+                        chips = []
+                        if pd.notna(days_rest):
+                            chips.append(chip_html("Rest", f"{fmt_num(days_rest,0)}d", rest_color(days_rest)))
+                        if str(is_b2b) != "":
+                            chips.append(chip_html("B2B", str(is_b2b), b2b_color(is_b2b)))
+                        if pd.notna(miles):
+                            chips.append(chip_html("Travel", f"{fmt_num(miles,0)} mi", travel_color(miles)))
+                        if pd.notna(fatigue):
+                            chips.append(chip_html("Fatigue", fmt_num(fatigue,3), fatigue_color(fatigue)))
+
+                        # Contextual boost chips
+                        opp_chip = chip_html("Opp Ease", rank_txt, matchup_color(opp_rank))
+                        edge_val = row.get("line_edge", np.nan)
+                        edge_col = color_for( clamp01( 1.0/(1.0+math.exp(-1.6*float(edge_val))) ) ) if pd.notna(edge_val) else "#777777"
+                        edge_chip = chip_html("Edge", fmt_num(edge_val,2), edge_col)
+                        home_chip = chip_html("Home", "Yes" if str(side).lower()=="home" else "No", "#3498db", "white")
+
+                        chips.extend([opp_chip, edge_chip, home_chip])
                     
-                    allowed_chip = opp_allowed_chip(row, market)
-                    if allowed_chip:
-                        chips.append(allowed_chip)
+                        allowed_chip = opp_allowed_chip(row, market)
+                        if allowed_chip:
+                            chips.append(allowed_chip)
 
-                    if chips:
-                        st.markdown("".join(chips), unsafe_allow_html=True)
+                        if chips:
+                            st.markdown("".join(chips), unsafe_allow_html=True)
 
-                    st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
+                        st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
 
-                with c3:
-                    # Model prob + Last N vs line
-                    st.metric("Prob. Over (Model)", row.get("FINAL_OVER_PROB_PCT","—"))
-                    hr = row.get("recent_hit_rate_line", np.nan)
-                    n = int(row.get("recent_hit_n", 0) or 0)
-                    st.markdown(
-                        f"<div style='color:{color_for(hr)}'>Last {lookback} vs line: {pct(hr)} ({n}g)</div>",
-                        unsafe_allow_html=True,
+                    with c3:
+                        # Model prob + Last N vs line
+                        st.metric("Prob. Over (Model)", row.get("FINAL_OVER_PROB_PCT","—"))
+                        hr = row.get("recent_hit_rate_line", np.nan)
+                        n = int(row.get("recent_hit_n", 0) or 0)
+                        st.markdown(
+                            f"<div style='color:{color_for(hr)}'>Last {lookback} vs line: {pct(hr)} ({n}g)</div>",
+                            unsafe_allow_html=True,
+                        )
+                        chart = sparkline(row.get("recent_hit_series", []), color=color_for(hr))
+                        if chart is not None:
+                            st.altair_chart(chart, use_container_width=True)
+
+                        # Performance Trend (last N vs season) & volatility
+                        recent_avg = row.get("recent_avg", np.nan)
+                        season_avg = row.get(stat_col, np.nan)
+                        delta = (recent_avg - season_avg) if (pd.notna(recent_avg) and pd.notna(season_avg)) else np.nan
+                        vol = row.get("recent_std", np.nan)
+                        delta_color = "#2ecc71" if (pd.notna(delta) and delta > 0) else ("#e74c3c" if pd.notna(delta) else "#999999")
+                        st.markdown(
+                            f"<div style='margin-top:6px;font-size:0.9em;'>"
+                            f"Trend (last {lookback}): <b>{fmt_num(recent_avg,1)}</b> vs season <b>{fmt_num(season_avg,1)}</b> "
+                            f"<span style='color:{delta_color};'>(Δ {fmt_num(delta,1)})</span> • "
+                            f"Vol: σ={fmt_num(vol,2)}</div>",
+                            unsafe_allow_html=True
+                        )
+
+                        # Confidence Index
+                        conf, tooltip = confidence_index(row, stat_col, hr, recent_avg, row.get("line_edge", np.nan))
+                        conf_color = smooth_hsl_color(conf)
+                        st.markdown(
+                            f"""
+                            <div title="{tooltip}" style="margin-top:6px;">
+                              <div style="display:flex;align-items:center;gap:8px;">
+                                <div style="min-width:110px;">Confidence:</div>
+                                <div style="flex:1;height:10px;border-radius:8px;background:linear-gradient(90deg,{conf_color} {conf:.0f}%, rgba(255,255,255,0.08) {conf:.0f}%);"></div>
+                                <div style="min-width:44px;text-align:right;color:{conf_color};font-weight:700;">{conf:.0f}</div>
+                              </div>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+
+                st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
+
+            st.divider()
+
+else:
+    # ---------- Yesterday's Results ----------
+    st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
+
+    if results.empty:
+        st.info("No results_history.csv found or it is empty.")
+    else:
+        # Yesterday (local)
+        yday = (pd.Timestamp.now() - pd.Timedelta(days=1)).normalize()
+        df_yday = results[results["DATE"] == yday.date()]
+
+        if df_yday.empty:
+            st.warning(f"No results found for {yday.strftime('%B %d, %Y')} yet.")
+        else:
+            st.markdown(f"#### Results for {yday.strftime('%B %d, %Y')}")
+
+            # Per-category summary (Top 10 lists combined)
+            summary = (
+                df_yday.groupby("MARKET")["didHitOver"]
+                .agg(["sum", "count"])
+                .reset_index()
+                .rename(columns={"sum": "Hits", "count": "Total"})
+            )
+            summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
+            summary["HitRatePct"] = summary["HitRate"].apply(lambda x: f"{x*100:.1f}%")
+
+            st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
+
+            # Overall yesterday (all categories)
+            total_hits = int(summary["Hits"].sum())
+            total_total = int(summary["Total"].sum())
+            overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
+            st.markdown(
+                f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
+            )
+
+            # Running totals across all history
+            summary_all = (
+                results.groupby("MARKET")["didHitOver"]
+                .agg(["sum", "count"])
+                .reset_index()
+                .rename(columns={"sum": "AllHits", "count": "AllTotal"})
+            )
+            summary_all["AllHitRate"] = (summary_all["AllHits"] / summary_all["AllTotal"]).fillna(0.0)
+            summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*100:.1f}%")
+
+            st.markdown("#### 📈 Running Totals by Category (All-Time)")
+            st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
+
+            # Overall running totals (all categories combined)
+            overall_hits_all = int(summary_all["AllHits"].sum())
+            overall_total_all = int(summary_all["AllTotal"].sum())
+            overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
+            st.markdown(
+                f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
+            )
+
+            # Optional chart: yesterday per-category hit rate
+            try:
+                import altair as alt
+                chart = (
+                    alt.Chart(summary)
+                    .mark_bar()
+                    .encode(
+                        x=alt.X("MARKET:N", title="Market"),
+                        y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
+                        tooltip=["MARKET", "Hits", "Total", "HitRatePct"],
                     )
-                    chart = sparkline(row.get("recent_hit_series", []), color=color_for(hr))
-                    if chart is not None:
-                        st.altair_chart(chart, use_container_width=True)
-
-                    # Performance Trend (last N vs season) & volatility
-                    recent_avg = row.get("recent_avg", np.nan)
-                    season_avg = row.get(stat_col, np.nan)
-                    delta = (recent_avg - season_avg) if (pd.notna(recent_avg) and pd.notna(season_avg)) else np.nan
-                    vol = row.get("recent_std", np.nan)
-                    delta_color = "#2ecc71" if (pd.notna(delta) and delta > 0) else ("#e74c3c" if pd.notna(delta) else "#999999")
-                    st.markdown(
-                        f"<div style='margin-top:6px;font-size:0.9em;'>"
-                        f"Trend (last {lookback}): <b>{fmt_num(recent_avg,1)}</b> vs season <b>{fmt_num(season_avg,1)}</b> "
-                        f"<span style='color:{delta_color};'>(Δ {fmt_num(delta,1)})</span> • "
-                        f"Vol: σ={fmt_num(vol,2)}</div>",
-                        unsafe_allow_html=True
-                    )
-
-                    # Confidence Index
-                    conf, tooltip = confidence_index(row, stat_col, hr, recent_avg, row.get("line_edge", np.nan))
-                    conf_color = smooth_hsl_color(conf)
-                    st.markdown(
-                        f"""
-                        <div title="{tooltip}" style="margin-top:6px;">
-                          <div style="display:flex;align-items:center;gap:8px;">
-                            <div style="min-width:110px;">Confidence:</div>
-                            <div style="flex:1;height:10px;border-radius:8px;background:linear-gradient(90deg,{conf_color} {conf:.0f}%, rgba(255,255,255,0.08) {conf:.0f}%);"></div>
-                            <div style="min-width:44px;text-align:right;color:{conf_color};font-weight:700;">{conf:.0f}</div>
-                          </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
-
-            st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
-
-        st.divider()
+                    .properties(height=240)
+                )
+                st.altair_chart(chart, use_container_width=True)
+            except Exception:
+                pass  # keep UI resilient
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
