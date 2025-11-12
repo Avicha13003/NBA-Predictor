@@ -365,7 +365,7 @@ if view_mode == "📊 Predictions":
         p_recent = clamp01(recent_hit_rate)
 
         # line edge -> logistic
-         try:
+        try:
             edge = float(line_edge)
             edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))
         except Exception:
