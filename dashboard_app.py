@@ -137,18 +137,25 @@ if not ctx.empty:
     ctx["TEAM_ABBREVIATION"] = ctx["TEAM_ABBREVIATION"].astype(str).map(norm_team)
     ctx["OPP_TEAM_FULL"] = ctx["OPP_TEAM_FULL"].astype(str)
     ctx["DEF_RATING_RANK"] = ctx["DEF_RATING"].rank(ascending=True)
-    preds = preds.merge(ctx[["TEAM_ABBREVIATION", "OPP_TEAM_FULL", "DEF_RATING", "DEF_RATING_RANK"]],
-                        left_on="TEAM", right_on="TEAM_ABBREVIATION", how="left")
+    preds = preds.merge(
+        ctx[["TEAM_ABBREVIATION", "OPP_TEAM_FULL", "DEF_RATING", "DEF_RATING_RANK"]],
+        left_on="TEAM", right_on="TEAM_ABBREVIATION", how="left"
+    )
 else:
     preds["OPP_TEAM_FULL"] = ""
     preds["DEF_RATING"] = np.nan
     preds["DEF_RATING_RANK"] = np.nan
 
+# Safely merge nba_today_stats.csv
 if not stats.empty:
     stats["PLAYER"] = stats["PLAYER"].astype(str).str.strip()
     stats["TEAM"] = stats["TEAM"].astype(str).map(norm_team)
-    preds = preds.merge(stats[["PLAYER", "TEAM_SIDE", "PTS", "REB", "AST", "STL", "FG3M"]],
-                        on=["PLAYER", "TEAM"], how="left")
+
+    # Only include existing columns
+    cols = ["PLAYER", "TEAM_SIDE", "PTS", "REB", "AST", "FG3M"]
+    existing_cols = [c for c in cols if c in stats.columns]
+
+    preds = preds.merge(stats[existing_cols + ["TEAM"]], on=["PLAYER", "TEAM"], how="left")
 else:
     preds["TEAM_SIDE"] = ""
     for col in ["PTS", "REB", "AST", "STL", "FG3M"]:
