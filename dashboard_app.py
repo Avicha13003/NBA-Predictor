@@ -513,7 +513,7 @@ for tab, market in zip(tabs, markets):
                     chips.extend([opp_chip, edge_chip, home_chip])
                     allowed_chip = opp_allowed_chip(row, market)
                     if allowed_chip:
-                    chips.append(allowed_chip)
+                        chips.append(allowed_chip)
 
                     if chips:
                         st.markdown("".join(chips), unsafe_allow_html=True)
