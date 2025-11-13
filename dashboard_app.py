@@ -626,7 +626,7 @@ df_yday["ERROR"] = df_yday["MODEL_PRED"] - df_yday["ACTUAL"]
 
 if df_yday.empty:
         st.warning(f"No results found for {latest_date}.")
-    else:
+else:
         pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
         st.markdown(f"#### Results for {pretty_date}")
 
