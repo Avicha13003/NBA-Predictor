@@ -644,7 +644,7 @@ else:
     )
 
             # Per-category summary (Top 10 lists combined)
-            summary = (
+        summary = (
                 df_yday.groupby("MARKET")["didHitOver"]
                 .agg(["sum", "count"])
                 .reset_index()
