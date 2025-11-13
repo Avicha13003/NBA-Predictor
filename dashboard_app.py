@@ -601,6 +601,29 @@ else:
     latest_date = results["DATE"].max()   # yyyy-mm-dd string
     df_yday = results[results["DATE"] == latest_date]
 
+# --- Merge Yesterday's Predictions (MODEL_PRED) ---
+preds_today = load_csv("nba_prop_predictions_today.csv")
+
+# normalize keys
+preds_today["PLAYER"] = preds_today["PLAYER"].astype(str).str.strip()
+preds_today["MARKET"] = preds_today["MARKET"].astype(str).str.strip()
+
+df_yday["PLAYER"] = df_yday["PLAYER"].astype(str).str.strip()
+df_yday["MARKET"] = df_yday["MARKET"].astype(str).str.strip()
+
+# merge on PLAYER + MARKET
+df_yday = df_yday.merge(
+    preds_today[["PLAYER", "MARKET", "SEASON_VAL"]],
+    on=["PLAYER", "MARKET"],
+    how="left"
+)
+
+# rename for clarity
+df_yday = df_yday.rename(columns={"SEASON_VAL": "MODEL_PRED"})
+
+# compute error (positive = model predicted too high)
+df_yday["ERROR"] = df_yday["MODEL_PRED"] - df_yday["ACTUAL"]
+
     if df_yday.empty:
         st.warning(f"No results found for {latest_date}.")
     else:
