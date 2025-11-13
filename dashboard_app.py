@@ -650,7 +650,7 @@ else:
                 .reset_index()
                 .rename(columns={"sum": "Hits", "count": "Total"})
             )
-            summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
+    summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
             summary["HitRatePct"] = summary["HitRate"].apply(lambda x: f"{x*100:.1f}%")
 
             st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
