@@ -617,7 +617,16 @@ else:
 
     # Color-coded hit/miss column
     def hit_style(val):
-        color = "#2ecc71" if val == 1 else "#e74c3c"
+        """
+        Green for HIT (1 / 'HIT'), red for MISS (0 / 'MISS'), nothing otherwise.
+        """
+        if val in (1, "HIT"):
+            color = "#2ecc71"   # green
+        elif val in (0, "MISS"):
+            color = "#e74c3c"   # red
+        else:
+            return ""  # no style
+
         return f"background-color:{color}; color:white; font-weight:bold;"
 
     # Prepare table
@@ -628,19 +637,15 @@ else:
 
     # Display table with highlight
     st.dataframe(
-        df_show.style.applymap(
-            lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
-        ),
+        df_show.style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
         hide_index=True,
     )
 
     # Optional: Show only top 10 players for that market
     st.markdown("### ⭐ Top 10 for This Market")
     st.dataframe(
-        df_show.head(10).style.applymap(
-            lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
-        ),
-        hide_index=True
+        df_show.head(10).style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
+        hide_index=True,
     )
 
             # Per-category summary (Top 10 lists combined)
