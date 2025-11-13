@@ -591,119 +591,153 @@ if view_mode == "📊 Predictions":
             st.divider()
 
 else:
-    # ---------- Yesterday's Results ----------
-    st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
+   # ---------- Yesterday's Results ----------
+st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
 
-    if results.empty:
-        st.info("No results_history.csv found or it is empty.")
+if results.empty:
+    st.info("No results_history.csv found or it is empty.")
+else:
+    # Yesterday = most recent date in results_history.csv
+    latest_date = results["DATE"].max()   # yyyy-mm-dd string
+    df_yday = results[results["DATE"] == latest_date]
+
+    if df_yday.empty:
+        st.warning(f"No results found for {latest_date}.")
     else:
-        # Yesterday = most recent date in results_history.csv
-        latest_date = results["DATE"].max()   # yyyy-mm-dd string
-        df_yday = results[results["DATE"] == latest_date]
+        pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
+        st.markdown(f"#### Results for {pretty_date}")
 
-        if df_yday.empty:
-            st.warning(f"No results found for {latest_date}.")
-        else:
-            pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
-            st.markdown(f"#### Results for {pretty_date}")
+# ---- Market Selector ----
+markets = sorted(df_yday["MARKET"].unique())
+market_pick = st.selectbox("Select Market", markets, index=0)
 
-    # ---- Market Selector ----
-    markets = sorted(df_yday["MARKET"].unique())
-    market_pick = st.selectbox("Select Market", markets, index=0)
+# ---- 🔎 NEW: Search Bar ----
+search_term = st.text_input("Search Player", "").strip().lower()
 
-    df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
+df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
+if search_term:
+    df_market = df_market[df_market["PLAYER"].str.lower().str.contains(search_term)]
 
-    st.markdown(f"### 🔍 {market_pick} — Player Results")
+st.markdown(f"### 🔍 {market_pick} — Player Results")
 
-    # Color-coded hit/miss column
-    def hit_style(val):
-        """
-        Green for HIT (1 / 'HIT'), red for MISS (0 / 'MISS'), nothing otherwise.
-        """
-        if val in (1, "HIT"):
-            color = "#2ecc71"   # green
-        elif val in (0, "MISS"):
-            color = "#e74c3c"   # red
-        else:
-            return ""  # no style
+# Color-coded hit/miss column
+def hit_style(val):
+    if val in (1, "HIT"):
+        return "background-color:#2ecc71; color:white; font-weight:bold;"
+    elif val in (0, "MISS"):
+        return "background-color:#e74c3c; color:white; font-weight:bold;"
+    return ""
 
-        return f"background-color:{color}; color:white; font-weight:bold;"
+# Prepare base table
+df_show = df_market[["PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver"]].copy()
+df_show = df_show.sort_values("didHitOver", ascending=False)
+df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
 
-    # Prepare table
-    df_show = df_market[["PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver"]].copy()
-    df_show = df_show.sort_values("didHitOver", ascending=False)
+# ---- NEW: Model vs Actual Error (requires column "MODEL_PRED" from predictions) ----
+df_show["MODEL_PRED"] = df_show.get("MODEL_PRED", np.nan)
+df_show["ERROR"] = df_show["MODEL_PRED"] - df_show["ACTUAL"]
 
-    df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
+# ---- NEW: Player Streaks (last N hits/misses) ----
+# We need full history per player for this market
+def compute_streak(player, market):
+    df_p = results[(results["PLAYER"] == player) & (results["MARKET"] == market)]
+    df_p = df_p.sort_values("DATE")
+    streak = 0
+    for val in reversed(df_p["didHitOver"].tolist()):
+        if val == 1: streak += 1
+        else: break
+    return streak
 
-    # Display table with highlight
-    st.dataframe(
-        df_show.style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
-        hide_index=True,
-    )
+df_show["STREAK"] = df_show["PLAYER"].apply(lambda p: compute_streak(p, market_pick))
 
-    # Optional: Show only top 10 players for that market
-    st.markdown("### ⭐ Top 10 for This Market")
-    st.dataframe(
-        df_show.head(10).style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
-        hide_index=True,
-    )
+# ---- Display table ----
+st.dataframe(
+    df_show.style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
+    hide_index=True,
+)
 
-            # Per-category summary (Top 10 lists combined)
-    summary = (
-                df_yday.groupby("MARKET")["didHitOver"]
-                .agg(["sum", "count"])
-                .reset_index()
-                .rename(columns={"sum": "Hits", "count": "Total"})
-            )
-    summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
-    summary["HitRatePct"] = summary["HitRate"].apply(lambda x: f"{x*100:.1f}%")
+# ---- Top 10 ----
+st.markdown("### ⭐ Top 10 for This Market")
+st.dataframe(
+    df_show.head(10).style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
+    hide_index=True,
+)
 
-    st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
+# ---- NEW: Top Performers Yesterday ----
+st.markdown("### 🏆 Top Performers Yesterday")
+df_top_perf = df_show.sort_values("ACTUAL", ascending=False).head(5)
+st.dataframe(df_top_perf, hide_index=True)
 
-    # Overall yesterday (all categories)
-    total_hits = int(summary["Hits"].sum())
-    total_total = int(summary["Total"].sum())
-    overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
-    st.markdown(
-        f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
-    )
+# ---- NEW: Team Impact (team hit rates yesterday) ----
+st.markdown("### 🏀 Team Impact Breakdown (Yesterday)")
+team_impact = (
+    df_yday.groupby("TEAM")["didHitOver"]
+    .agg(["sum", "count"])
+    .rename(columns={"sum": "Hits", "count": "Total"})
+)
+team_impact["HitRate"] = (team_impact["Hits"] / team_impact["Total"]).round(3)
+team_impact = team_impact.sort_values("HitRate", ascending=False)
+st.dataframe(team_impact.reset_index(), hide_index=True)
 
-    # Running totals across all history
-    summary_all = (
-        results.groupby("MARKET")["didHitOver"]
-        .agg(["sum", "count"])
-        .reset_index()
-        .rename(columns={"sum": "AllHits", "count": "AllTotal"})
-    )
-    summary_all["AllHitRate"] = (summary_all["AllHits"] / summary_all["AllTotal"]).fillna(0.0)
-    summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*100:.1f}%")
+# ---- Per-category summary ----
+summary = (
+    df_yday.groupby("MARKET")["didHitOver"]
+    .agg(["sum", "count"])
+    .reset_index()
+    .rename(columns={"sum": "Hits", "count": "Total"})
+)
+summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
+summary["HitRatePct"] = summary["HitRate"].apply(lambda x: f"{x*100:.1f}%")
 
-    st.markdown("#### 📈 Running Totals by Category (All-Time)")
-    st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
+st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
 
-    # Overall running totals (all categories combined)
-    overall_hits_all = int(summary_all["AllHits"].sum())
-    overall_total_all = int(summary_all["AllTotal"].sum())
-    overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
-    st.markdown(
-        f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
-    )
+# Overall yesterday
+total_hits = int(summary["Hits"].sum())
+total_total = int(summary["Total"].sum())
+overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
+st.markdown(
+    f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
+)
 
-    # Optional chart: yesterday per-category hit rate
-    try:
-        import altair as alt
-        chart = (
-            alt.Chart(summary)
-            .mark_bar()
-            .encode(
-                x=alt.X("MARKET:N", title="Market"),
-                y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-                tooltip=["MARKET", "Hits", "Total", "HitRatePct"],
-            )
-            .properties(height=240)
+# Running totals across all history
+summary_all = (
+    results.groupby("MARKET")["didHitOver"]
+    .agg(["sum", "count"])
+    .reset_index()
+    .rename(columns={"sum": "AllHits", "count": "AllTotal"})
+)
+summary_all["AllHitRate"] = (summary_all["AllHits"] / summary_all["AllTotal"]).fillna(0.0)
+summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*100:.1f}%")
+
+st.markdown("#### 📈 Running Totals by Category (All-Time)")
+st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
+
+# Overall running totals
+overall_hits_all = int(summary_all["AllHits"].sum())
+overall_total_all = int(summary_all["AllTotal"].sum())
+overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
+st.markdown(
+    f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
+)
+
+# ---- NEW: Days Covered Indicator ----
+st.info(f"📅 Days of Data Collected: **{results['DATE'].nunique()} days**")
+
+# Chart
+try:
+    import altair as alt
+    chart = (
+        alt.Chart(summary)
+        .mark_bar()
+        .encode(
+            x=alt.X("MARKET:N", title="Market"),
+            y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
+            tooltip=["MARKET", "Hits", "Total", "HitRatePct"],
         )
-        st.altair_chart(chart, use_container_width=True)
-    except Exception:
-        pass  # keep UI resilient
+        .properties(height=240)
+    )
+    st.altair_chart(chart, use_container_width=True)
+except Exception:
+    pass
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
