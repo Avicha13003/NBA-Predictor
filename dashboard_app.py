@@ -624,7 +624,7 @@ df_yday = df_yday.rename(columns={"SEASON_VAL": "MODEL_PRED"})
 # compute error (positive = model predicted too high)
 df_yday["ERROR"] = df_yday["MODEL_PRED"] - df_yday["ACTUAL"]
 
-    if df_yday.empty:
+if df_yday.empty:
         st.warning(f"No results found for {latest_date}.")
     else:
         pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
