@@ -210,7 +210,6 @@ def recent_window_stats(gl_df: pd.DataFrame, player: str, stat_col: str, lookbac
 # ---------- Load Data ----------
 preds, logos, heads, gl, ctx, stats = load_all_data()
 results = load_results_history()
-st.write("DEBUG — raw DATE column:", results["DATE"].head(20))
 
 # ---------- Manual Reload ----------
 if st.sidebar.button("🔄 Reload Data"):
@@ -598,11 +597,15 @@ else:
     if results.empty:
         st.info("No results_history.csv found or it is empty.")
     else:
-        # Yesterday (local) — ensure string match with results_history.csv
-        yday = (pd.Timestamp.now() - pd.Timedelta(days=1)).date()
-        yday_str = yday.strftime("%Y-%m-%d")
+        # Yesterday = most recent date in results_history.csv
+        latest_date = results["DATE"].max()   # yyyy-mm-dd string
+        df_yday = results[results["DATE"] == latest_date]
 
-        df_yday = results[results["DATE"] == yday_str]
+        if df_yday.empty:
+            st.warning(f"No results found for {latest_date}.")
+        else:
+            pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
+            st.markdown(f"#### Results for {pretty_date}")
 
         if df_yday.empty:
             st.warning(f"No results found for {yday.strftime('%B %d, %Y')} yet.")
