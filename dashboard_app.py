@@ -607,41 +607,41 @@ else:
             pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
             st.markdown(f"#### Results for {pretty_date}")
 
-# ---- Market Selector ----
-markets = sorted(df_yday["MARKET"].unique())
-market_pick = st.selectbox("Select Market", markets, index=0)
+    # ---- Market Selector ----
+    markets = sorted(df_yday["MARKET"].unique())
+    market_pick = st.selectbox("Select Market", markets, index=0)
 
-df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
+    df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
 
-st.markdown(f"### 🔍 {market_pick} — Player Results")
+    st.markdown(f"### 🔍 {market_pick} — Player Results")
 
-# Color-coded hit/miss column
-def hit_style(val):
-    color = "#2ecc71" if val == 1 else "#e74c3c"
-    return f"background-color:{color}; color:white; font-weight:bold;"
+    # Color-coded hit/miss column
+    def hit_style(val):
+        color = "#2ecc71" if val == 1 else "#e74c3c"
+        return f"background-color:{color}; color:white; font-weight:bold;"
 
-# Prepare table
-df_show = df_market[["PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver"]].copy()
-df_show = df_show.sort_values("didHitOver", ascending=False)
+    # Prepare table
+    df_show = df_market[["PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver"]].copy()
+    df_show = df_show.sort_values("didHitOver", ascending=False)
 
-df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
+    df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
 
-# Display table with highlight
-st.dataframe(
-    df_show.style.applymap(
-        lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
-    ),
-    hide_index=True,
-)
+    # Display table with highlight
+    st.dataframe(
+        df_show.style.applymap(
+            lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
+        ),
+        hide_index=True,
+    )
 
-# Optional: Show only top 10 players for that market
-st.markdown("### ⭐ Top 10 for This Market")
-st.dataframe(
-    df_show.head(10).style.applymap(
-        lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
-    ),
-    hide_index=True
-)
+    # Optional: Show only top 10 players for that market
+    st.markdown("### ⭐ Top 10 for This Market")
+    st.dataframe(
+        df_show.head(10).style.applymap(
+            lambda v: hit_style(v) if v in (1,0,"HIT","MISS") else ""
+        ),
+        hide_index=True
+    )
 
             # Per-category summary (Top 10 lists combined)
             summary = (
