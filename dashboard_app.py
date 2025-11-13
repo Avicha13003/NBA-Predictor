@@ -597,9 +597,11 @@ else:
     if results.empty:
         st.info("No results_history.csv found or it is empty.")
     else:
-        # Yesterday (local)
-        yday = (pd.Timestamp.now() - pd.Timedelta(days=1)).normalize()
-        df_yday = results[results["DATE"] == yday.date()]
+        # Yesterday (local) — ensure string match with results_history.csv
+        yday = (pd.Timestamp.now() - pd.Timedelta(days=1)).date()
+        yday_str = yday.strftime("%Y-%m-%d")
+
+        df_yday = results[results["DATE"] == yday_str]
 
         if df_yday.empty:
             st.warning(f"No results found for {yday.strftime('%B %d, %Y')} yet.")
