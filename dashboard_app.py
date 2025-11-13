@@ -127,8 +127,11 @@ def load_all_data():
 
 def load_results_history():
     df = load_csv("results_history.csv")
-    if not df.empty:
-        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce")
+
+    # 🔥 FIX: Normalize date format to yyyy-mm-dd for matching
+    if not df.empty and "DATE" in df.columns:
+        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce").dt.strftime("%Y-%m-%d")
+
     return df
 
 STAT_COL_BY_MARKET = {
