@@ -607,11 +607,6 @@ else:
             pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
             st.markdown(f"#### Results for {pretty_date}")
 
-        if df_yday.empty:
-            st.warning(f"No results found for {yday.strftime('%B %d, %Y')} yet.")
-        else:
-            st.markdown(f"#### Results for {pretty_date}")
-
             # Per-category summary (Top 10 lists combined)
             summary = (
                 df_yday.groupby("MARKET")["didHitOver"]
