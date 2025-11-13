@@ -210,6 +210,7 @@ def recent_window_stats(gl_df: pd.DataFrame, player: str, stat_col: str, lookbac
 # ---------- Load Data ----------
 preds, logos, heads, gl, ctx, stats = load_all_data()
 results = load_results_history()
+st.write("DEBUG — raw DATE column:", results["DATE"].head(20))
 
 # ---------- Manual Reload ----------
 if st.sidebar.button("🔄 Reload Data"):
