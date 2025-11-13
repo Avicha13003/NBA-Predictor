@@ -653,52 +653,52 @@ else:
     summary["HitRate"] = (summary["Hits"] / summary["Total"]).fillna(0.0)
     summary["HitRatePct"] = summary["HitRate"].apply(lambda x: f"{x*100:.1f}%")
 
-            st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
+    st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
 
-            # Overall yesterday (all categories)
-            total_hits = int(summary["Hits"].sum())
-            total_total = int(summary["Total"].sum())
-            overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
-            st.markdown(
-                f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
-            )
+        # Overall yesterday (all categories)
+        total_hits = int(summary["Hits"].sum())
+        total_total = int(summary["Total"].sum())
+        overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
+        st.markdown(
+            f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
+        )
 
-            # Running totals across all history
-            summary_all = (
-                results.groupby("MARKET")["didHitOver"]
-                .agg(["sum", "count"])
-                .reset_index()
-                .rename(columns={"sum": "AllHits", "count": "AllTotal"})
-            )
-            summary_all["AllHitRate"] = (summary_all["AllHits"] / summary_all["AllTotal"]).fillna(0.0)
-            summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*100:.1f}%")
+        # Running totals across all history
+        summary_all = (
+            results.groupby("MARKET")["didHitOver"]
+            .agg(["sum", "count"])
+            .reset_index()
+            .rename(columns={"sum": "AllHits", "count": "AllTotal"})
+        )
+        summary_all["AllHitRate"] = (summary_all["AllHits"] / summary_all["AllTotal"]).fillna(0.0)
+        summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*100:.1f}%")
 
-            st.markdown("#### 📈 Running Totals by Category (All-Time)")
-            st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
+        st.markdown("#### 📈 Running Totals by Category (All-Time)")
+        st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
 
-            # Overall running totals (all categories combined)
-            overall_hits_all = int(summary_all["AllHits"].sum())
-            overall_total_all = int(summary_all["AllTotal"].sum())
-            overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
-            st.markdown(
-                f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
-            )
+        # Overall running totals (all categories combined)
+        overall_hits_all = int(summary_all["AllHits"].sum())
+        overall_total_all = int(summary_all["AllTotal"].sum())
+        overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
+        st.markdown(
+            f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
+        )
 
-            # Optional chart: yesterday per-category hit rate
-            try:
-                import altair as alt
-                chart = (
-                    alt.Chart(summary)
-                    .mark_bar()
-                    .encode(
-                        x=alt.X("MARKET:N", title="Market"),
-                        y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-                        tooltip=["MARKET", "Hits", "Total", "HitRatePct"],
-                    )
-                    .properties(height=240)
+        # Optional chart: yesterday per-category hit rate
+        try:
+            import altair as alt
+            chart = (
+                alt.Chart(summary)
+                .mark_bar()
+                .encode(
+                    x=alt.X("MARKET:N", title="Market"),
+                    y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
+                    tooltip=["MARKET", "Hits", "Total", "HitRatePct"],
                 )
-                st.altair_chart(chart, use_container_width=True)
-            except Exception:
-                pass  # keep UI resilient
+                .properties(height=240)
+            )
+            st.altair_chart(chart, use_container_width=True)
+        except Exception:
+            pass  # keep UI resilient
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
