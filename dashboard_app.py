@@ -592,7 +592,7 @@ if view_mode == "📊 Predictions":
 
 else:
   # ---------- Yesterday's Results ----------
-st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
+    st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
 
 if results.empty:
     st.info("No results_history.csv found or it is empty.")
