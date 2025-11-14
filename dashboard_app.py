@@ -643,7 +643,7 @@ df_show = df_show.sort_values("didHitOver", ascending=False)
 df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
 df_show["FINAL_OVER_PROB"] = df_show["FINAL_OVER_PROB"].round(3)
 df_show["ERROR_RAW"] = df_show["ERROR_RAW"].round(2)
-df_show["ERROR_MODEL"] = df_show["ERROR_MODEL"].astype(int)
+df_show["ERROR_MODEL"] = df_show["ERROR_MODEL"].fillna(0).astype(int)
 
 # ---- Player Streaks ----
 def compute_streak(player, market):
