@@ -598,7 +598,7 @@ if results.empty:
     st.info("No results_history.csv found or it is empty.")
 else:
     # Ensure DATE is datetime (handles mm/dd/yyyy and yyyy-mm-dd)
-    results["DATE"] = pd.to_datetime(results["DATE"], format="mixed", errors="coerce")
+    results["DATE"] = pd.to_datetime(results["DATE"], format="%m/%d/%Y", errors="coerce")
 
     # Latest date in results_history
     latest_date = results["DATE"].max()
