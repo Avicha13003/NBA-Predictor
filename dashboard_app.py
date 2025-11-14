@@ -676,10 +676,22 @@ st.dataframe(
 )
 
 # ---- Top 10 ----
-st.markdown("### ⭐ Top 10 for This Market")
+st.markdown("### ⭐ Top 10 All-Time Performers in This Market")
+
+df_market_all = results[results["MARKET"] == market_pick].copy()
+
+leaders = (
+    df_market_all.groupby("PLAYER")["didHitOver"]
+    .agg(["sum", "count"])
+    .rename(columns={"sum": "Hits", "count": "Attempts"})
+)
+
+leaders["HitRate"] = leaders["Hits"] / leaders["Attempts"]
+leaders = leaders.sort_values("HitRate", ascending=False).head(10)
+
 st.dataframe(
-    df_show.head(10).style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
-    hide_index=True,
+    leaders.reset_index()[["PLAYER", "Hits", "Attempts", "HitRate"]],
+    hide_index=True
 )
 
 # ---- Top Performers Yesterday ----
