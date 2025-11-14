@@ -128,9 +128,9 @@ def load_all_data():
 def load_results_history():
     df = load_csv("results_history.csv")
 
-    # 🔥 FIX: Normalize date format to yyyy-mm-dd for matching
     if not df.empty and "DATE" in df.columns:
-        df["DATE"] = pd.to_datetime(df["DATE"], errors="coerce").dt.strftime("%Y-%m-%d")
+        # Parse DATE column as real datetime
+        df["DATE"] = pd.to_datetime(df["DATE"], format="mixed", errors="coerce")
 
     return df
 
