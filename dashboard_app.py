@@ -597,17 +597,25 @@ else:
 if results.empty:
     st.info("No results_history.csv found or it is empty.")
 else:
-    # Ensure DATE is datetime (handles mm/dd/yyyy and yyyy-mm-dd)
-    results["DATE"] = pd.to_datetime(results["DATE"], format="%m/%d/%Y", errors="coerce")
+    # Create parsed datetime column
+    results["DATE_STR"] = results["DATE"].astype(str).str.strip()
 
-    # Latest date in results_history
-    latest_date = results["DATE"].max()
-    df_yday = results[results["DATE"] == latest_date].copy()
+    results["DATE_TS"] = pd.to_datetime(
+        results["DATE_STR"],
+        format="mixed",        # handles mm/dd/yyyy or yyyy-mm-dd
+        errors="coerce"
+    )
+
+    # Get the latest *true* datetime
+    latest_ts = results["DATE_TS"].max()
+
+    # Filter by parsed datetime
+    df_yday = results[results["DATE_TS"] == latest_ts].copy()
 
 if df_yday.empty:
     st.warning(f"No results found for {latest_date}.")
 else:
-    pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
+    pretty_date = latest_ts.strftime("%B %d, %Y")
     st.markdown(f"#### Results for {pretty_date}")
 
 # ---- Market Selector ----
@@ -733,7 +741,7 @@ st.markdown(
 )
 
 # ---- Days Covered ----
-st.info(f"📅 Days of Data Collected: **{results['DATE'].nunique()} days**")
+st.info(f"📅 Days of Data Collected: **{results['DATE_TS'].nunique()} days**")
 
 # ---- Hit Rate Chart ----
 try:
