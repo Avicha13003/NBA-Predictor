@@ -591,59 +591,37 @@ if view_mode == "📊 Predictions":
             st.divider()
 
 else:
-   # ---------- Yesterday's Results ----------
-    st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
+  # ---------- Yesterday's Results ----------
+st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
 
 if results.empty:
     st.info("No results_history.csv found or it is empty.")
 else:
-    # Yesterday = most recent date in results_history.csv
-    latest_date = results["DATE"].max()   # yyyy-mm-dd string
-    df_yday = results[results["DATE"] == latest_date]
-
-# --- Merge Yesterday's Predictions (MODEL_PRED) ---
-preds_today = load_csv("nba_prop_predictions_today.csv")
-
-# normalize keys
-preds_today["PLAYER"] = preds_today["PLAYER"].astype(str).str.strip()
-preds_today["MARKET"] = preds_today["MARKET"].astype(str).str.strip()
-
-df_yday["PLAYER"] = df_yday["PLAYER"].astype(str).str.strip()
-df_yday["MARKET"] = df_yday["MARKET"].astype(str).str.strip()
-
-# merge on PLAYER + MARKET
-df_yday = df_yday.merge(
-    preds_today[["PLAYER", "MARKET", "SEASON_VAL"]],
-    on=["PLAYER", "MARKET"],
-    how="left"
-)
-
-# rename for clarity
-df_yday = df_yday.rename(columns={"SEASON_VAL": "MODEL_PRED"})
-
-# compute error (positive = model predicted too high)
-df_yday["ERROR"] = df_yday["MODEL_PRED"] - df_yday["ACTUAL"]
+    # Latest date in results_history
+    latest_date = results["DATE"].max()
+    df_yday = results[results["DATE"] == latest_date].copy()
 
 if df_yday.empty:
-        st.warning(f"No results found for {latest_date}.")
+    st.warning(f"No results found for {latest_date}.")
 else:
-        pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
-        st.markdown(f"#### Results for {pretty_date}")
+    pretty_date = pd.to_datetime(latest_date).strftime("%B %d, %Y")
+    st.markdown(f"#### Results for {pretty_date}")
 
 # ---- Market Selector ----
 markets = sorted(df_yday["MARKET"].unique())
 market_pick = st.selectbox("Select Market", markets, index=0)
 
-# ---- 🔎 NEW: Search Bar ----
+# ---- 🔎 Player Search ----
 search_term = st.text_input("Search Player", "").strip().lower()
 
+# Filter the selected market
 df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
 if search_term:
     df_market = df_market[df_market["PLAYER"].str.lower().str.contains(search_term)]
 
 st.markdown(f"### 🔍 {market_pick} — Player Results")
 
-# Color-coded hit/miss column
+# Hit/miss styling
 def hit_style(val):
     if val in (1, "HIT"):
         return "background-color:#2ecc71; color:white; font-weight:bold;"
@@ -651,29 +629,36 @@ def hit_style(val):
         return "background-color:#e74c3c; color:white; font-weight:bold;"
     return ""
 
-# Prepare base table
-df_show = df_market[["PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver"]].copy()
+# ------- CORE DISPLAY TABLE -------
+df_show = df_market[[
+    "PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver",
+    "SEASON_VAL", "FINAL_OVER_PROB", 
+    "ERROR_RAW", "ERROR_MODEL"
+]].copy()
+
 df_show = df_show.sort_values("didHitOver", ascending=False)
 df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
+df_show["FINAL_OVER_PROB"] = df_show["FINAL_OVER_PROB"].round(3)
+df_show["ERROR_RAW"] = df_show["ERROR_RAW"].round(2)
+df_show["ERROR_MODEL"] = df_show["ERROR_MODEL"].astype(int)
 
-# ---- NEW: Model vs Actual Error (requires column "MODEL_PRED" from predictions) ----
-df_show["MODEL_PRED"] = df_show.get("MODEL_PRED", np.nan)
-df_show["ERROR"] = df_show["MODEL_PRED"] - df_show["ACTUAL"]
-
-# ---- NEW: Player Streaks (last N hits/misses) ----
-# We need full history per player for this market
+# ---- Player Streaks ----
 def compute_streak(player, market):
     df_p = results[(results["PLAYER"] == player) & (results["MARKET"] == market)]
     df_p = df_p.sort_values("DATE")
     streak = 0
     for val in reversed(df_p["didHitOver"].tolist()):
-        if val == 1: streak += 1
-        else: break
+        if val == 1:
+            streak += 1
+        else:
+            break
     return streak
 
-df_show["STREAK"] = df_show["PLAYER"].apply(lambda p: compute_streak(p, market_pick))
+df_show["STREAK"] = df_show["PLAYER"].apply(
+    lambda p: compute_streak(p, market_pick)
+)
 
-# ---- Display table ----
+# ---- Display Main Results ----
 st.dataframe(
     df_show.style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
     hide_index=True,
@@ -686,12 +671,12 @@ st.dataframe(
     hide_index=True,
 )
 
-# ---- NEW: Top Performers Yesterday ----
+# ---- Top Performers Yesterday ----
 st.markdown("### 🏆 Top Performers Yesterday")
 df_top_perf = df_show.sort_values("ACTUAL", ascending=False).head(5)
 st.dataframe(df_top_perf, hide_index=True)
 
-# ---- NEW: Team Impact (team hit rates yesterday) ----
+# ---- Team Impact Breakdown ----
 st.markdown("### 🏀 Team Impact Breakdown (Yesterday)")
 team_impact = (
     df_yday.groupby("TEAM")["didHitOver"]
@@ -717,12 +702,13 @@ st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
 # Overall yesterday
 total_hits = int(summary["Hits"].sum())
 total_total = int(summary["Total"].sum())
-overall_rate = (total_hits / total_total) if total_total > 0 else 0.0
+overall_rate = total_hits / total_total if total_total > 0 else 0.0
+
 st.markdown(
     f"**Overall Yesterday Hit Rate (All Categories):** {total_hits}/{total_total} → {overall_rate*100:.1f}%"
 )
 
-# Running totals across all history
+# ---- Running Totals ----
 summary_all = (
     results.groupby("MARKET")["didHitOver"]
     .agg(["sum", "count"])
@@ -735,18 +721,18 @@ summary_all["AllHitRatePct"] = summary_all["AllHitRate"].apply(lambda x: f"{x*10
 st.markdown("#### 📈 Running Totals by Category (All-Time)")
 st.dataframe(summary_all[["MARKET", "AllHits", "AllTotal", "AllHitRatePct"]])
 
-# Overall running totals
+# Overall totals
 overall_hits_all = int(summary_all["AllHits"].sum())
 overall_total_all = int(summary_all["AllTotal"].sum())
-overall_rate_all = (overall_hits_all / overall_total_all) if overall_total_all > 0 else 0.0
+overall_rate_all = overall_hits_all / overall_total_all if overall_total_all > 0 else 0.0
 st.markdown(
     f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
 )
 
-# ---- NEW: Days Covered Indicator ----
+# ---- Days Covered ----
 st.info(f"📅 Days of Data Collected: **{results['DATE'].nunique()} days**")
 
-# Chart
+# ---- Hit Rate Chart ----
 try:
     import altair as alt
     chart = (
