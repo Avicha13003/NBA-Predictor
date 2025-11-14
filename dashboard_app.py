@@ -597,6 +597,9 @@ else:
 if results.empty:
     st.info("No results_history.csv found or it is empty.")
 else:
+    #Ensure DATE is datetime
+    results["DATE"] = pd.to_datetime(results["DATE"], errors="coerce")
+
     # Latest date in results_history
     latest_date = results["DATE"].max()
     df_yday = results[results["DATE"] == latest_date].copy()
