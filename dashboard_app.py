@@ -483,112 +483,125 @@ if view_mode == "📊 Predictions":
                         if isinstance(row.get("LOGO_URL",""),str) and str(row["LOGO_URL"]).startswith("http"):
                             st.image(row["LOGO_URL"], width=44)
 
-                    with c2:
-                       st.markdown(f"#### {row['PLAYER']}")
+with c2:
+    st.markdown(f"#### {row['PLAYER']}")
 
-                       # --- PROP LINE + ODDS SECTION ---
-                       odds_raw = row.get("ODDS", None)
-                       imp_raw  = row.get("IMPLIED_PROB", None)
+    # --- PROP LINE + ODDS SECTION ---
+    odds_raw = row.get("ODDS", None)
+    imp_raw = row.get("IMPLIED_PROB", None)
 
-                       # Format odds
-                       if pd.notna(odds_raw):
-                           try:
-                               odds_fmt = f"{int(odds_raw):+d}" if int(odds_raw) != 0 else "—"
-                            except:
-                                odds_fmt = str(odds_raw)
-                        else:
-                            odds_fmt = "—"
+    # Format odds
+    if pd.notna(odds_raw):
+        try:
+            odds_fmt = f"{int(odds_raw):+d}" if int(odds_raw) != 0 else "—"
+        except:
+            odds_fmt = str(odds_raw)
+    else:
+        odds_fmt = "—"
 
-                        # Format implied probability
-                        if pd.notna(imp_raw):
-                            imp_pct = f"{float(imp_raw)*100:.1f}%"
-                        else:
-                            imp_pct = "—"
+    # Format implied probability
+    if pd.notna(imp_raw):
+        imp_pct = f"{float(imp_raw)*100:.1f}%"
+    else:
+        imp_pct = "—"
 
-                        # Edge = Model Prob – Implied Prob
-                        final_prob = float(row.get("FINAL_OVER_PROB", np.nan))
-                        edge_val = None
-                        if pd.notna(final_prob) and pd.notna(imp_raw):
-                            edge_val = final_prob - float(imp_raw)
-                            edge_pct = f"{edge_val*100:+.1f}%"
-                        else:
-                            edge_pct = "—"
+    # Edge = Model Prob – Implied Prob
+    final_prob = float(row.get("FINAL_OVER_PROB", np.nan))
+    if pd.notna(final_prob) and pd.notna(imp_raw):
+        edge_val = final_prob - float(imp_raw)
+        edge_pct = f"{edge_val*100:+.1f}%"
+    else:
+        edge_val = None
+        edge_pct = "—"
 
-                        edge_color = (
-                            "#2ecc71" if edge_val is not None and edge_val > 0 else
-                            "#e74c3c" if edge_val is not None and edge_val < 0 else
-                            "#bdc3c7"
-                        )
+    edge_color = (
+        "#2ecc71" if edge_val is not None and edge_val > 0 else
+        "#e74c3c" if edge_val is not None and edge_val < 0 else
+        "#bdc3c7"
+    )
 
-                        # Render it
-                        st.markdown(
-                            f"""
-                            <div style='font-size:1.0em; margin-bottom:4px;'>
-                                <b>{row['PROP_NAME']} o{row['LINE']}</b>
-                                <span style='color:#777;'>| Odds: <b>{odds_fmt}</b></span>
-                                <span style='color:#777;'>| Implied: <b>{imp_pct}</b></span>
-                                <span style='color:{edge_color};'>| Edge: <b>{edge_pct}</b></span>
-                            </div>
-                            """,
-                            unsafe_allow_html=True
-                        )
-                        # --- END ODDS SECTION ---
+    st.markdown(
+        f"""
+        <div style='font-size:1.0em; margin-bottom:4px;'>
+            <b>{row['PROP_NAME']} o{row['LINE']}</b>
+            <span style='color:#777;'>| Odds: <b>{odds_fmt}</b></span>
+            <span style='color:#777;'>| Implied: <b>{imp_pct}</b></span>
+            <span style='color:{edge_color};'>| Edge: <b>{edge_pct}</b></span>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    # --- END ODDS SECTION ---
 
-                        # Matchup / defense rank line
-                        opp = row.get("OPP_TEAM_FULL","?")
-                        side = row.get("TEAM_SIDE","")
-                        avg_val = row.get(stat_col, np.nan)  # season avg for stat_col (from nba_today_stats.csv)
-                        opp_def = row.get("DEF_RATING", np.nan)
-                        opp_rank = row.get("DEF_RATING_RANK", np.nan)
-                        m_color = matchup_color(opp_rank)
-                        avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
-                        def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
-                        rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
-                        st.markdown(
-                            f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
-                            f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
-                            unsafe_allow_html=True,
-                         )
+    # Matchup / defense rank line
+    opp = row.get("OPP_TEAM_FULL", "?")
+    side = row.get("TEAM_SIDE", "")
+    avg_val = row.get(stat_col, np.nan)
+    opp_def = row.get("DEF_RATING", np.nan)
+    opp_rank = row.get("DEF_RATING_RANK", np.nan)
+    m_color = matchup_color(opp_rank)
 
-                         # Venue (if available)
-                        venue_bits = [str(row.get("ARENA","")).strip(), str(row.get("CITY","")).strip(), str(row.get("STATE","")).strip()]
-                        venue_bits = [b for b in venue_bits if b]
-                        if venue_bits:
-                            st.caption("Venue: " + " · ".join(venue_bits))
+    avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
+    def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
+    rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
 
-                        # Fatigue / travel chips
-                        days_rest = row.get("DAYS_REST", np.nan)
-                        is_b2b = row.get("IS_B2B", "")
-                        miles = row.get("TRAVEL_MILES", np.nan)
-                        fatigue = row.get("TRAVEL_FATIGUE", np.nan)
+    st.markdown(
+        f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
+        f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
+        unsafe_allow_html=True,
+    )
 
-                        chips = []
-                        if pd.notna(days_rest):
-                            chips.append(chip_html("Rest", f"{fmt_num(days_rest,0)}d", rest_color(days_rest)))
-                        if str(is_b2b) != "":
-                            chips.append(chip_html("B2B", str(is_b2b), b2b_color(is_b2b)))
-                        if pd.notna(miles):
-                            chips.append(chip_html("Travel", f"{fmt_num(miles,0)} mi", travel_color(miles)))
-                        if pd.notna(fatigue):
-                            chips.append(chip_html("Fatigue", fmt_num(fatigue,3), fatigue_color(fatigue)))
+    # Venue
+    venue_bits = [
+        str(row.get("ARENA", "")).strip(),
+        str(row.get("CITY", "")).strip(),
+        str(row.get("STATE", "")).strip(),
+    ]
+    venue_bits = [b for b in venue_bits if b]
+    if venue_bits:
+        st.caption("Venue: " + " · ".join(venue_bits))
 
-                        # Contextual boost chips
-                        opp_chip = chip_html("Opp Ease", rank_txt, matchup_color(opp_rank))
-                        edge_val = row.get("line_edge", np.nan)
-                        edge_col = color_for( clamp01( 1.0/(1.0+math.exp(-1.6*float(edge_val))) ) ) if pd.notna(edge_val) else "#777777"
-                        edge_chip = chip_html("Edge", fmt_num(edge_val,2), edge_col)
-                        home_chip = chip_html("Home", "Yes" if str(side).lower()=="home" else "No", "#3498db", "white")
+    # Fatigue / travel chips
+    days_rest = row.get("DAYS_REST", np.nan)
+    is_b2b = row.get("IS_B2B", "")
+    miles = row.get("TRAVEL_MILES", np.nan)
+    fatigue = row.get("TRAVEL_FATIGUE", np.nan)
 
-                        chips.extend([opp_chip, edge_chip, home_chip])
-                    
-                        allowed_chip = opp_allowed_chip(row, market)
-                        if allowed_chip:
-                            chips.append(allowed_chip)
+    chips = []
+    if pd.notna(days_rest):
+        chips.append(chip_html("Rest", f"{fmt_num(days_rest, 0)}d", rest_color(days_rest)))
+    if str(is_b2b) != "":
+        chips.append(chip_html("B2B", str(is_b2b), b2b_color(is_b2b)))
+    if pd.notna(miles):
+        chips.append(chip_html("Travel", f"{fmt_num(miles, 0)} mi", travel_color(miles)))
+    if pd.notna(fatigue):
+        chips.append(chip_html("Fatigue", fmt_num(fatigue, 3), fatigue_color(fatigue)))
 
-                        if chips:
-                            st.markdown("".join(chips), unsafe_allow_html=True)
+    opp_chip = chip_html("Opp Ease", rank_txt, matchup_color(opp_rank))
 
-                        st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
+    edge_val2 = row.get("line_edge", np.nan)
+    edge_col2 = color_for(
+        clamp01(1.0 / (1.0 + math.exp(-1.6 * float(edge_val2))))
+    ) if pd.notna(edge_val2) else "#777777"
+
+    edge_chip = chip_html("Edge", fmt_num(edge_val2, 2), edge_col2)
+    home_chip = chip_html(
+        "Home",
+        "Yes" if str(side).lower() == "home" else "No",
+        "#3498db",
+        "white"
+    )
+
+    chips.extend([opp_chip, edge_chip, home_chip])
+
+    allowed_chip = opp_allowed_chip(row, market)
+    if allowed_chip:
+        chips.append(allowed_chip)
+
+    if chips:
+        st.markdown("".join(chips), unsafe_allow_html=True)
+
+    st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status', 'Active')}")
 
                     with c3:
                         # Model prob + Last N vs line
