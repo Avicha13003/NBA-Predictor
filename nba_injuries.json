@@ -4,11 +4,11 @@
     "Team":"MIA",
     "Pos":"C",
     "Injury":"Toe",
-    "Status":"Out",
-    "INJURY_FLAG":1.0,
-    "INJURY_CATEGORY":"Out",
-    "IS_OUT":1,
-    "IS_LIMITED":0
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
   },
   {
     "Player":"Ochai Agbaji",
@@ -55,26 +55,26 @@
     "IS_LIMITED":1
   },
   {
-    "Player":"LaMelo Ball",
-    "Team":"CHA",
-    "Pos":"G",
-    "Injury":"Ankle",
-    "Status":"Probable",
+    "Player":"OG Anunoby",
+    "Team":"NYK",
+    "Pos":"F",
+    "Injury":"Hamstring",
+    "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
     "IS_OUT":0,
     "IS_LIMITED":1
   },
   {
-    "Player":"Lonzo Ball",
-    "Team":"CLE",
+    "Player":"LaMelo Ball",
+    "Team":"CHA",
     "Pos":"G",
-    "Injury":"Knee",
-    "Status":"Probable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
+    "Injury":"Rest",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
   },
   {
     "Player":"Paolo Banchero",
@@ -103,17 +103,6 @@
     "Team":"DEN",
     "Pos":"G",
     "Injury":"Ankle",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
-    "Player":"Jalen Brunson",
-    "Team":"NYK",
-    "Pos":"G",
-    "Injury":"Ankle",
     "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
@@ -121,21 +110,10 @@
     "IS_LIMITED":0
   },
   {
-    "Player":"Kentavious Caldwell-Pope",
-    "Team":"MEM",
+    "Player":"Jalen Brunson",
+    "Team":"NYK",
     "Pos":"G",
-    "Injury":"Elbow",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
-    "Player":"Julian Champagnie",
-    "Team":"SAS",
-    "Pos":"F",
-    "Injury":"Hip",
+    "Injury":"Ankle",
     "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
@@ -176,6 +154,17 @@
     "IS_LIMITED":0
   },
   {
+    "Player":"Cedric Coward",
+    "Team":"MEM",
+    "Pos":"G",
+    "Injury":"Foot",
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
+  },
+  {
     "Player":"Cade Cunningham",
     "Team":"DET",
     "Pos":"G",
@@ -191,17 +180,6 @@
     "Team":"DAL",
     "Pos":"C",
     "Injury":"Calf",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
-    "Player":"Luguentz Dort",
-    "Team":"OKC",
-    "Pos":"F",
-    "Injury":"Shoulder",
     "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
@@ -231,6 +209,17 @@
     "IS_LIMITED":1
   },
   {
+    "Player":"Tari Eason",
+    "Team":"HOU",
+    "Pos":"F",
+    "Injury":"Hip",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
     "Player":"Zach Edey",
     "Team":"MEM",
     "Pos":"C",
@@ -242,26 +231,15 @@
     "IS_LIMITED":1
   },
   {
-    "Player":"VJ Edgecombe",
+    "Player":"Joel Embiid",
     "Team":"PHI",
-    "Pos":"G",
-    "Injury":"Back",
+    "Pos":"C",
+    "Injury":"Knee",
     "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
     "IS_OUT":0,
     "IS_LIMITED":1
-  },
-  {
-    "Player":"Joel Embiid",
-    "Team":"PHI",
-    "Pos":"C",
-    "Injury":"Knee",
-    "Status":"Out",
-    "INJURY_FLAG":1.0,
-    "INJURY_CATEGORY":"Out",
-    "IS_OUT":1,
-    "IS_LIMITED":0
   },
   {
     "Player":"Dante Exum",
@@ -290,7 +268,7 @@
     "Team":"IND",
     "Pos":"G",
     "Injury":"Ankle",
-    "Status":"Doubtful",
+    "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
@@ -301,22 +279,22 @@
     "Team":"CLE",
     "Pos":"G",
     "Injury":"Toe",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
   },
   {
     "Player":"Paul George",
     "Team":"PHI",
     "Pos":"F",
     "Injury":"Knee",
-    "Status":"Out",
-    "INJURY_FLAG":1.0,
-    "INJURY_CATEGORY":"Out",
-    "IS_OUT":1,
-    "IS_LIMITED":0
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
   },
   {
     "Player":"Josh Giddey",
@@ -345,6 +323,17 @@
     "Team":"PHX",
     "Pos":"G",
     "Injury":"Hamstring",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
+    "Player":"Rui Hachimura",
+    "Team":"LAL",
+    "Pos":"F",
+    "Injury":"Calf",
     "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
@@ -455,7 +444,7 @@
     "Team":"IND",
     "Pos":"G",
     "Injury":"Hamstring",
-    "Status":"Doubtful",
+    "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
@@ -487,7 +476,18 @@
     "Player":"Cameron Johnson",
     "Team":"DEN",
     "Pos":"F",
-    "Injury":"Arm",
+    "Injury":"Biceps",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
+    "Player":"Nikola Jokic",
+    "Team":"DEN",
+    "Pos":"C",
+    "Injury":"Wrist",
     "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
@@ -499,17 +499,6 @@
     "Team":"IND",
     "Pos":"G",
     "Injury":"Back",
-    "Status":"Out",
-    "INJURY_FLAG":1.0,
-    "INJURY_CATEGORY":"Out",
-    "IS_OUT":1,
-    "IS_LIMITED":0
-  },
-  {
-    "Player":"Ryan Kalkbrenner",
-    "Team":"CHA",
-    "Pos":"C",
-    "Injury":"Personal",
     "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
@@ -561,22 +550,11 @@
     "IS_LIMITED":0
   },
   {
-    "Player":"Cody Martin",
-    "Team":"IND",
-    "Pos":"G",
-    "Injury":"Illness",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
     "Player":"Bennedict Mathurin",
     "Team":"IND",
     "Pos":"F",
     "Injury":"Toe",
-    "Status":"Doubtful",
+    "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
@@ -598,11 +576,11 @@
     "Team":"CHA",
     "Pos":"F",
     "Injury":"Illness",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
   },
   {
     "Player":"De'Anthony Melton",
@@ -625,28 +603,6 @@
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
     "IS_LIMITED":0
-  },
-  {
-    "Player":"Malik Monk",
-    "Team":"SAC",
-    "Pos":"G",
-    "Injury":"Ankle",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
-    "Player":"Ja Morant",
-    "Team":"MEM",
-    "Pos":"G",
-    "Injury":"Ankle",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
   },
   {
     "Player":"Dejounte Murray",
@@ -682,6 +638,17 @@
     "IS_LIMITED":1
   },
   {
+    "Player":"Eli John Ndiaye",
+    "Team":"ATL",
+    "Pos":"F",
+    "Injury":"Groin",
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
+  },
+  {
     "Player":"Aaron Nesmith",
     "Team":"IND",
     "Pos":"F",
@@ -702,6 +669,17 @@
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
     "IS_LIMITED":0
+  },
+  {
+    "Player":"Kelly Oubre",
+    "Team":"PHI",
+    "Pos":"F",
+    "Injury":"Knee",
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
   },
   {
     "Player":"Scotty Pippen",
@@ -759,6 +737,17 @@
     "IS_LIMITED":0
   },
   {
+    "Player":"Olivier-Maxence Prosper",
+    "Team":"MEM",
+    "Pos":"F",
+    "Injury":"Quadriceps",
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
+  },
+  {
     "Player":"Terry Rozier",
     "Team":"MIA",
     "Pos":"G",
@@ -768,17 +757,6 @@
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
     "IS_LIMITED":0
-  },
-  {
-    "Player":"Domantas Sabonis",
-    "Team":"SAC",
-    "Pos":"C",
-    "Injury":"Ribs",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
   },
   {
     "Player":"Marcus Sasser",
@@ -818,6 +796,17 @@
     "Team":"MEM",
     "Pos":"G",
     "Injury":"Toe",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
+    "Player":"Marcus Smart",
+    "Team":"LAL",
+    "Pos":"G",
+    "Injury":"Illness",
     "Status":"Questionable",
     "INJURY_FLAG":0.5,
     "INJURY_CATEGORY":"Limited",
@@ -834,17 +823,6 @@
     "INJURY_CATEGORY":"Active",
     "IS_OUT":0,
     "IS_LIMITED":0
-  },
-  {
-    "Player":"Isaiah Stewart",
-    "Team":"DET",
-    "Pos":"F",
-    "Injury":"Ankle",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
   },
   {
     "Player":"Max Strus",
@@ -869,17 +847,6 @@
     "IS_LIMITED":0
   },
   {
-    "Player":"Adou Thiero",
-    "Team":"LAL",
-    "Pos":"F",
-    "Injury":"Knee",
-    "Status":"Probable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
     "Player":"Cam Thomas",
     "Team":"BKN",
     "Pos":"G",
@@ -895,11 +862,11 @@
     "Team":"DET",
     "Pos":"F",
     "Injury":"Ankle",
-    "Status":"Out",
-    "INJURY_FLAG":1.0,
-    "INJURY_CATEGORY":"Out",
-    "IS_OUT":1,
-    "IS_LIMITED":0
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
   },
   {
     "Player":"Matisse Thybulle",
@@ -950,11 +917,11 @@
     "Team":"CLE",
     "Pos":"F",
     "Injury":"Concussion",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
   },
   {
     "Player":"Fred VanVleet",
@@ -1001,6 +968,17 @@
     "IS_LIMITED":1
   },
   {
+    "Player":"Jamir Watkins",
+    "Team":"WAS",
+    "Pos":"G",
+    "Injury":"Shoulder",
+    "Status":"Questionable",
+    "INJURY_FLAG":0.5,
+    "INJURY_CATEGORY":"Limited",
+    "IS_OUT":0,
+    "IS_LIMITED":1
+  },
+  {
     "Player":"Blake Wesley",
     "Team":"POR",
     "Pos":"G",
@@ -1027,28 +1005,28 @@
     "Team":"OKC",
     "Pos":"F",
     "Injury":"Thigh",
-    "Status":"Questionable",
-    "INJURY_FLAG":0.5,
-    "INJURY_CATEGORY":"Limited",
-    "IS_OUT":0,
-    "IS_LIMITED":1
-  },
-  {
-    "Player":"Jalen Williams",
-    "Team":"OKC",
-    "Pos":"F",
-    "Injury":"Wrist",
-    "Status":"Doubtful",
+    "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
     "IS_OUT":1,
     "IS_LIMITED":0
   },
   {
-    "Player":"Kenrich Williams",
+    "Player":"Jalen Williams",
     "Team":"OKC",
     "Pos":"F",
-    "Injury":"Knee",
+    "Injury":"Wrist",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
+    "Player":"Jaylin Williams",
+    "Team":"OKC",
+    "Pos":"C",
+    "Injury":"Shoulder",
     "Status":"Out",
     "INJURY_FLAG":1.0,
     "INJURY_CATEGORY":"Out",
@@ -1069,6 +1047,17 @@
   {
     "Player":"Grant Williams",
     "Team":"CHA",
+    "Pos":"F",
+    "Injury":"Knee",
+    "Status":"Out",
+    "INJURY_FLAG":1.0,
+    "INJURY_CATEGORY":"Out",
+    "IS_OUT":1,
+    "IS_LIMITED":0
+  },
+  {
+    "Player":"Kenrich Williams",
+    "Team":"OKC",
     "Pos":"F",
     "Injury":"Knee",
     "Status":"Out",
