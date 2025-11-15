@@ -1,911 +1,473 @@
-PLAYER,MARKET,LINE,GAME,HOME_TEAM,AWAY_TEAM
-Desmond Bane,AST,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,AST,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,AST,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,AST,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,AST,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,AST,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,AST,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,AST,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,AST,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,AST,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,AST,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,AST,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,AST,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,AST,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,AST,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,AST,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,PTS,24.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,PTS,24.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,PTS,21.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,PTS,21.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,PTS,19.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,PTS,19.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,PTS,14.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,PTS,14.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,PTS,13.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,PTS,13.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,PTS,13.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,PTS,13.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tristan da Silva,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tristan da Silva,PTS,11.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,PTS,9.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,PTS,9.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Ziaire Williams,PTS,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Ziaire Williams,PTS,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,PTS,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,PTS,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tyrese Martin,PTS,7.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tyrese Martin,PTS,7.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,PTS,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,PTS,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,REB,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,REB,8.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,REB,7.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,REB,7.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,REB,6.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,REB,6.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,REB,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,REB,5.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,REB,4.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,REB,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,STL,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,STL,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,STL,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,STL,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Nicolas Claxton,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,STL,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,3PM,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Michael Porter Jr,3PM,3.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,3PM,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jalen Suggs,3PM,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,3PM,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Desmond Bane,3PM,2.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Noah Clowney,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tristan da Silva,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tristan da Silva,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Egor Demin,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Ziaire Williams,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Ziaire Williams,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Franz Wagner,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tyrese Martin,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Tyrese Martin,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Anthony Black,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Terance Mann,3PM,1.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,3PM,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Wendell Carter Jr,3PM,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,3PM,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Jonathan Isaac,3PM,0.5,Brooklyn Nets @ Orlando Magic,Orlando Magic,Brooklyn Nets
-Davion Mitchell,AST,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,AST,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,AST,5.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,AST,5.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,AST,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,AST,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,AST,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,AST,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,AST,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,AST,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,AST,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,AST,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,AST,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,PTS,25.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,PTS,25.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,PTS,23.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,PTS,23.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,PTS,20.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,PTS,20.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,PTS,17.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,PTS,17.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,PTS,17.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,PTS,17.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,PTS,15.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,PTS,15.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,PTS,12.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,PTS,12.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Miles McBride,PTS,12.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Miles McBride,PTS,12.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jordan Clarkson,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jordan Clarkson,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,PTS,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,PTS,9.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,PTS,9.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,PTS,9.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,PTS,9.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Simone Fontecchio,PTS,8.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Simone Fontecchio,PTS,8.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mitchell Robinson,PTS,5.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mitchell Robinson,PTS,5.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,REB,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,REB,11.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,REB,10.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,REB,10.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mitchell Robinson,REB,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mitchell Robinson,REB,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,REB,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,REB,7.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,REB,6.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jaime Jaquez Jr,REB,6.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,REB,4.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,REB,3.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,REB,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,REB,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Miles McBride,REB,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Miles McBride,REB,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,STL,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,STL,0.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,STL,0.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Norman Powell,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-OG Anunoby,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Mikal Bridges,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Karl-Anthony Towns,3PM,2.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Andrew Wiggins,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Simone Fontecchio,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Simone Fontecchio,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jordan Clarkson,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Jordan Clarkson,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Nikola Jovic,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Josh Hart,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Davion Mitchell,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Pelle Larsson,3PM,1.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,3PM,0.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Kel'el Ware,3PM,0.5,Miami Heat @ New York Knicks,New York Knicks,Miami Heat
-Cade Cunningham,AST,9.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,AST,9.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,AST,7.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,AST,7.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,AST,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,AST,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,AST,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,AST,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,PTS,30.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,PTS,30.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,PTS,28.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,PTS,28.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,PTS,19.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,PTS,19.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,PTS,15.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,PTS,15.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,PTS,15.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,PTS,15.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-VJ Edgecombe,PTS,14.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-VJ Edgecombe,PTS,14.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Duncan Robinson,PTS,12.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Duncan Robinson,PTS,12.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Andre Drummond,PTS,10.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Andre Drummond,PTS,10.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Trendon Watford,PTS,9.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Trendon Watford,PTS,9.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,REB,13.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Jalen Duren,REB,13.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Andre Drummond,REB,12.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Andre Drummond,REB,12.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,REB,5.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,REB,5.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,REB,5.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,REB,5.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,REB,4.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,REB,4.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,REB,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,REB,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,STL,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,STL,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,STL,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,STL,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,3PM,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Tyrese Maxey,3PM,3.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Duncan Robinson,3PM,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Duncan Robinson,3PM,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,3PM,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Quentin Grimes,3PM,2.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,3PM,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Cade Cunningham,3PM,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,3PM,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-Kelly Oubre Jr,3PM,1.5,Philadelphia 76ers @ Detroit Pistons,Detroit Pistons,Philadelphia 76ers
-LaMelo Ball,AST,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,AST,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,AST,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,AST,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,AST,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,AST,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,AST,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,AST,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,AST,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,AST,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,AST,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,AST,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,AST,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,AST,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,AST,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,AST,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,PTS,32.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,PTS,32.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,PTS,21.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,PTS,21.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,PTS,20.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,PTS,20.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,PTS,15.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,PTS,15.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,PTS,15.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,PTS,15.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,PTS,14.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,PTS,14.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,PTS,13.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,PTS,13.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,PTS,12.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,PTS,12.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,PTS,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,PTS,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,PTS,7.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,PTS,7.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,REB,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,REB,10.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,REB,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Moussa Diabate,REB,9.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,REB,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,REB,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,REB,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,REB,6.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,REB,5.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,REB,4.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,REB,4.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,REB,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,REB,3.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,REB,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,REB,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,REB,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,STL,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,STL,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,STL,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,STL,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,STL,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-LaMelo Ball,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kon Knueppel,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-A.J. Green,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Miles Bridges,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Gary Trent Jr,3PM,2.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Ryan Rollins,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Myles Turner,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Tre Mann,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Collin Sexton,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Kyle Kuzma,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Bobby Portis,3PM,1.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Cole Anthony,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Sion James,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Giannis Antetokounmpo,3PM,0.5,Charlotte Hornets @ Milwaukee Bucks,Milwaukee Bucks,Charlotte Hornets
-Jrue Holiday,AST,7.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,AST,7.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,AST,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,AST,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,AST,5.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,AST,5.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,AST,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,AST,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,AST,3.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,AST,3.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,AST,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,AST,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,AST,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,AST,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,AST,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,PTS,25.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,PTS,25.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,PTS,23.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,PTS,23.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,PTS,22.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,PTS,22.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,PTS,19.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,PTS,19.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,PTS,17.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,PTS,17.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,PTS,16.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,PTS,16.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,PTS,16.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,PTS,16.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,PTS,13.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,PTS,13.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,PTS,12.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,PTS,12.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,PTS,10.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,PTS,10.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,PTS,10.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,PTS,10.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Donovan Clingan,PTS,8.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Donovan Clingan,PTS,8.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Josh Okogie,PTS,7.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Josh Okogie,PTS,7.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kris Murray,PTS,5.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kris Murray,PTS,5.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,REB,9.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,REB,9.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Donovan Clingan,REB,8.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Donovan Clingan,REB,8.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,REB,6.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,REB,4.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kris Murray,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kris Murray,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Josh Okogie,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Josh Okogie,REB,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,STL,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,STL,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jrue Holiday,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Deni Avdija,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Toumani Camara,3PM,2.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Shaedon Sharpe,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jerami Grant,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Reed Sheppard,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Jabari Smith Jr,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Kevin Durant,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Tari Eason,3PM,1.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,3PM,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Alperen Sengun,3PM,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,3PM,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Amen Thompson,3PM,0.5,Portland Trail Blazers @ Houston Rockets,Houston Rockets,Portland Trail Blazers
-Luka Doncic,AST,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,AST,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,AST,6.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,AST,6.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,AST,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,AST,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,AST,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,PTS,34.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,PTS,34.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,PTS,24.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,PTS,24.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,PTS,21.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,PTS,21.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,PTS,15.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,PTS,15.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,PTS,14.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,PTS,14.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,PTS,14.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,PTS,14.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,PTS,13.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,PTS,13.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,PTS,12.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,PTS,12.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,PTS,12.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,PTS,12.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,PTS,9.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,PTS,9.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,PTS,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,PTS,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,PTS,7.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,PTS,7.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,REB,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,REB,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,REB,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,REB,8.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,REB,6.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Derik Queen,REB,6.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,REB,5.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,REB,5.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,REB,4.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,REB,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,REB,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,REB,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,STL,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,STL,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,STL,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,STL,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Deandre Ayton,STL,0.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,3PM,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Luka Doncic,3PM,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,3PM,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Austin Reaves,3PM,3.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,3PM,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Trey Murphy III,3PM,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,3PM,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Saddiq Bey,3PM,2.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Herb Jones,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Rui Hachimura,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jose Alvarado,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Marcus Smart,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jeremiah Fears,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Jake LaRavia,3PM,1.5,Los Angeles Lakers @ New Orleans Pelicans,New Orleans Pelicans,Los Angeles Lakers
-Russell Westbrook,AST,6.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,AST,6.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,AST,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,AST,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,AST,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Mike Conley,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Mike Conley,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,AST,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,AST,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,AST,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,AST,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,AST,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,PTS,29.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,PTS,29.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,PTS,22.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,PTS,22.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,PTS,21.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,PTS,21.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,PTS,19.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,PTS,19.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,PTS,15.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,PTS,15.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,PTS,15.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,PTS,15.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,PTS,14.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,PTS,14.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,PTS,13.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,PTS,13.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Malik Monk,PTS,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Malik Monk,PTS,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,PTS,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,PTS,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Rudy Gobert,PTS,11.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Rudy Gobert,PTS,11.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,PTS,9.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,PTS,9.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Precious Achiuwa,PTS,6.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Precious Achiuwa,PTS,6.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,REB,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,REB,12.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Rudy Gobert,REB,11.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Rudy Gobert,REB,11.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,REB,7.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,REB,7.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,REB,5.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,REB,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,REB,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Precious Achiuwa,REB,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Precious Achiuwa,REB,4.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,REB,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,REB,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,REB,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,STL,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,STL,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,STL,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,STL,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Domantas Sabonis,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,STL,0.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,3PM,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Anthony Edwards,3PM,3.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,3PM,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Donte DiVincenzo,3PM,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,3PM,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Zach LaVine,3PM,2.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Russell Westbrook,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Julius Randle,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Naz Reid,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Malik Monk,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Malik Monk,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Jaden McDaniels,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Dennis Schroder,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-DeMar DeRozan,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Mike Conley,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-Mike Conley,3PM,1.5,Sacramento Kings @ Minnesota Timberwolves,Minnesota Timberwolves,Sacramento Kings
-James Harden,AST,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,AST,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brandon Williams,AST,4.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brandon Williams,AST,4.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,AST,3.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,AST,3.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,AST,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,PTS,24.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,PTS,24.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,PTS,20.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,PTS,20.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,PTS,17.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,PTS,17.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,PTS,16.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,PTS,16.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,PTS,14.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,PTS,14.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,PTS,14.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,PTS,14.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brandon Williams,PTS,13.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brandon Williams,PTS,13.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,PTS,11.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,PTS,11.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,PTS,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,PTS,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Daniel Gafford,PTS,8.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Daniel Gafford,PTS,8.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brook Lopez,PTS,7.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brook Lopez,PTS,7.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,PTS,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,PTS,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Dereck Lively II,PTS,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Dereck Lively II,PTS,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,REB,11.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,REB,11.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,REB,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,REB,9.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,REB,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,REB,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,REB,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,REB,6.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Dereck Lively II,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Dereck Lively II,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Daniel Gafford,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Daniel Gafford,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,REB,5.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,REB,3.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,REB,3.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,REB,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,REB,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,REB,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Kris Dunn,REB,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Anthony Davis,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,STL,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,STL,0.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Ivica Zubac,STL,0.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,3PM,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-James Harden,3PM,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,3PM,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Max Christie,3PM,2.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-P.J. Washington,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Cooper Flagg,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brook Lopez,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Brook Lopez,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-John Collins,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Derrick Jones,3PM,1.5,Los Angeles Clippers @ Dallas Mavericks,Dallas Mavericks,Los Angeles Clippers
-Stephon Castle,AST,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,AST,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,AST,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,AST,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,AST,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,AST,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,AST,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,AST,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,AST,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,PTS,27.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,PTS,27.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,PTS,26.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,PTS,26.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,PTS,19.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,PTS,19.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,PTS,19.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,PTS,19.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,PTS,16.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,PTS,16.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,PTS,13.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,PTS,13.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,PTS,12.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,PTS,12.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,PTS,10.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,PTS,10.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,PTS,10.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,PTS,10.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,PTS,9.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,PTS,9.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,PTS,9.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,PTS,9.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,PTS,8.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,PTS,8.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,PTS,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,PTS,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Luke Kornet,PTS,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Luke Kornet,PTS,7.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,PTS,6.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,PTS,6.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Buddy Hield,PTS,6.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Buddy Hield,PTS,6.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,REB,12.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,REB,12.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Luke Kornet,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Luke Kornet,REB,5.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,REB,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,REB,3.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,REB,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,REB,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,STL,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,3PM,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephen Curry,3PM,4.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,3PM,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Devin Vassell,3PM,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,3PM,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Moses Moody,3PM,2.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Victor Wembanyama,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Harrison Barnes,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-De'Aaron Fox,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Julian Champagnie,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Brandin Podziemski,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Draymond Green,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Al Horford,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Buddy Hield,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Buddy Hield,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Will Richard,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Stephon Castle,3PM,1.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,3PM,0.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Jimmy Butler,3PM,0.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,3PM,0.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
-Keldon Johnson,3PM,0.5,Golden State Warriors @ San Antonio Spurs,San Antonio Spurs,Golden State Warriors
+PLAYER,MARKET,LINE,ODDS,IMPLIED_PROB,HOME_TEAM,AWAY_TEAM,GAME
+Desmond Bane,AST,5.5,-119,0.54337899543379,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Franz Wagner,AST,5.5,106,0.4854368932038835,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Egor Demin,AST,4.5,-120,0.5454545454545454,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jalen Suggs,AST,4.5,119,0.45662100456621,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Terance Mann,AST,3.5,114,0.4672897196261682,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Nicolas Claxton,AST,3.5,125,0.4444444444444444,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Anthony Black,AST,2.5,-151,0.601593625498008,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Michael Porter Jr,AST,2.5,141,0.4149377593360996,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Wendell Carter Jr,AST,1.5,-144,0.5901639344262295,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Franz Wagner,PTS,25.5,-109,0.5215311004784688,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Michael Porter Jr,PTS,21.5,-117,0.5391705069124424,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Desmond Bane,PTS,19.5,-113,0.5305164319248826,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jalen Suggs,PTS,14.5,-107,0.5169082125603864,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Nicolas Claxton,PTS,13.5,-123,0.5515695067264574,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Wendell Carter Jr,PTS,13.5,-103,0.5073891625615764,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Tristan da Silva,PTS,11.5,-117,0.5391705069124424,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Noah Clowney,PTS,11.5,-107,0.5169082125603864,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Anthony Black,PTS,10.5,-125,0.5555555555555556,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Terance Mann,PTS,9.5,-108,0.5192307692307693,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Ziaire Williams,PTS,8.5,-121,0.5475113122171946,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Egor Demin,PTS,8.5,-107,0.5169082125603864,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Tyrese Martin,PTS,7.5,-108,0.5192307692307693,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Goga Bitadze,PTS,6.5,-103,0.5073891625615764,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jonathan Isaac,PTS,5.5,-125,0.5555555555555556,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Wendell Carter Jr,REB,8.5,-131,0.5670995670995671,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Nicolas Claxton,REB,7.5,100,0.5,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Franz Wagner,REB,6.5,104,0.49019607843137253,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Michael Porter Jr,REB,5.5,-147,0.5951417004048583,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Goga Bitadze,REB,5.5,-126,0.5575221238938053,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Desmond Bane,REB,4.5,-158,0.6124031007751938,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jonathan Isaac,REB,4.5,-126,0.5575221238938053,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Noah Clowney,REB,4.5,-113,0.5305164319248826,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Tristan da Silva,REB,4.5,110,0.47619047619047616,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jalen Suggs,REB,3.5,-147,0.5951417004048583,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Egor Demin,REB,3.5,-123,0.5515695067264574,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Anthony Black,REB,3.5,-103,0.5073891625615764,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Terance Mann,REB,3.5,127,0.44052863436123346,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jalen Suggs,STL,1.5,106,0.4854368932038835,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Franz Wagner,STL,1.5,154,0.3937007874015748,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Nicolas Claxton,STL,0.5,-208,0.6753246753246753,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Desmond Bane,STL,0.5,-196,0.6621621621621622,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Michael Porter Jr,STL,0.5,-156,0.609375,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Michael Porter Jr,3PM,3.5,133,0.4291845493562232,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Desmond Bane,3PM,2.5,122,0.45045045045045046,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jalen Suggs,3PM,2.5,138,0.42016806722689076,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Noah Clowney,3PM,1.5,-172,0.6323529411764706,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Tristan da Silva,3PM,1.5,-142,0.5867768595041323,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Egor Demin,3PM,1.5,-135,0.574468085106383,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Franz Wagner,3PM,1.5,-128,0.5614035087719298,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Ziaire Williams,3PM,1.5,-107,0.5169082125603864,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Tyrese Martin,3PM,1.5,129,0.4366812227074236,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Anthony Black,3PM,1.5,167,0.37453183520599254,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Terance Mann,3PM,1.5,170,0.37037037037037035,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Wendell Carter Jr,3PM,0.5,-222,0.6894409937888198,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Jonathan Isaac,3PM,0.5,-123,0.5515695067264574,Orlando Magic,Brooklyn Nets,Brooklyn Nets @ Orlando Magic
+Davion Mitchell,AST,7.5,-106,0.5145631067961165,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Josh Hart,AST,4.5,-153,0.6047430830039525,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mikal Bridges,AST,4.5,-144,0.5901639344262295,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Jaime Jaquez Jr,AST,4.5,-120,0.5454545454545454,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Karl-Anthony Towns,AST,3.5,108,0.4807692307692308,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Nikola Jovic,AST,3.5,129,0.4366812227074236,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Pelle Larsson,AST,2.5,-158,0.6124031007751938,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Andrew Wiggins,AST,2.5,-129,0.5633187772925764,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+OG Anunoby,AST,2.5,-107,0.5169082125603864,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Norman Powell,AST,2.5,121,0.45248868778280543,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Karl-Anthony Towns,PTS,25.5,-117,0.5391705069124424,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Norman Powell,PTS,23.5,-108,0.5192307692307693,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+OG Anunoby,PTS,19.5,-120,0.5454545454545454,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Andrew Wiggins,PTS,18.5,-102,0.504950495049505,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mikal Bridges,PTS,18.5,-102,0.504950495049505,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Jaime Jaquez Jr,PTS,15.5,-111,0.5260663507109005,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Kel'el Ware,PTS,12.5,-108,0.5192307692307693,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Miles McBride,PTS,12.5,-101,0.5024875621890548,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Jordan Clarkson,PTS,11.5,-117,0.5391705069124424,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Nikola Jovic,PTS,10.5,-126,0.5575221238938053,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Josh Hart,PTS,10.5,-107,0.5169082125603864,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Davion Mitchell,PTS,9.5,-126,0.5575221238938053,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Pelle Larsson,PTS,9.5,-101,0.5024875621890548,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Landry Shamet,PTS,8.5,-123,0.5515695067264574,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Simone Fontecchio,PTS,8.5,-106,0.5145631067961165,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mitchell Robinson,PTS,5.5,-123,0.5515695067264574,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Karl-Anthony Towns,REB,11.5,-129,0.5633187772925764,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Kel'el Ware,REB,9.5,-142,0.5867768595041323,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mitchell Robinson,REB,7.5,-107,0.5169082125603864,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Josh Hart,REB,7.5,108,0.4807692307692308,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Jaime Jaquez Jr,REB,6.5,-107,0.5169082125603864,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Andrew Wiggins,REB,5.5,104,0.49019607843137253,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+OG Anunoby,REB,4.5,-147,0.5951417004048583,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Nikola Jovic,REB,4.5,-142,0.5867768595041323,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mikal Bridges,REB,4.5,116,0.46296296296296297,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Norman Powell,REB,3.5,-103,0.5073891625615764,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Pelle Larsson,REB,3.5,108,0.4807692307692308,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Miles McBride,REB,2.5,-147,0.5951417004048583,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Simone Fontecchio,REB,2.5,-147,0.5951417004048583,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Davion Mitchell,REB,2.5,-123,0.5515695067264574,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+OG Anunoby,STL,1.5,-125,0.5555555555555556,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mikal Bridges,STL,1.5,127,0.44052863436123346,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Davion Mitchell,STL,1.5,131,0.4329004329004329,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Andrew Wiggins,STL,1.5,175,0.36363636363636365,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Karl-Anthony Towns,STL,0.5,-212,0.6794871794871795,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Norman Powell,3PM,2.5,-158,0.6124031007751938,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+OG Anunoby,3PM,2.5,-138,0.5798319327731093,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Mikal Bridges,3PM,2.5,-104,0.5098039215686274,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Karl-Anthony Towns,3PM,2.5,136,0.423728813559322,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Andrew Wiggins,3PM,1.5,-185,0.6491228070175439,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Landry Shamet,3PM,1.5,-178,0.6402877697841727,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Simone Fontecchio,3PM,1.5,-142,0.5867768595041323,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Jordan Clarkson,3PM,1.5,-123,0.5515695067264574,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Nikola Jovic,3PM,1.5,-117,0.5391705069124424,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Davion Mitchell,3PM,1.5,150,0.4,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Josh Hart,3PM,1.5,154,0.3937007874015748,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Pelle Larsson,3PM,1.5,169,0.37174721189591076,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Kel'el Ware,3PM,0.5,-156,0.609375,New York Knicks,Miami Heat,Miami Heat @ New York Knicks
+Cade Cunningham,AST,9.5,-113,0.5305164319248826,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Tyrese Maxey,AST,7.5,108,0.4807692307692308,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Quentin Grimes,AST,3.5,-147,0.5951417004048583,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Trendon Watford,AST,3.5,-105,0.5121951219512195,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+VJ Edgecombe,AST,3.5,-105,0.5121951219512195,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Jalen Duren,AST,2.5,-108,0.5192307692307693,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Kelly Oubre Jr,AST,1.5,114,0.4672897196261682,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Tyrese Maxey,PTS,31.5,-104,0.5098039215686274,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Cade Cunningham,PTS,28.5,-114,0.5327102803738317,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Jalen Duren,PTS,20.5,-102,0.504950495049505,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Kelly Oubre Jr,PTS,15.5,-112,0.5283018867924528,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Quentin Grimes,PTS,15.5,-111,0.5260663507109005,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+VJ Edgecombe,PTS,13.5,-123,0.5515695067264574,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Duncan Robinson,PTS,13.5,-116,0.5370370370370371,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Caris LeVert,PTS,13.5,-114,0.5327102803738317,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Isaiah Stewart II,PTS,11.5,-102,0.504950495049505,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Andre Drummond,PTS,10.5,-102,0.504950495049505,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Trendon Watford,PTS,9.5,-117,0.5391705069124424,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Javonte Green,PTS,9.5,-103,0.5073891625615764,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Jalen Duren,REB,13.5,-103,0.5073891625615764,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Andre Drummond,REB,12.5,-101,0.5024875621890548,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Cade Cunningham,REB,5.5,-123,0.5515695067264574,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Kelly Oubre Jr,REB,5.5,-112,0.5283018867924528,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Javonte Green,REB,5.5,118,0.45871559633027525,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Trendon Watford,REB,4.5,-120,0.5454545454545454,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+VJ Edgecombe,REB,4.5,100,0.5,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Tyrese Maxey,REB,3.5,-158,0.6124031007751938,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Quentin Grimes,REB,3.5,-121,0.5475113122171946,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Kelly Oubre Jr,STL,1.5,150,0.4,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Tyrese Maxey,STL,1.5,164,0.3787878787878788,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Tyrese Maxey,3PM,3.5,-104,0.5098039215686274,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Duncan Robinson,3PM,2.5,-112,0.5283018867924528,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Quentin Grimes,3PM,2.5,-101,0.5024875621890548,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Cade Cunningham,3PM,1.5,-181,0.6441281138790036,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Caris LeVert,3PM,1.5,-136,0.576271186440678,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Kelly Oubre Jr,3PM,1.5,-129,0.5633187772925764,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Isaiah Stewart II,3PM,1.5,119,0.45662100456621,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+Trendon Watford,3PM,0.5,100,0.5,Detroit Pistons,Philadelphia 76ers,Philadelphia 76ers @ Detroit Pistons
+LaMelo Ball,AST,6.5,-140,0.5833333333333334,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Giannis Antetokounmpo,AST,6.5,-135,0.574468085106383,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Ryan Rollins,AST,5.5,100,0.5,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Collin Sexton,AST,3.5,-147,0.5951417004048583,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Cole Anthony,AST,3.5,-117,0.5391705069124424,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Miles Bridges,AST,3.5,-117,0.5391705069124424,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Tre Mann,AST,2.5,-147,0.5951417004048583,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kon Knueppel,AST,2.5,-135,0.574468085106383,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kyle Kuzma,AST,1.5,-166,0.6240601503759399,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+A.J. Green,AST,1.5,-163,0.6197718631178707,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Myles Turner,AST,1.5,-136,0.576271186440678,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Gary Trent Jr,AST,1.5,-105,0.5121951219512195,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Bobby Portis,AST,1.5,-102,0.504950495049505,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Sion James,AST,0.5,-217,0.6845425867507886,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Moussa Diabate,AST,0.5,-196,0.6621621621621622,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Giannis Antetokounmpo,PTS,33.5,-111,0.5260663507109005,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+LaMelo Ball,PTS,20.5,-117,0.5391705069124424,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Miles Bridges,PTS,20.5,-116,0.5370370370370371,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Collin Sexton,PTS,16.5,-101,0.5024875621890548,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kon Knueppel,PTS,15.5,-104,0.5098039215686274,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Ryan Rollins,PTS,14.5,-126,0.5575221238938053,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Myles Turner,PTS,13.5,-120,0.5454545454545454,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kyle Kuzma,PTS,12.5,-123,0.5515695067264574,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Tre Mann,PTS,10.5,-112,0.5283018867924528,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Bobby Portis,PTS,10.5,-103,0.5073891625615764,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Moussa Diabate,PTS,9.5,-128,0.5614035087719298,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Gary Trent Jr,PTS,9.5,-123,0.5515695067264574,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Cole Anthony,PTS,9.5,-106,0.5145631067961165,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+A.J. Green,PTS,8.5,-135,0.574468085106383,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Sion James,PTS,6.5,-131,0.5670995670995671,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Giannis Antetokounmpo,REB,11.5,104,0.49019607843137253,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Moussa Diabate,REB,9.5,-117,0.5391705069124424,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Miles Bridges,REB,6.5,-113,0.5305164319248826,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Bobby Portis,REB,6.5,112,0.4716981132075472,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kon Knueppel,REB,5.5,-117,0.5391705069124424,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Myles Turner,REB,5.5,-116,0.5370370370370371,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+LaMelo Ball,REB,5.5,112,0.4716981132075472,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kyle Kuzma,REB,4.5,-123,0.5515695067264574,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Ryan Rollins,REB,3.5,-107,0.5169082125603864,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Tre Mann,REB,2.5,-142,0.5867768595041323,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Cole Anthony,REB,2.5,-131,0.5670995670995671,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Sion James,REB,2.5,-126,0.5575221238938053,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Collin Sexton,REB,2.5,108,0.4807692307692308,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+A.J. Green,REB,2.5,110,0.47619047619047616,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Gary Trent Jr,REB,1.5,-175,0.6363636363636364,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Ryan Rollins,STL,1.5,-128,0.5614035087719298,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+LaMelo Ball,STL,1.5,131,0.4329004329004329,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Gary Trent Jr,STL,1.5,148,0.4032258064516129,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Myles Turner,STL,1.5,173,0.3663003663003663,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Giannis Antetokounmpo,STL,0.5,-208,0.6753246753246753,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Miles Bridges,STL,0.5,-120,0.5454545454545454,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+LaMelo Ball,3PM,2.5,-161,0.6168582375478927,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kon Knueppel,3PM,2.5,-125,0.5555555555555556,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+A.J. Green,3PM,2.5,-107,0.5169082125603864,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Miles Bridges,3PM,2.5,108,0.4807692307692308,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Gary Trent Jr,3PM,2.5,125,0.4444444444444444,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Ryan Rollins,3PM,1.5,-161,0.6168582375478927,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Myles Turner,3PM,1.5,-149,0.5983935742971888,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Tre Mann,3PM,1.5,-112,0.5283018867924528,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Collin Sexton,3PM,1.5,133,0.4291845493562232,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Kyle Kuzma,3PM,1.5,137,0.4219409282700422,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Bobby Portis,3PM,1.5,168,0.373134328358209,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Sion James,3PM,0.5,-200,0.6666666666666666,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Cole Anthony,3PM,0.5,-200,0.6666666666666666,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Giannis Antetokounmpo,3PM,0.5,125,0.4444444444444444,Milwaukee Bucks,Charlotte Hornets,Charlotte Hornets @ Milwaukee Bucks
+Jrue Holiday,AST,7.5,110,0.47619047619047616,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Alperen Sengun,AST,6.5,-114,0.5327102803738317,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Amen Thompson,AST,5.5,-144,0.5901639344262295,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Deni Avdija,AST,4.5,-131,0.5670995670995671,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kevin Durant,AST,3.5,-140,0.5833333333333334,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Reed Sheppard,AST,2.5,-163,0.6197718631178707,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Toumani Camara,AST,2.5,-120,0.5454545454545454,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jerami Grant,AST,1.5,-192,0.6575342465753424,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Shaedon Sharpe,AST,1.5,-153,0.6047430830039525,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jabari Smith Jr,AST,1.5,-101,0.5024875621890548,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kevin Durant,PTS,25.5,-116,0.5370370370370371,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Deni Avdija,PTS,23.5,-103,0.5073891625615764,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Alperen Sengun,PTS,21.5,-123,0.5515695067264574,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Shaedon Sharpe,PTS,19.5,-113,0.5305164319248826,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Amen Thompson,PTS,18.5,-113,0.5305164319248826,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jerami Grant,PTS,16.5,-114,0.5327102803738317,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jrue Holiday,PTS,16.5,-109,0.5215311004784688,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jabari Smith Jr,PTS,13.5,-119,0.54337899543379,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Toumani Camara,PTS,12.5,-113,0.5305164319248826,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Tari Eason,PTS,10.5,-113,0.5305164319248826,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Reed Sheppard,PTS,10.5,-103,0.5073891625615764,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Donovan Clingan,PTS,8.5,-113,0.5305164319248826,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Josh Okogie,PTS,7.5,-114,0.5327102803738317,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kris Murray,PTS,5.5,100,0.5,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Alperen Sengun,REB,9.5,-131,0.5670995670995671,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Donovan Clingan,REB,8.5,-107,0.5169082125603864,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Deni Avdija,REB,6.5,-119,0.54337899543379,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Amen Thompson,REB,6.5,-108,0.5192307692307693,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jabari Smith Jr,REB,6.5,102,0.49504950495049505,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Toumani Camara,REB,5.5,120,0.45454545454545453,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Tari Eason,REB,4.5,-140,0.5833333333333334,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kevin Durant,REB,4.5,-138,0.5798319327731093,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jrue Holiday,REB,4.5,-121,0.5475113122171946,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Shaedon Sharpe,REB,4.5,-105,0.5121951219512195,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kris Murray,REB,2.5,-161,0.6168582375478927,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jerami Grant,REB,2.5,-142,0.5867768595041323,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Josh Okogie,REB,2.5,-136,0.576271186440678,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Amen Thompson,STL,1.5,-144,0.5901639344262295,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jrue Holiday,STL,1.5,118,0.45871559633027525,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Toumani Camara,STL,1.5,125,0.4444444444444444,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Alperen Sengun,STL,1.5,150,0.4,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kevin Durant,STL,0.5,-238,0.7041420118343196,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Shaedon Sharpe,STL,0.5,-217,0.6845425867507886,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Deni Avdija,STL,0.5,-185,0.6491228070175439,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jerami Grant,STL,0.5,-181,0.6441281138790036,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jrue Holiday,3PM,2.5,106,0.4854368932038835,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Deni Avdija,3PM,2.5,124,0.44642857142857145,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Toumani Camara,3PM,2.5,137,0.4219409282700422,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Shaedon Sharpe,3PM,1.5,-185,0.6491228070175439,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Reed Sheppard,3PM,1.5,-181,0.6441281138790036,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jerami Grant,3PM,1.5,-169,0.6282527881040892,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Jabari Smith Jr,3PM,1.5,-149,0.5983935742971888,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Kevin Durant,3PM,1.5,-138,0.5798319327731093,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Tari Eason,3PM,1.5,134,0.42735042735042733,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Alperen Sengun,3PM,0.5,-151,0.601593625498008,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Amen Thompson,3PM,0.5,102,0.49504950495049505,Houston Rockets,Portland Trail Blazers,Portland Trail Blazers @ Houston Rockets
+Luka Doncic,AST,8.5,-113,0.5305164319248826,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Austin Reaves,AST,6.5,102,0.49504950495049505,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Trey Murphy III,AST,4.5,123,0.4484304932735426,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jose Alvarado,AST,3.5,-144,0.5901639344262295,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jeremiah Fears,AST,3.5,-128,0.5614035087719298,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Marcus Smart,AST,3.5,112,0.4716981132075472,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Herb Jones,AST,3.5,131,0.4329004329004329,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Derik Queen,AST,2.5,-144,0.5901639344262295,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Luka Doncic,PTS,33.5,-113,0.5305164319248826,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Austin Reaves,PTS,24.5,-114,0.5327102803738317,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Trey Murphy III,PTS,21.5,-106,0.5145631067961165,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jeremiah Fears,PTS,15.5,-109,0.5215311004784688,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Deandre Ayton,PTS,14.5,-120,0.5454545454545454,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Saddiq Bey,PTS,14.5,-112,0.5283018867924528,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Derik Queen,PTS,13.5,-113,0.5305164319248826,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Rui Hachimura,PTS,12.5,-116,0.5370370370370371,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Herb Jones,PTS,11.5,-121,0.5475113122171946,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jose Alvarado,PTS,8.5,-114,0.5327102803738317,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jake LaRavia,PTS,8.5,-101,0.5024875621890548,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Deandre Ayton,REB,8.5,-133,0.5708154506437768,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Luka Doncic,REB,8.5,-109,0.5215311004784688,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Derik Queen,REB,6.5,-108,0.5192307692307693,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Trey Murphy III,REB,5.5,-107,0.5169082125603864,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Saddiq Bey,REB,4.5,-140,0.5833333333333334,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Rui Hachimura,REB,4.5,-123,0.5515695067264574,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Austin Reaves,REB,4.5,117,0.4608294930875576,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jake LaRavia,REB,3.5,-116,0.5370370370370371,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Herb Jones,REB,3.5,-101,0.5024875621890548,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jeremiah Fears,REB,3.5,129,0.4366812227074236,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Marcus Smart,REB,2.5,-107,0.5169082125603864,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Marcus Smart,STL,1.5,-131,0.5670995670995671,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Herb Jones,STL,1.5,-105,0.5121951219512195,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Trey Murphy III,STL,1.5,158,0.3875968992248062,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Austin Reaves,STL,0.5,-227,0.6941896024464832,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Deandre Ayton,STL,0.5,-131,0.5670995670995671,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Luka Doncic,3PM,3.5,-147,0.5951417004048583,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Austin Reaves,3PM,3.5,117,0.4608294930875576,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Trey Murphy III,3PM,2.5,-166,0.6240601503759399,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Saddiq Bey,3PM,1.5,-192,0.6575342465753424,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Herb Jones,3PM,1.5,-131,0.5670995670995671,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Rui Hachimura,3PM,1.5,-109,0.5215311004784688,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jose Alvarado,3PM,1.5,-108,0.5192307692307693,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Marcus Smart,3PM,1.5,-103,0.5073891625615764,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jeremiah Fears,3PM,1.5,139,0.41841004184100417,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Jake LaRavia,3PM,1.5,159,0.3861003861003861,New Orleans Pelicans,Los Angeles Lakers,Los Angeles Lakers @ New Orleans Pelicans
+Russell Westbrook,AST,6.5,112,0.4716981132075472,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Julius Randle,AST,5.5,-138,0.5798319327731093,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Anthony Edwards,AST,4.5,-126,0.5575221238938053,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Dennis Schroder,AST,4.5,-116,0.5370370370370371,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Domantas Sabonis,AST,4.5,112,0.4716981132075472,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Donte DiVincenzo,AST,4.5,120,0.45454545454545453,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Mike Conley,AST,3.5,-102,0.504950495049505,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Zach LaVine,AST,2.5,-175,0.6363636363636364,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+DeMar DeRozan,AST,2.5,-175,0.6363636363636364,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Jaden McDaniels,AST,2.5,125,0.4444444444444444,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Anthony Edwards,PTS,29.5,-113,0.5305164319248826,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Julius Randle,PTS,22.5,-121,0.5475113122171946,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Zach LaVine,PTS,21.5,-120,0.5454545454545454,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+DeMar DeRozan,PTS,19.5,-109,0.5215311004784688,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Domantas Sabonis,PTS,16.5,-101,0.5024875621890548,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Jaden McDaniels,PTS,15.5,-117,0.5391705069124424,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Russell Westbrook,PTS,14.5,-112,0.5283018867924528,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Donte DiVincenzo,PTS,13.5,-120,0.5454545454545454,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Naz Reid,PTS,12.5,-108,0.5192307692307693,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Malik Monk,PTS,12.5,-104,0.5098039215686274,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Rudy Gobert,PTS,11.5,-129,0.5633187772925764,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Dennis Schroder,PTS,9.5,-113,0.5305164319248826,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Precious Achiuwa,PTS,6.5,-104,0.5098039215686274,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Domantas Sabonis,REB,12.5,-109,0.5215311004784688,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Rudy Gobert,REB,10.5,-138,0.5798319327731093,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Julius Randle,REB,7.5,-107,0.5169082125603864,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Russell Westbrook,REB,6.5,112,0.4716981132075472,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Naz Reid,REB,5.5,110,0.47619047619047616,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Anthony Edwards,REB,5.5,116,0.46296296296296297,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Jaden McDaniels,REB,4.5,-158,0.6124031007751938,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Precious Achiuwa,REB,4.5,-142,0.5867768595041323,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Donte DiVincenzo,REB,3.5,-163,0.6197718631178707,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Zach LaVine,REB,3.5,106,0.4854368932038835,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+DeMar DeRozan,REB,3.5,122,0.45045045045045046,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Dennis Schroder,REB,2.5,-156,0.609375,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Julius Randle,STL,1.5,149,0.40160642570281124,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Anthony Edwards,STL,1.5,177,0.36101083032490977,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Jaden McDaniels,STL,0.5,-243,0.7084548104956269,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Domantas Sabonis,STL,0.5,-192,0.6575342465753424,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Dennis Schroder,STL,0.5,-166,0.6240601503759399,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+DeMar DeRozan,STL,0.5,-153,0.6047430830039525,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Anthony Edwards,3PM,3.5,-138,0.5798319327731093,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Donte DiVincenzo,3PM,2.5,-158,0.6124031007751938,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Zach LaVine,3PM,2.5,-147,0.5951417004048583,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Russell Westbrook,3PM,1.5,-158,0.6124031007751938,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Julius Randle,3PM,1.5,-153,0.6047430830039525,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Naz Reid,3PM,1.5,-153,0.6047430830039525,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Malik Monk,3PM,1.5,-120,0.5454545454545454,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Jaden McDaniels,3PM,1.5,102,0.49504950495049505,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Dennis Schroder,3PM,1.5,154,0.3937007874015748,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+DeMar DeRozan,3PM,1.5,156,0.390625,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+Mike Conley,3PM,1.5,179,0.35842293906810035,Minnesota Timberwolves,Sacramento Kings,Sacramento Kings @ Minnesota Timberwolves
+James Harden,AST,9.5,102,0.49504950495049505,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Brandon Williams,AST,4.5,-104,0.5098039215686274,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Cooper Flagg,AST,3.5,-144,0.5901639344262295,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Anthony Davis,AST,2.5,-140,0.5833333333333334,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Ivica Zubac,AST,2.5,104,0.49019607843137253,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Kris Dunn,AST,2.5,104,0.49019607843137253,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+P.J. Washington,AST,2.5,120,0.45454545454545453,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Max Christie,AST,2.5,131,0.4329004329004329,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+James Harden,PTS,23.5,-114,0.5327102803738317,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Anthony Davis,PTS,20.5,-120,0.5454545454545454,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Ivica Zubac,PTS,17.5,-105,0.5121951219512195,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Cooper Flagg,PTS,16.5,-105,0.5121951219512195,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+P.J. Washington,PTS,14.5,-123,0.5515695067264574,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+John Collins,PTS,14.5,-119,0.54337899543379,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Brandon Williams,PTS,13.5,-120,0.5454545454545454,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Max Christie,PTS,11.5,-123,0.5515695067264574,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Derrick Jones,PTS,9.5,-106,0.5145631067961165,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Daniel Gafford,PTS,8.5,-113,0.5305164319248826,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Brook Lopez,PTS,7.5,-106,0.5145631067961165,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Dereck Lively II,PTS,6.5,-104,0.5098039215686274,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Kris Dunn,PTS,6.5,-102,0.504950495049505,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Nicolas Batum,PTS,4.5,-135,0.574468085106383,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Ivica Zubac,REB,11.5,-108,0.5192307692307693,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Anthony Davis,REB,9.5,-103,0.5073891625615764,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+P.J. Washington,REB,6.5,-107,0.5169082125603864,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Cooper Flagg,REB,6.5,102,0.49504950495049505,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Dereck Lively II,REB,5.5,-138,0.5798319327731093,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Daniel Gafford,REB,5.5,-133,0.5708154506437768,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+John Collins,REB,5.5,-107,0.5169082125603864,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+James Harden,REB,5.5,-107,0.5169082125603864,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Max Christie,REB,3.5,104,0.49019607843137253,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Derrick Jones,REB,2.5,-161,0.6168582375478927,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Kris Dunn,REB,2.5,-156,0.609375,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Cooper Flagg,STL,1.5,110,0.47619047619047616,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Anthony Davis,STL,1.5,125,0.4444444444444444,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+James Harden,STL,1.5,163,0.38022813688212925,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+P.J. Washington,STL,1.5,163,0.38022813688212925,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Ivica Zubac,STL,0.5,123,0.4484304932735426,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+James Harden,3PM,2.5,-172,0.6323529411764706,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Max Christie,3PM,2.5,137,0.4219409282700422,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+P.J. Washington,3PM,1.5,-105,0.5121951219512195,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Cooper Flagg,3PM,1.5,112,0.4716981132075472,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Brook Lopez,3PM,1.5,131,0.4329004329004329,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Derrick Jones,3PM,1.5,140,0.4166666666666667,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+John Collins,3PM,1.5,150,0.4,Dallas Mavericks,Los Angeles Clippers,Los Angeles Clippers @ Dallas Mavericks
+Stephon Castle,AST,7.5,110,0.47619047619047616,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+De'Aaron Fox,AST,5.5,-138,0.5798319327731093,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Draymond Green,AST,5.5,100,0.5,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Jimmy Butler,AST,4.5,-153,0.6047430830039525,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephen Curry,AST,4.5,-142,0.5867768595041323,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Victor Wembanyama,AST,4.5,-116,0.5370370370370371,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Brandin Podziemski,AST,3.5,120,0.45454545454545453,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Will Richard,AST,1.5,-163,0.6197718631178707,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephen Curry,PTS,27.5,-105,0.5121951219512195,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Victor Wembanyama,PTS,26.5,-117,0.5391705069124424,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+De'Aaron Fox,PTS,19.5,-120,0.5454545454545454,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Jimmy Butler,PTS,19.5,-120,0.5454545454545454,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephon Castle,PTS,16.5,-123,0.5515695067264574,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Devin Vassell,PTS,14.5,-106,0.5145631067961165,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Moses Moody,PTS,12.5,-101,0.5024875621890548,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Brandin Podziemski,PTS,10.5,-117,0.5391705069124424,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Harrison Barnes,PTS,10.5,-101,0.5024875621890548,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Keldon Johnson,PTS,9.5,-120,0.5454545454545454,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Will Richard,PTS,8.5,-123,0.5515695067264574,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Draymond Green,PTS,7.5,-131,0.5670995670995671,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Al Horford,PTS,6.5,-126,0.5575221238938053,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Luke Kornet,PTS,6.5,-123,0.5515695067264574,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Buddy Hield,PTS,6.5,100,0.5,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Victor Wembanyama,REB,12.5,-117,0.5391705069124424,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Jimmy Butler,REB,5.5,-121,0.5475113122171946,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Draymond Green,REB,5.5,-113,0.5305164319248826,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephon Castle,REB,5.5,104,0.49019607843137253,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Luke Kornet,REB,5.5,104,0.49019607843137253,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Keldon Johnson,REB,4.5,-153,0.6047430830039525,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Brandin Podziemski,REB,4.5,-117,0.5391705069124424,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Al Horford,REB,4.5,110,0.47619047619047616,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+De'Aaron Fox,REB,4.5,123,0.4484304932735426,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephen Curry,REB,3.5,-163,0.6197718631178707,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Devin Vassell,REB,3.5,104,0.49019607843137253,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Moses Moody,REB,3.5,114,0.4672897196261682,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Harrison Barnes,REB,2.5,-163,0.6197718631178707,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Will Richard,REB,2.5,-158,0.6124031007751938,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Jimmy Butler,STL,1.5,-117,0.5391705069124424,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephon Castle,STL,1.5,102,0.49504950495049505,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Victor Wembanyama,STL,1.5,143,0.411522633744856,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephen Curry,STL,1.5,147,0.4048582995951417,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+De'Aaron Fox,STL,1.5,156,0.390625,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Devin Vassell,STL,1.5,156,0.390625,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Draymond Green,STL,1.5,164,0.3787878787878788,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephen Curry,3PM,4.5,-123,0.5515695067264574,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Devin Vassell,3PM,2.5,102,0.49504950495049505,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Moses Moody,3PM,2.5,125,0.4444444444444444,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Victor Wembanyama,3PM,2.5,141,0.4149377593360996,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Harrison Barnes,3PM,1.5,-166,0.6240601503759399,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+De'Aaron Fox,3PM,1.5,-147,0.5951417004048583,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Brandin Podziemski,3PM,1.5,-106,0.5145631067961165,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Al Horford,3PM,1.5,106,0.4854368932038835,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Buddy Hield,3PM,1.5,106,0.4854368932038835,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Draymond Green,3PM,1.5,116,0.46296296296296297,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Will Richard,3PM,1.5,142,0.4132231404958678,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Stephon Castle,3PM,1.5,159,0.3861003861003861,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Jimmy Butler,3PM,0.5,-212,0.6794871794871795,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
+Keldon Johnson,3PM,0.5,-163,0.6197718631178707,San Antonio Spurs,Golden State Warriors,Golden State Warriors @ San Antonio Spurs
