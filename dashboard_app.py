@@ -317,11 +317,7 @@ else:
         preds[col] = ""
 
 # ---------- Mode Toggle ----------
-view_mode = st.sidebar.radio(
-    "View Mode",
-    ["📊 Predictions", "🕓 Yesterday's Results", "📚 All Players History"],
-    index=0
-)
+view_mode = st.sidebar.radio("View Mode", ["📊 Predictions", "🕓 Yesterday's Results"], index=0)
 
 # ---------- Sidebar (Predictions) ----------
 if view_mode == "📊 Predictions":
@@ -641,30 +637,31 @@ if view_mode == "📊 Predictions":
 
             st.divider()
 
+else:
   # ---------- Yesterday's Results ----------
-elif view_mode == "🕓 Yesterday's Results":
-
     st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
 
-    if results.empty:
-        st.info("No results_history.csv found or it is empty.")
-        st.stop()
-
-    # Parse DATE column safely
+if results.empty:
+    st.info("No results_history.csv found or it is empty.")
+else:
+    # Create parsed datetime column
     results["DATE_STR"] = results["DATE"].astype(str).str.strip()
+
     results["DATE_TS"] = pd.to_datetime(
         results["DATE_STR"],
-        format="mixed",
+        format="mixed",        # handles mm/dd/yyyy or yyyy-mm-dd
         errors="coerce"
     )
 
+    # Get the latest *true* datetime
     latest_ts = results["DATE_TS"].max()
+
+    # Filter by parsed datetime
     df_yday = results[results["DATE_TS"] == latest_ts].copy()
 
-    if df_yday.empty:
-        st.warning(f"No results found for {latest_ts}.")
-        st.stop()
-
+if df_yday.empty:
+    st.warning(f"No results found for {latest_date}.")
+else:
     pretty_date = latest_ts.strftime("%B %d, %Y")
     st.markdown(f"#### Results for {pretty_date}")
 
@@ -821,232 +818,5 @@ try:
     st.altair_chart(chart, use_container_width=True)
 except Exception:
     pass
-
-# ---------- All Players History ----------
-
-elif view_mode == "📚 All Players History":
-    st.markdown("### 📚 All Players — Historical Performance")
-
-    # Load full master history (all props, all days)
-    master = load_csv("nba_prop_predictions_master.csv")
-    if master.empty:
-        st.info("No historical data found in nba_prop_predictions_master.csv yet.")
-        st.stop()
-
-    # --- Clean & enrich master ---
-    # Parse date
-    master["GAME_DATE"] = pd.to_datetime(master["GAME_DATE"], errors="coerce")
-    master = master.dropna(subset=["GAME_DATE"]).copy()
-
-    master["DATE"] = master["GAME_DATE"].dt.date
-    master["DOW"] = master["GAME_DATE"].dt.day_name()
-
-    # Safe numerics in case of weird strings
-    for col in ["LINE", "SEASON_VAL", "ACTUAL", "didHitOver", "EDGE_MODEL", "AIR_SCORE", "IMPLIED_PROB", "ODDS"]:
-        if col in master.columns:
-            master[col] = pd.to_numeric(master[col], errors="coerce")
-
-    # --- Sidebar filters for history mode ---
-    st.sidebar.markdown("### 📚 History Filters")
-
-    # Team filter
-    team_opts = ["All Teams"] + sorted(master["TEAM"].dropna().unique().tolist())
-    team_pick = st.sidebar.selectbox("Team", team_opts, index=0)
-
-    # Market filter
-    market_opts = ["All Markets"] + sorted(master["MARKET"].dropna().unique().tolist())
-    market_pick = st.sidebar.selectbox("Market", market_opts, index=0)
-
-    # Player search
-    player_search = st.sidebar.text_input("Search Player (optional)").strip().lower()
-
-    # Date range filter
-    min_date = master["DATE"].min()
-    max_date = master["DATE"].max()
-    date_range = st.sidebar.date_input(
-        "Date range",
-        value=(min_date, max_date),
-        min_value=min_date,
-        max_value=max_date,
-    )
-
-    # Day-of-week filter
-    dow_all = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    dow_pick = st.sidebar.multiselect("Days of Week", dow_all, default=dow_all)
-
-    # --- Apply filters ---
-    df = master.copy()
-
-    if team_pick != "All Teams":
-        df = df[df["TEAM"] == team_pick]
-
-    if market_pick != "All Markets":
-        df = df[df["MARKET"] == market_pick]
-
-    if player_search:
-        df = df[df["PLAYER"].astype(str).str.lower().str.contains(player_search)]
-
-    # Date range can be a tuple or single date
-    if isinstance(date_range, (list, tuple)) and len(date_range) == 2:
-        start_d, end_d = date_range
-    else:
-        start_d = min_date
-        end_d = max_date
-
-    df = df[(df["DATE"] >= start_d) & (df["DATE"] <= end_d)]
-
-    if dow_pick:
-        df = df[df["DOW"].isin(dow_pick)]
-
-    if df.empty:
-        st.warning("No rows match the selected filters yet.")
-        st.stop()
-
-    # --- Top-level metrics ---
-    total_rows = len(df)
-    total_hits = df["didHitOver"].sum() if "didHitOver" in df.columns else np.nan
-    hit_rate = (total_hits / total_rows) if total_rows > 0 else np.nan
-
-    avg_edge = df["EDGE_MODEL"].mean() if "EDGE_MODEL" in df.columns else np.nan
-    avg_air = df["AIR_SCORE"].mean() if "AIR_SCORE" in df.columns else np.nan
-
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        st.metric("Total Props (filtered)", f"{total_rows}")
-    with c2:
-        st.metric("Hit Rate", pct(hit_rate) if pd.notna(hit_rate) else "—")
-    with c3:
-        st.metric("Avg Model Edge", fmt_num(avg_edge, 3) if pd.notna(avg_edge) else "—")
-
-    # --- Hit rate by Day of Week ---
-    st.markdown("#### 📆 Hit Rate by Day of Week")
-
-    dow_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    dow_summary = (
-        df.groupby("DOW")["didHitOver"]
-        .agg(["sum", "count"])
-        .reset_index()
-        .rename(columns={"sum": "Hits", "count": "Total"})
-    )
-    dow_summary["HitRate"] = dow_summary["Hits"] / dow_summary["Total"]
-    # enforce ordering
-    dow_summary["DOW"] = pd.Categorical(dow_summary["DOW"], categories=dow_order, ordered=True)
-    dow_summary = dow_summary.sort_values("DOW")
-
-    chart_dow = (
-        alt.Chart(dow_summary)
-        .mark_bar()
-        .encode(
-            x=alt.X("DOW:N", title="Day of Week"),
-            y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-            tooltip=["DOW", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
-        )
-        .properties(height=260)
-    )
-    st.altair_chart(chart_dow, use_container_width=True)
-
-    # --- Hit rate over time (timeline) ---
-    st.markdown("#### 📈 Hit Rate Over Time")
-
-    daily = (
-        df.groupby("DATE")["didHitOver"]
-        .agg(["sum", "count"])
-        .reset_index()
-        .rename(columns={"sum": "Hits", "count": "Total"})
-    )
-    daily["HitRate"] = daily["Hits"] / daily["Total"]
-
-    chart_daily = (
-        alt.Chart(daily)
-        .mark_line(point=True)
-        .encode(
-            x=alt.X("DATE:T", title="Date"),
-            y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-            tooltip=["DATE", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
-        )
-        .properties(height=260)
-    )
-    st.altair_chart(chart_daily, use_container_width=True)
-
-    # --- Player-level summary table ---
-    st.markdown("#### 🧑‍💻 Player / Market Summary (filtered)")
-
-    agg_cols = {
-        "didHitOver": "sum",
-        "LINE": "mean",
-        "SEASON_VAL": "mean",
-    }
-    if "EDGE_MODEL" in df.columns:
-        agg_cols["EDGE_MODEL"] = "mean"
-    if "AIR_SCORE" in df.columns:
-        agg_cols["AIR_SCORE"] = "mean"
-    if "ODDS" in df.columns:
-        agg_cols["ODDS"] = "mean"
-    if "IMPLIED_PROB" in df.columns:
-        agg_cols["IMPLIED_PROB"] = "mean"
-
-    grouped = (
-        df.groupby(["PLAYER", "TEAM", "MARKET"])
-        .agg(agg_cols)
-        .reset_index()
-        .rename(columns={
-            "didHitOver": "Hits",
-            "LINE": "AvgLine",
-            "SEASON_VAL": "AvgSeasonVal",
-            "EDGE_MODEL": "AvgModelEdge",
-            "AIR_SCORE": "AvgAIR",
-            "ODDS": "AvgOdds",
-            "IMPLIED_PROB": "AvgImpliedProb",
-        })
-    )
-
-    grouped["Games"] = df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"].count().values
-    grouped["HitRate"] = grouped["Hits"] / grouped["Games"]
-
-    # Sort selector
-    sort_choice = st.selectbox(
-        "Sort players by",
-        ["Hit Rate (desc)", "Avg AIR (desc)", "Avg Model Edge (desc)", "Games Played (desc)"],
-        index=0,
-    )
-
-    if sort_choice == "Hit Rate (desc)":
-        grouped = grouped.sort_values("HitRate", ascending=False)
-    elif sort_choice == "Avg AIR (desc)" and "AvgAIR" in grouped.columns:
-        grouped = grouped.sort_values("AvgAIR", ascending=False)
-    elif sort_choice == "Avg Model Edge (desc)" and "AvgModelEdge" in grouped.columns:
-        grouped = grouped.sort_values("AvgModelEdge", ascending=False)
-    elif sort_choice == "Games Played (desc)":
-        grouped = grouped.sort_values("Games", ascending=False)
-
-    # Nice formatting
-    display_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
-    if "AvgModelEdge" in grouped.columns:
-        display_cols.append("AvgModelEdge")
-    if "AvgAIR" in grouped.columns:
-        display_cols.append("AvgAIR")
-    if "AvgOdds" in grouped.columns:
-        display_cols.append("AvgOdds")
-
-    grouped["HitRate"] = grouped["HitRate"].apply(lambda x: float(x) if pd.notna(x) else np.nan)
-
-    st.dataframe(
-        grouped[display_cols].assign(
-            HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
-            AvgModelEdge=lambda d: d.get("AvgModelEdge", np.nan).apply(
-                lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
-            ) if "AvgModelEdge" in d.columns else d.get("AvgModelEdge", np.nan),
-            AvgAIR=lambda d: d.get("AvgAIR", np.nan).apply(
-                lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
-            ) if "AvgAIR" in d.columns else d.get("AvgAIR", np.nan),
-        ),
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    # Optional: raw table expander for debugging
-    with st.expander("🔬 View raw filtered rows"):
-        st.dataframe(df, hide_index=True, use_container_width=True)
-
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
