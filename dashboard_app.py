@@ -320,7 +320,7 @@ else:
 view_mode = st.sidebar.radio(
     "View Mode",
     ["📊 Predictions", "🕓 Yesterday's Results", "📚 All Players History"],
-    index=0,
+    index=0
 )
 
 # ---------- Sidebar (Predictions) ----------
@@ -642,31 +642,29 @@ if view_mode == "📊 Predictions":
             st.divider()
 
   # ---------- Yesterday's Results ----------
-    elif view_mode == "🕓 Yesterday's Results":
+elif view_mode == "🕓 Yesterday's Results":
+
     st.markdown("### 🕓 Yesterday’s Results — Top 10 Overs Recap")
 
     if results.empty:
         st.info("No results_history.csv found or it is empty.")
-    else:
+        st.stop()
 
-    # Create parsed datetime column
+    # Parse DATE column safely
     results["DATE_STR"] = results["DATE"].astype(str).str.strip()
-
     results["DATE_TS"] = pd.to_datetime(
         results["DATE_STR"],
-        format="mixed",        # handles mm/dd/yyyy or yyyy-mm-dd
+        format="mixed",
         errors="coerce"
     )
 
-    # Get the latest *true* datetime
     latest_ts = results["DATE_TS"].max()
-
-    # Filter by parsed datetime
     df_yday = results[results["DATE_TS"] == latest_ts].copy()
 
-if df_yday.empty:
-    st.warning(f"No results found for {latest_date}.")
-else:
+    if df_yday.empty:
+        st.warning(f"No results found for {latest_ts}.")
+        st.stop()
+
     pretty_date = latest_ts.strftime("%B %d, %Y")
     st.markdown(f"#### Results for {pretty_date}")
 
@@ -1049,5 +1047,6 @@ elif view_mode == "📚 All Players History":
     # Optional: raw table expander for debugging
     with st.expander("🔬 View raw filtered rows"):
         st.dataframe(df, hide_index=True, use_container_width=True)
+
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
