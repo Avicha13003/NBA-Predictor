@@ -485,56 +485,54 @@ if view_mode == "📊 Predictions":
 
                     with c2:
                         st.markdown(f"#### {row['PLAYER']}")
-                        st.markdown(f"#### {row['PLAYER']}")
 
-# --- PROP LINE + ODDS SECTION ---
-odds_raw = row.get("ODDS", None)
-imp_raw  = row.get("IMPLIED_PROB", None)
+                        # --- PROP LINE + ODDS SECTION ---
+                        odds_raw = row.get("ODDS", None)
+                        imp_raw  = row.get("IMPLIED_PROB", None)
 
-# Format odds
-if pd.notna(odds_raw):
-    try:
-        odds_fmt = f"{int(odds_raw):+d}" if int(odds_raw) != 0 else "—"
-    except:
-        odds_fmt = str(odds_raw)
-else:
-    odds_fmt = "—"
+                        # Format odds
+                        if pd.notna(odds_raw):
+                            try:
+                                odds_fmt = f"{int(odds_raw):+d}" if int(odds_raw) != 0 else "—"
+                            except:
+                                odds_fmt = str(odds_raw)
+                        else:
+                            odds_fmt = "—"
 
-# Format implied probability
-if pd.notna(imp_raw):
-    imp_pct = f"{float(imp_raw)*100:.1f}%"
-else:
-    imp_pct = "—"
+                        # Format implied probability
+                        if pd.notna(imp_raw):
+                            imp_pct = f"{float(imp_raw)*100:.1f}%"
+                        else:
+                            imp_pct = "—"
 
-# Edge = Model Prob – Implied Prob
-final_prob = float(row.get("FINAL_OVER_PROB", np.nan))
-edge_val = None
-if pd.notna(final_prob) and pd.notna(imp_raw):
-    edge_val = final_prob - float(imp_raw)
-    edge_pct = f"{edge_val*100:+.1f}%"
-else:
-    edge_pct = "—"
+                        # Edge = Model Prob – Implied Prob
+                        final_prob = float(row.get("FINAL_OVER_PROB", np.nan))
+                        edge_val = None
+                        if pd.notna(final_prob) and pd.notna(imp_raw):
+                            edge_val = final_prob - float(imp_raw)
+                            edge_pct = f"{edge_val*100:+.1f}%"
+                        else:
+                            edge_pct = "—"
 
-edge_color = (
-    "#2ecc71" if edge_val is not None and edge_val > 0 else
-    "#e74c3c" if edge_val is not None and edge_val < 0 else
-    "#bdc3c7"
-)
+                        edge_color = (
+                            "#2ecc71" if edge_val is not None and edge_val > 0 else
+                            "#e74c3c" if edge_val is not None and edge_val < 0 else
+                            "#bdc3c7"
+                        )
 
-# Render it
-st.markdown(
-    f"""
-    <div style='font-size:1.0em; margin-bottom:4px;'>
-        <b>{row['PROP_NAME']} o{row['LINE']}</b>
-        <span style='color:#777;'>| Odds: <b>{odds_fmt}</b></span>
-        <span style='color:#777;'>| Implied: <b>{imp_pct}</b></span>
-        <span style='color:{edge_color};'>| Edge: <b>{edge_pct}</b></span>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-# --- END ODDS SECTION ---
-
+                        # Render it
+                        st.markdown(
+                            f"""
+                            <div style='font-size:1.0em; margin-bottom:4px;'>
+                                <b>{row['PROP_NAME']} o{row['LINE']}</b>
+                                <span style='color:#777;'>| Odds: <b>{odds_fmt}</b></span>
+                                <span style='color:#777;'>| Implied: <b>{imp_pct}</b></span>
+                                <span style='color:{edge_color};'>| Edge: <b>{edge_pct}</b></span>
+                            </div>
+                            """,
+                            unsafe_allow_html=True
+                        )
+                        # --- END ODDS SECTION ---
 
                         # Matchup / defense rank line
                         opp = row.get("OPP_TEAM_FULL","?")
