@@ -364,7 +364,7 @@ if view_mode == "📊 Predictions":
 
     # load best parlay CSV
     try:
-        bp = pd.read_csv("best_slates_daily.csv")
+        bp = pd.read_csv("best_slates_today.csv")
     except:
         bp = pd.DataFrame()
 
