@@ -954,7 +954,10 @@ elif view_mode == "📚 All Players History":
     master["DOW"] = master["GAME_DATE"].dt.day_name()
 
     # Safe numerics in case of weird strings
-    for col in ["LINE", "SEASON_VAL", "ACTUAL", "didHitOver", "EDGE_MODEL", "AIR_SCORE", "IMPLIED_PROB", "ODDS"]:
+    for col in [
+        "LINE", "SEASON_VAL", "ACTUAL", "didHitOver",
+        "EDGE_MODEL", "AIR_SCORE", "IMPLIED_PROB", "ODDS"
+    ]:
         if col in master.columns:
             master[col] = pd.to_numeric(master[col], errors="coerce")
 
@@ -986,7 +989,11 @@ elif view_mode == "📚 All Players History":
     dow_all = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     dow_pick = st.sidebar.multiselect("Days of Week", dow_all, default=dow_all)
 
-    # --- Apply filters ---
+    # NEW: Min games + positive edge toggle (applied to grouped summary)
+    min_games = st.sidebar.slider("Min games per player/market", 1, 40, 3)
+    only_pos_edge = st.sidebar.checkbox("Only show rows with positive Avg Model Edge", value=False)
+
+    # --- Apply filters to row-level df ---
     df = master.copy()
 
     if team_pick != "All Teams":
@@ -1112,8 +1119,43 @@ elif view_mode == "📚 All Players History":
         })
     )
 
-    grouped["Games"] = df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"].count().values
+    # Robust Games count merge
+    games_series = (
+        df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"]
+        .count()
+        .rename("Games")
+        .reset_index()
+    )
+    grouped = grouped.merge(games_series, on=["PLAYER", "TEAM", "MARKET"], how="left")
+
     grouped["HitRate"] = grouped["Hits"] / grouped["Games"]
+
+    # ---- AIR Boom Tier helper ----
+    def air_tier(val):
+        try:
+            v = float(val)
+        except (TypeError, ValueError):
+            return "—"
+        if v >= 1.30:
+            return "🔥 High Boom"
+        elif v >= 1.10:
+            return "⬆ Medium Boom"
+        elif v >= 0.90:
+            return "Neutral"
+        else:
+            return "⬇ Low / Bust"
+
+    if "AvgAIR" in grouped.columns:
+        grouped["AIR_TIER"] = grouped["AvgAIR"].apply(air_tier)
+
+    # Apply min-games + positive-edge filters at grouped level
+    grouped = grouped[grouped["Games"] >= min_games]
+    if only_pos_edge and "AvgModelEdge" in grouped.columns:
+        grouped = grouped[grouped["AvgModelEdge"] > 0]
+
+    if grouped.empty:
+        st.warning("No player/market combos match the grouped filters (min games / edge).")
+        st.stop()
 
     # Sort selector
     sort_choice = st.selectbox(
@@ -1137,6 +1179,8 @@ elif view_mode == "📚 All Players History":
         display_cols.append("AvgModelEdge")
     if "AvgAIR" in grouped.columns:
         display_cols.append("AvgAIR")
+        if "AIR_TIER" in grouped.columns:
+            display_cols.append("AIR_TIER")
     if "AvgOdds" in grouped.columns:
         display_cols.append("AvgOdds")
 
@@ -1156,9 +1200,125 @@ elif view_mode == "📚 All Players History":
         use_container_width=True,
     )
 
+    # --- Boom Profiles (nice, but compact) ---
+    st.markdown("#### 💥 Boom Profiles — High AIR Spots (filtered)")
+
+    if "AvgAIR" in grouped.columns:
+        boom = grouped.copy()
+        boom = boom.sort_values(["AvgAIR", "HitRate"], ascending=[False, False]).head(15)
+        boom_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgAIR"]
+        if "AIR_TIER" in boom.columns:
+            boom_cols.append("AIR_TIER")
+        st.dataframe(
+            boom[boom_cols].assign(
+                HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
+                AvgAIR=lambda d: d["AvgAIR"].apply(lambda x: fmt_num(x, 3) if pd.notna(x) else "—"),
+            ),
+            hide_index=True,
+            use_container_width=True,
+        )
+    else:
+        st.info("AIR scores not yet available in master file for this filter set.")
+
+    # --- Player Deep Dive ---
+    st.markdown("#### 🎯 Player Deep Dive (within current filters)")
+
+    player_opts = ["(None)"] + sorted(df["PLAYER"].dropna().unique().tolist())
+    focus_player = st.selectbox("Select player for detailed view", player_opts, index=0)
+
+    if focus_player != "(None)":
+        df_p = df[df["PLAYER"] == focus_player].copy()
+        if df_p.empty:
+            st.info("No rows for that player with the current filters.")
+        else:
+            st.markdown(f"##### {focus_player} — Market Breakdown")
+
+            per_market = (
+                df_p.groupby("MARKET")
+                .agg({
+                    "didHitOver": "sum",
+                    "LINE": "mean",
+                    "SEASON_VAL": "mean",
+                    "AIR_SCORE": "mean",
+                    "EDGE_MODEL": "mean",
+                    "GAME_DATE": "count",
+                })
+                .reset_index()
+                .rename(columns={
+                    "didHitOver": "Hits",
+                    "GAME_DATE": "Games",
+                    "LINE": "AvgLine",
+                    "SEASON_VAL": "AvgSeasonVal",
+                    "AIR_SCORE": "AvgAIR",
+                    "EDGE_MODEL": "AvgModelEdge",
+                })
+            )
+            per_market["HitRate"] = per_market["Hits"] / per_market["Games"]
+            if "AvgAIR" in per_market.columns:
+                per_market["AIR_TIER"] = per_market["AvgAIR"].apply(air_tier)
+
+            pm_cols = ["MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
+            if "AvgModelEdge" in per_market.columns:
+                pm_cols.append("AvgModelEdge")
+            if "AvgAIR" in per_market.columns:
+                pm_cols.append("AvgAIR")
+            if "AIR_TIER" in per_market.columns:
+                pm_cols.append("AIR_TIER")
+
+            st.dataframe(
+                per_market[pm_cols].assign(
+                    HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
+                    AvgModelEdge=lambda d: d.get("AvgModelEdge", np.nan).apply(
+                        lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
+                    ) if "AvgModelEdge" in d.columns else d.get("AvgModelEdge", np.nan),
+                    AvgAIR=lambda d: d.get("AvgAIR", np.nan).apply(
+                        lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
+                    ) if "AvgAIR" in d.columns else d.get("AvgAIR", np.nan),
+                ),
+                hide_index=True,
+                use_container_width=True,
+            )
+
+            # Timeline chart: actual vs line by market
+            st.markdown("##### Game Log (Actual vs Line)")
+
+            df_p = df_p.sort_values("GAME_DATE")
+            df_p["HitLabel"] = df_p["didHitOver"].map({1: "Hit", 0: "Miss"})
+
+            points = (
+                alt.Chart(df_p)
+                .mark_circle(size=70)
+                .encode(
+                    x=alt.X("GAME_DATE:T", title="Date"),
+                    y=alt.Y("ACTUAL:Q", title="Actual Stat"),
+                    color=alt.Color("MARKET:N", title="Market"),
+                    shape=alt.Shape("HitLabel:N", title="Result"),
+                    tooltip=[
+                        "GAME_DATE:T",
+                        "MARKET",
+                        "LINE",
+                        "ACTUAL",
+                        "HitLabel",
+                        "EDGE_MODEL",
+                        "AIR_SCORE",
+                    ],
+                )
+            )
+
+            lines = (
+                alt.Chart(df_p)
+                .mark_line(strokeDash=[4, 4])
+                .encode(
+                    x="GAME_DATE:T",
+                    y="LINE:Q",
+                    color="MARKET:N",
+                )
+            )
+
+            st.altair_chart((points + lines).properties(height=260), use_container_width=True)
+
     # Optional: raw table expander for debugging
     with st.expander("🔬 View raw filtered rows"):
         st.dataframe(df, hide_index=True, use_container_width=True)
-
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
