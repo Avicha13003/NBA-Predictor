@@ -357,7 +357,92 @@ if view_mode == "📊 Predictions":
         st.stop()
 
     markets = view["MARKET"].dropna().unique().tolist()
-    tabs = st.tabs([m for m in markets])
+    # ---------- NEW FIRST TAB: Best Parlay of the Day ----------
+    tab_best, *market_tabs = st.tabs(["🔥 Best Parlay", *markets])
+
+# ---------- Best Parlay Tab (always shown first) ----------
+
+# load best parlay CSV
+try:
+    bp = pd.read_csv("best_slates_daily.csv")
+except:
+    bp = pd.DataFrame()
+
+# Build tabs — first tab is Best Parlay, then all market tabs
+tab_best, *market_tabs = st.tabs(["🔥 Best Parlay", *markets])
+
+# ---------- TAB 1: BEST PARLAY ----------
+with tab_best:
+    st.subheader("🔥 Best Parlay of the Day")
+    st.caption("Top 3 correlated Overs based on model probability, AIR score, and implied odds.")
+
+    if bp.empty:
+        st.info("Best parlay file not found yet. Run your pipeline first.")
+    else:
+        row = bp.iloc[-1]   # latest day
+
+        # model prob / book prob
+        pm = row["PARLAY_MODEL_PROB"]
+        pb = row["PARLAY_BOOK_PROB"]
+        american = int(row["PARLAY_AMERICAN"])
+        model_dec = row["PARLAY_MODEL_DECIMAL"]
+        book_dec = row["PARLAY_BOOK_DECIMAL"]
+
+        # ---------- DISPLAY THREE LEGS ----------
+        st.markdown("### 🧩 Parlay Legs")
+
+        def leg_block(px, color="#3498db"):
+            st.markdown(
+                f"""
+                <div style="padding:12px;border-radius:10px;border:1px solid #444;background:#111;margin-bottom:10px;">
+                    <div style="font-size:1.2em;font-weight:700;color:{color};">{px['PLAYER']} — {px['MARKET']} o{px['LINE']}</div>
+                    <div style="margin-top:6px;">
+                        Team: <b>{px['TEAM']}</b><br>
+                        Odds: <b>{int(px['ODDS']):+d}</b><br>
+                        Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
+                        AIR: <b>{px['AIR']:.2f}</b><br>
+                        Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+
+        # leg 1
+        leg_block({
+            "PLAYER": row["P1_PLAYER"], "TEAM": row["P1_TEAM"], "MARKET": row["P1_MARKET"],
+            "LINE": row["P1_LINE"], "ODDS": row["P1_ODDS"], "PROB": row["P1_PROB"],
+            "AIR": row["P1_AIR"], "EDGE": row["P1_EDGE"]
+        }, "#e74c3c")
+
+        # leg 2
+        leg_block({
+            "PLAYER": row["P2_PLAYER"], "TEAM": row["P2_TEAM"], "MARKET": row["P2_MARKET"],
+            "LINE": row["P2_LINE"], "ODDS": row["P2_ODDS"], "PROB": row["P2_PROB"],
+            "AIR": row["P2_AIR"], "EDGE": row["P2_EDGE"]
+        }, "#f1c40f")
+
+        # leg 3
+        leg_block({
+            "PLAYER": row["P3_PLAYER"], "TEAM": row["P3_TEAM"], "MARKET": row["P3_MARKET"],
+            "LINE": row["P3_LINE"], "ODDS": row["P3_ODDS"], "PROB": row["P3_PROB"],
+            "AIR": row["P3_AIR"], "EDGE": row["P3_EDGE"]
+        }, "#2ecc71")
+
+        # ---------- Overall Parlay Odds ----------
+        st.markdown("### 💰 Combined Odds (Parlay)")
+        c1, c2, c3 = st.columns(3)
+
+        with c1:
+            st.metric("Model Hit %", f"{pm*100:.1f}%")
+        with c2:
+            st.metric("Book Probability", f"{pb*100:.1f}%")
+        with c3:
+            st.metric("Parlay Odds", f"{american:+d}")
+
+        st.caption(f"Decimal (Model): {model_dec:.3f} • Decimal (Book): {book_dec:.3f}")
+
+        st.info("This parlay is auto-generated daily based on probability × AIR × book inefficiency.")
 
     # ---------- Confidence Index ----------
     def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float):
