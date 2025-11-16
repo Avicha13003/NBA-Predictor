@@ -336,10 +336,13 @@ if view_mode == "📊 Predictions":
         player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
 
     player_pick = st.sidebar.selectbox("Select Player", player_opts)
-    sort_by = st.sidebar.selectbox("Sort by", ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"])
+    sort_by = st.sidebar.selectbox(
+        "Sort by",
+        ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"]
+    )
     lookback = st.sidebar.slider("Lookback (games)", 3, 10, 5)
 
-# ---------- Filter ----------
+    # ---------- Filter ----------
     view = preds.copy()
     if team_pick != "All Teams":
         view = view[view["TEAM"] == team_pick]
@@ -356,35 +359,23 @@ if view_mode == "📊 Predictions":
     markets = view["MARKET"].dropna().unique().tolist()
     tabs = st.tabs([m for m in markets])
 
-# ---------- Confidence Index ----------
-    def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float) -> tuple    [float, str]:
-        """
-        Returns (score_0_100, tooltip_text).
-        Weights:
-          - Model prob (35%)
-          - Recent hit vs line (25%)
-          - Line edge (15%, logistic)
-          - Opponent ease (prefers MARKET_ALLOWED_RANK; falls back to DEF_RATING_RANK) (15%)
-          - Context (home/rest/travel/b2b/fatigue) (10%)
-        """
-        # model & recent
+    # ---------- Confidence Index ----------
+    def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float):
         p_model  = clamp01(row.get("FINAL_OVER_PROB", np.nan))
         p_recent = clamp01(recent_hit_rate)
 
-        # line edge -> logistic
+        # logistic transform for line edge
         try:
             edge = float(line_edge)
             edge_s = 1.0 / (1.0 + math.exp(-1.6 * edge))
         except Exception:
             edge_s = 0.5
 
-        # opponent ease: prefer market-specific *_ALLOWED_RANK if present
-        # infer current market from stat_col via STAT_COL_BY_MARKET reverse map
+        # Opponent ease
         rev = {v: k for k, v in STAT_COL_BY_MARKET.items()}
         market = rev.get(stat_col, "")
         rank_col = f"{stat_col}_ALLOWED_RANK" if market else None
         if not rank_col or rank_col not in row.index:
-            # fall back gracefully
             rank_col = "DEF_RATING_RANK"
 
         try:
@@ -394,7 +385,7 @@ if view_mode == "📊 Predictions":
         except Exception:
             opp_ease = 0.5
 
-        # context
+        # context (home/rest/travel/b2b/fatigue)
         side = str(row.get("TEAM_SIDE", "")).strip().lower()
         home_bonus = 1.0 if side == "home" else (0.85 if side in ("away", "road") else 0.9)
         try:
@@ -424,7 +415,8 @@ if view_mode == "📊 Predictions":
 
         tooltip = (
             f"Model: {pct(p_model)} | Recent: {pct(p_recent)} | "
-            f"Edge: {edge_s*100:.0f}% | OppEase: {opp_ease*100:.0f}% | Ctxt: {context_scale*100:.0f}%"
+            f"Edge: {edge_s*100:.0f}% | OppEase: {opp_ease*100:.0f}% | "
+            f"Ctxt: {context_scale*100:.0f}%"
         )
         return score, tooltip
 
@@ -437,6 +429,8 @@ if view_mode == "📊 Predictions":
                 continue
 
             stat_col = STAT_COL_BY_MARKET.get(market, None)
+
+            # prepare game log
             if stat_col and not gl.empty:
                 gl_local = gl.copy()
                 gl_local["PLAYER"] = gl_local["PLAYER"].astype(str).str.strip()
@@ -447,21 +441,37 @@ if view_mode == "📊 Predictions":
             else:
                 gl_local = pd.DataFrame()
 
-            # Per-row calculations
+            # per-row calculations
             hit_rates, hit_ns, hit_series = [], [], []
             last_avgs, last_stds = [], []
             for _, r in sub.iterrows():
                 if not stat_col or gl_local.empty or pd.isna(r.get("LINE")):
-                    hit_rates.append(np.nan); hit_ns.append(0); hit_series.append([]); last_avgs.append(np.nan); last_stds.append(np.nan); continue
-                hr, n_used, series = recent_hits_vs_line(gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback)
-                avg_n, std_n = recent_window_stats(gl_local, r["PLAYER"], stat_col, lookback=lookback)
-                hit_rates.append(hr); hit_ns.append(n_used); hit_series.append(series); last_avgs.append(avg_n); last_stds.append(std_n)
+                    hit_rates.append(np.nan)
+                    hit_ns.append(0)
+                    hit_series.append([])
+                    last_avgs.append(np.nan)
+                    last_stds.append(np.nan)
+                    continue
+                hr, n_used, series = recent_hits_vs_line(
+                    gl_local, r["PLAYER"], stat_col, float(r["LINE"]), lookback=lookback
+                )
+                avg_n, std_n = recent_window_stats(
+                    gl_local, r["PLAYER"], stat_col, lookback=lookback
+                )
+                hit_rates.append(hr)
+                hit_ns.append(n_used)
+                hit_series.append(series)
+                last_avgs.append(avg_n)
+                last_stds.append(std_n)
 
-            sub["recent_hit_rate_line"], sub["recent_hit_n"], sub["recent_hit_series"] = hit_rates, hit_ns, hit_series
-            sub["recent_avg"], sub["recent_std"] = last_avgs, last_stds
+            sub["recent_hit_rate_line"] = hit_rates
+            sub["recent_hit_n"] = hit_ns
+            sub["recent_hit_series"] = hit_series
+            sub["recent_avg"] = last_avgs
+            sub["recent_std"] = last_stds
             sub["line_edge"] = pd.to_numeric(sub.get("SEASON_VAL", 0), errors="coerce") - pd.to_numeric(sub.get("LINE", 0), errors="coerce")
 
-            # Sorting
+            # sorting
             if sort_by == "Prob Over (desc)":
                 sub = sub.sort_values("FINAL_OVER_PROB", ascending=False)
             elif sort_by == "Recent Hit Rate (desc)":
@@ -472,29 +482,37 @@ if view_mode == "📊 Predictions":
             st.subheader(f"{market} · Top Overs")
             st.divider()
 
+            # -------- DISPLAY EACH PLAYER --------
             for _, row in sub.head(10).iterrows():
-                prim, sec = row.get("PRIMARY_COLOR", "#333333"), row.get("SECONDARY_COLOR", "#777777")
+                prim = row.get("PRIMARY_COLOR", "#333333")
+                sec  = row.get("SECONDARY_COLOR", "#777777")
+
                 with st.container(border=True):
+
+                    # header gradient
                     st.markdown(
                         f"<div style='height:4px;background:linear-gradient(90deg,{prim},{sec});border-radius:4px;'></div>",
                         unsafe_allow_html=True,
                     )
+
                     c1, c2, c3 = st.columns([1.0, 3.2, 2.6])
 
+                    # ---------- COLUMN 1: Images ----------
                     with c1:
-                        if isinstance(row.get("PHOTO_URL",""),str) and str(row["PHOTO_URL"]).startswith("http"):
+                        if isinstance(row.get("PHOTO_URL",""), str) and str(row["PHOTO_URL"]).startswith("http"):
                             st.image(row["PHOTO_URL"], width=80)
-                        if isinstance(row.get("LOGO_URL",""),str) and str(row["LOGO_URL"]).startswith("http"):
+                        if isinstance(row.get("LOGO_URL",""), str) and str(row["LOGO_URL"]).startswith("http"):
                             st.image(row["LOGO_URL"], width=44)
 
+                    # ---------- COLUMN 2: Player / Props ----------
                     with c2:
                         st.markdown(f"#### {row['PLAYER']}")
 
-                        # --- PROP LINE + ODDS SECTION ---
+                        # PROP LINE + ODDS
                         odds_raw = row.get("ODDS", None)
                         imp_raw  = row.get("IMPLIED_PROB", None)
 
-                        # Format odds
+                        # odds formatting
                         if pd.notna(odds_raw):
                             try:
                                 odds_fmt = f"{int(odds_raw):+d}" if int(odds_raw) != 0 else "—"
@@ -503,13 +521,13 @@ if view_mode == "📊 Predictions":
                         else:
                             odds_fmt = "—"
 
-                        # Format implied probability
+                        # implied %
                         if pd.notna(imp_raw):
                             imp_pct = f"{float(imp_raw)*100:.1f}%"
                         else:
                             imp_pct = "—"
 
-                        # Edge = Model Prob – Implied Prob
+                        # edge vs vegas
                         final_prob = float(row.get("FINAL_OVER_PROB", np.nan))
                         edge_val = None
                         if pd.notna(final_prob) and pd.notna(imp_raw):
@@ -519,12 +537,12 @@ if view_mode == "📊 Predictions":
                             edge_pct = "—"
 
                         edge_color = (
-                            "#2ecc71" if edge_val is not None and edge_val > 0 else
-                            "#e74c3c" if edge_val is not None and edge_val < 0 else
-                            "#bdc3c7"
+                            "#2ecc71" if edge_val is not None and edge_val > 0
+                            else "#e74c3c" if edge_val is not None and edge_val < 0
+                            else "#bdc3c7"
                         )
 
-                        # Render it
+                        # render odds row
                         st.markdown(
                             f"""
                             <div style='font-size:1.0em; margin-bottom:4px;'>
@@ -536,37 +554,43 @@ if view_mode == "📊 Predictions":
                             """,
                             unsafe_allow_html=True
                         )
-                        # --- END ODDS SECTION ---
 
-                        # Matchup / defense rank line
+                        # matchup info
                         opp = row.get("OPP_TEAM_FULL","?")
                         side = row.get("TEAM_SIDE","")
-                        avg_val = row.get(stat_col, np.nan)  # season avg for stat_col (from nba_today_stats.csv)
+                        avg_val = row.get(stat_col, np.nan)
                         opp_def = row.get("DEF_RATING", np.nan)
                         opp_rank = row.get("DEF_RATING_RANK", np.nan)
                         m_color = matchup_color(opp_rank)
                         avg_txt = f"{avg_val:.1f}" if pd.notna(avg_val) else "—"
                         def_txt = f"{opp_def:.1f}" if pd.notna(opp_def) else "—"
                         rank_txt = f"#{int(opp_rank)}" if pd.notna(opp_rank) else "—"
+
                         st.markdown(
                             f"<div style='color:{m_color};font-size:0.9em;'>vs {opp} ({side}) | "
                             f"Avg: {avg_txt} {market} | Opp D-Rtg: {def_txt} ({rank_txt})</div>",
                             unsafe_allow_html=True,
-                         )
+                        )
 
-                         # Venue (if available)
-                        venue_bits = [str(row.get("ARENA","")).strip(), str(row.get("CITY","")).strip(), str(row.get("STATE","")).strip()]
+                        # venue
+                        venue_bits = [
+                            str(row.get("ARENA","")).strip(),
+                            str(row.get("CITY","")).strip(),
+                            str(row.get("STATE","")).strip()
+                        ]
                         venue_bits = [b for b in venue_bits if b]
                         if venue_bits:
                             st.caption("Venue: " + " · ".join(venue_bits))
 
-                        # Fatigue / travel chips
+                        # ---------- Chips ----------
+                        chips = []
+
+                        # fatigue/travel
                         days_rest = row.get("DAYS_REST", np.nan)
                         is_b2b = row.get("IS_B2B", "")
                         miles = row.get("TRAVEL_MILES", np.nan)
                         fatigue = row.get("TRAVEL_FATIGUE", np.nan)
 
-                        chips = []
                         if pd.notna(days_rest):
                             chips.append(chip_html("Rest", f"{fmt_num(days_rest,0)}d", rest_color(days_rest)))
                         if str(is_b2b) != "":
@@ -579,62 +603,92 @@ if view_mode == "📊 Predictions":
                         # Contextual boost chips
                         opp_chip = chip_html("Opp Ease", rank_txt, matchup_color(opp_rank))
                         edge_val = row.get("line_edge", np.nan)
-                        edge_col = color_for( clamp01( 1.0/(1.0+math.exp(-1.6*float(edge_val))) ) ) if pd.notna(edge_val) else "#777777"
+                        edge_col = color_for(clamp01(1.0/(1.0+math.exp(-1.6*float(edge_val)))) ) if pd.notna(edge_val) else "#777777"
                         edge_chip = chip_html("Edge", fmt_num(edge_val,2), edge_col)
                         home_chip = chip_html("Home", "Yes" if str(side).lower()=="home" else "No", "#3498db", "white")
 
                         chips.extend([opp_chip, edge_chip, home_chip])
-                    
+
+                        # Opponent allowed averages chip
                         allowed_chip = opp_allowed_chip(row, market)
                         if allowed_chip:
                             chips.append(allowed_chip)
+
+                        # ---------- NEW: AIR BOOM/ BUST CHIP ----------
+                        air = row.get("PRED_AIR_SCORE", np.nan)
+                        if pd.notna(air):
+                            # label
+                            if air >= 1.20:
+                                boom = "High Boom"
+                                bg = "#2ecc71"
+                            elif air >= 0.95:
+                                boom = "Medium"
+                                bg = "#f39c12"
+                            else:
+                                boom = "Low Boom"
+                                bg = "#e74c3c"
+
+                            air_label = f"AIR: {air:.2f} ({boom})"
+                            chips.append(
+                                chip_html("AIR", air_label, bg)
+                            )
 
                         if chips:
                             st.markdown("".join(chips), unsafe_allow_html=True)
 
                         st.markdown(f"Team: `{row['TEAM']}` | Injury: {row.get('INJ_Status','Active')}")
 
+                    # ---------- COLUMN 3: Probabilities & Charts ----------
                     with c3:
-                        # Model prob + Last N vs line
                         st.metric("Prob. Over (Model)", row.get("FINAL_OVER_PROB_PCT","—"))
+
                         hr = row.get("recent_hit_rate_line", np.nan)
                         n = int(row.get("recent_hit_n", 0) or 0)
+
                         st.markdown(
                             f"<div style='color:{color_for(hr)}'>Last {lookback} vs line: {pct(hr)} ({n}g)</div>",
                             unsafe_allow_html=True,
                         )
+
                         chart = sparkline(row.get("recent_hit_series", []), color=color_for(hr))
                         if chart is not None:
                             st.altair_chart(chart, use_container_width=True)
 
-                        # Performance Trend (last N vs season) & volatility
+                        # performance trend
                         recent_avg = row.get("recent_avg", np.nan)
                         season_avg = row.get(stat_col, np.nan)
                         delta = (recent_avg - season_avg) if (pd.notna(recent_avg) and pd.notna(season_avg)) else np.nan
                         vol = row.get("recent_std", np.nan)
-                        delta_color = "#2ecc71" if (pd.notna(delta) and delta > 0) else ("#e74c3c" if pd.notna(delta) else "#999999")
+                        delta_color = "#2ecc71" if (pd.notna(delta) and delta > 0) else \
+                                      ("#e74c3c" if pd.notna(delta) else "#999999")
+
                         st.markdown(
                             f"<div style='margin-top:6px;font-size:0.9em;'>"
                             f"Trend (last {lookback}): <b>{fmt_num(recent_avg,1)}</b> vs season <b>{fmt_num(season_avg,1)}</b> "
                             f"<span style='color:{delta_color};'>(Δ {fmt_num(delta,1)})</span> • "
                             f"Vol: σ={fmt_num(vol,2)}</div>",
-                            unsafe_allow_html=True
+                            unsafe_allow_html=True,
                         )
 
-                        # Confidence Index
+                        # confidence index
                         conf, tooltip = confidence_index(row, stat_col, hr, recent_avg, row.get("line_edge", np.nan))
                         conf_color = smooth_hsl_color(conf)
+
                         st.markdown(
                             f"""
                             <div title="{tooltip}" style="margin-top:6px;">
                               <div style="display:flex;align-items:center;gap:8px;">
                                 <div style="min-width:110px;">Confidence:</div>
-                                <div style="flex:1;height:10px;border-radius:8px;background:linear-gradient(90deg,{conf_color} {conf:.0f}%, rgba(255,255,255,0.08) {conf:.0f}%);"></div>
-                                <div style="min-width:44px;text-align:right;color:{conf_color};font-weight:700;">{conf:.0f}</div>
+                                <div style="flex:1;height:10px;border-radius:8px;background:
+                                    linear-gradient(90deg,{conf_color} {conf:.0f}%, rgba(255,255,255,0.08) {conf:.0f}%);">
+                                </div>
+                                <div style="min-width:44px;text-align:right;color:{conf_color};font-weight:700;">
+                                    {conf:.0f}
+                                </div>
                               </div>
                             </div>
                             """,
-                            unsafe_allow_html=True
+                            unsafe_allow_html=True,
                         )
 
                 st.markdown("<div style='height:8px'></div>", unsafe_allow_html=True)
