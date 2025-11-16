@@ -368,9 +368,6 @@ if view_mode == "📊 Predictions":
     except:
         bp = pd.DataFrame()
 
-    # Build tabs — first tab is Best Parlay, then all market tabs
-    tab_best, *market_tabs = st.tabs(["🔥 Best Parlay", *markets])
-
     # ---------- TAB 1: BEST PARLAY ----------
     with tab_best:
         st.subheader("🔥 Best Parlay of the Day")
