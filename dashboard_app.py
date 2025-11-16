@@ -726,10 +726,10 @@ elif view_mode == "🕓 Yesterday's Results":
     markets = sorted(df_yday["MARKET"].unique())
     market_pick = st.selectbox("Select Market", markets, index=0)
 
-    # ---- 🔎 Player Search ----
+    # ---- Player Search ----
     search_term = st.text_input("Search Player", "").strip().lower()
 
-    # Filter the selected market
+    # Filter selected market
     df_market = df_yday[df_yday["MARKET"] == market_pick].copy()
     if search_term:
         df_market = df_market[df_market["PLAYER"].str.lower().str.contains(search_term)]
@@ -744,20 +744,22 @@ elif view_mode == "🕓 Yesterday's Results":
             return "background-color:#e74c3c; color:white; font-weight:bold;"
         return ""
 
-    # ------- CORE DISPLAY TABLE -------
-    df_show = df_market[[
-        "PLAYER", "TEAM", "LINE", "ACTUAL", "didHitOver",
-        "SEASON_VAL", "FINAL_OVER_PROB", 
-        "ERROR_RAW", "ERROR_MODEL"
-    ]].copy()
+    # ---------- Add enriched calculation columns ----------
+    df_market["LINE_TO_SEASON_DIFF"] = (
+        df_market["LINE"] - df_market["SEASON_VAL"]
+    ).round(2)
 
-    df_show = df_show.sort_values("didHitOver", ascending=False)
-    df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
-    df_show["FINAL_OVER_PROB"] = df_show["FINAL_OVER_PROB"].round(3)
-    df_show["ERROR_RAW"] = df_show["ERROR_RAW"].round(2)
-    df_show["ERROR_MODEL"] = df_show["ERROR_MODEL"].fillna(0).astype(int)
+    df_market["DIFFICULTY_FACTOR"] = (
+        1.0 + df_market["LINE_TO_SEASON_DIFF"].clip(lower=0) / 10.0
+    ).round(3)
 
-    # ---- Player Streaks ----
+    df_market["AIR_SCORE"] = (
+        df_market["didHitOver"] *
+        df_market["DIFFICULTY_FACTOR"] *
+        df_market["UNDERDOG_FACTOR"]
+    ).round(3)
+
+    # Player streaks
     def compute_streak(player, market):
         df_p = results[(results["PLAYER"] == player) & (results["MARKET"] == market)]
         df_p = df_p.sort_values("DATE")
@@ -769,17 +771,76 @@ elif view_mode == "🕓 Yesterday's Results":
                 break
         return streak
 
-    df_show["STREAK"] = df_show["PLAYER"].apply(
+    df_market["STREAK"] = df_market["PLAYER"].apply(
         lambda p: compute_streak(p, market_pick)
     )
 
-    # ---- Display Main Results ----
-    st.dataframe(
-        df_show.style.applymap(hit_style, subset=["didHitOver", "RESULT"]),
-        hide_index=True,
+    # Build display table
+    df_show = df_market.copy()
+
+    df_show["RESULT"] = df_show["didHitOver"].map({1: "HIT", 0: "MISS"})
+    df_show["FINAL_OVER_PROB"] = df_show["FINAL_OVER_PROB"].round(3)
+    df_show["ERROR_RAW"] = df_show["ERROR_RAW"].round(2)
+    df_show["ERROR_MODEL"] = df_show["ERROR_MODEL"].fillna(0).astype(int)
+
+    # Sort: HIT first, then highest AIR score
+    df_show = df_show.sort_values(
+        ["didHitOver", "AIR_SCORE"], ascending=[False, False]
     )
 
-    # ---- Top 10 ----
+    # AIR classification
+    def air_category(v):
+        if pd.isna(v):
+            return "—"
+        if v >= 1.20:
+            return "High Boom"
+        elif v >= 1.0:
+            return "Medium Boom"
+        else:
+            return "Low Boom"
+
+    def air_color(v):
+        if pd.isna(v):
+            return "#7f8c8d"  # grey
+        if v >= 1.20:
+            return "#e74c3c"  # red
+        elif v >= 1.0:
+            return "#f1c40f"  # yellow
+        else:
+            return "#2ecc71"  # green
+
+    # ---- Display formatted table with chips ----
+    def style_row(row):
+        air_val = row["AIR_SCORE"]
+        air_txt = air_category(air_val)
+        air_col = air_color(air_val)
+
+        diff = row["LINE_TO_SEASON_DIFF"]
+        diff_txt = f"{diff:+.1f}"
+
+        streak = row["STREAK"]
+
+        return pd.Series({
+            "PLAYER": row["PLAYER"],
+            "TEAM": row["TEAM"],
+            "LINE": row["LINE"],
+            "ACTUAL": row["ACTUAL"],
+            "RESULT": row["RESULT"],
+            "SeasonAvg": row["SEASON_VAL"],
+            "Diff(Line-Avg)": diff_txt,
+            "AIR": f"{air_val:.2f} ({air_txt})",
+            "Streak": streak,
+            "ModelProb": f"{row['FINAL_OVER_PROB']*100:.1f}%",
+        })
+
+    df_display = df_show.apply(style_row, axis=1)
+
+    st.dataframe(
+        df_display.style.applymap(hit_style, subset=["RESULT"]),
+        hide_index=True
+    )
+
+    # ---- Top 10 all-time performers ----
     st.markdown("### ⭐ Top 10 All-Time Performers in This Market")
 
     df_market_all = results[results["MARKET"] == market_pick].copy()
@@ -800,7 +861,7 @@ elif view_mode == "🕓 Yesterday's Results":
 
     # ---- Top Performers Yesterday ----
     st.markdown("### 🏆 Top Performers Yesterday")
-    df_top_perf = df_show.sort_values("ACTUAL", ascending=False).head(5)
+    df_top_perf = df_show.sort_values(["didHitOver", "ACTUAL"], ascending=[False, False]).head(5)
     st.dataframe(df_top_perf, hide_index=True)
 
     # ---- Team Impact Breakdown ----
@@ -826,7 +887,6 @@ elif view_mode == "🕓 Yesterday's Results":
 
     st.dataframe(summary[["MARKET", "Hits", "Total", "HitRatePct"]])
 
-    # Overall yesterday
     total_hits = int(summary["Hits"].sum())
     total_total = int(summary["Total"].sum())
     overall_rate = total_hits / total_total if total_total > 0 else 0.0
@@ -856,7 +916,6 @@ elif view_mode == "🕓 Yesterday's Results":
         f"**Overall Running Hit Rate (All Categories):** {overall_hits_all}/{overall_total_all} → {overall_rate_all*100:.1f}%"
     )
 
-    # ---- Days Covered ----
     st.info(f"📅 Days of Data Collected: **{results['DATE_TS'].nunique()} days**")
 
     # ---- Hit Rate Chart ----
