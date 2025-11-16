@@ -388,22 +388,49 @@ if view_mode == "📊 Predictions":
             # ---------- DISPLAY THREE LEGS ----------
             st.markdown("### 🧩 Parlay Legs")
 
+            # --- Helper: find photo + logo in today's predictions ---
+            def get_images(player_name, preds_df):
+                """Return PHOTO_URL and LOGO_URL for a given player name."""
+                try:
+                    row_img = preds_df.loc[preds_df["PLAYER"] == player_name].iloc[0]
+                    photo = row_img.get("PHOTO_URL", "")
+                    logo  = row_img.get("LOGO_URL", "")
+                    return photo if isinstance(photo,str) else "", logo if isinstance(logo,str) else ""
+                except:
+                    return "", ""
+
+
             def leg_block(px, color="#3498db"):
-                st.markdown(
-                    f"""
-                    <div style="padding:12px;border-radius:10px;border:1px solid #444;background:#111;margin-bottom:10px;">
-                        <div style="font-size:1.2em;font-weight:700;color:{color};">{px['PLAYER']} — {px['MARKET']} o{px['LINE']}</div>
-                        <div style="margin-top:6px;">
-                            Team: <b>{px['TEAM']}</b><br>
-                            Odds: <b>{int(px['ODDS']):+d}</b><br>
-                            Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
-                            AIR: <b>{px['AIR']:.2f}</b><br>
-                            Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
+                player = px["PLAYER"]
+                photo_url, logo_url = get_images(player, preds)
+
+                col1, col2 = st.columns([1, 4])
+
+                with col1:
+                    if isinstance(photo_url, str) and photo_url.startswith("http"):
+                        st.image(photo_url, width=85)
+                    if isinstance(logo_url, str) and logo_url.startswith("http"):
+                        st.image(logo_url, width=42)
+
+                with col2:
+                    st.markdown(
+                        f"""
+                        <div style="padding:12px;border-radius:10px;border:1px solid #444;background:#111;">
+                            <div style="font-size:1.2em;font-weight:700;color:{color};">
+                                {px['PLAYER']} — {px['MARKET']} o{px['LINE']}
+                            </div>
+
+                            <div style="margin-top:6px;">
+                                Team: <b>{px['TEAM']}</b><br>
+                                Odds: <b>{int(px['ODDS']):+d}</b><br>
+                                Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
+                                AIR: <b>{px['AIR']:.2f}</b><br>
+                                Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
+                            </div>
                         </div>
-                    </div>
-                    """,
-                    unsafe_allow_html=True,
-                )
+                        """,
+                        unsafe_allow_html=True,
+                    )
 
             # leg 1
             leg_block({
