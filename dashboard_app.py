@@ -506,7 +506,7 @@ if view_mode == "📊 Predictions":
         return score, tooltip
 
     # ---------- Display ----------
-    for tab, market in zip(tabs, markets):
+    for tab, market in zip(market_tabs, markets):
         with tab:
             sub = view[view["MARKET"] == market].copy()
             if sub.empty:
