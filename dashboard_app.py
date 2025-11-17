@@ -399,42 +399,35 @@ if view_mode == "📊 Predictions":
                 except:
                     return "", ""
 
-
             def leg_block(px, color="#3498db"):
                 player = px["PLAYER"]
                 team = px["TEAM"]
 
-                # ---- FIND COLORS + IMAGES ----
+                # pull matching row from preds to get assets + colors
                 match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
 
                 photo = match["PHOTO_URL"].values[0] if not match.empty else None
                 logo = match["LOGO_URL"].values[0] if not match.empty else None
+                prim = match["PRIMARY_COLOR"].values[0] if not match.empty else "#444444"
+                sec  = match["SECONDARY_COLOR"].values[0] if not match.empty else "#777777"
 
-                prim = match["PRIMARY_COLOR"].values[0] if ("PRIMARY_COLOR" in preds.columns and not match.empty) else "#333"
-                sec  = match["SECONDARY_COLOR"].values[0] if ("SECONDARY_COLOR" in preds.columns and not match.empty) else "#666"
+                # player profile link (future page)
+                link_url = f"?player={player.replace(' ', '%20')}"  
 
-                # ---- CLICKABLE PLAYER LINK ----
-                player_link = f"""
-                    <a href='?player={player.replace(" ","%20")}&team={team}&view=Predictions'
-                       style='text-decoration:none;color:{color};'
-                       target='_self'>
-                        {player}
-                    </a>
-                """
-
-                # ---- IMAGES (left column) ----
+                # left column images
                 img_html = ""
                 if photo and str(photo).startswith("http"):
                     img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
                 if logo and str(logo).startswith("http"):
                     img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
 
-                # ---- TEXT (right column) ----
+                # main stats block
                 stats_html = f"""
-                    <div style="font-size:1.2em;font-weight:700;margin-bottom:6px;color:{color};">
-                        {player_link} — {px['MARKET']} o{px['LINE']}
+                    <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
+                        <a href="{link_url}" style="color:{color};text-decoration:none;">
+                            {player}
+                        </a> — {px['MARKET']} o{px['LINE']}
                     </div>
-
                     <div style="font-size:0.95em; line-height:1.5;">
                         Team: <b>{team}</b><br>
                         Odds: <b>{int(px['ODDS']):+d}</b><br>
@@ -444,18 +437,23 @@ if view_mode == "📊 Predictions":
                     </div>
                 """
 
-                # ---- WRAPPED IN TEAM COLOR BORDER ----
+                # FINAL render block with team-colored border
                 full_html = f"""
-                    <div style="padding:0;border-radius:14px;margin-bottom:14px;
-                                background:#111; border:1px solid #222;">
+                    <div style="
+                        display:flex;
+                        gap:20px;
+                        padding:14px;
+                        border-radius:12px;
+                        border:2px solid {prim};
+                        background:linear-gradient(90deg, {prim}22, #111);
+                        margin-bottom:16px;">
             
-                        <!-- TEAM COLOR GRADIENT HEADER -->
-                        <div style="height:6px;border-radius:14px 14px 0 0;
-                             background:linear-gradient(90deg,{prim},{sec});"></div>
+                        <div style="width:90px;text-align:center;">
+                            {img_html}
+                        </div>
 
-                        <div style="display:flex;gap:20px;padding:12px 16px;">
-                            <div style="width:90px;text-align:center;">{img_html}</div>
-                            <div style="flex:1;">{stats_html}</div>
+                        <div style="flex:1;">
+                            {stats_html}
                         </div>
                     </div>
                 """
