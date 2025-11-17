@@ -399,7 +399,7 @@ if view_mode == "📊 Predictions":
                 except:
                     return "", ""
 
-            def leg_block(px, color="#3498db"):
+def leg_block(px, color="#3498db"):
     player = px["PLAYER"]
     team = px["TEAM"]
 
