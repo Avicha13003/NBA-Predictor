@@ -456,7 +456,7 @@ if view_mode == "📊 Predictions":
     </div>
     """
 
-        st.markdown(full_html, unsafe_allow_html=True)
+            st.markdown(full_html, unsafe_allow_html=True)
 
             # leg 1
             leg_block({
