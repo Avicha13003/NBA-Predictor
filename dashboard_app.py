@@ -840,110 +840,110 @@ elif view_mode == "🕓 Yesterday's Results":
     pretty_date = latest_ts.strftime("%B %d, %Y")
     st.markdown(f"#### Results for {pretty_date}")
 
-# ----------------------------------------------------------
-# 🔥 BEST PARLAY — YESTERDAY
-# ----------------------------------------------------------
-st.markdown("### 🔥 Best Parlay (Yesterday)")
+    # ----------------------------------------------------------
+    # 🔥 BEST PARLAY — YESTERDAY
+    # ----------------------------------------------------------
+    st.markdown("### 🔥 Best Parlay (Yesterday)")
 
-# Load master parlay file
-try:
-    bp_master = pd.read_csv("best_slates_master.csv")
-except:
-    bp_master = pd.DataFrame()
+    # Load master parlay file
+    try:
+        bp_master = pd.read_csv("best_slates_master.csv")
+    except:
+        bp_master = pd.DataFrame()
 
-# Extract yesterday's parlay row
-bp_yday = bp_master[bp_master["DATE"] == latest_ts.strftime("%Y-%m-%d")]
+    # Extract yesterday's parlay row
+    bp_yday = bp_master[bp_master["DATE"] == latest_ts.strftime("%Y-%m-%d")]
 
-if bp_yday.empty:
-    st.info("No parlay recorded for yesterday yet.")
-else:
-    row = bp_yday.iloc[0]
+    if bp_yday.empty:
+        st.info("No parlay recorded for yesterday yet.")
+    else:
+        row = bp_yday.iloc[0]
 
-    # Layout
-    st.markdown("#### 🧩 Parlay Legs")
-    leg_cols = st.columns(3)
+        # Layout
+        st.markdown("#### 🧩 Parlay Legs")
+        leg_cols = st.columns(3)
 
-    # Helper to render a leg
-    def render_leg(col, player, team, market, line, odds, hit):
-        color = (
-            "#2ecc71" if hit == "HIT" else
-            "#e74c3c" if hit == "MISS" else
-            "#7f8c8d"
-        )
-
-        with col:
-            st.markdown(
-                f"""
-                <div style="padding:10px;border-radius:10px;border:2px solid {color};background:#111;">
-                    <div style="font-size:1.1em;font-weight:700;color:{color};">{player}</div>
-                    <div style="font-size:0.9em;color:#bbb;">{market} o{line}</div>
-                    <div style="margin-top:6px;font-size:0.9em;">
-                        Team: <b>{team}</b><br>
-                        Odds: <b>{int(odds):+d}</b><br>
-                        Result: <b style="color:{color};">{hit}</b>
-                    </div>
-                </div>
-                """,
-                unsafe_allow_html=True
+        # Helper to render a leg
+        def render_leg(col, player, team, market, line, odds, hit):
+            color = (
+                "#2ecc71" if hit == "HIT" else
+                "#e74c3c" if hit == "MISS" else
+                "#7f8c8d"
             )
 
-    # Render all three legs
-    render_leg(
-        leg_cols[0],
-        row["P1_PLAYER"], row["P1_TEAM"], row["P1_MARKET"],
-        row["P1_LINE"], row["P1_ODDS"], row["P1_HIT"]
-    )
+            with col:
+                st.markdown(
+                    f"""
+                    <div style="padding:10px;border-radius:10px;border:2px solid {color};background:#111;">
+                        <div style="font-size:1.1em;font-weight:700;color:{color};">{player}</div>
+                        <div style="font-size:0.9em;color:#bbb;">{market} o{line}</div>
+                        <div style="margin-top:6px;font-size:0.9em;">
+                            Team: <b>{team}</b><br>
+                            Odds: <b>{int(odds):+d}</b><br>
+                            Result: <b style="color:{color};">{hit}</b>
+                        </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-    render_leg(
-        leg_cols[1],
-        row["P2_PLAYER"], row["P2_TEAM"], row["P2_MARKET"],
-        row["P2_LINE"], row["P2_ODDS"], row["P2_HIT"]
-    )
-
-    render_leg(
-        leg_cols[2],
-        row["P3_PLAYER"], row["P3_TEAM"], row["P3_MARKET"],
-        row["P3_LINE"], row["P3_ODDS"], row["P3_HIT"]
-    )
-
-    # Overall parlay result
-    st.markdown("### 💰 Parlay Outcome")
-
-    parlay_color = (
-        "#2ecc71" if row["PARLAY_HIT"] == "HIT"
-        else "#e74c3c" if row["PARLAY_HIT"] == "MISS"
-        else "#7f8c8d"
-    )
-
-    c1, c2, c3 = st.columns(3)
-
-    with c1:
-        st.metric("Parlay Hit?", row["PARLAY_HIT"])
-
-    with c2:
-        st.metric("Book Odds", f"{int(row['PARLAY_AMERICAN']):+d}")
-
-    with c3:
-        st.metric("Book Probability", f"{row['PARLAY_BOOK_PROB']*100:.1f}%")
-
-    # Separator
-    st.divider()
-
-# ----------------------------------------------------------
-# RUNNING BEST PARLAY PERFORMANCE — ALL TIME
-# ----------------------------------------------------------
-if not bp_master.empty and "PARLAY_HIT" in bp_master.columns:
-    hist = bp_master[bp_master["PARLAY_HIT"].isin(["HIT", "MISS"])]
-
-    if not hist.empty:
-        total = len(hist)
-        hits = (hist["PARLAY_HIT"] == "HIT").sum()
-        rate = hits / total if total > 0 else 0
-
-        st.markdown("### 📈 Best Parlay Performance — All Time")
-        st.markdown(
-            f"**Record:** {hits}/{total} = {rate*100:.1f}%"
+        # Render all three legs
+        render_leg(
+            leg_cols[0],
+            row["P1_PLAYER"], row["P1_TEAM"], row["P1_MARKET"],
+            row["P1_LINE"], row["P1_ODDS"], row["P1_HIT"]
         )
+
+        render_leg(
+            leg_cols[1],
+            row["P2_PLAYER"], row["P2_TEAM"], row["P2_MARKET"],
+            row["P2_LINE"], row["P2_ODDS"], row["P2_HIT"]
+        )
+
+        render_leg(
+            leg_cols[2],
+            row["P3_PLAYER"], row["P3_TEAM"], row["P3_MARKET"],
+            row["P3_LINE"], row["P3_ODDS"], row["P3_HIT"]
+        )
+
+        # Overall parlay result
+        st.markdown("### 💰 Parlay Outcome")
+
+        parlay_color = (
+            "#2ecc71" if row["PARLAY_HIT"] == "HIT"
+            else "#e74c3c" if row["PARLAY_HIT"] == "MISS"
+            else "#7f8c8d"
+        )
+
+        c1, c2, c3 = st.columns(3)
+
+        with c1:
+            st.metric("Parlay Hit?", row["PARLAY_HIT"])
+
+        with c2:
+            st.metric("Book Odds", f"{int(row['PARLAY_AMERICAN']):+d}")
+
+        with c3:
+            st.metric("Book Probability", f"{row['PARLAY_BOOK_PROB']*100:.1f}%")
+
+        # Separator
+        st.divider()
+
+    # ----------------------------------------------------------
+    # RUNNING BEST PARLAY PERFORMANCE — ALL TIME
+    # ----------------------------------------------------------
+    if not bp_master.empty and "PARLAY_HIT" in bp_master.columns:
+        hist = bp_master[bp_master["PARLAY_HIT"].isin(["HIT", "MISS"])]
+
+        if not hist.empty:
+            total = len(hist)
+            hits = (hist["PARLAY_HIT"] == "HIT").sum()
+            rate = hits / total if total > 0 else 0
+
+            st.markdown("### 📈 Best Parlay Performance — All Time")
+            st.markdown(
+                f"**Record:** {hits}/{total} = {rate*100:.1f}%"
+            )
 
     # ---- Market Selector ----
     markets = sorted(df_yday["MARKET"].unique())
