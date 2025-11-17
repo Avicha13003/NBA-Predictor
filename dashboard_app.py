@@ -439,24 +439,24 @@ if view_mode == "📊 Predictions":
 
                 # FINAL combined block — PROPERLY LEFT-ALIGNED
                 full_html = f"""
-            <div style="
-                display:flex;
-                gap:20px;
-                padding:14px;
-                border-radius:12px;
-                border:2px solid {prim};
-                background:linear-gradient(90deg, {prim}22, #111);
-                margin-bottom:16px;
-            ">
-                <div style="width:90px;text-align:center;">
-                    {img_html}
-                </div>
+                    <div style="
+                        display:flex;
+                        gap:20px;
+                        padding:14px;
+                        border-radius:12px;
+                        border:2px solid {prim};
+                        background:linear-gradient(90deg, {prim}22, #111);
+                        margin-bottom:16px;
+                    ">
+                        <div style="width:90px;text-align:center;">
+                            {img_html}
+                        </div>
 
-                <div style="flex:1;">
-                    {stats_html}
-                </div>
-            </div>
-            """
+                        <div style="flex:1;">
+                            {stats_html}
+                        </div>
+                    </div>
+                """
 
                 st.markdown(full_html, unsafe_allow_html=True)
 
