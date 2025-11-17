@@ -402,35 +402,44 @@ if view_mode == "📊 Predictions":
 
             def leg_block(px, color="#3498db"):
                 player = px["PLAYER"]
-                photo_url, logo_url = get_images(player, preds)
+                team = px["TEAM"]
 
-                col1, col2 = st.columns([1, 4])
+                # Try to find matching row in preds for PHOTO_URL / LOGO_URL
+                match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
+                photo = match["PHOTO_URL"].values[0] if not match.empty else None
+                logo = match["LOGO_URL"].values[0] if not match.empty else None
 
-                with col1:
-                    if isinstance(photo_url, str) and photo_url.startswith("http"):
-                        st.image(photo_url, width=85)
-                    if isinstance(logo_url, str) and logo_url.startswith("http"):
-                        st.image(logo_url, width=42)
+                # Build left column (images)
+                img_html = ""
+                if photo and str(photo).startswith("http"):
+                    img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
+                if logo and str(logo).startswith("http"):
+                    img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
 
-                with col2:
-                    st.markdown(
-                        f"""
-                        <div style="padding:12px;border-radius:10px;border:1px solid #444;background:#111;">
-                            <div style="font-size:1.2em;font-weight:700;color:{color};">
-                                {px['PLAYER']} — {px['MARKET']} o{px['LINE']}
-                            </div>
+                # Build right column (stats block)
+                stats_html = f"""
+                    <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
+                        {player} — {px['MARKET']} o{px['LINE']}
+                    </div>
+                    <div style="font-size:0.95em; line-height:1.5;">
+                        Team: <b>{team}</b><br>
+                        Odds: <b>{int(px['ODDS']):+d}</b><br>
+                        Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
+                        AIR: <b>{px['AIR']:.2f}</b><br>
+                        Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
+                    </div>
+                """
 
-                            <div style="margin-top:6px;">
-                                Team: <b>{px['TEAM']}</b><br>
-                                Odds: <b>{int(px['ODDS']):+d}</b><br>
-                                Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
-                                AIR: <b>{px['AIR']:.2f}</b><br>
-                                Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
-                            </div>
-                        </div>
-                        """,
-                        unsafe_allow_html=True,
-                    )
+                # Combine into 2-column layout
+                full_html = f"""
+                    <div style="display:flex;gap:20px;padding:12px;border-radius:12px;
+                                 border:1px solid #444;background:#111;margin-bottom:14px;">
+                        <div style="width:90px;text-align:center;">{img_html}</div>
+                        <div style="flex:1;">{stats_html}</div>
+                    </div>
+                """
+
+                st.markdown(full_html, unsafe_allow_html=True)
 
             # leg 1
             leg_block({
