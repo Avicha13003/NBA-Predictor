@@ -404,23 +404,37 @@ if view_mode == "📊 Predictions":
                 player = px["PLAYER"]
                 team = px["TEAM"]
 
-                # Try to find matching row in preds for PHOTO_URL / LOGO_URL
+                # ---- FIND COLORS + IMAGES ----
                 match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
+
                 photo = match["PHOTO_URL"].values[0] if not match.empty else None
                 logo = match["LOGO_URL"].values[0] if not match.empty else None
 
-                # Build left column (images)
+                prim = match["PRIMARY_COLOR"].values[0] if ("PRIMARY_COLOR" in preds.columns and not match.empty) else "#333"
+                sec  = match["SECONDARY_COLOR"].values[0] if ("SECONDARY_COLOR" in preds.columns and not match.empty) else "#666"
+
+                # ---- CLICKABLE PLAYER LINK ----
+                player_link = f"""
+                    <a href='?player={player.replace(" ","%20")}&team={team}&view=Predictions'
+                       style='text-decoration:none;color:{color};'
+                       target='_self'>
+                        {player}
+                    </a>
+                """
+
+                # ---- IMAGES (left column) ----
                 img_html = ""
                 if photo and str(photo).startswith("http"):
                     img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
                 if logo and str(logo).startswith("http"):
                     img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
 
-                # Build right column (stats block)
+                # ---- TEXT (right column) ----
                 stats_html = f"""
-                    <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
-                        {player} — {px['MARKET']} o{px['LINE']}
+                    <div style="font-size:1.2em;font-weight:700;margin-bottom:6px;color:{color};">
+                        {player_link} — {px['MARKET']} o{px['LINE']}
                     </div>
+
                     <div style="font-size:0.95em; line-height:1.5;">
                         Team: <b>{team}</b><br>
                         Odds: <b>{int(px['ODDS']):+d}</b><br>
@@ -430,16 +444,23 @@ if view_mode == "📊 Predictions":
                     </div>
                 """
 
-                # Combine into 2-column layout
+                # ---- WRAPPED IN TEAM COLOR BORDER ----
                 full_html = f"""
-                    <div style="display:flex;gap:20px;padding:12px;border-radius:12px;
-                                 border:1px solid #444;background:#111;margin-bottom:14px;">
-                        <div style="width:90px;text-align:center;">{img_html}</div>
-                        <div style="flex:1;">{stats_html}</div>
+                    <div style="padding:0;border-radius:14px;margin-bottom:14px;
+                                background:#111; border:1px solid #222;">
+            
+                        <!-- TEAM COLOR GRADIENT HEADER -->
+                        <div style="height:6px;border-radius:14px 14px 0 0;
+                             background:linear-gradient(90deg,{prim},{sec});"></div>
+
+                        <div style="display:flex;gap:20px;padding:12px 16px;">
+                            <div style="width:90px;text-align:center;">{img_html}</div>
+                            <div style="flex:1;">{stats_html}</div>
+                        </div>
                     </div>
                 """
 
-                st.markdown(full_html, unsafe_allow_html=True)
+    st.markdown(full_html, unsafe_allow_html=True)
 
             # leg 1
             leg_block({
