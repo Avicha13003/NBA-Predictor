@@ -368,133 +368,120 @@ if view_mode == "📊 Predictions":
     except:
         bp = pd.DataFrame()
 
-    # ---------- TAB 1: BEST PARLAY ----------
-    with tab_best:
-        st.subheader("🔥 Best Parlay of the Day")
-        st.caption("Top 3 correlated Overs based on model probability, AIR score, and implied odds.")
+# ---------- TAB 1: BEST PARLAY ----------
+with tab_best:
+    st.subheader("🔥 Best Parlay of the Day")
+    st.caption("Top 3 correlated Overs based on model probability, AIR score, and implied odds.")
 
-        if bp.empty:
-            st.info("Best parlay file not found yet. Run your pipeline first.")
-        else:
-            row = bp.iloc[-1]   # latest day
+    if bp.empty:
+        st.info("Best parlay file not found yet. Run your pipeline first.")
+    else:
+        row = bp.iloc[-1]   # latest day
 
-            # model prob / book prob
-            pm = row["PARLAY_MODEL_PROB"]
-            pb = row["PARLAY_BOOK_PROB"]
-            american = int(row["PARLAY_AMERICAN"])
-            model_dec = row["PARLAY_MODEL_DECIMAL"]
-            book_dec = row["PARLAY_BOOK_DECIMAL"]
+        # model prob / book prob
+        pm = row["PARLAY_MODEL_PROB"]
+        pb = row["PARLAY_BOOK_PROB"]
+        american = int(row["PARLAY_AMERICAN"])
+        model_dec = row["PARLAY_MODEL_DECIMAL"]
+        book_dec = row["PARLAY_BOOK_DECIMAL"]
 
-            # ---------- DISPLAY THREE LEGS ----------
-            st.markdown("### 🧩 Parlay Legs")
+        # ---------- Helper for player blocks ----------
+        def leg_block(px, color="#3498db"):
+            player = px["PLAYER"]
+            team = px["TEAM"]
 
-            # --- Helper: find photo + logo in today's predictions ---
-            def get_images(player_name, preds_df):
-                """Return PHOTO_URL and LOGO_URL for a given player name."""
-                try:
-                    row_img = preds_df.loc[preds_df["PLAYER"] == player_name].iloc[0]
-                    photo = row_img.get("PHOTO_URL", "")
-                    logo  = row_img.get("LOGO_URL", "")
-                    return photo if isinstance(photo,str) else "", logo if isinstance(logo,str) else ""
-                except:
-                    return "", ""
+            # pull matching row from preds to get assets + colors
+            match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
 
-            def leg_block(px, color="#3498db"):
-                player = px["PLAYER"]
-                team = px["TEAM"]
+            photo = match["PHOTO_URL"].values[0] if not match.empty else None
+            logo  = match["LOGO_URL"].values[0] if not match.empty else None
+            prim  = match["PRIMARY_COLOR"].values[0] if not match.empty else "#444444"
+            sec   = match["SECONDARY_COLOR"].values[0] if not match.empty else "#777777"
 
-                # pull matching row from preds to get assets + colors
-                match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
+            # player link (future feature)
+            link_url = f"?player={player.replace(' ', '%20')}"
 
-                photo = match["PHOTO_URL"].values[0] if not match.empty else None
-                logo = match["LOGO_URL"].values[0] if not match.empty else None
-                prim = match["PRIMARY_COLOR"].values[0] if not match.empty else "#444444"
-                sec  = match["SECONDARY_COLOR"].values[0] if not match.empty else "#777777"
+            # ---- Images ----
+            img_html = ""
+            if photo and str(photo).startswith("http"):
+                img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
+            if logo and str(logo).startswith("http"):
+                img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
 
-                # player profile link (future feature)
-                link_url = f"?player={player.replace(' ', '%20')}"
+            # ---- Stats ----
+            stats_html = f"""
+                <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
+                    <a href="{link_url}" style="color:{color};text-decoration:none;">
+                        {player}
+                    </a> — {px['MARKET']} o{px['LINE']}
+                </div>
+                <div style="font-size:0.95em; line-height:1.5;">
+                    Team: <b>{team}</b><br>
+                    Odds: <b>{int(px['ODDS']):+d}</b><br>
+                    Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
+                    AIR: <b>{px['AIR']:.2f}</b><br>
+                    Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
+                </div>
+            """
 
-                # left column images
-                img_html = ""
-                if photo and str(photo).startswith("http"):
-                    img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
-                if logo and str(logo).startswith("http"):
-                    img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
+            # ---- Final HTML container ----
+            full_html = f"""
+            <div style="
+                display:flex;
+                gap:20px;
+                padding:14px;
+                border-radius:12px;
+                border:2px solid {prim};
+                background:linear-gradient(90deg, {prim}22, #111);
+                margin-bottom:16px;">
+            
+                <div style="width:90px;text-align:center;">
+                    {img_html}
+                </div>
 
-                # main text block
-                stats_html = f"""
-                    <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
-                        <a href="{link_url}" style="color:{color};text-decoration:none;">
-                            {player}
-                        </a> — {px['MARKET']} o{px['LINE']}
-                    </div>
-                    <div style="font-size:0.95em; line-height:1.5;">
-                        Team: <b>{team}</b><br>
-                        Odds: <b>{int(px['ODDS']):+d}</b><br>
-                        Model Prob: <b>{px['PROB']*100:.1f}%</b><br>
-                        AIR: <b>{px['AIR']:.2f}</b><br>
-                        Edge vs Book: <b>{px['EDGE']*100:+.1f}%</b>
-                    </div>
-                """
+                <div style="flex:1;">
+                    {stats_html}
+                </div>
 
-                # FINAL combined block — PROPERLY LEFT-ALIGNED
-                full_html = f"""
-                    <div style="
-                        display:flex;
-                        gap:20px;
-                        padding:14px;
-                        border-radius:12px;
-                        border:2px solid {prim};
-                        background:linear-gradient(90deg, {prim}22, #111);
-                        margin-bottom:16px;
-                    ">
-                        <div style="width:90px;text-align:center;">
-                            {img_html}
-                        </div>
+            </div>
+            """
 
-                        <div style="flex:1;">
-                            {stats_html}
-                        </div>
-                    </div>
-                """
+            st.markdown(full_html, unsafe_allow_html=True)
 
-                st.markdown(full_html, unsafe_allow_html=True)
+        # ---------- RENDER 3 LEGS ----------
+        st.markdown("### 🧩 Parlay Legs")
 
-            # leg 1
-            leg_block({
-                "PLAYER": row["P1_PLAYER"], "TEAM": row["P1_TEAM"], "MARKET": row["P1_MARKET"],
-                "LINE": row["P1_LINE"], "ODDS": row["P1_ODDS"], "PROB": row["P1_PROB"],
-                "AIR": row["P1_AIR"], "EDGE": row["P1_EDGE"]
-            }, "#e74c3c")
+        leg_block({
+            "PLAYER": row["P1_PLAYER"], "TEAM": row["P1_TEAM"], "MARKET": row["P1_MARKET"],
+            "LINE": row["P1_LINE"], "ODDS": row["P1_ODDS"], "PROB": row["P1_PROB"],
+            "AIR": row["P1_AIR"], "EDGE": row["P1_EDGE"]
+        }, "#e74c3c")
 
-            # leg 2
-            leg_block({
-                "PLAYER": row["P2_PLAYER"], "TEAM": row["P2_TEAM"], "MARKET": row["P2_MARKET"],
-                "LINE": row["P2_LINE"], "ODDS": row["P2_ODDS"], "PROB": row["P2_PROB"],
-                "AIR": row["P2_AIR"], "EDGE": row["P2_EDGE"]
-            }, "#f1c40f")
+        leg_block({
+            "PLAYER": row["P2_PLAYER"], "TEAM": row["P2_TEAM"], "MARKET": row["P2_MARKET"],
+            "LINE": row["P2_LINE"], "ODDS": row["P2_ODDS"], "PROB": row["P2_PROB"],
+            "AIR": row["P2_AIR"], "EDGE": row["P2_EDGE"]
+        }, "#f1c40f")
 
-            # leg 3
-            leg_block({
-                "PLAYER": row["P3_PLAYER"], "TEAM": row["P3_TEAM"], "MARKET": row["P3_MARKET"],
-                "LINE": row["P3_LINE"], "ODDS": row["P3_ODDS"], "PROB": row["P3_PROB"],
-                "AIR": row["P3_AIR"], "EDGE": row["P3_EDGE"]
-            }, "#2ecc71")
+        leg_block({
+            "PLAYER": row["P3_PLAYER"], "TEAM": row["P3_TEAM"], "MARKET": row["P3_MARKET"],
+            "LINE": row["P3_LINE"], "ODDS": row["P3_ODDS"], "PROB": row["P3_PROB"],
+            "AIR": row["P3_AIR"], "EDGE": row["P3_EDGE"]
+        }, "#2ecc71")
 
-            # ---------- Overall Parlay Odds ----------
-            st.markdown("### 💰 Combined Odds (Parlay)")
-            c1, c2, c3 = st.columns(3)
+        # ---------- Odds Footer ----------
+        st.markdown("### 💰 Combined Odds (Parlay)")
+        c1, c2, c3 = st.columns(3)
 
-            with c1:
-                st.metric("Model Hit %", f"{pm*100:.1f}%")
-            with c2:
-                st.metric("Book Probability", f"{pb*100:.1f}%")
-            with c3:
-                st.metric("Parlay Odds", f"{american:+d}")
+        with c1:
+            st.metric("Model Hit %", f"{pm*100:.1f}%")
+        with c2:
+            st.metric("Book Probability", f"{pb*100:.1f}%")
+        with c3:
+            st.metric("Parlay Odds", f"{american:+d}")
 
-            st.caption(f"Decimal (Model): {model_dec:.3f} • Decimal (Book): {book_dec:.3f}")
-
-            st.info("This parlay is auto-generated daily based on probability × AIR × book inefficiency.")
+        st.caption(f"Decimal (Model): {model_dec:.3f} • Decimal (Book): {book_dec:.3f}")
+        st.info("This parlay is auto-generated daily based on probability × AIR × book inefficiency.")
 
     # ---------- Confidence Index ----------
     def confidence_index(row, stat_col: str, recent_hit_rate: float, lookback_avg: float, line_edge: float):
