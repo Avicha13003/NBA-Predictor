@@ -7,6 +7,13 @@ import pandas as pd
 import numpy as np
 import altair as alt
 
+from urllib.parse import quote, unquote
+
+query_params = st.experimental_get_query_params()
+selected_player = query_params.get("player", [None])[0]
+if selected_player:
+    selected_player = unquote(selected_player)
+
 st.set_page_config(
     page_title="NBA Player Props Dashboard",
     layout="wide",
@@ -55,6 +62,21 @@ def chip_html(label: str, value: str, bg: str, fg: str = "white"):
         f"padding:2px 8px;border-radius:999px;font-size:0.78rem;"
         f"background:{bg};color:{fg};white-space:nowrap;'>"
         f"{label}: <b>{value}</b></span>"
+    )
+
+def player_link(name: str, label: str | None = None) -> str:
+    """
+    Return an HTML <a> tag that sets ?player=... in the URL.
+    Used for clickable player names.
+    """
+    if not isinstance(name, str) or not name.strip():
+        return ""
+    safe = quote(name.strip())
+    text = label if label is not None else name
+    return (
+        f"<a href='?player={safe}' "
+        f"style='color:inherit;text-decoration:none;'>"
+        f"{text}</a>"
     )
 
 def rest_color(days):
@@ -207,6 +229,117 @@ def recent_window_stats(gl_df: pd.DataFrame, player: str, stat_col: str, lookbac
     if vals.empty: return (np.nan, np.nan)
     return (float(vals.mean()), float(vals.std(ddof=0)))
 
+def render_player_profile(player_name: str, preds: pd.DataFrame, gl: pd.DataFrame, results: pd.DataFrame):
+    """Render a player profile overlay at the top of the app."""
+    if not player_name:
+        return
+
+    name_norm = player_name.strip().lower()
+
+    # --- TODAY'S PROPS (from preds) ---
+    today_rows = preds[preds["PLAYER_NORM"] == name_norm].copy()
+
+    # Try to get assets / team info from todays preds
+    head_row = today_rows.iloc[0] if not today_rows.empty else None
+    photo = head_row["PHOTO_URL"] if head_row is not None else "https://cdn.nba.com/manage/2021/10/NBA_Silhouette.png"
+    logo  = head_row["LOGO_URL"] if head_row is not None else ""
+    team  = head_row["TEAM"] if head_row is not None else ""
+    prim  = head_row["PRIMARY_COLOR"] if head_row is not None else "#333333"
+    sec   = head_row["SECONDARY_COLOR"] if head_row is not None else "#777777"
+
+    # --- HEADER CARD ---
+    st.markdown(
+        f"""
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:20px;
+            padding:14px;
+            border-radius:14px;
+            border:2px solid {prim};
+            background:linear-gradient(90deg,{prim}22,#050505);
+            margin-bottom:12px;">
+            
+            <div style="text-align:center;">
+                <img src="{photo}" style="width:90px;border-radius:12px;margin-bottom:6px;">
+                {'<img src="'+logo+'" style="width:46px;margin-top:4px;">' if logo else ''}
+            </div>
+
+            <div style="flex:1;">
+                <div style="font-size:1.6em;font-weight:800;">{player_name}</div>
+                <div style="font-size:0.95em;color:#ccc;margin-top:4px;">
+                    Team: <b>{team}</b>
+                </div>
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Button to clear profile
+    col_clear, _ = st.columns([1, 4])
+    with col_clear:
+        if st.button("🔙 Close Player Profile"):
+            st.experimental_set_query_params()  # clear all query params
+            st.experimental_rerun()
+
+    # --- TODAY'S PROPS TABLE ---
+    if not today_rows.empty:
+        st.markdown("#### 📊 Today’s Props")
+
+        show_cols = []
+        for c in ["MARKET", "LINE", "ODDS", "IMPLIED_PROB", "FINAL_OVER_PROB", "PRED_AIR_SCORE", "PRED_EDGE_MODEL"]:
+            if c in today_rows.columns:
+                show_cols.append(c)
+
+        if show_cols:
+            tmp = today_rows[show_cols].copy()
+            if "IMPLIED_PROB" in tmp.columns:
+                tmp["Implied%"] = (tmp["IMPLIED_PROB"] * 100).round(1)
+            if "FINAL_OVER_PROB" in tmp.columns:
+                tmp["Model%"] = (tmp["FINAL_OVER_PROB"] * 100).round(1)
+            if "PRED_AIR_SCORE" in tmp.columns:
+                tmp["AIR"] = tmp["PRED_AIR_SCORE"].round(2)
+            if "PRED_EDGE_MODEL" in tmp.columns:
+                tmp["Edge%"] = (tmp["PRED_EDGE_MODEL"] * 100).round(1)
+
+            st.dataframe(tmp, hide_index=True, use_container_width=True)
+        else:
+            st.info("No props found for this player today.")
+
+    # --- HISTORICAL RESULTS (results_history) ---
+    if results is None or results.empty or "PLAYER" not in results.columns:
+        st.info("No historical results yet for this player.")
+        return
+
+    hist = results[results["PLAYER"].astype(str).str.lower().str.strip() == name_norm].copy()
+    if hist.empty:
+        st.info("No historical results yet for this player.")
+        return
+
+    hist = hist.sort_values("DATE", ascending=False)
+
+    # Per-market hit rate
+    st.markdown("#### 📈 Market Hit Rates (All-Time)")
+    grp = (
+        hist.groupby("MARKET")["didHitOver"]
+        .agg(Hits="sum", Attempts="count")
+        .reset_index()
+    )
+    grp["HitRate"] = (grp["Hits"] / grp["Attempts"]).round(3)
+    grp["HitRate%"] = (grp["HitRate"] * 100).round(1)
+    st.dataframe(grp[["MARKET", "Hits", "Attempts", "HitRate%"]], hide_index=True)
+
+    # Last 10 games detail
+    st.markdown("#### 📅 Last 10 Recorded Games")
+    last10 = hist.head(10).copy()
+    last10["DATE"] = last10["DATE"].dt.strftime("%Y-%m-%d")
+    last10["Result"] = last10["didHitOver"].map({1: "HIT", 0: "MISS"})
+    cols = ["DATE", "TEAM", "MARKET", "LINE", "ACTUAL", "Result"]
+    extra = [c for c in ["FINAL_OVER_PROB", "ODDS"] if c in last10.columns]
+    cols += extra
+    st.dataframe(last10[cols], hide_index=True, use_container_width=True)
+
 # ---------- Load Data ----------
 preds, logos, heads, gl, ctx, stats = load_all_data()
 results = load_results_history()
@@ -323,6 +456,12 @@ view_mode = st.sidebar.radio(
     index=0
 )
 
+# ---------- Optional Player Profile Overlay ----------
+if selected_player:
+    st.markdown(f"## 🧾 Player Profile: {selected_player}")
+    render_player_profile(selected_player, preds, gl, results)
+    st.markdown("---")
+
 # ---------- Sidebar (Predictions) ----------
 if view_mode == "📊 Predictions":
     st.sidebar.title("🔎 Filters")
@@ -331,7 +470,9 @@ if view_mode == "📊 Predictions":
     team_pick = st.sidebar.selectbox("Select Team", teams)
 
     if team_pick != "All Teams":
-        player_opts = ["All Players"] + sorted(preds.loc[preds["TEAM"] == team_pick, "PLAYER"].unique().tolist())
+        player_opts = ["All Players"] + sorted(
+            preds.loc[preds["TEAM"] == team_pick, "PLAYER"].unique().tolist()
+        )
     else:
         player_opts = ["All Players"] + sorted(preds["PLAYER"].unique().tolist())
 
@@ -341,6 +482,24 @@ if view_mode == "📊 Predictions":
         ["Prob Over (desc)", "Recent Hit Rate (desc)", "Line Edge (SEASON_VAL - LINE)"]
     )
     lookback = st.sidebar.slider("Lookback (games)", 3, 10, 5)
+
+    # ---- Quick Player Profile shortcut (uses ?player=...) ----
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("#### 📇 Player Profile")
+
+    all_players_for_profile = sorted(preds["PLAYER"].dropna().unique().tolist())
+    profile_pick = st.sidebar.selectbox(
+        "Jump to player profile",
+        ["(none)"] + all_players_for_profile,
+        index=0,
+        key="profile_jump"
+    )
+
+    if profile_pick != "(none)":
+        safe = quote(profile_pick)
+        st.sidebar.markdown(
+            f"[Open profile for **{profile_pick}**](?player={safe})"
+        )
 
     # ---------- Filter ----------
     view = preds.copy()
@@ -361,8 +520,6 @@ if view_mode == "📊 Predictions":
     tab_best, *market_tabs = st.tabs(["🔥 Best Parlay", *markets])
 
     # ---------- Best Parlay Tab (always shown first) ----------
-
-    # load best parlay CSV
     try:
         bp = pd.read_csv("best_slates_today.csv")
     except:
@@ -388,38 +545,35 @@ if view_mode == "📊 Predictions":
             # ---------- DISPLAY THREE LEGS ----------
             st.markdown("### 🧩 Parlay Legs")
 
-            # --- Helper: find photo + logo in today's predictions ---
-            def get_images(player_name, preds_df):
-                """Return PHOTO_URL and LOGO_URL for a given player name."""
-                try:
-                    row_img = preds_df.loc[preds_df["PLAYER"] == player_name].iloc[0]
-                    photo = row_img.get("PHOTO_URL", "")
-                    logo  = row_img.get("LOGO_URL", "")
-                    return photo if isinstance(photo,str) else "", logo if isinstance(logo,str) else ""
-                except:
-                    return "", ""
-
-
             def leg_block(px, color="#3498db"):
                 player = px["PLAYER"]
                 team = px["TEAM"]
 
-                # Try to find matching row in preds for PHOTO_URL / LOGO_URL
+                # Find matching row in preds for PHOTO_URL / LOGO_URL
                 match = preds[(preds["PLAYER"] == player) & (preds["TEAM"] == team)]
                 photo = match["PHOTO_URL"].values[0] if not match.empty else None
                 logo = match["LOGO_URL"].values[0] if not match.empty else None
 
-                # Build left column (images)
+                # Left column (images)
                 img_html = ""
                 if photo and str(photo).startswith("http"):
-                    img_html += f"<img src='{photo}' style='width:70px;border-radius:8px;margin-bottom:6px;'>"
+                    img_html += (
+                        f"<img src='{photo}' "
+                        f"style='width:70px;border-radius:8px;margin-bottom:6px;'>"
+                    )
                 if logo and str(logo).startswith("http"):
-                    img_html += f"<img src='{logo}' style='width:40px;margin-top:4px;'>"
+                    img_html += (
+                        f"<img src='{logo}' "
+                        f"style='width:40px;margin-top:4px;'>"
+                    )
 
-                # Build right column (stats block)
+                # Clickable player name → ?player=...
+                player_html = player_link(player)
+
+                # Right column (stats block)
                 stats_html = f"""
                     <div style="font-size:1.2em;font-weight:700;color:{color}; margin-bottom:6px;">
-                        {player} — {px['MARKET']} o{px['LINE']}
+                        {player_html} — {px['MARKET']} o{px['LINE']}
                     </div>
                     <div style="font-size:0.95em; line-height:1.5;">
                         Team: <b>{team}</b><br>
@@ -430,7 +584,7 @@ if view_mode == "📊 Predictions":
                     </div>
                 """
 
-                # Combine into 2-column layout
+                # Combined 2-column layout
                 full_html = f"""
                     <div style="display:flex;gap:20px;padding:12px;border-radius:12px;
                                  border:1px solid #444;background:#111;margin-bottom:14px;">
@@ -474,7 +628,6 @@ if view_mode == "📊 Predictions":
                 st.metric("Parlay Odds", f"{american:+d}")
 
             st.caption(f"Decimal (Model): {model_dec:.3f} • Decimal (Book): {book_dec:.3f}")
-
             st.info("This parlay is auto-generated daily based on probability × AIR × book inefficiency.")
 
     # ---------- Confidence Index ----------
@@ -624,7 +777,9 @@ if view_mode == "📊 Predictions":
 
                     # ---------- COLUMN 2: Player / Props ----------
                     with c2:
-                        st.markdown(f"#### {row['PLAYER']}")
+                        # clickable player name
+                        name_html = player_link(row["PLAYER"])
+                        st.markdown(f"#### {name_html}", unsafe_allow_html=True)
 
                         # PROP LINE + ODDS
                         odds_raw = row.get("ODDS", None)
@@ -735,7 +890,6 @@ if view_mode == "📊 Predictions":
                         # ---------- NEW: AIR BOOM/ BUST CHIP ----------
                         air = row.get("PRED_AIR_SCORE", np.nan)
                         if pd.notna(air):
-                            # label
                             if air >= 1.20:
                                 boom = "High Boom"
                                 bg = "#2ecc71"
@@ -747,9 +901,7 @@ if view_mode == "📊 Predictions":
                                 bg = "#e74c3c"
 
                             air_label = f"AIR: {air:.2f} ({boom})"
-                            chips.append(
-                                chip_html("AIR", air_label, bg)
-                            )
+                            chips.append(chip_html("AIR", air_label, bg))
 
                         if chips:
                             st.markdown("".join(chips), unsafe_allow_html=True)
@@ -851,8 +1003,17 @@ elif view_mode == "🕓 Yesterday's Results":
     except:
         bp_master = pd.DataFrame()
 
+    # Normalize DATE in master so we can do last-7-days math
+    if not bp_master.empty and "DATE" in bp_master.columns:
+        bp_master["DATE"] = pd.to_datetime(
+            bp_master["DATE"], format="mixed", errors="coerce"
+        )
+
     # Extract yesterday's parlay row
-    bp_yday = bp_master[bp_master["DATE"] == latest_ts.strftime("%Y-%m-%d")]
+    if not bp_master.empty:
+        bp_yday = bp_master[bp_master["DATE"] == latest_ts].copy()
+    else:
+        bp_yday = pd.DataFrame()
 
     if bp_yday.empty:
         st.info("No parlay recorded for yesterday yet.")
@@ -871,11 +1032,16 @@ elif view_mode == "🕓 Yesterday's Results":
                 "#7f8c8d"
             )
 
+            # clickable player name
+            name_html = player_link(player)
+
             with col:
                 st.markdown(
                     f"""
                     <div style="padding:10px;border-radius:10px;border:2px solid {color};background:#111;">
-                        <div style="font-size:1.1em;font-weight:700;color:{color};">{player}</div>
+                        <div style="font-size:1.1em;font-weight:700;color:{color};">
+                            {name_html}
+                        </div>
                         <div style="font-size:0.9em;color:#bbb;">{market} o{line}</div>
                         <div style="margin-top:6px;font-size:0.9em;">
                             Team: <b>{team}</b><br>
@@ -926,14 +1092,14 @@ elif view_mode == "🕓 Yesterday's Results":
         with c3:
             st.metric("Book Probability", f"{row['PARLAY_BOOK_PROB']*100:.1f}%")
 
-        # Separator
         st.divider()
 
     # ----------------------------------------------------------
-    # RUNNING BEST PARLAY PERFORMANCE — ALL TIME
+    # RUNNING BEST PARLAY PERFORMANCE — ALL TIME + LAST 7 DAYS
     # ----------------------------------------------------------
     if not bp_master.empty and "PARLAY_HIT" in bp_master.columns:
-        hist = bp_master[bp_master["PARLAY_HIT"].isin(["HIT", "MISS"])]
+        hist = bp_master[bp_master["PARLAY_HIT"].isin(["HIT", "MISS"])].copy()
+        hist = hist.dropna(subset=["DATE"])
 
         if not hist.empty:
             total = len(hist)
@@ -941,9 +1107,20 @@ elif view_mode == "🕓 Yesterday's Results":
             rate = hits / total if total > 0 else 0
 
             st.markdown("### 📈 Best Parlay Performance — All Time")
-            st.markdown(
-                f"**Record:** {hits}/{total} = {rate*100:.1f}%"
-            )
+            st.markdown(f"**Record:** {hits}/{total} = {rate*100:.1f}%")
+
+            # Last 7 days window (ending at yesterday's date)
+            last7_start = latest_ts - pd.Timedelta(days=6)
+            last7 = hist[(hist["DATE"] >= last7_start) & (hist["DATE"] <= latest_ts)]
+
+            if not last7.empty:
+                last7_total = len(last7)
+                last7_hits = (last7["PARLAY_HIT"] == "HIT").sum()
+                last7_rate = last7_hits / last7_total if last7_total > 0 else 0.0
+                st.markdown(
+                    f"**Last 7 days:** {last7_hits}/{last7_total} "
+                    f"= {last7_rate*100:.1f}%"
+                )
 
     # ---- Market Selector ----
     markets = sorted(df_yday["MARKET"].unique())
@@ -1036,7 +1213,6 @@ elif view_mode == "🕓 Yesterday's Results":
     def style_row(row):
         air_val = row["AIR_SCORE"]
         air_txt = air_category(air_val)
-        air_col = air_color(air_val)
 
         diff = row["LINE_TO_SEASON_DIFF"]
         diff_txt = f"{diff:+.1f}"
@@ -1157,10 +1333,10 @@ elif view_mode == "🕓 Yesterday's Results":
     except Exception:
         pass
 
-# ---------- All Players History ----------
+# ---------- All Players History / Player Profiles (C-Hybrid) ----------
 
 elif view_mode == "📚 All Players History":
-    st.markdown("### 📚 All Players — Historical Performance")
+    st.markdown("### 📚 All Players — Historical Performance & Profiles")
 
     # Load full master history (all props, all days)
     master = load_csv("nba_prop_predictions_master.csv")
@@ -1195,9 +1371,6 @@ elif view_mode == "📚 All Players History":
     market_opts = ["All Markets"] + sorted(master["MARKET"].dropna().unique().tolist())
     market_pick = st.sidebar.selectbox("Market", market_opts, index=0)
 
-    # Player search
-    player_search = st.sidebar.text_input("Search Player (optional)").strip().lower()
-
     # Date range filter
     min_date = master["DATE"].min()
     max_date = master["DATE"].max()
@@ -1212,7 +1385,7 @@ elif view_mode == "📚 All Players History":
     dow_all = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     dow_pick = st.sidebar.multiselect("Days of Week", dow_all, default=dow_all)
 
-    # NEW: Min games + positive edge toggle (applied to grouped summary)
+    # NEW: Min games + positive edge toggle (applied mainly to leaderboard)
     min_games = st.sidebar.slider("Min games per player/market", 1, 40, 3)
     only_pos_edge = st.sidebar.checkbox("Only show rows with positive Avg Model Edge", value=False)
 
@@ -1224,9 +1397,6 @@ elif view_mode == "📚 All Players History":
 
     if market_pick != "All Markets":
         df = df[df["MARKET"] == market_pick]
-
-    if player_search:
-        df = df[df["PLAYER"].astype(str).str.lower().str.contains(player_search)]
 
     # Date range can be a tuple or single date
     if isinstance(date_range, (list, tuple)) and len(date_range) == 2:
@@ -1244,7 +1414,7 @@ elif view_mode == "📚 All Players History":
         st.warning("No rows match the selected filters yet.")
         st.stop()
 
-    # --- Top-level metrics ---
+    # --- Top-level metrics for filtered universe ---
     total_rows = len(df)
     total_hits = df["didHitOver"].sum() if "didHitOver" in df.columns else np.nan
     hit_rate = (total_hits / total_rows) if total_rows > 0 else np.nan
@@ -1260,237 +1430,285 @@ elif view_mode == "📚 All Players History":
     with c3:
         st.metric("Avg Model Edge", fmt_num(avg_edge, 3) if pd.notna(avg_edge) else "—")
 
-    # --- Hit rate by Day of Week ---
-    st.markdown("#### 📆 Hit Rate by Day of Week")
-
-    dow_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    dow_summary = (
-        df.groupby("DOW")["didHitOver"]
-        .agg(["sum", "count"])
-        .reset_index()
-        .rename(columns={"sum": "Hits", "count": "Total"})
-    )
-    dow_summary["HitRate"] = dow_summary["Hits"] / dow_summary["Total"]
-    # enforce ordering
-    dow_summary["DOW"] = pd.Categorical(dow_summary["DOW"], categories=dow_order, ordered=True)
-    dow_summary = dow_summary.sort_values("DOW")
-
-    chart_dow = (
-        alt.Chart(dow_summary)
-        .mark_bar()
-        .encode(
-            x=alt.X("DOW:N", title="Day of Week"),
-            y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-            tooltip=["DOW", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
-        )
-        .properties(height=260)
-    )
-    st.altair_chart(chart_dow, use_container_width=True)
-
-    # --- Hit rate over time (timeline) ---
-    st.markdown("#### 📈 Hit Rate Over Time")
-
-    daily = (
-        df.groupby("DATE")["didHitOver"]
-        .agg(["sum", "count"])
-        .reset_index()
-        .rename(columns={"sum": "Hits", "count": "Total"})
-    )
-    daily["HitRate"] = daily["Hits"] / daily["Total"]
-
-    chart_daily = (
-        alt.Chart(daily)
-        .mark_line(point=True)
-        .encode(
-            x=alt.X("DATE:T", title="Date"),
-            y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
-            tooltip=["DATE", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
-        )
-        .properties(height=260)
-    )
-    st.altair_chart(chart_daily, use_container_width=True)
-
-    # --- Player-level summary table ---
-    st.markdown("#### 🧑‍💻 Player / Market Summary (filtered)")
-
-    agg_cols = {
-        "didHitOver": "sum",
-        "LINE": "mean",
-        "SEASON_VAL": "mean",
-    }
-    if "EDGE_MODEL" in df.columns:
-        agg_cols["EDGE_MODEL"] = "mean"
-    if "AIR_SCORE" in df.columns:
-        agg_cols["AIR_SCORE"] = "mean"
-    if "ODDS" in df.columns:
-        agg_cols["ODDS"] = "mean"
-    if "IMPLIED_PROB" in df.columns:
-        agg_cols["IMPLIED_PROB"] = "mean"
-
-    grouped = (
-        df.groupby(["PLAYER", "TEAM", "MARKET"])
-        .agg(agg_cols)
-        .reset_index()
-        .rename(columns={
-            "didHitOver": "Hits",
-            "LINE": "AvgLine",
-            "SEASON_VAL": "AvgSeasonVal",
-            "EDGE_MODEL": "AvgModelEdge",
-            "AIR_SCORE": "AvgAIR",
-            "ODDS": "AvgOdds",
-            "IMPLIED_PROB": "AvgImpliedProb",
-        })
+    # ---------- Tabs: Player Profile / Leaderboard / Daily Summary ----------
+    tab_profile, tab_board, tab_daily = st.tabs(
+        ["🎯 Player Profile", "🏆 Leaderboard", "📆 Daily Summary"]
     )
 
-    # Robust Games count merge
-    games_series = (
-        df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"]
-        .count()
-        .rename("Games")
-        .reset_index()
-    )
-    grouped = grouped.merge(games_series, on=["PLAYER", "TEAM", "MARKET"], how="left")
+    # ==========================================================
+    # 🎯 TAB 1: PLAYER PROFILE (uses ?player= query param if present)
+    # ==========================================================
+    with tab_profile:
+        st.markdown("#### 🎯 Player Profile (within current filters)")
 
-    grouped["HitRate"] = grouped["Hits"] / grouped["Games"]
-
-    # ---- AIR Boom Tier helper ----
-    def air_tier(val):
-        try:
-            v = float(val)
-        except (TypeError, ValueError):
-            return "—"
-        if v >= 1.30:
-            return "🔥 High Boom"
-        elif v >= 1.10:
-            return "⬆ Medium Boom"
-        elif v >= 0.90:
-            return "Neutral"
+        # Player options from filtered df
+        player_opts = sorted(df["PLAYER"].dropna().unique().tolist())
+        if not player_opts:
+            st.info("No players found for the current filters.")
         else:
-            return "⬇ Low / Bust"
+            # Default index using selected_player from query params if available
+            default_idx = 0
+            if selected_player and selected_player in player_opts:
+                default_idx = player_opts.index(selected_player)
 
-    if "AvgAIR" in grouped.columns:
-        grouped["AIR_TIER"] = grouped["AvgAIR"].apply(air_tier)
-
-    # Apply min-games + positive-edge filters at grouped level
-    grouped = grouped[grouped["Games"] >= min_games]
-    if only_pos_edge and "AvgModelEdge" in grouped.columns:
-        grouped = grouped[grouped["AvgModelEdge"] > 0]
-
-    if grouped.empty:
-        st.warning("No player/market combos match the grouped filters (min games / edge).")
-        st.stop()
-
-    # Sort selector
-    sort_choice = st.selectbox(
-        "Sort players by",
-        ["Hit Rate (desc)", "Avg AIR (desc)", "Avg Model Edge (desc)", "Games Played (desc)"],
-        index=0,
-    )
-
-    if sort_choice == "Hit Rate (desc)":
-        grouped = grouped.sort_values("HitRate", ascending=False)
-    elif sort_choice == "Avg AIR (desc)" and "AvgAIR" in grouped.columns:
-        grouped = grouped.sort_values("AvgAIR", ascending=False)
-    elif sort_choice == "Avg Model Edge (desc)" and "AvgModelEdge" in grouped.columns:
-        grouped = grouped.sort_values("AvgModelEdge", ascending=False)
-    elif sort_choice == "Games Played (desc)":
-        grouped = grouped.sort_values("Games", ascending=False)
-
-    # Nice formatting
-    display_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
-    if "AvgModelEdge" in grouped.columns:
-        display_cols.append("AvgModelEdge")
-    if "AvgAIR" in grouped.columns:
-        display_cols.append("AvgAIR")
-        if "AIR_TIER" in grouped.columns:
-            display_cols.append("AIR_TIER")
-    if "AvgOdds" in grouped.columns:
-        display_cols.append("AvgOdds")
-
-    grouped["HitRate"] = grouped["HitRate"].apply(lambda x: float(x) if pd.notna(x) else np.nan)
-
-    st.dataframe(
-        grouped[display_cols].assign(
-            HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
-            AvgModelEdge=lambda d: d.get("AvgModelEdge", np.nan).apply(
-                lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
-            ) if "AvgModelEdge" in d.columns else d.get("AvgModelEdge", np.nan),
-            AvgAIR=lambda d: d.get("AvgAIR", np.nan).apply(
-                lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
-            ) if "AvgAIR" in d.columns else d.get("AvgAIR", np.nan),
-        ),
-        hide_index=True,
-        use_container_width=True,
-    )
-
-    # --- Boom Profiles (nice, but compact) ---
-    st.markdown("#### 💥 Boom Profiles — High AIR Spots (filtered)")
-
-    if "AvgAIR" in grouped.columns:
-        boom = grouped.copy()
-        boom = boom.sort_values(["AvgAIR", "HitRate"], ascending=[False, False]).head(15)
-        boom_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgAIR"]
-        if "AIR_TIER" in boom.columns:
-            boom_cols.append("AIR_TIER")
-        st.dataframe(
-            boom[boom_cols].assign(
-                HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
-                AvgAIR=lambda d: d["AvgAIR"].apply(lambda x: fmt_num(x, 3) if pd.notna(x) else "—"),
-            ),
-            hide_index=True,
-            use_container_width=True,
-        )
-    else:
-        st.info("AIR scores not yet available in master file for this filter set.")
-
-    # --- Player Deep Dive ---
-    st.markdown("#### 🎯 Player Deep Dive (within current filters)")
-
-    player_opts = ["(None)"] + sorted(df["PLAYER"].dropna().unique().tolist())
-    focus_player = st.selectbox("Select player for detailed view", player_opts, index=0)
-
-    if focus_player != "(None)":
-        df_p = df[df["PLAYER"] == focus_player].copy()
-        if df_p.empty:
-            st.info("No rows for that player with the current filters.")
-        else:
-            st.markdown(f"##### {focus_player} — Market Breakdown")
-
-            per_market = (
-                df_p.groupby("MARKET")
-                .agg({
-                    "didHitOver": "sum",
-                    "LINE": "mean",
-                    "SEASON_VAL": "mean",
-                    "AIR_SCORE": "mean",
-                    "EDGE_MODEL": "mean",
-                    "GAME_DATE": "count",
-                })
-                .reset_index()
-                .rename(columns={
-                    "didHitOver": "Hits",
-                    "GAME_DATE": "Games",
-                    "LINE": "AvgLine",
-                    "SEASON_VAL": "AvgSeasonVal",
-                    "AIR_SCORE": "AvgAIR",
-                    "EDGE_MODEL": "AvgModelEdge",
-                })
+            focus_player = st.selectbox(
+                "Select player for detailed view",
+                player_opts,
+                index=default_idx,
             )
-            per_market["HitRate"] = per_market["Hits"] / per_market["Games"]
-            if "AvgAIR" in per_market.columns:
-                per_market["AIR_TIER"] = per_market["AvgAIR"].apply(air_tier)
 
-            pm_cols = ["MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
-            if "AvgModelEdge" in per_market.columns:
-                pm_cols.append("AvgModelEdge")
-            if "AvgAIR" in per_market.columns:
-                pm_cols.append("AvgAIR")
-            if "AIR_TIER" in per_market.columns:
-                pm_cols.append("AIR_TIER")
+            df_p = df[df["PLAYER"] == focus_player].copy()
+            if df_p.empty:
+                st.info("No rows for that player with the current filters.")
+            else:
+                # Overall quick stats
+                total_props_p = len(df_p)
+                hits_p = df_p["didHitOver"].sum() if "didHitOver" in df_p.columns else np.nan
+                hit_rate_p = (hits_p / total_props_p) if total_props_p > 0 else np.nan
+                avg_edge_p = df_p["EDGE_MODEL"].mean() if "EDGE_MODEL" in df_p.columns else np.nan
+                avg_air_p = df_p["AIR_SCORE"].mean() if "AIR_SCORE" in df_p.columns else np.nan
+
+                c1p, c2p, c3p, c4p = st.columns(4)
+                with c1p:
+                    st.metric("Props (filtered)", f"{total_props_p}")
+                with c2p:
+                    st.metric("Hit Rate", pct(hit_rate_p) if pd.notna(hit_rate_p) else "—")
+                with c3p:
+                    st.metric("Avg Model Edge", fmt_num(avg_edge_p, 3) if pd.notna(avg_edge_p) else "—")
+                with c4p:
+                    st.metric("Avg AIR", fmt_num(avg_air_p, 3) if pd.notna(avg_air_p) else "—")
+
+                # Per-market breakdown for this player
+                st.markdown(f"##### {focus_player} — Market Breakdown")
+
+                per_market = (
+                    df_p.groupby("MARKET")
+                    .agg({
+                        "didHitOver": "sum",
+                        "LINE": "mean",
+                        "SEASON_VAL": "mean",
+                        "AIR_SCORE": "mean",
+                        "EDGE_MODEL": "mean",
+                        "GAME_DATE": "count",
+                    })
+                    .reset_index()
+                    .rename(columns={
+                        "didHitOver": "Hits",
+                        "GAME_DATE": "Games",
+                        "LINE": "AvgLine",
+                        "SEASON_VAL": "AvgSeasonVal",
+                        "AIR_SCORE": "AvgAIR",
+                        "EDGE_MODEL": "AvgModelEdge",
+                    })
+                )
+                per_market["HitRate"] = per_market["Hits"] / per_market["Games"]
+
+                def air_tier(val):
+                    try:
+                        v = float(val)
+                    except (TypeError, ValueError):
+                        return "—"
+                    if v >= 1.30:
+                        return "🔥 High Boom"
+                    elif v >= 1.10:
+                        return "⬆ Medium Boom"
+                    elif v >= 0.90:
+                        return "Neutral"
+                    else:
+                        return "⬇ Low / Bust"
+
+                if "AvgAIR" in per_market.columns:
+                    per_market["AIR_TIER"] = per_market["AvgAIR"].apply(air_tier)
+
+                pm_cols = ["MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
+                if "AvgModelEdge" in per_market.columns:
+                    pm_cols.append("AvgModelEdge")
+                if "AvgAIR" in per_market.columns:
+                    pm_cols.append("AvgAIR")
+                if "AIR_TIER" in per_market.columns:
+                    pm_cols.append("AIR_TIER")
+
+                st.dataframe(
+                    per_market[pm_cols].assign(
+                        HitRate=lambda d: d["HitRate"].apply(
+                            lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"
+                        ),
+                        AvgModelEdge=lambda d: d.get("AvgModelEdge", np.nan).apply(
+                            lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
+                        ) if "AvgModelEdge" in d.columns else d.get("AvgModelEdge", np.nan),
+                        AvgAIR=lambda d: d.get("AvgAIR", np.nan).apply(
+                            lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
+                        ) if "AvgAIR" in d.columns else d.get("AvgAIR", np.nan),
+                    ),
+                    hide_index=True,
+                    use_container_width=True,
+                )
+
+                # Last N props table
+                st.markdown("##### Last 20 Props (within filters)")
+
+                df_p_sorted = df_p.sort_values("GAME_DATE", ascending=False).head(20).copy()
+                df_p_sorted["Result"] = df_p_sorted["didHitOver"].map({1: "HIT", 0: "MISS"})
+                df_p_sorted["HitRateLabel"] = df_p_sorted["Result"]
+
+                cols_last = [
+                    "GAME_DATE", "TEAM", "MARKET", "LINE", "ACTUAL",
+                    "Result", "EDGE_MODEL", "AIR_SCORE", "ODDS"
+                ]
+                cols_last = [c for c in cols_last if c in df_p_sorted.columns]
+
+                st.dataframe(
+                    df_p_sorted[cols_last],
+                    hide_index=True,
+                    use_container_width=True,
+                )
+
+                # Timeline chart: actual vs line by market
+                st.markdown("##### Game Log (Actual vs Line)")
+
+                df_p_chart = df_p.sort_values("GAME_DATE")
+                df_p_chart["HitLabel"] = df_p_chart["didHitOver"].map({1: "Hit", 0: "Miss"})
+
+                points = (
+                    alt.Chart(df_p_chart)
+                    .mark_circle(size=70)
+                    .encode(
+                        x=alt.X("GAME_DATE:T", title="Date"),
+                        y=alt.Y("ACTUAL:Q", title="Actual Stat"),
+                        color=alt.Color("MARKET:N", title="Market"),
+                        shape=alt.Shape("HitLabel:N", title="Result"),
+                        tooltip=[
+                            "GAME_DATE:T",
+                            "MARKET",
+                            "LINE",
+                            "ACTUAL",
+                            "HitLabel",
+                            "EDGE_MODEL",
+                            "AIR_SCORE",
+                        ],
+                    )
+                )
+
+                lines = (
+                    alt.Chart(df_p_chart)
+                    .mark_line(strokeDash=[4, 4])
+                    .encode(
+                        x="GAME_DATE:T",
+                        y="LINE:Q",
+                        color="MARKET:N",
+                    )
+                )
+
+                st.altair_chart((points + lines).properties(height=260), use_container_width=True)
+
+    # ==========================================================
+    # 🏆 TAB 2: GLOBAL LEADERBOARD (within filters)
+    # ==========================================================
+    with tab_board:
+        st.markdown("#### 🏆 Player / Market Leaderboard (filtered)")
+
+        agg_cols = {
+            "didHitOver": "sum",
+            "LINE": "mean",
+            "SEASON_VAL": "mean",
+        }
+        if "EDGE_MODEL" in df.columns:
+            agg_cols["EDGE_MODEL"] = "mean"
+        if "AIR_SCORE" in df.columns:
+            agg_cols["AIR_SCORE"] = "mean"
+        if "ODDS" in df.columns:
+            agg_cols["ODDS"] = "mean"
+        if "IMPLIED_PROB" in df.columns:
+            agg_cols["IMPLIED_PROB"] = "mean"
+
+        grouped = (
+            df.groupby(["PLAYER", "TEAM", "MARKET"])
+            .agg(agg_cols)
+            .reset_index()
+            .rename(columns={
+                "didHitOver": "Hits",
+                "LINE": "AvgLine",
+                "SEASON_VAL": "AvgSeasonVal",
+                "EDGE_MODEL": "AvgModelEdge",
+                "AIR_SCORE": "AvgAIR",
+                "ODDS": "AvgOdds",
+                "IMPLIED_PROB": "AvgImpliedProb",
+            })
+        )
+
+        # Robust Games count merge
+        games_series = (
+            df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"]
+            .count()
+            .rename("Games")
+            .reset_index()
+        )
+        grouped = grouped.merge(games_series, on=["PLAYER", "TEAM", "MARKET"], how="left")
+
+        grouped["HitRate"] = grouped["Hits"] / grouped["Games"]
+
+        # AIR Boom Tier helper (reuse logic)
+        def air_tier_lb(val):
+            try:
+                v = float(val)
+            except (TypeError, ValueError):
+                return "—"
+            if v >= 1.30:
+                return "🔥 High Boom"
+            elif v >= 1.10:
+                return "⬆ Medium Boom"
+            elif v >= 0.90:
+                return "Neutral"
+            else:
+                return "⬇ Low / Bust"
+
+        if "AvgAIR" in grouped.columns:
+            grouped["AIR_TIER"] = grouped["AvgAIR"].apply(air_tier_lb)
+
+        # Apply min-games + positive-edge filters at grouped level
+        grouped = grouped[grouped["Games"] >= min_games]
+        if only_pos_edge and "AvgModelEdge" in grouped.columns:
+            grouped = grouped[grouped["AvgModelEdge"] > 0]
+
+        if grouped.empty:
+            st.warning("No player/market combos match the grouped filters (min games / edge).")
+        else:
+            # Sort selector
+            sort_choice = st.selectbox(
+                "Sort players by",
+                ["Hit Rate (desc)", "Avg AIR (desc)", "Avg Model Edge (desc)", "Games Played (desc)"],
+                index=0,
+            )
+
+            if sort_choice == "Hit Rate (desc)":
+                grouped = grouped.sort_values("HitRate", ascending=False)
+            elif sort_choice == "Avg AIR (desc)" and "AvgAIR" in grouped.columns:
+                grouped = grouped.sort_values("AvgAIR", ascending=False)
+            elif sort_choice == "Avg Model Edge (desc)" and "AvgModelEdge" in grouped.columns:
+                grouped = grouped.sort_values("AvgModelEdge", ascending=False)
+            elif sort_choice == "Games Played (desc)":
+                grouped = grouped.sort_values("Games", ascending=False)
+
+            # Nice formatting
+            display_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
+            if "AvgModelEdge" in grouped.columns:
+                display_cols.append("AvgModelEdge")
+            if "AvgAIR" in grouped.columns:
+                display_cols.append("AvgAIR")
+                if "AIR_TIER" in grouped.columns:
+                    display_cols.append("AIR_TIER")
+            if "AvgOdds" in grouped.columns:
+                display_cols.append("AvgOdds")
+
+            grouped["HitRate"] = grouped["HitRate"].apply(
+                lambda x: float(x) if pd.notna(x) else np.nan
+            )
 
             st.dataframe(
-                per_market[pm_cols].assign(
-                    HitRate=lambda d: d["HitRate"].apply(lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"),
+                grouped[display_cols].assign(
+                    HitRate=lambda d: d["HitRate"].apply(
+                        lambda x: f"{x*100:.1f}%" if pd.notna(x) else "—"
+                    ),
                     AvgModelEdge=lambda d: d.get("AvgModelEdge", np.nan).apply(
                         lambda x: fmt_num(x, 3) if pd.notna(x) else "—"
                     ) if "AvgModelEdge" in d.columns else d.get("AvgModelEdge", np.nan),
@@ -1502,46 +1720,60 @@ elif view_mode == "📚 All Players History":
                 use_container_width=True,
             )
 
-            # Timeline chart: actual vs line by market
-            st.markdown("##### Game Log (Actual vs Line)")
+    # ==========================================================
+    # 📆 TAB 3: DAILY SUMMARY (DOW + timeline)
+    # ==========================================================
+    with tab_daily:
+        st.markdown("#### 📆 Hit Rate by Day of Week (filtered)")
 
-            df_p = df_p.sort_values("GAME_DATE")
-            df_p["HitLabel"] = df_p["didHitOver"].map({1: "Hit", 0: "Miss"})
+        dow_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+        dow_summary = (
+            df.groupby("DOW")["didHitOver"]
+            .agg(["sum", "count"])
+            .reset_index()
+            .rename(columns={"sum": "Hits", "count": "Total"})
+        )
+        dow_summary["HitRate"] = dow_summary["Hits"] / dow_summary["Total"]
+        # enforce ordering
+        dow_summary["DOW"] = pd.Categorical(dow_summary["DOW"], categories=dow_order, ordered=True)
+        dow_summary = dow_summary.sort_values("DOW")
 
-            points = (
-                alt.Chart(df_p)
-                .mark_circle(size=70)
-                .encode(
-                    x=alt.X("GAME_DATE:T", title="Date"),
-                    y=alt.Y("ACTUAL:Q", title="Actual Stat"),
-                    color=alt.Color("MARKET:N", title="Market"),
-                    shape=alt.Shape("HitLabel:N", title="Result"),
-                    tooltip=[
-                        "GAME_DATE:T",
-                        "MARKET",
-                        "LINE",
-                        "ACTUAL",
-                        "HitLabel",
-                        "EDGE_MODEL",
-                        "AIR_SCORE",
-                    ],
-                )
+        chart_dow = (
+            alt.Chart(dow_summary)
+            .mark_bar()
+            .encode(
+                x=alt.X("DOW:N", title="Day of Week"),
+                y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
+                tooltip=["DOW", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
             )
+            .properties(height=260)
+        )
+        st.altair_chart(chart_dow, use_container_width=True)
 
-            lines = (
-                alt.Chart(df_p)
-                .mark_line(strokeDash=[4, 4])
-                .encode(
-                    x="GAME_DATE:T",
-                    y="LINE:Q",
-                    color="MARKET:N",
-                )
+        st.markdown("#### 📈 Hit Rate Over Time (filtered)")
+
+        daily = (
+            df.groupby("DATE")["didHitOver"]
+            .agg(["sum", "count"])
+            .reset_index()
+            .rename(columns={"sum": "Hits", "count": "Total"})
+        )
+        daily["HitRate"] = daily["Hits"] / daily["Total"]
+
+        chart_daily = (
+            alt.Chart(daily)
+            .mark_line(point=True)
+            .encode(
+                x=alt.X("DATE:T", title="Date"),
+                y=alt.Y("HitRate:Q", title="Hit Rate", scale=alt.Scale(domain=[0, 1])),
+                tooltip=["DATE", "Hits", "Total", alt.Tooltip("HitRate:Q", format=".1%")],
             )
+            .properties(height=260)
+        )
+        st.altair_chart(chart_daily, use_container_width=True)
 
-            st.altair_chart((points + lines).properties(height=260), use_container_width=True)
-
-    # Optional: raw table expander for debugging
-    with st.expander("🔬 View raw filtered rows"):
-        st.dataframe(df, hide_index=True, use_container_width=True)
+        # Optional: raw table expander for debugging
+        with st.expander("🔬 View raw filtered rows"):
+            st.dataframe(df, hide_index=True, use_container_width=True)
 
 st.caption("Daily NBA Trends & Predictions — powered by your pipeline • Context, trends & confidence • Free on Streamlit Cloud")
