@@ -1366,7 +1366,7 @@ elif view_mode == "📚 All Players History":
     master["DATE"] = master["GAME_DATE"].dt.date
     master["DOW"] = master["GAME_DATE"].dt.day_name()
 
-    # Safe numerics in case of weird strings
+    # Safe numerics
     for col in [
         "LINE", "SEASON_VAL", "ACTUAL", "didHitOver",
         "EDGE_MODEL", "AIR_SCORE", "IMPLIED_PROB", "ODDS"
@@ -1399,7 +1399,7 @@ elif view_mode == "📚 All Players History":
     dow_all = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     dow_pick = st.sidebar.multiselect("Days of Week", dow_all, default=dow_all)
 
-    # NEW: Min games + positive edge toggle (applied mainly to leaderboard)
+    # Min games + positive edge toggle (mainly for leaderboard)
     min_games = st.sidebar.slider("Min games per player/market", 1, 40, 3)
     only_pos_edge = st.sidebar.checkbox("Only show rows with positive Avg Model Edge", value=False)
 
@@ -1475,6 +1475,83 @@ elif view_mode == "📚 All Players History":
             if df_p.empty:
                 st.info("No rows for that player with the current filters.")
             else:
+                # -------- NEW: Player header with headshot + logo (SAFE) --------
+                # Determine "main" team for this player in the filtered data
+                team_for_focus = ""
+                if "TEAM" in df_p.columns and not df_p["TEAM"].dropna().empty:
+                    try:
+                        team_for_focus = str(df_p["TEAM"].mode().iloc[0])
+                    except Exception:
+                        team_for_focus = str(df_p["TEAM"].iloc[0])
+
+                photo_url = ""
+                logo_url = ""
+                prim = "#333333"
+                sec = "#777777"
+
+                try:
+                    # 1) Try from today's preds (has PHOTO_URL / LOGO_URL / colors)
+                    match = preds[preds["PLAYER"] == focus_player].copy()
+                    if team_for_focus:
+                        match = match[match["TEAM"] == team_for_focus]
+
+                    if not match.empty:
+                        m0 = match.iloc[0]
+                        photo_url = str(m0.get("PHOTO_URL", "") or "")
+                        logo_url = str(m0.get("LOGO_URL", "") or "")
+                        prim = str(m0.get("PRIMARY_COLOR", prim) or prim)
+                        sec  = str(m0.get("SECONDARY_COLOR", sec) or sec)
+                    else:
+                        # 2) Fallback: try from heads + logos if available
+                        if 'heads' in globals() and not heads.empty:
+                            hh = heads.copy()
+                            hh["PLAYER"] = hh["PLAYER"].astype(str).str.strip()
+                            hrow = hh[hh["PLAYER"] == focus_player]
+                            if not hrow.empty:
+                                photo_url = str(hrow.iloc[0].get("PHOTO_URL", "") or "")
+
+                        if 'logos' in globals() and not logos.empty and team_for_focus:
+                            ll = logos.copy()
+                            ll["TEAM"] = ll["TEAM"].astype(str).str.upper().map(norm_team)
+                            lrow = ll[ll["TEAM"] == norm_team(team_for_focus)]
+                            if not lrow.empty:
+                                logo_url = str(lrow.iloc[0].get("LOGO_URL", "") or "")
+                                prim = str(lrow.iloc[0].get("PRIMARY_COLOR", prim) or prim)
+                                sec  = str(lrow.iloc[0].get("SECONDARY_COLOR", sec) or sec)
+                except Exception:
+                    # Hard fallback if anything above blows up
+                    photo_url = ""
+                    logo_url = ""
+                    prim = "#333333"
+                    sec = "#777777"
+
+                # Final fallback image
+                if not photo_url:
+                    photo_url = "https://cdn.nba.com/manage/2021/10/NBA_Silhouette.png"
+
+                logo_html = (
+                    f'<img src="{logo_url}" style="width:46px;margin-top:4px;">'
+                    if logo_url else ""
+                )
+
+                st.markdown(
+                    f"""
+                    <div style="display:flex;align-items:center;gap:18px;margin:10px 0 18px 0;">
+                      <div style="text-align:center;">
+                        <img src="{photo_url}" style="width:90px;border-radius:12px;margin-bottom:6px;">
+                        {logo_html}
+                      </div>
+                      <div style="flex:1;">
+                        <div style="font-size:1.6em;font-weight:800;">{focus_player}</div>
+                        <div style="font-size:0.95em;color:#ccc;margin-top:4px;">
+                            Team: <b>{team_for_focus}</b>
+                        </div>
+                      </div>
+                    </div>
+                    """,
+                    unsafe_allow_html=True,
+                )
+
                 # Overall quick stats
                 total_props_p = len(df_p)
                 hits_p = df_p["didHitOver"].sum() if "didHitOver" in df_p.columns else np.nan
@@ -1563,7 +1640,6 @@ elif view_mode == "📚 All Players History":
 
                 df_p_sorted = df_p.sort_values("GAME_DATE", ascending=False).head(20).copy()
                 df_p_sorted["Result"] = df_p_sorted["didHitOver"].map({1: "HIT", 0: "MISS"})
-                df_p_sorted["HitRateLabel"] = df_p_sorted["Result"]
 
                 cols_last = [
                     "GAME_DATE", "TEAM", "MARKET", "LINE", "ACTUAL",
@@ -1650,7 +1726,7 @@ elif view_mode == "📚 All Players History":
             })
         )
 
-        # Robust Games count merge
+        # Games count merge
         games_series = (
             df.groupby(["PLAYER", "TEAM", "MARKET"])["didHitOver"]
             .count()
@@ -1661,7 +1737,6 @@ elif view_mode == "📚 All Players History":
 
         grouped["HitRate"] = grouped["Hits"] / grouped["Games"]
 
-        # AIR Boom Tier helper (reuse logic)
         def air_tier_lb(val):
             try:
                 v = float(val)
@@ -1679,7 +1754,6 @@ elif view_mode == "📚 All Players History":
         if "AvgAIR" in grouped.columns:
             grouped["AIR_TIER"] = grouped["AvgAIR"].apply(air_tier_lb)
 
-        # Apply min-games + positive-edge filters at grouped level
         grouped = grouped[grouped["Games"] >= min_games]
         if only_pos_edge and "AvgModelEdge" in grouped.columns:
             grouped = grouped[grouped["AvgModelEdge"] > 0]
@@ -1687,7 +1761,6 @@ elif view_mode == "📚 All Players History":
         if grouped.empty:
             st.warning("No player/market combos match the grouped filters (min games / edge).")
         else:
-            # Sort selector
             sort_choice = st.selectbox(
                 "Sort players by",
                 ["Hit Rate (desc)", "Avg AIR (desc)", "Avg Model Edge (desc)", "Games Played (desc)"],
@@ -1703,7 +1776,6 @@ elif view_mode == "📚 All Players History":
             elif sort_choice == "Games Played (desc)":
                 grouped = grouped.sort_values("Games", ascending=False)
 
-            # Nice formatting
             display_cols = ["PLAYER", "TEAM", "MARKET", "Games", "Hits", "HitRate", "AvgLine", "AvgSeasonVal"]
             if "AvgModelEdge" in grouped.columns:
                 display_cols.append("AvgModelEdge")
@@ -1748,7 +1820,6 @@ elif view_mode == "📚 All Players History":
             .rename(columns={"sum": "Hits", "count": "Total"})
         )
         dow_summary["HitRate"] = dow_summary["Hits"] / dow_summary["Total"]
-        # enforce ordering
         dow_summary["DOW"] = pd.Categorical(dow_summary["DOW"], categories=dow_order, ordered=True)
         dow_summary = dow_summary.sort_values("DOW")
 
@@ -1786,7 +1857,6 @@ elif view_mode == "📚 All Players History":
         )
         st.altair_chart(chart_daily, use_container_width=True)
 
-        # Optional: raw table expander for debugging
         with st.expander("🔬 View raw filtered rows"):
             st.dataframe(df, hide_index=True, use_container_width=True)
 
