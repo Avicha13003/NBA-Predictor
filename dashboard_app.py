@@ -230,13 +230,6 @@ def recent_window_stats(gl_df: pd.DataFrame, player: str, stat_col: str, lookbac
     if vals.empty: return (np.nan, np.nan)
     return (float(vals.mean()), float(vals.std(ddof=0)))
 
-def render_player_profile(player_name: str, preds: pd.DataFrame, gl: pd.DataFrame, results: pd.DataFrame):
-    """Render a player profile overlay at the top of the app."""
-    if not player_name:
-        return
-
-    name_norm = player_name.strip().lower()
-
     # --- TODAY'S PROPS (from preds) ---
     today_rows = preds[preds["PLAYER_NORM"] == name_norm].copy()
 
@@ -469,12 +462,6 @@ view_mode = st.sidebar.radio(
     view_options,
     index=default_index
 )
-
-# ---------- Optional Player Profile Overlay ----------
-if selected_player:
-    st.markdown(f"## 🧾 Player Profile: {selected_player}")
-    render_player_profile(selected_player, preds, gl, results)
-    st.markdown("---")
 
 # ---------- Sidebar (Predictions) ----------
 if view_mode == "📊 Predictions":
