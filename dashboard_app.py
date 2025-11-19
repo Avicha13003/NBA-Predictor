@@ -64,19 +64,20 @@ def chip_html(label: str, value: str, bg: str, fg: str = "white"):
         f"{label}: <b>{value}</b></span>"
     )
 
-def player_link(name: str, label: str | None = None) -> str:
+def player_link(name: str) -> str:
     """
-    Return an HTML <a> tag that sets ?player=... in the URL.
-    Used for clickable player names.
+    Return an HTML <a> that points to this player's profile.
+
+    We include view=history so the All Players History mode is selected
+    automatically, and player=<name> so the profile tab auto-focuses that player.
     """
-    if not isinstance(name, str) or not name.strip():
+    if not isinstance(name, str):
         return ""
-    safe = quote(name.strip())
-    text = label if label is not None else name
+    safe_name = quote(name)  # URL-encode spaces etc.
+    # you can tweak the base path if your app is hosted under a sub-path
     return (
-        f"<a href='?player={safe}' "
-        f"style='color:inherit;text-decoration:none;'>"
-        f"{text}</a>"
+        f'<a href="?view=history&player={safe_name}" '
+        f'style="color:inherit;text-decoration:none;">{name}</a>'
     )
 
 def rest_color(days):
@@ -450,10 +451,23 @@ else:
         preds[col] = ""
 
 # ---------- Mode Toggle ----------
+view_options = ["📊 Predictions", "🕓 Yesterday's Results", "📚 All Players History"]
+
+# Optional: allow query param ?view=history to default to profiles
+view_param = query_params.get("view", [None])[0]
+default_index = 0  # Predictions
+
+if view_param:
+    vp = str(view_param).lower()
+    if "history" in vp:
+        default_index = 2  # All Players History
+    elif "yesterday" in vp or "results" in vp:
+        default_index = 1
+
 view_mode = st.sidebar.radio(
     "View Mode",
-    ["📊 Predictions", "🕓 Yesterday's Results", "📚 All Players History"],
-    index=0
+    view_options,
+    index=default_index
 )
 
 # ---------- Optional Player Profile Overlay ----------
